@@ -34,6 +34,23 @@ struct InitialContentView: View {
                     }
                     .foregroundStyle(.white)
                     .padding()
+
+                    Spacer()
+                    Spacer()
+                    Spacer()
+
+                    Button(action: {
+
+                    }) {
+                        Text("시작하기")
+                            .font(.body)
+                            .fontWeight(.bold)
+                            .padding()
+                            .frame(width: geometry.size.width * 0.8)
+                            .foregroundStyle(.pink)
+                            .background(.white)
+                            .clipShape(.buttonBorder)
+                    }
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height)
             }
