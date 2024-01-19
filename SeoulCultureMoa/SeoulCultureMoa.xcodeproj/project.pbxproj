@@ -32,6 +32,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BBCA719D2B5A7E62001CC023 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BBCECA622B56815D00D664A1 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BBCA719E2B5A7E6A001CC023 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BBCECA542B56815D00D664A1 = {
 			isa = PBXGroup;
 			children = (
@@ -52,7 +67,8 @@
 			isa = PBXGroup;
 			children = (
 				BBCECA602B56815D00D664A1 /* SeoulCultureMoaApp.swift */,
-				BBCECA622B56815D00D664A1 /* ContentView.swift */,
+				BBCA719E2B5A7E6A001CC023 /* Model */,
+				BBCA719D2B5A7E62001CC023 /* Views */,
 				BBCECA642B56815E00D664A1 /* Assets.xcassets */,
 				BBCECA662B56815E00D664A1 /* Preview Content */,
 			);
