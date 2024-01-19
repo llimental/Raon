@@ -9,6 +9,13 @@ import SwiftUI
 
 struct InitialContentView: View {
     var body: some View {
+        ZStack {
+            Rectangle()
+                .fill(.pink)
+                .ignoresSafeArea()
+
+            Text("앱 제목")
+        }
     }
 }
 
