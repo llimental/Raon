@@ -11,7 +11,7 @@ import SwiftUI
 struct SeoulCultureMoaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            InitialContentView()
         }
     }
 }

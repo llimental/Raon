@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BBCA71A12B5A811E001CC023 /* InitialContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA71A02B5A811E001CC023 /* InitialContentView.swift */; };
 		BBCECA612B56815D00D664A1 /* SeoulCultureMoaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCECA602B56815D00D664A1 /* SeoulCultureMoaApp.swift */; };
 		BBCECA632B56815D00D664A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCECA622B56815D00D664A1 /* ContentView.swift */; };
 		BBCECA652B56815E00D664A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBCECA642B56815E00D664A1 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BBCA71A02B5A811E001CC023 /* InitialContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialContentView.swift; sourceTree = "<group>"; };
 		BBCECA5D2B56815D00D664A1 /* SeoulCultureMoa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeoulCultureMoa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBCECA602B56815D00D664A1 /* SeoulCultureMoaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulCultureMoaApp.swift; sourceTree = "<group>"; };
 		BBCECA622B56815D00D664A1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -35,6 +37,7 @@
 		BBCA719D2B5A7E62001CC023 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BBCA719F2B5A80F1001CC023 /* InitialViews */,
 				BBCECA622B56815D00D664A1 /* ContentView.swift */,
 			);
 			path = Views;
@@ -45,6 +48,14 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BBCA719F2B5A80F1001CC023 /* InitialViews */ = {
+			isa = PBXGroup;
+			children = (
+				BBCA71A02B5A811E001CC023 /* InitialContentView.swift */,
+			);
+			path = InitialViews;
 			sourceTree = "<group>";
 		};
 		BBCECA542B56815D00D664A1 = {
@@ -154,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBCECA632B56815D00D664A1 /* ContentView.swift in Sources */,
+				BBCA71A12B5A811E001CC023 /* InitialContentView.swift in Sources */,
 				BBCECA612B56815D00D664A1 /* SeoulCultureMoaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
