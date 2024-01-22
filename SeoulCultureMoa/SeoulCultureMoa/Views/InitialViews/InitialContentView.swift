@@ -10,8 +10,7 @@ import SwiftUI
 struct InitialContentView: View {
     var body: some View {
         ZStack {
-            Rectangle()
-                .fill(.pink)
+            Color.pink
                 .ignoresSafeArea()
 
             GeometryReader { geometry in
