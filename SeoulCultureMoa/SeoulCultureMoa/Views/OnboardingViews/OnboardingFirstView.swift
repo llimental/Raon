@@ -1,5 +1,5 @@
 //
-//  InitialContentView.swift
+//  OnboardingFirstView.swift
 //  SeoulCultureMoa
 //
 //  Created by Lust3r on 1/19/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct InitialContentView: View {
+struct OnboardingFirstView: View {
     var body: some View {
         ZStack {
             Color.pink
@@ -59,5 +59,5 @@ struct InitialContentView: View {
 }
 
 #Preview {
-    InitialContentView()
+    OnboardingFirstView()
 }
