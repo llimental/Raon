@@ -34,6 +34,5 @@ struct ColoredButton: View {
     ColoredButton(
         buttonAction: { },
         buttonText: "Button",
-        buttonColor: .pink
-    )
+        buttonColor: .pink)
 }

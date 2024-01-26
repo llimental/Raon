@@ -47,6 +47,5 @@ struct OnboardingFirstView: View {
 
 #Preview {
     OnboardingFirstView(selectedTab: .constant(0),
-                        themeColor: .constant(.pink)
-    )
+                        themeColor: .constant(.pink))
 }

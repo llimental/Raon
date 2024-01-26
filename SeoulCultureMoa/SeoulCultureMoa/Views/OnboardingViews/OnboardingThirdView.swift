@@ -44,6 +44,5 @@ struct OnboardingThirdView: View {
 
 #Preview {
     OnboardingThirdView(isFirstLaunching: .constant(true),
-                        themeColor: .constant(.pink)
-    )
+                        themeColor: .constant(.pink))
 }

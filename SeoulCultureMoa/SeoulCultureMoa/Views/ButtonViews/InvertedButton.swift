@@ -34,6 +34,5 @@ struct InvertedButton: View {
     InvertedButton(
         buttonAction: { },
         buttonText: "Button",
-        buttonColor: .pink
-    )
+        buttonColor: .pink)
 }
