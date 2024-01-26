@@ -9,52 +9,36 @@ import SwiftUI
 
 struct OnboardingFirstView: View {
     var body: some View {
-        ZStack {
-            Color.pink
-                .ignoresSafeArea()
+        GeometryReader { geometry in
+            VStack(alignment: .leading) {
+                VStack(alignment: .leading) {
+                    Text("What's\nin\nSeoul")
+                        .font(.system(size: 60))
+                        .padding(EdgeInsets(
+                            top: 100,
+                            leading: 0,
+                            bottom: 30,
+                            trailing: 0))
 
-            GeometryReader { geometry in
-                VStack(alignment: .center) {
-                    Spacer()
-
-                    VStack(alignment: .leading) {
-                        Text("""
-                             Seoul
-                             Culture
-                             Moa
-                             """)
-                        .font(.system(size: 50))
-
-                        Rectangle()
-                            .frame(height: 0)
-
-                        Text("서울시 문화프로그램 정보를 한눈에")
-                        .font(.body)
-                    }
-                    .foregroundStyle(.white)
-                    .padding()
-
-                    Spacer()
-                    Spacer()
-                    Spacer()
-
-                    Button(action: {
-
-                    }) {
-                        Text("시작하기")
-                            .font(.body)
-                            .fontWeight(.bold)
-                            .padding()
-                            .frame(width: geometry.size.width * 0.8)
-                            .foregroundStyle(.pink)
-                            .background(.white)
-                            .clipShape(.buttonBorder)
-                    }
+                    Text("서울시 문화프로그램 정보를 한눈에")
+                        .font(.system(size: 15))
                 }
-                .frame(width: geometry.size.width, height: geometry.size.height)
+                .foregroundStyle(.white)
+
+                Spacer()
+
+                InvertedButton(
+                    buttonAction: {
+
+                    },
+                    buttonText: "시작하기",
+                    buttonColor: ThemeColors.pink,
+                    buttonWidth: geometry.size.width * 0.7)
             }
             .padding()
+            .frame(width: geometry.size.width)
         }
+        .background(Color(ThemeColors.pink.rawValue))
     }
 }
 
