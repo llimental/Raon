@@ -29,6 +29,18 @@ struct OnboardingSecondView: View {
                     .font(.footnote)
                     .foregroundStyle(.gray)
 
+                Picker("지역을 선택해주세요", selection: $selectedRegion) {
+                    ForEach(Regions.allCases) { region in
+                        Text(region.rawValue)
+                    }
+                }
+                .pickerStyle(.menu)
+                .padding(EdgeInsets(
+                    top: 10,
+                    leading: -10,
+                    bottom: 10,
+                    trailing: 0))
+
                 Spacer()
 
                 ColoredButton(
