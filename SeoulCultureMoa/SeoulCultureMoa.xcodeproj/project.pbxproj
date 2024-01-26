@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB6704992B5FB4AB0008A76F /* OnboardingSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6704982B5FB4AB0008A76F /* OnboardingSecondView.swift */; };
+		BB67049D2B5FC53E0008A76F /* OnboardingThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67049C2B5FC53E0008A76F /* OnboardingThirdView.swift */; };
+		BBBFD64C2B63E2670052BD38 /* Regions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBFD64B2B63E2670052BD38 /* Regions.swift */; };
 		BBBFD6562B640BF20052BD38 /* ThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBFD6552B640BF20052BD38 /* ThemeColors.swift */; };
 		BBCA71A12B5A811E001CC023 /* OnboardingFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA71A02B5A811E001CC023 /* OnboardingFirstView.swift */; };
 		BBCECA612B56815D00D664A1 /* SeoulCultureMoaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCECA602B56815D00D664A1 /* SeoulCultureMoaApp.swift */; };
@@ -16,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB6704982B5FB4AB0008A76F /* OnboardingSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondView.swift; sourceTree = "<group>"; };
+		BB67049C2B5FC53E0008A76F /* OnboardingThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThirdView.swift; sourceTree = "<group>"; };
 		BBBFD64B2B63E2670052BD38 /* Regions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regions.swift; sourceTree = "<group>"; };
 		BBBFD6552B640BF20052BD38 /* ThemeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColors.swift; sourceTree = "<group>"; };
 		BBCA71A02B5A811E001CC023 /* OnboardingFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFirstView.swift; sourceTree = "<group>"; };
@@ -59,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				BBCA71A02B5A811E001CC023 /* OnboardingFirstView.swift */,
+				BB6704982B5FB4AB0008A76F /* OnboardingSecondView.swift */,
+				BB67049C2B5FC53E0008A76F /* OnboardingThirdView.swift */,
 			);
 			path = OnboardingViews;
 			sourceTree = "<group>";
@@ -174,6 +181,8 @@
 				BBBFD6562B640BF20052BD38 /* ThemeColors.swift in Sources */,
 				BBCA71A12B5A811E001CC023 /* OnboardingFirstView.swift in Sources */,
 				BBCECA612B56815D00D664A1 /* SeoulCultureMoaApp.swift in Sources */,
+				BB6704992B5FB4AB0008A76F /* OnboardingSecondView.swift in Sources */,
+				BB67049D2B5FC53E0008A76F /* OnboardingThirdView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
