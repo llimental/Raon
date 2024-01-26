@@ -10,6 +10,7 @@ import SwiftUI
 struct OnboardingTabView: View {
     @Binding var isFirstLaunching: Bool
     @Binding var themeColor: ThemeColors
+    @Binding var selectedRegion: Regions
 
     @State private var selectedTab = 0
 
@@ -20,7 +21,8 @@ struct OnboardingTabView: View {
                 themeColor: $themeColor)
             .tag(0)
             OnboardingSecondView(selectedTab: $selectedTab,
-                                 themeColor: $themeColor)
+                                 themeColor: $themeColor,
+                                 selectedRegion: $selectedRegion)
             .tag(1)
             OnboardingThirdView(isFirstLaunching: $isFirstLaunching,
                                 themeColor: $themeColor)
@@ -34,5 +36,6 @@ struct OnboardingTabView: View {
 
 #Preview {
     OnboardingTabView(isFirstLaunching: .constant(true),
-                      themeColor: .constant(.pink))
+                      themeColor: .constant(.pink),
+                      selectedRegion: .constant(.전체보기))
 }

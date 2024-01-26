@@ -10,6 +10,7 @@ import SwiftUI
 struct OnboardingSecondView: View {
     @Binding var selectedTab: Int
     @Binding var themeColor: ThemeColors
+    @Binding var selectedRegion: Regions
 
     var body: some View {
         GeometryReader { geometry in
@@ -46,5 +47,6 @@ struct OnboardingSecondView: View {
 
 #Preview {
     OnboardingSecondView(selectedTab: .constant(1),
-                         themeColor: .constant(.pink))
+                         themeColor: .constant(.pink),
+                         selectedRegion: .constant(.전체보기))
 }

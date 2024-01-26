@@ -16,7 +16,8 @@ struct ContentView: View {
         Text("App Main")
             .fullScreenCover(isPresented: $isFirstLaunching) {
                 OnboardingTabView(isFirstLaunching: $isFirstLaunching,
-                                  themeColor: $themeColor)
+                                  themeColor: $themeColor,
+                                  selectedRegion: $selectedRegion)
             }
     }
 }
