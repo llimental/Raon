@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BB6704992B5FB4AB0008A76F /* OnboardingSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6704982B5FB4AB0008A76F /* OnboardingSecondView.swift */; };
+		BB67049B2B5FB4CB0008A76F /* OnboardingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67049A2B5FB4CB0008A76F /* OnboardingTabView.swift */; };
 		BB67049D2B5FC53E0008A76F /* OnboardingThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67049C2B5FC53E0008A76F /* OnboardingThirdView.swift */; };
 		BBBFD64C2B63E2670052BD38 /* Regions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBFD64B2B63E2670052BD38 /* Regions.swift */; };
 		BBBFD6562B640BF20052BD38 /* ThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBFD6552B640BF20052BD38 /* ThemeColors.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		BB6704982B5FB4AB0008A76F /* OnboardingSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondView.swift; sourceTree = "<group>"; };
+		BB67049A2B5FB4CB0008A76F /* OnboardingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTabView.swift; sourceTree = "<group>"; };
 		BB67049C2B5FC53E0008A76F /* OnboardingThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThirdView.swift; sourceTree = "<group>"; };
 		BBBFD64B2B63E2670052BD38 /* Regions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regions.swift; sourceTree = "<group>"; };
 		BBBFD6552B640BF20052BD38 /* ThemeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColors.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 		BBCA719F2B5A80F1001CC023 /* OnboardingViews */ = {
 			isa = PBXGroup;
 			children = (
+				BB67049A2B5FB4CB0008A76F /* OnboardingTabView.swift */,
 				BBCA71A02B5A811E001CC023 /* OnboardingFirstView.swift */,
 				BB6704982B5FB4AB0008A76F /* OnboardingSecondView.swift */,
 				BB67049C2B5FC53E0008A76F /* OnboardingThirdView.swift */,
@@ -176,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB67049B2B5FB4CB0008A76F /* OnboardingTabView.swift in Sources */,
 				BBCECA632B56815D00D664A1 /* ContentView.swift in Sources */,
 				BBBFD64C2B63E2670052BD38 /* Regions.swift in Sources */,
 				BBBFD6562B640BF20052BD38 /* ThemeColors.swift in Sources */,
