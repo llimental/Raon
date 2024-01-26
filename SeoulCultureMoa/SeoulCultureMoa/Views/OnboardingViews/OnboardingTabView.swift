@@ -8,16 +8,21 @@
 import SwiftUI
 
 struct OnboardingTabView: View {
+    @Binding var themeColor: ThemeColors
+
     @State private var selectedTab = 0
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            OnboardingFirstView()
-                .tag(0)
-            OnboardingSecondView()
-                .tag(1)
-            OnboardingThirdView()
-                .tag(2)
+            OnboardingFirstView(
+                themeColor: $themeColor)
+            .tag(0)
+            OnboardingSecondView(
+                themeColor: $themeColor)
+            .tag(1)
+            OnboardingThirdView(
+                themeColor: $themeColor)
+            .tag(2)
         }
         .tabViewStyle(
             .page(indexDisplayMode: .never))
@@ -26,5 +31,5 @@ struct OnboardingTabView: View {
 }
 
 #Preview {
-    OnboardingTabView()
+    OnboardingTabView(themeColor: .constant(.pink))
 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct OnboardingFirstView: View {
+    @Binding var themeColor: ThemeColors
+
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading) {
@@ -32,16 +34,16 @@ struct OnboardingFirstView: View {
 
                     },
                     buttonText: "시작하기",
-                    buttonColor: ThemeColors.pink,
+                    buttonColor: themeColor,
                     buttonWidth: geometry.size.width * 0.7)
             }
             .padding()
             .frame(width: geometry.size.width)
         }
-        .background(Color(ThemeColors.pink.rawValue))
+        .background(Color(themeColor.rawValue))
     }
 }
 
 #Preview {
-    OnboardingFirstView()
+    OnboardingFirstView(themeColor: .constant(.pink))
 }

@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         Text("App Main")
             .fullScreenCover(isPresented: $isFirstLaunching) {
-                OnboardingTabView()
+                OnboardingTabView(themeColor: $themeColor)
             }
     }
 }

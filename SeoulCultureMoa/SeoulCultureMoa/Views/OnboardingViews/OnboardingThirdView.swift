@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct OnboardingThirdView: View {
+    @Binding var themeColor: ThemeColors
+
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -15,7 +17,7 @@ struct OnboardingThirdView: View {
 
                 Text("반갑습니다!")
                     .font(.title)
-                    .foregroundStyle(Color(ThemeColors.pink.rawValue))
+                    .foregroundStyle(Color(themeColor.rawValue))
                     .fontWeight(.bold)
                     .padding(.bottom, 20)
 
@@ -30,7 +32,7 @@ struct OnboardingThirdView: View {
 
                     },
                     buttonText: "확인",
-                    buttonColor: ThemeColors.pink,
+                    buttonColor: themeColor,
                     buttonWidth: geometry.size.width * 0.7)
             }
             .padding()
@@ -40,5 +42,5 @@ struct OnboardingThirdView: View {
 }
 
 #Preview {
-    OnboardingThirdView()
+    OnboardingThirdView(themeColor: .constant(.pink))
 }
