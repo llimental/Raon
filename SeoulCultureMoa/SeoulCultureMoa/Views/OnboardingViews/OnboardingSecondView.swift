@@ -9,13 +9,35 @@ import SwiftUI
 
 struct OnboardingSecondView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        GeometryReader { geometry in
+            VStack(alignment: .leading) {
+                Text("주로 정보를 얻고 싶은\n지역을 선택해주세요")
+                    .font(.title)
+                    .foregroundStyle(Color(ThemeColors.pink.rawValue))
+                    .fontWeight(.bold)
+                    .padding(.bottom, 20)
+
+                Text("지역 상관없이 모두 보고 싶다면\n전체보기를 선택해주세요")
+                    .font(.callout)
+                    .padding(.bottom, 10)
+
+                Text("* 앱 내 설정에서도 변경 가능")
+                    .font(.footnote)
+                    .foregroundStyle(.gray)
+
+                Spacer()
+
+                ColoredButton(
+                    buttonAction: {
+
+                    },
+                    buttonText: "다음",
+                    buttonColor: ThemeColors.pink,
+                    buttonWidth: geometry.size.width * 0.7)
+            }
+            .padding()
+            .frame(width: geometry.size.width)
         }
-        .padding()
     }
 }
 
