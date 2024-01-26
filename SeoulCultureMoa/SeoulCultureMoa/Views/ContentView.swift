@@ -11,13 +11,10 @@ struct ContentView: View {
     @AppStorage("isFirstLaunching") private var isFirstLaunching: Bool = true
 
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        Text("App Main")
+            .fullScreenCover(isPresented: $isFirstLaunching) {
+                OnboardingTabView()
+            }
     }
 }
 
