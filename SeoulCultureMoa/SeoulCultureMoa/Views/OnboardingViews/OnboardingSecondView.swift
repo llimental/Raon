@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnboardingSecondView: View {
+    @Binding var selectedTab: Int
     @Binding var themeColor: ThemeColors
 
     var body: some View {
@@ -31,7 +32,7 @@ struct OnboardingSecondView: View {
 
                 ColoredButton(
                     buttonAction: {
-
+                        selectedTab += 1
                     },
                     buttonText: "다음",
                     buttonColor: themeColor,
@@ -44,5 +45,6 @@ struct OnboardingSecondView: View {
 }
 
 #Preview {
-    OnboardingSecondView(themeColor: .constant(.pink))
+    OnboardingSecondView(selectedTab: .constant(1),
+                         themeColor: .constant(.pink))
 }

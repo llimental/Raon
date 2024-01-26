@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnboardingFirstView: View {
+    @Binding var selectedTab: Int
     @Binding var themeColor: ThemeColors
 
     var body: some View {
@@ -31,7 +32,7 @@ struct OnboardingFirstView: View {
 
                 InvertedButton(
                     buttonAction: {
-
+                        selectedTab += 1
                     },
                     buttonText: "시작하기",
                     buttonColor: themeColor,
@@ -45,5 +46,7 @@ struct OnboardingFirstView: View {
 }
 
 #Preview {
-    OnboardingFirstView(themeColor: .constant(.pink))
+    OnboardingFirstView(selectedTab: .constant(0),
+                        themeColor: .constant(.pink)
+    )
 }

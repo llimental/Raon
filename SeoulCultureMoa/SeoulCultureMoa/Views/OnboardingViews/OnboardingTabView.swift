@@ -16,10 +16,11 @@ struct OnboardingTabView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             OnboardingFirstView(
+                selectedTab: $selectedTab,
                 themeColor: $themeColor)
             .tag(0)
-            OnboardingSecondView(
-                themeColor: $themeColor)
+            OnboardingSecondView(selectedTab: $selectedTab,
+                                 themeColor: $themeColor)
             .tag(1)
             OnboardingThirdView(isFirstLaunching: $isFirstLaunching,
                                 themeColor: $themeColor)
