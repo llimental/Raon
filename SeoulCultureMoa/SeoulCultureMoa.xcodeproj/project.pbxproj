@@ -16,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BBBFD64B2B63E2670052BD38 /* Regions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regions.swift; sourceTree = "<group>"; };
 		BBBFD6552B640BF20052BD38 /* ThemeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColors.swift; sourceTree = "<group>"; };
 		BBCA71A02B5A811E001CC023 /* OnboardingFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFirstView.swift; sourceTree = "<group>"; };
 		BBCECA5D2B56815D00D664A1 /* SeoulCultureMoa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeoulCultureMoa.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +49,7 @@
 		BBCA719E2B5A7E6A001CC023 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BBBFD64B2B63E2670052BD38 /* Regions.swift */,
 				BBBFD6552B640BF20052BD38 /* ThemeColors.swift */,
 			);
 			path = Model;
@@ -168,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBCECA632B56815D00D664A1 /* ContentView.swift in Sources */,
+				BBBFD64C2B63E2670052BD38 /* Regions.swift in Sources */,
 				BBBFD6562B640BF20052BD38 /* ThemeColors.swift in Sources */,
 				BBCA71A12B5A811E001CC023 /* OnboardingFirstView.swift in Sources */,
 				BBCECA612B56815D00D664A1 /* SeoulCultureMoaApp.swift in Sources */,
