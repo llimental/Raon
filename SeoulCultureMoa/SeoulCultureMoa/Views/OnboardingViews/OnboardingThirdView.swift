@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnboardingThirdView: View {
+    @Binding var isFirstLaunching: Bool
     @Binding var themeColor: ThemeColors
 
     var body: some View {
@@ -29,7 +30,7 @@ struct OnboardingThirdView: View {
 
                 ColoredButton(
                     buttonAction: {
-
+                        isFirstLaunching.toggle()
                     },
                     buttonText: "확인",
                     buttonColor: themeColor,
@@ -42,5 +43,7 @@ struct OnboardingThirdView: View {
 }
 
 #Preview {
-    OnboardingThirdView(themeColor: .constant(.pink))
+    OnboardingThirdView(isFirstLaunching: .constant(true),
+                        themeColor: .constant(.pink)
+    )
 }

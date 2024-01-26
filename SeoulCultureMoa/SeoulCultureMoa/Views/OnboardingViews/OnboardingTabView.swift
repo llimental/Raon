@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnboardingTabView: View {
+    @Binding var isFirstLaunching: Bool
     @Binding var themeColor: ThemeColors
 
     @State private var selectedTab = 0
@@ -20,8 +21,8 @@ struct OnboardingTabView: View {
             OnboardingSecondView(
                 themeColor: $themeColor)
             .tag(1)
-            OnboardingThirdView(
-                themeColor: $themeColor)
+            OnboardingThirdView(isFirstLaunching: $isFirstLaunching,
+                                themeColor: $themeColor)
             .tag(2)
         }
         .tabViewStyle(
@@ -31,5 +32,6 @@ struct OnboardingTabView: View {
 }
 
 #Preview {
-    OnboardingTabView(themeColor: .constant(.pink))
+    OnboardingTabView(isFirstLaunching: .constant(true),
+                      themeColor: .constant(.pink))
 }
