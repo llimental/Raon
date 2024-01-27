@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB63C1C12B64F07F00EA3ABB /* ProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63C1C02B64F07F00EA3ABB /* ProgramView.swift */; };
 		BB6704992B5FB4AB0008A76F /* OnboardingSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6704982B5FB4AB0008A76F /* OnboardingSecondView.swift */; };
 		BB67049B2B5FB4CB0008A76F /* OnboardingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67049A2B5FB4CB0008A76F /* OnboardingTabView.swift */; };
 		BB67049D2B5FC53E0008A76F /* OnboardingThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67049C2B5FC53E0008A76F /* OnboardingThirdView.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB63C1C02B64F07F00EA3ABB /* ProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramView.swift; sourceTree = "<group>"; };
 		BB6704982B5FB4AB0008A76F /* OnboardingSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondView.swift; sourceTree = "<group>"; };
 		BB67049A2B5FB4CB0008A76F /* OnboardingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTabView.swift; sourceTree = "<group>"; };
 		BB67049C2B5FC53E0008A76F /* OnboardingThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThirdView.swift; sourceTree = "<group>"; };
@@ -48,6 +50,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB63C1BF2B64EFF300EA3ABB /* ProgramViews */ = {
+			isa = PBXGroup;
+			children = (
+				BB63C1C02B64F07F00EA3ABB /* ProgramView.swift */,
+			);
+			path = ProgramViews;
+			sourceTree = "<group>";
+		};
 		BBBFD64E2B63F2B20052BD38 /* ButtonViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +72,7 @@
 			children = (
 				BBCECA622B56815D00D664A1 /* ContentView.swift */,
 				BBCA719F2B5A80F1001CC023 /* OnboardingViews */,
+				BB63C1BF2B64EFF300EA3ABB /* ProgramViews */,
 				BBBFD64E2B63F2B20052BD38 /* ButtonViews */,
 			);
 			path = Views;
@@ -196,6 +207,7 @@
 				BB67049B2B5FB4CB0008A76F /* OnboardingTabView.swift in Sources */,
 				BBBFD6522B63F7180052BD38 /* InvertedButton.swift in Sources */,
 				BBCECA632B56815D00D664A1 /* ContentView.swift in Sources */,
+				BB63C1C12B64F07F00EA3ABB /* ProgramView.swift in Sources */,
 				BBBFD6502B63F2D80052BD38 /* ColoredButton.swift in Sources */,
 				BBBFD64C2B63E2670052BD38 /* Regions.swift in Sources */,
 				BBBFD6562B640BF20052BD38 /* ThemeColors.swift in Sources */,
