@@ -23,9 +23,11 @@ struct ColoredButton: View {
                 .fontWeight(.bold)
                 .foregroundStyle(.white)
                 .padding()
-                .frame(width: buttonWidth, height: buttonHeight)
+                .frame(
+                    width: buttonWidth,
+                    height: buttonHeight)
                 .background(Color(buttonColor.rawValue))
-                .clipShape(.buttonBorder)
+                .clipShape(.rect(cornerRadius: 15))
         })
     }
 }

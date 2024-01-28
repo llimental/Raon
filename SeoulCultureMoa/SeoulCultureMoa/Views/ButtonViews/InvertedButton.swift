@@ -23,9 +23,11 @@ struct InvertedButton: View {
                 .fontWeight(.bold)
                 .foregroundStyle(Color(buttonColor.rawValue))
                 .padding()
-                .frame(width: buttonWidth, height: buttonHeight)
+                .frame(
+                    width: buttonWidth,
+                    height: buttonHeight)
                 .background(.white)
-                .clipShape(.buttonBorder)
+                .clipShape(.rect(cornerRadius: 15))
         })
     }
 }
