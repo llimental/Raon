@@ -14,7 +14,7 @@ struct ContentView: View {
 
     var body: some View {
         TabView(content: {
-            ProgramView()
+            ProgramView(themeColor: $themeColor)
                 .tabItem {
                     Label("프로그램", systemImage: "house")
                 }
