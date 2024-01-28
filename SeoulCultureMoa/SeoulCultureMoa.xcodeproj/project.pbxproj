@@ -12,6 +12,7 @@
 		BB67049B2B5FB4CB0008A76F /* OnboardingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67049A2B5FB4CB0008A76F /* OnboardingTabView.swift */; };
 		BB67049D2B5FC53E0008A76F /* OnboardingThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67049C2B5FC53E0008A76F /* OnboardingThirdView.swift */; };
 		BBA6D6272B663CFC00AF8600 /* ProgramCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA6D6262B663CFC00AF8600 /* ProgramCardView.swift */; };
+		BBA6D62E2B6679B300AF8600 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA6D62D2B6679B300AF8600 /* View+Extension.swift */; };
 		BBBFD64C2B63E2670052BD38 /* Regions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBFD64B2B63E2670052BD38 /* Regions.swift */; };
 		BBBFD6502B63F2D80052BD38 /* ColoredButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBFD64F2B63F2D80052BD38 /* ColoredButton.swift */; };
 		BBBFD6522B63F7180052BD38 /* InvertedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBFD6512B63F7180052BD38 /* InvertedButton.swift */; };
@@ -29,6 +30,7 @@
 		BB67049A2B5FB4CB0008A76F /* OnboardingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTabView.swift; sourceTree = "<group>"; };
 		BB67049C2B5FC53E0008A76F /* OnboardingThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThirdView.swift; sourceTree = "<group>"; };
 		BBA6D6262B663CFC00AF8600 /* ProgramCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCardView.swift; sourceTree = "<group>"; };
+		BBA6D62D2B6679B300AF8600 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		BBBFD64B2B63E2670052BD38 /* Regions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regions.swift; sourceTree = "<group>"; };
 		BBBFD64F2B63F2D80052BD38 /* ColoredButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredButton.swift; sourceTree = "<group>"; };
 		BBBFD6512B63F7180052BD38 /* InvertedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedButton.swift; sourceTree = "<group>"; };
@@ -59,6 +61,14 @@
 				BBA6D6262B663CFC00AF8600 /* ProgramCardView.swift */,
 			);
 			path = ProgramViews;
+			sourceTree = "<group>";
+		};
+		BBA6D62C2B6678AE00AF8600 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BBA6D62D2B6679B300AF8600 /* View+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		BBBFD64E2B63F2B20052BD38 /* ButtonViews */ = {
@@ -122,6 +132,7 @@
 			children = (
 				BBCECA602B56815D00D664A1 /* SeoulCultureMoaApp.swift */,
 				BBCA719E2B5A7E6A001CC023 /* Model */,
+				BBA6D62C2B6678AE00AF8600 /* Extensions */,
 				BBCA719D2B5A7E62001CC023 /* Views */,
 				BBCECA642B56815E00D664A1 /* Assets.xcassets */,
 				BBCECA662B56815E00D664A1 /* Preview Content */,
@@ -219,6 +230,7 @@
 				BBA6D6272B663CFC00AF8600 /* ProgramCardView.swift in Sources */,
 				BB6704992B5FB4AB0008A76F /* OnboardingSecondView.swift in Sources */,
 				BB67049D2B5FC53E0008A76F /* OnboardingThirdView.swift in Sources */,
+				BBA6D62E2B6679B300AF8600 /* View+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
