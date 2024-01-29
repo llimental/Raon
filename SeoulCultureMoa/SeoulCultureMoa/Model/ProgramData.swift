@@ -7,17 +7,25 @@
 
 import Foundation
 
-struct ProgramData: Codable {
-    let totalCount: Int
-    let content: [Content]
+struct ProgramData: Decodable {
+    let programEvent: ProgramEvent
 
-    enum codingKeys: String, CodingKey {
-        case totalCount = "list_total_count"
-        case content = "row"
+    enum CodingKeys: String, CodingKey {
+        case programEvent = "culturalEventInfo"
     }
 }
 
-struct Content: Codable {
+struct ProgramEvent: Decodable {
+    let totalCount: Int
+    let contents: [Content]
+
+    enum codingKeys: String, CodingKey {
+        case totalCount = "list_total_count"
+        case contents = "row"
+    }
+}
+
+struct Content: Decodable {
     let category: String
     let region: String
     let title: String
