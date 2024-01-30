@@ -23,18 +23,27 @@ struct ProgramCardView: View {
                 placeholder: {
                     ProgressView()
                 })
-                .frame(width: 250, height: 350)
-                .clipShape(.rect(cornerRadius: 15))
-                .padding(.bottom, 20)
+            .scaledToFit()
+            .clipShape(.rect(cornerRadius: 15))
+            .padding(.bottom, 20)
 
             Text(programTitle)
-                .font(.title)
+                .font(.title3)
                 .fontWeight(.bold)
-                .padding(.bottom, 50)
                 .allowsTightening(true)
+                .multilineTextAlignment(.center)
+                .frame(height: 50)
+                .padding(.bottom, 50)
 
             ProgramCardButtons(themeColor: $themeColor)
         }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 15)
+                .foregroundStyle(Color(themeColor.rawValue))
+                .shadow(color: .primary, radius: 3, x: 7, y: 7)
+                .opacity(0.2)
+        )
     }
 }
 
