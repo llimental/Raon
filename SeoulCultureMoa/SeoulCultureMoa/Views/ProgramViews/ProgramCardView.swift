@@ -11,12 +11,19 @@ struct ProgramCardView: View {
     @Binding var themeColor: ThemeColors
 
     let programTitle: String
+    let programImageURL: String
 
     var body: some View {
         VStack {
-            Rectangle()
+            AsyncImage(
+                url: URL(string: programImageURL),
+                content: { image in
+                    image.resizable()
+                },
+                placeholder: {
+                    ProgressView()
+                })
                 .frame(width: 250, height: 350)
-                .foregroundStyle(Color(themeColor.rawValue))
                 .clipShape(.rect(cornerRadius: 15))
                 .padding(.bottom, 20)
 
@@ -35,5 +42,6 @@ struct ProgramCardView: View {
     ProgramCardView(
         themeColor: .constant(.pink),
         programTitle: "프로그램 제목",
+        programImageURL: ""
     )
 }
