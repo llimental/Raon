@@ -8,24 +8,24 @@
 import Foundation
 
 struct ProgramData: Decodable {
-    let programEvent: ProgramEvent
+    let programInfo: ProgramInfo
 
     enum CodingKeys: String, CodingKey {
-        case programEvent = "culturalEventInfo"
+        case programInfo = "culturalEventInfo"
     }
 }
 
-struct ProgramEvent: Decodable {
+struct ProgramInfo: Decodable {
     let totalCount: Int
-    let contents: [Content]
+    let programContents: [ProgramContent]
 
     enum CodingKeys: String, CodingKey {
         case totalCount = "list_total_count"
-        case contents = "row"
+        case programContents = "row"
     }
 }
 
-struct Content: Decodable {
+struct ProgramContent: Decodable {
     let category: String
     let region: String
     let title: String
@@ -34,10 +34,8 @@ struct Content: Decodable {
     let target: String
     let fees: String
     let player: String
-    let etc: String
     let url: String
     let imageURL: String
-    let registDate: String
     let startDate: String
     let endDate: String
     let longitude: String
@@ -53,10 +51,8 @@ struct Content: Decodable {
         case target = "USE_TRGT"
         case fees = "USE_FEE"
         case player = "PLAYER"
-        case etc = "ETC_DESC"
         case url = "ORG_LINK"
         case imageURL = "MAIN_IMG"
-        case registDate = "RGSTDATE"
         case startDate = "STRTDATE"
         case endDate = "END_DATE"
         case longitude = "LOT"

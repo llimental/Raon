@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 final class NetworkManager: ObservableObject {
-    @Published var contents = [Content]()
+    @Published var contents = [ProgramContent]()
 
     private var programCancellable: AnyCancellable?
 
@@ -31,7 +31,7 @@ final class NetworkManager: ObservableObject {
             .sink { completion in
                 print(completion)
             } receiveValue: { [weak self] value in
-                self?.contents = value.programEvent.contents
+                self?.contents = value.programInfo.programContents
             }
     }
 
