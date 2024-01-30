@@ -10,24 +10,21 @@ import SwiftUI
 struct ProgramView: View {
     @Binding var themeColor: ThemeColors
 
+    @StateObject private var networkManager = NetworkManager()
+
     var body: some View {
         NavigationStack {
             Divider()
 
             ScrollView(.horizontal) {
-                HStack(spacing: 20) {
-                    ZStack {
-                        Rectangle()
-                            .foregroundStyle(Color(themeColor.rawValue).opacity(0.2))
-                            .clipShape(.rect(cornerRadius: 15))
-
-                        ProgramCardView(themeColor: $themeColor)
-                            .padding()
+                LazyHStack(spacing: 20) {
+                    ForEach(networkManager.contents.sorted { $0.startDate < $1.startDate }, id: \.title) { content in
+                        ProgramCardView(
+                            themeColor: $themeColor,
+                            programTitle: content.title,
+                            programImageURL: content.imageURL
+                        )
                     }
-
-                    ProgramCardView(themeColor: $themeColor)
-
-                    ProgramCardView(themeColor: $themeColor)
                 }
             }
             .scrollIndicators(.hidden)
