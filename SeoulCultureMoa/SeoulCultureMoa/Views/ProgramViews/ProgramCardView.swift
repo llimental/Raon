@@ -10,6 +10,8 @@ import SwiftUI
 struct ProgramCardView: View {
     @Binding var themeColor: ThemeColors
 
+    let programTitle: String
+
     var body: some View {
         VStack {
             Rectangle()
@@ -18,45 +20,20 @@ struct ProgramCardView: View {
                 .clipShape(.rect(cornerRadius: 15))
                 .padding(.bottom, 20)
 
-            Text("프로그램 제목")
+            Text(programTitle)
                 .font(.title)
                 .fontWeight(.bold)
-                .padding(.bottom, 20)
-
-            Text("프로그램 내용")
-                .font(.body)
-                .foregroundStyle(.gray)
                 .padding(.bottom, 50)
+                .allowsTightening(true)
 
-            HStack(spacing: 20) {
-                Button(action: {
-
-                }, label: {
-                    Image(systemName: "heart")
-                        .font(.system(size: 30))
-                })
-
-                ColoredButton(
-                    buttonAction: {
-
-                    },
-                    buttonText: "바로가기",
-                    buttonColor: themeColor,
-                    buttonWidth: 150
-                )
-
-                Button(action: {
-
-                }, label: {
-                    Image(systemName: "square.and.arrow.up")
-                        .font(.system(size: 30))
-                })
-            }
-            .foregroundStyle(Color(themeColor.rawValue))
+            ProgramCardButtons(themeColor: $themeColor)
         }
     }
 }
 
 #Preview {
-    ProgramCardView(themeColor: .constant(.pink))
+    ProgramCardView(
+        themeColor: .constant(.pink),
+        programTitle: "프로그램 제목",
+    )
 }
