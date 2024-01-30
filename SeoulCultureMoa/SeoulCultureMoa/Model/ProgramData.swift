@@ -19,7 +19,7 @@ struct ProgramEvent: Decodable {
     let totalCount: Int
     let contents: [Content]
 
-    enum codingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case totalCount = "list_total_count"
         case contents = "row"
     }
@@ -34,7 +34,6 @@ struct Content: Decodable {
     let target: String
     let fees: String
     let player: String
-    let description: String
     let etc: String
     let url: String
     let imageURL: String
@@ -45,7 +44,7 @@ struct Content: Decodable {
     let latitude: String
     let isFree: String
 
-    enum codingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case category = "CODENAME"
         case region = "GUNAME"
         case title = "TITLE"
@@ -54,7 +53,6 @@ struct Content: Decodable {
         case target = "USE_TRGT"
         case fees = "USE_FEE"
         case player = "PLAYER"
-        case description = "PROGRAM"
         case etc = "ETC_DESC"
         case url = "ORG_LINK"
         case imageURL = "MAIN_IMG"
