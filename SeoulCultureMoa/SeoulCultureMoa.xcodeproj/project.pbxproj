@@ -43,6 +43,7 @@
 		BBCECA622B56815D00D664A1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BBCECA642B56815E00D664A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBCECA672B56815E00D664A1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BBE6A7182B67DFC300067FC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +134,7 @@
 		BBCECA5F2B56815D00D664A1 /* SeoulCultureMoa */ = {
 			isa = PBXGroup;
 			children = (
+				BBE6A7182B67DFC300067FC0 /* Info.plist */,
 				BBCECA602B56815D00D664A1 /* SeoulCultureMoaApp.swift */,
 				BBCA719E2B5A7E6A001CC023 /* Model */,
 				BBA6D62C2B6678AE00AF8600 /* Extensions */,
@@ -371,6 +373,7 @@
 				DEVELOPMENT_TEAM = 8836ZZYJ9P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SeoulCultureMoa/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -400,6 +403,7 @@
 				DEVELOPMENT_TEAM = 8836ZZYJ9P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SeoulCultureMoa/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
