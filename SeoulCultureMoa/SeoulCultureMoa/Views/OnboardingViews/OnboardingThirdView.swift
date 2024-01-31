@@ -39,6 +39,7 @@ struct OnboardingThirdView: View {
             .padding()
             .frame(width: geometry.size.width)
         }
+        .padding(.vertical)
     }
 }
 

@@ -17,11 +17,7 @@ struct OnboardingFirstView: View {
                 VStack(alignment: .leading) {
                     Text("What's\nin\nSeoul")
                         .font(.system(size: 60))
-                        .padding(EdgeInsets(
-                            top: 100,
-                            leading: 0,
-                            bottom: 30,
-                            trailing: 0))
+                        .padding(.vertical, 30)
 
                     Text("서울시 문화프로그램 정보를 한눈에")
                         .font(.system(size: 15))
@@ -41,6 +37,7 @@ struct OnboardingFirstView: View {
             .padding()
             .frame(width: geometry.size.width)
         }
+        .padding(.vertical)
         .background(Color(themeColor.rawValue))
     }
 }
