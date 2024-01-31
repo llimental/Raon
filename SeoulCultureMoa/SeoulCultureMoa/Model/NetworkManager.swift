@@ -31,7 +31,7 @@ final class NetworkManager: ObservableObject {
             .sink { completion in
                 print(completion)
             } receiveValue: { [weak self] value in
-                self?.contents = value.programInfo.programContents
+                self?.contents = value.programInfo.programContents.sorted { $0.startDate < $1.startDate }
             }
     }
 
