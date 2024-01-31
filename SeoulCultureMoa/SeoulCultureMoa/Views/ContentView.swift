@@ -13,12 +13,12 @@ struct ContentView: View {
     @AppStorage("SelectedRegion") var selectedRegion: Regions = .전체보기
 
     var body: some View {
-        TabView(content: {
+        TabView {
             ProgramView(themeColor: $themeColor)
                 .tabItem {
                     Label("프로그램", systemImage: "house")
                 }
-        })
+        }
         .tint(Color(themeColor.rawValue))
         .fullScreenCover(isPresented: $isFirstLaunching) {
             OnboardingTabView(isFirstLaunching: $isFirstLaunching,
