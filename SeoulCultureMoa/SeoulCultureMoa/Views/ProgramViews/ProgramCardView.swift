@@ -37,7 +37,7 @@ struct ProgramCardView: View {
 
             ProgramCardButtons(themeColor: $themeColor)
         }
-        .padding()
+        .padding(20)
         .background(
             RoundedRectangle(cornerRadius: 15)
                 .foregroundStyle(Color(themeColor.rawValue))
