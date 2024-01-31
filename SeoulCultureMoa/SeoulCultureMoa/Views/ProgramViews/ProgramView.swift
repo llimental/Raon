@@ -22,6 +22,7 @@ struct ProgramView: View {
                         programImageURL: content.imageURL
                     )
                     .padding()
+                    .aspectRatio(0.6, contentMode: .fit)
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
