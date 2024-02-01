@@ -31,23 +31,25 @@ final class NetworkManager: ObservableObject {
 
     // MARK: - Public Functions
     func requestProgramContents() {
-        programCancellable?.cancel()
-
-        let today = Date().getStringOfTodayDate()
-
-        guard let url = makeURL(startIndex: 1, endIndex: 1000) else { return }
-
-        programCancellable = URLSession.shared
-            .dataTaskPublisher(for: url)
-            .subscribe(on: DispatchQueue.global())
-            .map(\.data)
-            .decode(type: ProgramData.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .sink { completion in
-                print(completion)
-            } receiveValue: { [weak self] value in
-                self?.contents = value.programInfo.programContents.filter { $0.endDate > today }.sorted { $0.startDate < $1.startDate }
-            }
+        if currentNetworkStatus {
+            programCancellable?.cancel()
+            
+            let today = Date().getStringOfTodayDate()
+            
+            guard let url = makeURL(startIndex: 1, endIndex: 1000) else { return }
+            
+            programCancellable = URLSession.shared
+                .dataTaskPublisher(for: url)
+                .subscribe(on: DispatchQueue.global())
+                .map(\.data)
+                .decode(type: ProgramData.self, decoder: JSONDecoder())
+                .receive(on: DispatchQueue.main)
+                .sink { completion in
+                    print(completion)
+                } receiveValue: { [weak self] value in
+                    self?.contents = value.programInfo.programContents.filter { $0.endDate > today }.sorted { $0.startDate < $1.startDate }
+                }
+        }
     }
 
     // MARK: - Private Functions
