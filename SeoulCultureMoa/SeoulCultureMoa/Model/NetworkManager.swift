@@ -7,18 +7,23 @@
 
 import Foundation
 import Combine
+import Network
 
 final class NetworkManager: ObservableObject {
     @Published var contents = [ProgramContent]()
+    @Published var currentNetworkStatus = true
 
     private var programCancellable: AnyCancellable?
+    private let networkMonitor = NWPathMonitor()
 
     init() {
+        startNetworkMonitoring()
         requestProgramContents()
     }
 
     deinit {
         programCancellable?.cancel()
+        networkMonitor.cancel()
     }
 
     func requestProgramContents() {
@@ -50,5 +55,15 @@ final class NetworkManager: ObservableObject {
         components.path = "/json/culturalEventInfo/\(startIndex)/\(endIndex)/"
 
         return components.url
+    }
+
+    private func startNetworkMonitoring() {
+        networkMonitor.start(queue: .global())
+
+        self.networkMonitor.pathUpdateHandler = { [weak self] path in
+            DispatchQueue.main.async {
+                self?.currentNetworkStatus = path.status == .satisfied
+            }
+        }
     }
 }
