@@ -14,13 +14,19 @@ final class NetworkManager: ObservableObject {
     private var programCancellable: AnyCancellable?
 
     init() {
-        requestProgramContents(from: 1, to: 10)
+        requestProgramContents()
     }
 
-    func requestProgramContents(from: Int, to: Int) {
+    deinit {
+        programCancellable?.cancel()
+    }
+
+    func requestProgramContents() {
         programCancellable?.cancel()
 
-        guard let url = makeURL(startIndex: from, endIndex: to) else { return }
+        let today = Date().getStringOfTodayDate()
+
+        guard let url = makeURL(startIndex: 1, endIndex: 1000) else { return }
 
         programCancellable = URLSession.shared
             .dataTaskPublisher(for: url)
@@ -31,7 +37,7 @@ final class NetworkManager: ObservableObject {
             .sink { completion in
                 print(completion)
             } receiveValue: { [weak self] value in
-                self?.contents = value.programInfo.programContents.sorted { $0.startDate < $1.startDate }
+                self?.contents = value.programInfo.programContents.filter { $0.endDate > today }.sorted { $0.startDate < $1.startDate }
             }
     }
 
