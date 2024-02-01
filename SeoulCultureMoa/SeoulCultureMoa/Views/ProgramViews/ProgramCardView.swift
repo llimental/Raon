@@ -15,14 +15,15 @@ struct ProgramCardView: View {
     // MARK: - Body
     var body: some View {
         VStack {
-            AsyncImage(
-                url: URL(string: programImageURL),
-                content: { image in
+            AsyncImage(url: URL(string: programImageURL)) { phase in
+                if let image = phase.image {
                     image.resizable()
-                },
-                placeholder: {
+                } else if phase.error != nil {
+                    Color.gray
+                } else {
                     ProgressView()
-                })
+                }
+            }
             .scaledToFit()
             .clipShape(.rect(cornerRadius: 15))
         }
