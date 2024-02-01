@@ -17,12 +17,10 @@ struct ProgramView: View {
             TabView {
                 ForEach(networkManager.contents, id: \.title) { content in
                     ProgramCardView(
-                        themeColor: $themeColor,
                         programTitle: content.title,
                         programImageURL: content.imageURL
                     )
                     .padding()
-                    .aspectRatio(0.6, contentMode: .fit)
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
