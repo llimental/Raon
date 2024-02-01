@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct ProgramCardView: View {
+    // MARK: - Public Properties
     let programTitle: String
     let programImageURL: String
 
+    // MARK: - Body
     var body: some View {
         VStack {
             AsyncImage(

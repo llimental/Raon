@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct OnboardingSecondView: View {
+    // MARK: - @Binding Properties
     @Binding var selectedTab: Int
     @Binding var themeColor: ThemeColors
     @Binding var selectedRegion: Regions
 
+    // MARK: - Body
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading) {

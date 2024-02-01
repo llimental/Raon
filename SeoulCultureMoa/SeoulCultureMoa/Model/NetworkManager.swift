@@ -10,12 +10,11 @@ import Combine
 import Network
 
 final class NetworkManager: ObservableObject {
+    // MARK: - Published Properties
     @Published var contents = [ProgramContent]()
     @Published var currentNetworkStatus = true
 
-    private var programCancellable: AnyCancellable?
-    private let networkMonitor = NWPathMonitor()
-
+    // MARK: - LifeCycle
     init() {
         startNetworkMonitoring()
         requestProgramContents()
@@ -26,6 +25,11 @@ final class NetworkManager: ObservableObject {
         networkMonitor.cancel()
     }
 
+    // MARK: - Private Properties
+    private var programCancellable: AnyCancellable?
+    private let networkMonitor = NWPathMonitor()
+
+    // MARK: - Public Functions
     func requestProgramContents() {
         programCancellable?.cancel()
 
@@ -46,6 +50,7 @@ final class NetworkManager: ObservableObject {
             }
     }
 
+    // MARK: - Private Functions
     private func makeURL(startIndex: Int, endIndex: Int) -> URL? {
         var components = URLComponents()
 

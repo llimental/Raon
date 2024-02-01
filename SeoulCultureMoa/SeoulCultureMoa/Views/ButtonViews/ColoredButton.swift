@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ColoredButton: View {
+    // MARK: - Public Properties
     let buttonAction: () -> Void
     let buttonText: String
     let buttonColor: ThemeColors
@@ -15,6 +16,7 @@ struct ColoredButton: View {
     var buttonWidth: CGFloat? = nil
     var buttonHeight: CGFloat? = nil
 
+    // MARK: - Body
     var body: some View {
         Button(action: {
             buttonAction()

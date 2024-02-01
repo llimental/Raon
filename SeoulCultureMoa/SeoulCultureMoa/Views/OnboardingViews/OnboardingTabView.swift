@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct OnboardingTabView: View {
+    // MARK: - @State Properties
+    @State private var selectedTab = 0
+    
+    // MARK: - @Binding Properties
     @Binding var isFirstLaunching: Bool
     @Binding var themeColor: ThemeColors
     @Binding var selectedRegion: Regions
-
-    @State private var selectedTab = 0
-
+    
+    // MARK: - Body
     var body: some View {
         TabView(selection: $selectedTab) {
             OnboardingFirstView(

@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ProgramCardButtons: View {
+    // MARK: - @Binding Properties
     @Binding var themeColor: ThemeColors
 
+    // MARK: - Body
     var body: some View {
         HStack(spacing: 20) {
             Button(action: {

@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct ProgramView: View {
-    @Binding var themeColor: ThemeColors
-
+    // MARK: - @StateObject Properties
     @StateObject private var networkManager = NetworkManager()
 
+    // MARK: - @Binding Properties
+    @Binding var themeColor: ThemeColors
+
+    // MARK: - Body
     var body: some View {
         NavigationStack {
             TabView {

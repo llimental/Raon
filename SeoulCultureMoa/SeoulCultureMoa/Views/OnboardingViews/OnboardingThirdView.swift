@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct OnboardingThirdView: View {
+    // MARK: - @Binding Properties
     @Binding var isFirstLaunching: Bool
     @Binding var themeColor: ThemeColors
 
+    // MARK: - Body
     var body: some View {
         GeometryReader { geometry in
             VStack {

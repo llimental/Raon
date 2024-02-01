@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    // MARK: - @AppStorage Properties
     @AppStorage("isFirstLaunching") private var isFirstLaunching: Bool = true
     @AppStorage("ThemeColor") var themeColor: ThemeColors = .pink
     @AppStorage("SelectedRegion") var selectedRegion: Regions = .전체보기
 
+    // MARK: - Body
     var body: some View {
         TabView {
             ProgramView(themeColor: $themeColor)
