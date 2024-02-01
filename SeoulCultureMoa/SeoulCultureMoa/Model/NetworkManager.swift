@@ -33,7 +33,8 @@ final class NetworkManager: ObservableObject {
     func requestProgramContents() {
         if currentNetworkStatus {
             programCancellable?.cancel()
-            
+            contents.removeAll()
+
             let today = Date().getStringOfTodayDate()
             
             guard let url = makeURL(startIndex: 1, endIndex: 1000) else { return }

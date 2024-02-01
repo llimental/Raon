@@ -17,35 +17,51 @@ struct ProgramView: View {
     // MARK: - Body
     var body: some View {
         NavigationStack {
-            TabView {
-                ForEach(networkManager.contents, id: \.title) { content in
-                    ProgramCardView(
-                        programTitle: content.title,
-                        programImageURL: content.imageURL
-                    )
-                    .padding()
-                }
-            }
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            .navigationTitle("프로그램")
-            .navigationBarTitleTextColor(Color(themeColor.rawValue))
-            .toolbar {
-                ToolbarItemGroup(placement: .topBarTrailing) {
-                    NavigationLink {
-
-                    } label: {
-                        Image(systemName: "calendar")
-                    }
-
-                    NavigationLink {
-
-                    } label: {
-                        Image(systemName: "magnifyingglass")
+            ZStack(alignment: .bottom) {
+                TabView {
+                    ForEach(networkManager.contents, id: \.title) { content in
+                        ProgramCardView(
+                            programTitle: content.title,
+                            programImageURL: content.imageURL
+                        )
+                        .padding()
                     }
                 }
+                .tabViewStyle(.page(indexDisplayMode: .never))
+                .navigationTitle("프로그램")
+                .navigationBarTitleTextColor(Color(themeColor.rawValue))
+                .toolbar {
+                    ToolbarItemGroup(placement: .topBarTrailing) {
+                        NavigationLink {
+
+                        } label: {
+                            Image(systemName: "calendar")
+                        }
+
+                        NavigationLink {
+
+                        } label: {
+                            Image(systemName: "magnifyingglass")
+                        }
+                    }
+                }
+                .tint(Color(themeColor.rawValue))
+                .padding()
+
+                if !networkManager.currentNetworkStatus {
+                    Text("인터넷 연결 상태가 좋지 않습니다")
+                        .padding()
+                        .foregroundStyle(.white)
+                        .background(
+                            Capsule()
+                                .foregroundStyle(.gray)
+                        )
+                        .padding(.bottom, 5)
+                        .onDisappear(perform: {
+                            networkManager.requestProgramContents()
+                        })
+                }
             }
-            .tint(Color(themeColor.rawValue))
-            .padding()
         }
     }
 }
