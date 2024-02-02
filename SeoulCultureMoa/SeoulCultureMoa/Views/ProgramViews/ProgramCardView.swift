@@ -27,7 +27,7 @@ struct ProgramCardView: View {
         .clipShape(.rect(cornerRadius: 15))
         .background(
             RoundedRectangle(cornerRadius: 15)
-                .shadow(color: .primary, radius: 3, x: 7, y: 7)
+                .shadow(color: .primary, radius: 3, x: 10, y: 10)
                 .opacity(0.5)
         )
     }
