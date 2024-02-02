@@ -14,19 +14,17 @@ struct ProgramCardView: View {
 
     // MARK: - Body
     var body: some View {
-        VStack {
-            AsyncImage(url: URL(string: programImageURL)) { phase in
-                if let image = phase.image {
-                    image.resizable()
-                } else if phase.error != nil {
-                    Color.gray
-                } else {
-                    ProgressView()
-                }
+        AsyncImage(url: URL(string: programImageURL)) { phase in
+            if let image = phase.image {
+                image.resizable()
+            } else if phase.error != nil {
+                Color.gray
+            } else {
+                ProgressView()
             }
-            .scaledToFit()
-            .clipShape(.rect(cornerRadius: 15))
         }
+        .scaledToFit()
+        .clipShape(.rect(cornerRadius: 15))
         .background(
             RoundedRectangle(cornerRadius: 15)
                 .shadow(color: .primary, radius: 3, x: 7, y: 7)
