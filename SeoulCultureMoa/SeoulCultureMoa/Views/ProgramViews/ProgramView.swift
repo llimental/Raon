@@ -32,6 +32,10 @@ struct ProgramView: View {
                 .navigationBarTitleTextColor(Color(themeColor.rawValue))
                 .toolbar {
                     ToolbarItemGroup(placement: .topBarTrailing) {
+                        Button("", systemImage: "arrow.clockwise") {
+                            networkManager.requestProgramContents()
+                        }
+
                         NavigationLink {
 
                         } label: {
