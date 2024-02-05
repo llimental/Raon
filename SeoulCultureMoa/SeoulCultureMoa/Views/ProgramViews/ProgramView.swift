@@ -43,7 +43,7 @@ struct ProgramView: View {
                         }
 
                         NavigationLink {
-
+                            SearchView(contents: $networkManager.contents)
                         } label: {
                             Image(systemName: "magnifyingglass")
                         }
