@@ -40,6 +40,9 @@ struct SearchView: View {
                 text: $searchText,
                 placement: .navigationBarDrawer(displayMode: .always),
                 prompt: "프로그램명을 입력해주세요")
+            .onTapGesture {
+                hideKeyboard()
+            }
         }
     }
 }
