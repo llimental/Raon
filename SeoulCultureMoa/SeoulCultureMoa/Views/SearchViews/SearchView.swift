@@ -29,6 +29,13 @@ struct SearchView: View {
             }
             .listStyle(.plain)
             .navigationTitle("검색")
+            .toolbar {
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    Button("", systemImage: "line.3.horizontal.decrease.circle") {
+
+                    }
+                }
+            }
         }
     }
 }
