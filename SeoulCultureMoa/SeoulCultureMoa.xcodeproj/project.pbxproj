@@ -26,7 +26,6 @@
 		BBCECA652B56815E00D664A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBCECA642B56815E00D664A1 /* Assets.xcassets */; };
 		BBCECA682B56815E00D664A1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBCECA672B56815E00D664A1 /* Preview Assets.xcassets */; };
 		BBE6A71A2B691AEB00067FC0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6A7192B691AEB00067FC0 /* NetworkManager.swift */; };
-		BBE6A71C2B69252800067FC0 /* ProgramCardButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6A71B2B69252800067FC0 /* ProgramCardButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +50,6 @@
 		BBCECA672B56815E00D664A1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BBE6A7182B67DFC300067FC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BBE6A7192B691AEB00067FC0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		BBE6A71B2B69252800067FC0 /* ProgramCardButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCardButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +68,6 @@
 			children = (
 				BB63C1C02B64F07F00EA3ABB /* ProgramView.swift */,
 				BBA6D6262B663CFC00AF8600 /* ProgramCardView.swift */,
-				BBE6A71B2B69252800067FC0 /* ProgramCardButtons.swift */,
 			);
 			path = ProgramViews;
 			sourceTree = "<group>";
@@ -247,7 +244,6 @@
 				BBBFD6522B63F7180052BD38 /* InvertedButton.swift in Sources */,
 				BBCECA632B56815D00D664A1 /* ContentView.swift in Sources */,
 				BB63C1C12B64F07F00EA3ABB /* ProgramView.swift in Sources */,
-				BBE6A71C2B69252800067FC0 /* ProgramCardButtons.swift in Sources */,
 				BBBFD6502B63F2D80052BD38 /* ColoredButton.swift in Sources */,
 				BBBFD64C2B63E2670052BD38 /* Regions.swift in Sources */,
 				BBBFD6562B640BF20052BD38 /* ThemeColors.swift in Sources */,
