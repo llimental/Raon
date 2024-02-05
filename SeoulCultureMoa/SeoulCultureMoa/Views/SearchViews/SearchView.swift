@@ -14,6 +14,7 @@ struct SearchView: View {
     // MARK: - @Binding Properties
     @Binding var contents: [ProgramContent]
 
+    // MARK: - Body
     var body: some View {
         NavigationStack {
             List {
