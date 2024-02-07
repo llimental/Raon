@@ -18,14 +18,14 @@ struct SearchView: View {
     var body: some View {
         NavigationStack {
             List {
-                if searchText.isEmpty {
-                    ForEach(contents, id: \.title) { content in
-                        Text(content.title)
-                    }
-                } else {
-                    ForEach(contents.filter { $0.title.localizedStandardContains(searchText) }, id: \.title) { content in
-                        Text(content.title)
-                    }
+                ForEach(contents.filter { $0.title.localizedStandardContains(searchText) }, id: \.title) { content in
+                    SearchCardView(
+                        title: content.title,
+                        imageURL: content.imageURL,
+                        category: content.category,
+                        region: content.region,
+                        startDate: content.startDate,
+                        isFree: content.isFree)
                 }
             }
             .listStyle(.plain)
