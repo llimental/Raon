@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB02084B2B73440300B81CFE /* DividedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB02084A2B73440300B81CFE /* DividedTextView.swift */; };
 		BB3B97292B6BEC9B0059A697 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3B97282B6BEC9B0059A697 /* Date+Extension.swift */; };
 		BB63C1C12B64F07F00EA3ABB /* ProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63C1C02B64F07F00EA3ABB /* ProgramView.swift */; };
 		BB6704992B5FB4AB0008A76F /* OnboardingSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6704982B5FB4AB0008A76F /* OnboardingSecondView.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB02084A2B73440300B81CFE /* DividedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividedTextView.swift; sourceTree = "<group>"; };
 		BB3B97282B6BEC9B0059A697 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		BB63C1C02B64F07F00EA3ABB /* ProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramView.swift; sourceTree = "<group>"; };
 		BB6704982B5FB4AB0008A76F /* OnboardingSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondView.swift; sourceTree = "<group>"; };
@@ -65,6 +67,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB0208492B7343F100B81CFE /* TextViews */ = {
+			isa = PBXGroup;
+			children = (
+				BB02084A2B73440300B81CFE /* DividedTextView.swift */,
+			);
+			path = TextViews;
+			sourceTree = "<group>";
+		};
 		BB63C1BF2B64EFF300EA3ABB /* ProgramViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +119,7 @@
 				BB63C1BF2B64EFF300EA3ABB /* ProgramViews */,
 				BBBE87F12B71117100189E08 /* SearchViews */,
 				BBBFD64E2B63F2B20052BD38 /* ButtonViews */,
+				BB0208492B7343F100B81CFE /* TextViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -256,6 +267,7 @@
 				BBCECA612B56815D00D664A1 /* SeoulCultureMoaApp.swift in Sources */,
 				BBA6D6272B663CFC00AF8600 /* ProgramCardView.swift in Sources */,
 				BB6704992B5FB4AB0008A76F /* OnboardingSecondView.swift in Sources */,
+				BB02084B2B73440300B81CFE /* DividedTextView.swift in Sources */,
 				BB67049D2B5FC53E0008A76F /* OnboardingThirdView.swift in Sources */,
 				BBE6A71A2B691AEB00067FC0 /* NetworkManager.swift in Sources */,
 				BB74BB082B713DB200BA2A61 /* SearchCardView.swift in Sources */,

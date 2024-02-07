@@ -67,21 +67,3 @@ struct SearchCardView: View {
         startDate: "2024-02-10 00:00:00.0",
         isFree: "무료")
 }
-
-struct DividedTextView: View {
-    // MARK: - Public Properties
-    let firstText: String
-    let secondText: String
-
-    // MARK: - Body
-    var body: some View {
-        HStack {
-            Text(firstText)
-                .foregroundStyle(.gray)
-            Text(secondText)
-        }
-        .font(.footnote)
-        .lineLimit(1)
-        .minimumScaleFactor(0.5)
-    }
-}
