@@ -40,5 +40,5 @@ struct OnboardingTabView: View {
 #Preview {
     OnboardingTabView(isFirstLaunching: .constant(true),
                       themeColor: .constant(.pink),
-                      selectedRegion: .constant(.전체보기))
+                      selectedRegion: .constant(.allRegion))
 }

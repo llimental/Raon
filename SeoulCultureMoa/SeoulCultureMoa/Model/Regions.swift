@@ -8,14 +8,32 @@
 import Foundation
 
 enum Regions: String, CaseIterable, Identifiable {
-    case 전체보기,
-         강남구, 강동구, 강북구, 강서구,
-         관악구, 광진구, 구로구, 금천구,
-         노원구, 도봉구, 동대문구, 동작구,
-         마포구, 서대문구, 서초구, 성동구,
-         성북구, 송파구, 양천구, 영등포구,
-         용산구, 은평구, 종로구, 중구,
-         중랑구
+    case allRegion = "전체보기"
+    case gangnam = "강남구"
+    case gangdong = "강동구"
+    case gangbuk = "강북구"
+    case gangseo = "강서구"
+    case gwanak = "관악구"
+    case gwangjin = "광진구"
+    case guro = "구로구"
+    case geumchoen = "금천구"
+    case nowon = "노원구"
+    case dobong = "도봉구"
+    case dongdaemun = "동대문구"
+    case dongjak = "동작구"
+    case mapo = "마포구"
+    case seodaemun = "서대문구"
+    case seocho = "서초구"
+    case seongdong = "성동구"
+    case seongbuk = "성북구"
+    case songpa = "송파구"
+    case yangcheon = "양천구"
+    case yeongdeungpo = "영등포구"
+    case yongsan = "용산구"
+    case eunpyeong = "은평구"
+    case jongno = "종로구"
+    case junggo = "중구"
+    case jungnang = "중랑구"
 
     var id: Self { self }
 }

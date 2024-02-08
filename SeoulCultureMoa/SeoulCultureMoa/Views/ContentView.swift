@@ -11,7 +11,7 @@ struct ContentView: View {
     // MARK: - @AppStorage Properties
     @AppStorage("isFirstLaunching") private var isFirstLaunching: Bool = true
     @AppStorage("ThemeColor") var themeColor: ThemeColors = .pink
-    @AppStorage("SelectedRegion") var selectedRegion: Regions = .전체보기
+    @AppStorage("SelectedRegion") var selectedRegion: Regions = .allRegion
 
     // MARK: - Body
     var body: some View {

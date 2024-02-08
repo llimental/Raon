@@ -63,5 +63,5 @@ struct OnboardingSecondView: View {
 #Preview {
     OnboardingSecondView(selectedTab: .constant(1),
                          themeColor: .constant(.pink),
-                         selectedRegion: .constant(.전체보기))
+                         selectedRegion: .constant(.allRegion))
 }
