@@ -10,6 +10,7 @@ import SwiftUI
 struct SearchView: View {
     // MARK: - @State Properties
     @State private var searchText = String()
+    @State private var isPresented = false
 
     // MARK: - @Binding Properties
     @Binding var contents: [ProgramContent]
@@ -31,10 +32,17 @@ struct SearchView: View {
             .listStyle(.plain)
             .navigationTitle("검색")
             .toolbar {
-                ToolbarItemGroup(placement: .topBarTrailing) {
-                    Button("", systemImage: "line.3.horizontal.decrease.circle") {
-
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("SearchFilter", systemImage: "line.3.horizontal.decrease.circle") {
+                        isPresented.toggle()
                     }
+                    .sheet(
+                        isPresented: $isPresented) {
+                            Text("필터")
+                            .presentationDetents([.height(300)])
+                            .presentationDragIndicator(.visible)
+                            .presentationCornerRadius(30)
+                        }
                 }
             }
             .searchable(
