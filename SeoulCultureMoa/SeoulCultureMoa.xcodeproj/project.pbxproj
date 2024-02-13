@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BB02084B2B73440300B81CFE /* DividedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB02084A2B73440300B81CFE /* DividedTextView.swift */; };
 		BB3B97292B6BEC9B0059A697 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3B97282B6BEC9B0059A697 /* Date+Extension.swift */; };
+		BB44752B2B7B7251008736FB /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB44752A2B7B7251008736FB /* Categories.swift */; };
 		BB63C1C12B64F07F00EA3ABB /* ProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63C1C02B64F07F00EA3ABB /* ProgramView.swift */; };
 		BB6704992B5FB4AB0008A76F /* OnboardingSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6704982B5FB4AB0008A76F /* OnboardingSecondView.swift */; };
 		BB67049B2B5FB4CB0008A76F /* OnboardingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67049A2B5FB4CB0008A76F /* OnboardingTabView.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		BB02084A2B73440300B81CFE /* DividedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividedTextView.swift; sourceTree = "<group>"; };
 		BB3B97282B6BEC9B0059A697 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		BB44752A2B7B7251008736FB /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		BB63C1C02B64F07F00EA3ABB /* ProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramView.swift; sourceTree = "<group>"; };
 		BB6704982B5FB4AB0008A76F /* OnboardingSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondView.swift; sourceTree = "<group>"; };
 		BB67049A2B5FB4CB0008A76F /* OnboardingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTabView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				BBBFD64B2B63E2670052BD38 /* Regions.swift */,
+				BB44752A2B7B7251008736FB /* Categories.swift */,
 				BBBFD6552B640BF20052BD38 /* ThemeColors.swift */,
 				BBA6D6282B66473300AF8600 /* ProgramData.swift */,
 				BBE6A7192B691AEB00067FC0 /* NetworkManager.swift */,
@@ -269,6 +272,7 @@
 				BB6704992B5FB4AB0008A76F /* OnboardingSecondView.swift in Sources */,
 				BB02084B2B73440300B81CFE /* DividedTextView.swift in Sources */,
 				BB67049D2B5FC53E0008A76F /* OnboardingThirdView.swift in Sources */,
+				BB44752B2B7B7251008736FB /* Categories.swift in Sources */,
 				BBE6A71A2B691AEB00067FC0 /* NetworkManager.swift in Sources */,
 				BB74BB082B713DB200BA2A61 /* SearchCardView.swift in Sources */,
 				BBA6D62E2B6679B300AF8600 /* View+Extension.swift in Sources */,
