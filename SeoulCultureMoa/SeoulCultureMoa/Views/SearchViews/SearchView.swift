@@ -11,6 +11,8 @@ struct SearchView: View {
     // MARK: - @State Properties
     @State private var searchText = String()
     @State private var isPresented = false
+    @State private var categoryFilter: Categories = .allCategory
+    @State private var regionFilter: Regions = .allRegion
 
     // MARK: - @Binding Properties
     @Binding var contents: [ProgramContent]
@@ -38,7 +40,9 @@ struct SearchView: View {
                     }
                     .sheet(
                         isPresented: $isPresented) {
-                            Text("필터")
+                            FilterView(
+                                categoryFilter: $categoryFilter,
+                                regionFilter: $regionFilter)
                             .presentationDetents([.height(300)])
                             .presentationDragIndicator(.visible)
                             .presentationCornerRadius(30)
