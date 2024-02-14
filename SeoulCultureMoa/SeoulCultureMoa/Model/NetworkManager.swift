@@ -10,7 +10,7 @@ import Combine
 import Network
 
 final class NetworkManager: ObservableObject {
-    // MARK: - Published Properties
+    // MARK: - @Published Properties
     @Published var contents = [ProgramContent]()
     @Published var currentNetworkStatus = true
 
@@ -36,9 +36,9 @@ final class NetworkManager: ObservableObject {
             contents.removeAll()
 
             let today = Date().getStringOfTodayDate()
-            
+
             guard let url = makeURL(startIndex: 1, endIndex: 1000) else { return }
-            
+
             programCancellable = URLSession.shared
                 .dataTaskPublisher(for: url)
                 .subscribe(on: DispatchQueue.global())
