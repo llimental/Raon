@@ -22,17 +22,7 @@ struct SearchView: View {
         NavigationStack {
             List {
                 if searchText.isEmpty {
-                    ForEach(contents.filter {
-                        if regionFilter != .allRegion && categoryFilter != .allCategory {
-                            return $0.region == regionFilter.rawValue && $0.category == categoryFilter.rawValue
-                        } else if regionFilter != .allRegion {
-                            return $0.region == regionFilter.rawValue
-                        } else if categoryFilter != .allCategory {
-                            return $0.category == categoryFilter.rawValue
-                        } else {
-                            return true
-                        }
-                    }, id: \.title) { content in
+                    ForEach(getFilteredContents(), id: \.title) { content in
                         SearchCardView(
                             title: content.title,
                             imageURL: content.imageURL,
@@ -77,6 +67,21 @@ struct SearchView: View {
                 prompt: "프로그램명을 입력해주세요")
             .onTapGesture {
                 hideKeyboard()
+            }
+        }
+    }
+
+    // MARK: - Private Functions
+    private func getFilteredContents() -> [ProgramContent] {
+        contents.filter {
+            if regionFilter != .allRegion && categoryFilter != .allCategory {
+                return $0.region == regionFilter.rawValue && $0.category == categoryFilter.rawValue
+            } else if regionFilter != .allRegion {
+                return $0.region == regionFilter.rawValue
+            } else if categoryFilter != .allCategory {
+                return $0.category == categoryFilter.rawValue
+            } else {
+                return true
             }
         }
     }
