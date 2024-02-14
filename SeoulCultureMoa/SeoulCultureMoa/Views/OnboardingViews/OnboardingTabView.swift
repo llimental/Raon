@@ -10,12 +10,12 @@ import SwiftUI
 struct OnboardingTabView: View {
     // MARK: - @State Properties
     @State private var selectedTab = 0
-    
+
     // MARK: - @Binding Properties
     @Binding var isFirstLaunching: Bool
     @Binding var themeColor: ThemeColors
     @Binding var selectedRegion: Regions
-    
+
     // MARK: - Body
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -23,12 +23,14 @@ struct OnboardingTabView: View {
                 selectedTab: $selectedTab,
                 themeColor: $themeColor)
             .tag(0)
-            OnboardingSecondView(selectedTab: $selectedTab,
-                                 themeColor: $themeColor,
-                                 selectedRegion: $selectedRegion)
+            OnboardingSecondView(
+                selectedTab: $selectedTab,
+                themeColor: $themeColor,
+                selectedRegion: $selectedRegion)
             .tag(1)
-            OnboardingThirdView(isFirstLaunching: $isFirstLaunching,
-                                themeColor: $themeColor)
+            OnboardingThirdView(
+                isFirstLaunching: $isFirstLaunching,
+                themeColor: $themeColor)
             .tag(2)
         }
         .tabViewStyle(
