@@ -61,9 +61,6 @@ struct ProgramView: View {
                                 .foregroundStyle(.gray)
                         )
                         .padding(.bottom, 5)
-                        .onDisappear(perform: {
-                            networkManager.requestProgramContents()
-                        })
                 }
             }
         }

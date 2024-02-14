@@ -70,6 +70,10 @@ final class NetworkManager: ObservableObject {
 
         self.networkMonitor.pathUpdateHandler = { [weak self] path in
             DispatchQueue.main.async {
+                if self?.currentNetworkStatus == false && path.status == .satisfied {
+                    self?.requestProgramContents()
+                }
+
                 self?.currentNetworkStatus = path.status == .satisfied
             }
         }
