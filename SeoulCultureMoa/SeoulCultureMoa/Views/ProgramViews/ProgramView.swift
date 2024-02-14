@@ -11,6 +11,9 @@ struct ProgramView: View {
     // MARK: - @StateObject Properties
     @StateObject private var networkManager = NetworkManager()
 
+    // MARK: - @State Properties
+    @State private var selectedTab = 0
+
     // MARK: - @Binding Properties
     @Binding var themeColor: ThemeColors
 
@@ -18,7 +21,7 @@ struct ProgramView: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom) {
-                TabView {
+                TabView(selection: $selectedTab) {
                     ForEach(networkManager.contents, id: \.title) { content in
                         ProgramCardView(
                             programTitle: content.title,
@@ -34,6 +37,7 @@ struct ProgramView: View {
                     ToolbarItemGroup(placement: .topBarTrailing) {
                         Button("", systemImage: "arrow.clockwise") {
                             networkManager.requestProgramContents()
+                            selectedTab = 0
                         }
 
                         NavigationLink {
