@@ -11,10 +11,6 @@ struct FilterView: View {
     // MARK: - @Environment Properties
     @Environment(\.dismiss) private var dismiss
 
-    // MARK: - @State Properties
-    @State private var selectedCategory: Categories = .allCategory
-    @State private var selectedRegion: Regions = .allRegion
-
     // MARK: - @Binding Properties
     @Binding var categoryFilter: Categories
     @Binding var regionFilter: Regions
@@ -28,7 +24,7 @@ struct FilterView: View {
 
                     Spacer()
 
-                    Picker("Category", selection: $selectedCategory) {
+                    Picker("Category", selection: $categoryFilter) {
                         ForEach(Categories.allCases) { category in
                             Text(category.rawValue)
                                 .monospaced()
@@ -41,7 +37,7 @@ struct FilterView: View {
 
                     Spacer()
 
-                    Picker("Region", selection: $selectedRegion) {
+                    Picker("Region", selection: $regionFilter) {
                         ForEach(Regions.allCases) { region in
                             Text(region.rawValue)
                                 .monospaced()
@@ -53,8 +49,8 @@ struct FilterView: View {
 
                 VStack {
                     Button(action: {
-                        selectedCategory = .allCategory
-                        selectedRegion = .allRegion
+                        categoryFilter = .allCategory
+                        regionFilter = .allRegion
                     }, label: {
                         Text("필터 초기화")
                             .foregroundStyle(.red)
@@ -63,8 +59,6 @@ struct FilterView: View {
 
                     ColoredButton(
                         buttonAction: {
-                            categoryFilter = selectedCategory
-                            regionFilter = selectedRegion
                             dismiss()
                         },
                         buttonText: "적용",
@@ -72,17 +66,7 @@ struct FilterView: View {
                         buttonWidth: 200)
                 }
             }
-            .padding()
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button(action: {
-                        dismiss()
-                    }, label: {
-                        Text("취소")
-                            .foregroundStyle(.red)
-                    })
-                }
-            }
+            .padding(20)
         }
     }
 }
