@@ -47,7 +47,7 @@ struct SearchView: View {
             .navigationTitle("검색")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("SearchFilter", systemImage: "line.3.horizontal.decrease.circle") {
+                    Button("SearchFilter", systemImage: "slider.horizontal.3") {
                         isPresented.toggle()
                     }
                     .sheet(
