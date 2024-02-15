@@ -50,15 +50,14 @@ struct SearchView: View {
                     Button("SearchFilter", systemImage: "slider.horizontal.3") {
                         isPresented.toggle()
                     }
-                    .sheet(
-                        isPresented: $isPresented) {
-                            FilterView(
-                                categoryFilter: $categoryFilter,
-                                regionFilter: $regionFilter)
-                            .presentationDetents([.height(300)])
-                            .presentationDragIndicator(.visible)
-                            .presentationCornerRadius(30)
-                        }
+                    .sheet(isPresented: $isPresented) {
+                        FilterView(
+                            categoryFilter: $categoryFilter,
+                            regionFilter: $regionFilter)
+                        .presentationDetents([.height(300)])
+                        .presentationDragIndicator(.visible)
+                        .presentationCornerRadius(30)
+                    }
                 }
             }
             .searchable(
