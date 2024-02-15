@@ -74,12 +74,12 @@ struct SearchView: View {
     // MARK: - Private Functions
     private func getFilteredContents() -> [ProgramContent] {
         contents.filter {
-            if regionFilter != .allRegion && categoryFilter != .allCategory {
-                return $0.region == regionFilter.rawValue && $0.category == categoryFilter.rawValue
-            } else if regionFilter != .allRegion {
-                return $0.region == regionFilter.rawValue
+            if categoryFilter != .allCategory && regionFilter != .allRegion {
+                return $0.category == categoryFilter.rawValue && $0.region == regionFilter.rawValue
             } else if categoryFilter != .allCategory {
                 return $0.category == categoryFilter.rawValue
+            } else if regionFilter != .allRegion {
+                return $0.region == regionFilter.rawValue
             } else {
                 return true
             }
