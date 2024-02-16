@@ -47,26 +47,26 @@ struct FilterView: View {
 
                 Spacer()
 
-                VStack {
-                    Button(action: {
-                        categoryFilter = .allCategory
-                        regionFilter = .allRegion
-                    }, label: {
-                        Text("필터 초기화")
-                            .foregroundStyle(.red)
-                    })
-                    .padding()
-
-                    ColoredButton(
-                        buttonAction: {
-                            dismiss()
-                        },
-                        buttonText: "적용",
-                        buttonColor: .blue,
-                        buttonWidth: 200)
-                }
+                Button(action: {
+                    categoryFilter = .allCategory
+                    regionFilter = .allRegion
+                }, label: {
+                    Text("필터 초기화")
+                        .foregroundStyle(.red)
+                })
             }
             .padding(20)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {
+                        dismiss()
+                    }, label: {
+                        Image(systemName: "xmark")
+                    })
+                    .padding()
+                    .foregroundStyle(.black)
+                }
+            }
         }
     }
 }
