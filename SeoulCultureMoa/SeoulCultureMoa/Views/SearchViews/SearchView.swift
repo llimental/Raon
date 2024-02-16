@@ -54,7 +54,7 @@ struct SearchView: View {
                         FilterView(
                             categoryFilter: $categoryFilter,
                             regionFilter: $regionFilter)
-                        .presentationDetents([.height(300)])
+                        .presentationDetents([.height(250)])
                         .presentationDragIndicator(.visible)
                         .presentationCornerRadius(30)
                     }
