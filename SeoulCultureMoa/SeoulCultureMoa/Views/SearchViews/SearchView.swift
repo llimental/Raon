@@ -20,52 +20,62 @@ struct SearchView: View {
     // MARK: - Body
     var body: some View {
         NavigationStack {
-            List {
-                if searchText.isEmpty {
-                    ForEach(getFilteredContents(), id: \.title) { content in
-                        SearchCardView(
-                            title: content.title,
-                            imageURL: content.imageURL,
-                            category: content.category,
-                            region: content.region,
-                            startDate: content.startDate,
-                            isFree: content.isFree)
-                    }
-                } else {
-                    ForEach(contents.filter { $0.title.localizedStandardContains(searchText) }, id: \.title) { content in
-                        SearchCardView(
-                            title: content.title,
-                            imageURL: content.imageURL,
-                            category: content.category,
-                            region: content.region,
-                            startDate: content.startDate,
-                            isFree: content.isFree)
-                    }
-                }
-            }
-            .listStyle(.plain)
-            .navigationTitle("검색")
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("SearchFilter", systemImage: "slider.horizontal.3") {
-                        isPresented.toggle()
-                    }
-                    .sheet(isPresented: $isPresented) {
-                        FilterView(
-                            categoryFilter: $categoryFilter,
-                            regionFilter: $regionFilter)
-                        .presentationDetents([.height(250)])
-                        .presentationDragIndicator(.visible)
-                        .presentationCornerRadius(30)
+            ScrollViewReader { proxy in
+                List {
+                    if searchText.isEmpty {
+                        EmptyView()
+                            .id("firstView")
+                        ForEach(getFilteredContents(), id: \.title) { content in
+                            SearchCardView(
+                                title: content.title,
+                                imageURL: content.imageURL,
+                                category: content.category,
+                                region: content.region,
+                                startDate: content.startDate,
+                                isFree: content.isFree)
+                        }
+                    } else {
+                        ForEach(contents.filter { $0.title.localizedStandardContains(searchText) }, id: \.title) { content in
+                            SearchCardView(
+                                title: content.title,
+                                imageURL: content.imageURL,
+                                category: content.category,
+                                region: content.region,
+                                startDate: content.startDate,
+                                isFree: content.isFree)
+                        }
                     }
                 }
-            }
-            .searchable(
-                text: $searchText,
-                placement: .navigationBarDrawer(displayMode: .always),
-                prompt: "프로그램명을 입력해주세요")
-            .onTapGesture {
-                hideKeyboard()
+                .listStyle(.plain)
+                .navigationTitle("검색")
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("SearchFilter", systemImage: "slider.horizontal.3") {
+                            isPresented.toggle()
+                        }
+                        .sheet(isPresented: $isPresented) {
+                            FilterView(
+                                categoryFilter: $categoryFilter,
+                                regionFilter: $regionFilter)
+                            .presentationDetents([.height(250)])
+                            .presentationDragIndicator(.visible)
+                            .presentationCornerRadius(30)
+                        }
+                    }
+                }
+                .searchable(
+                    text: $searchText,
+                    placement: .navigationBarDrawer(displayMode: .always),
+                    prompt: "프로그램명을 입력해주세요")
+                .onTapGesture {
+                    hideKeyboard()
+                }
+                .onChange(of: categoryFilter) {
+                    proxy.scrollTo("firstView", anchor: .bottom)
+                }
+                .onChange(of: regionFilter) {
+                    proxy.scrollTo("firstView", anchor: .bottom)
+                }
             }
         }
     }
