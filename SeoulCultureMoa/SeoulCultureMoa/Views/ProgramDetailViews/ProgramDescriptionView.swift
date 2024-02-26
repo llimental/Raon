@@ -62,6 +62,7 @@ struct ProgramDescriptionView: View {
         }
         .background()
         .cornerRadius(30, corners: [.topLeft, .topRight])
+        .shadow(color: .primary, radius: 3)
         .scrollIndicators(.hidden)
     }
 }
