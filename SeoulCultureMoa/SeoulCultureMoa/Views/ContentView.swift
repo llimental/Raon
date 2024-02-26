@@ -22,13 +22,13 @@ struct ContentView: View {
                         Label("프로그램", systemImage: "house")
                     }
             }
-            .tint(Color(themeColor.rawValue))
             .fullScreenCover(isPresented: $isFirstLaunching) {
                 OnboardingTabView(isFirstLaunching: $isFirstLaunching,
                                   themeColor: $themeColor,
                                   selectedRegion: $selectedRegion)
             }
         }
+        .tint(Color(themeColor.rawValue))
     }
 }
 
