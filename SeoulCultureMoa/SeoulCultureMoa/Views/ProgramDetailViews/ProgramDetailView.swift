@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ProgramDetailView: View {
+    // MARK: - @State Properties
+    @State private var isFavorite: Bool = false
+    @State private var isWillNotify: Bool = false
+
     // MARK: - @Binding Properties
     @Binding var themeColor: ThemeColors
 
@@ -18,15 +22,41 @@ struct ProgramDetailView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                AsyncImage(url: URL(string: content.imageURL)) { phase in
-                    if let image = phase.image {
-                        image.resizable()
-                    } else if phase.error != nil {
-                        Color.gray
+                ZStack(alignment: .bottom) {
+                    AsyncImage(url: URL(string: content.imageURL)) { phase in
+                        if let image = phase.image {
+                            image.resizable()
+                        } else if phase.error != nil {
+                            Color.gray
+                        }
                     }
+                    .scaledToFit()
+                    .opacity(0.5)
+
+                    HStack {
+                        Text(content.title)
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
+                            .shadow(radius: 10)
+
+                        Spacer()
+
+                        Button(action: {
+                            isFavorite.toggle()
+                        }, label: {
+                            isFavorite ? Image(systemName: "heart.fill") : Image(systemName: "heart")
+                        })
+
+                        Button(action: {
+                            isWillNotify.toggle()
+                        }, label: {
+                            isWillNotify ? Image(systemName: "bell.fill") : Image(systemName: "bell")
+                        })
+                    }
+                    .foregroundStyle(Color(themeColor.rawValue))
+                    .padding(.horizontal, 20)
                 }
-                .scaledToFit()
-                .opacity(0.5)
 
                 ProgramDescriptionView(themeColor: $themeColor, content: content)
                     .frame(width: geometry.size.width, height: geometry.size.height * 0.6)
@@ -35,7 +65,6 @@ struct ProgramDetailView: View {
         }
     }
 }
-
 
 #Preview {
     ProgramDetailView(
