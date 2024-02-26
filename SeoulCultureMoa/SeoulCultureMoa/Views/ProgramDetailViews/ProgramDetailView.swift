@@ -8,24 +8,38 @@
 import SwiftUI
 
 struct ProgramDetailView: View {
+    // MARK: - @Binding Properties
+    @Binding var themeColor: ThemeColors
+
     // MARK: - Public Properties
     var content: ProgramContent
 
+    // MARK: - Body
     var body: some View {
-        AsyncImage(url: URL(string: content.imageURL)) { phase in
-            if let image = phase.image {
-                image.resizable()
-            } else if phase.error != nil {
-                Color.gray
+        GeometryReader { geometry in
+            VStack {
+                AsyncImage(url: URL(string: content.imageURL)) { phase in
+                    if let image = phase.image {
+                        image.resizable()
+                    } else if phase.error != nil {
+                        Color.gray
+                    }
+                }
+                .scaledToFit()
+                .opacity(0.5)
+
+                ProgramDescriptionView(themeColor: $themeColor, content: content)
+                    .frame(width: geometry.size.width, height: geometry.size.height * 0.6)
             }
+            .background(.black)
         }
-        .scaledToFit()
-        .opacity(0.5)
     }
 }
 
+
 #Preview {
     ProgramDetailView(
+        themeColor: .constant(.pink),
         content: ProgramContent(
             category: "뮤지컬/오페라",
             region: "종로구",
