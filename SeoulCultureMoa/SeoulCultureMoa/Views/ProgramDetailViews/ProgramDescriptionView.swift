@@ -14,6 +14,7 @@ struct ProgramDescriptionView: View {
     // MARK: - Public Properties
     var content: ProgramContent
 
+    // MARK: - Body
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
