@@ -16,6 +16,7 @@ struct SearchView: View {
 
     // MARK: - @Binding Properties
     @Binding var contents: [ProgramContent]
+    @Binding var themeColor: ThemeColors
 
     // MARK: - Body
     var body: some View {
@@ -25,23 +26,35 @@ struct SearchView: View {
                     EmptyView()
                         .id("firstView")
                     ForEach(getFilteredContents(), id: \.title) { content in
-                        SearchCardView(
-                            title: content.title,
-                            imageURL: content.imageURL,
-                            category: content.category,
-                            region: content.region,
-                            startDate: content.startDate,
-                            isFree: content.isFree)
+                        NavigationLink {
+                            ProgramDetailView(
+                                themeColor: $themeColor,
+                                content: content)
+                        } label: {
+                            SearchCardView(
+                                title: content.title,
+                                imageURL: content.imageURL,
+                                category: content.category,
+                                region: content.region,
+                                startDate: content.startDate,
+                                isFree: content.isFree)
+                        }
                     }
                 } else {
                     ForEach(contents.filter { $0.title.localizedStandardContains(searchText) }, id: \.title) { content in
-                        SearchCardView(
-                            title: content.title,
-                            imageURL: content.imageURL,
-                            category: content.category,
-                            region: content.region,
-                            startDate: content.startDate,
-                            isFree: content.isFree)
+                        NavigationLink {
+                            ProgramDetailView(
+                                themeColor: $themeColor,
+                                content: content)
+                        } label: {
+                            SearchCardView(
+                                title: content.title,
+                                imageURL: content.imageURL,
+                                category: content.category,
+                                region: content.region,
+                                startDate: content.startDate,
+                                isFree: content.isFree)
+                        }
                     }
                 }
             }
@@ -93,5 +106,7 @@ struct SearchView: View {
 }
 
 #Preview {
-    SearchView(contents: .constant(NetworkManager().contents))
+    SearchView(
+        contents: .constant(NetworkManager().contents),
+        themeColor: .constant(.pink))
 }

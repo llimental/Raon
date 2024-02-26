@@ -54,7 +54,9 @@ struct ProgramView: View {
                         }
 
                         NavigationLink {
-                            SearchView(contents: $networkManager.contents)
+                            SearchView(
+                                contents: $networkManager.contents,
+                                themeColor: $themeColor)
                         } label: {
                             Image(systemName: "magnifyingglass")
                         }
