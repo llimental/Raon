@@ -79,6 +79,7 @@ struct ProgramDetailView: View {
                 }
                 .ignoresSafeArea()
                 .background(.black)
+                .toolbarTitleDisplayMode(.inline)
             }
         }
     }
