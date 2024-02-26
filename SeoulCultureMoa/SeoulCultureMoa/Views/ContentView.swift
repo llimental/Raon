@@ -15,18 +15,16 @@ struct ContentView: View {
 
     // MARK: - Body
     var body: some View {
-        NavigationStack {
-            TabView {
-                ProgramView(themeColor: $themeColor)
-                    .tabItem {
-                        Label("프로그램", systemImage: "house")
-                    }
-            }
-            .fullScreenCover(isPresented: $isFirstLaunching) {
-                OnboardingTabView(isFirstLaunching: $isFirstLaunching,
-                                  themeColor: $themeColor,
-                                  selectedRegion: $selectedRegion)
-            }
+        TabView {
+            ProgramView(themeColor: $themeColor)
+                .tabItem {
+                    Label("프로그램", systemImage: "house")
+                }
+        }
+        .fullScreenCover(isPresented: $isFirstLaunching) {
+            OnboardingTabView(isFirstLaunching: $isFirstLaunching,
+                              themeColor: $themeColor,
+                              selectedRegion: $selectedRegion)
         }
         .tint(Color(themeColor.rawValue))
     }
