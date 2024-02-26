@@ -60,7 +60,6 @@ struct ProgramView: View {
                         }
                     }
                 }
-                .tint(Color(themeColor.rawValue))
                 .padding()
 
                 if !networkManager.currentNetworkStatus {
@@ -75,6 +74,7 @@ struct ProgramView: View {
                 }
             }
         }
+        .tint(Color(themeColor.rawValue))
     }
 }
 
