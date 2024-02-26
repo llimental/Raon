@@ -34,12 +34,11 @@ struct ProgramDetailView: View {
                         .scaledToFit()
                         .opacity(0.5)
 
-                        HStack {
+                        HStack(alignment: .bottom) {
                             Text(content.title)
-                                .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundStyle(.white)
-                                .shadow(radius: 10)
+                                .shadow(color: .black, radius: 2)
 
                             Spacer()
 
@@ -48,13 +47,16 @@ struct ProgramDetailView: View {
                             }, label: {
                                 isFavorite ? Image(systemName: "heart.fill") : Image(systemName: "heart")
                             })
+                            .frame(height: 20)
 
                             Button(action: {
                                 isWillNotify.toggle()
                             }, label: {
                                 isWillNotify ? Image(systemName: "bell.fill") : Image(systemName: "bell")
                             })
+                            .frame(height: 20)
                         }
+                        .font(.title2)
                         .foregroundStyle(Color(themeColor.rawValue))
                         .padding(.horizontal, 20)
                     }
