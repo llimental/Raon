@@ -17,57 +17,56 @@ struct FilterView: View {
 
     // MARK: - Body
     var body: some View {
-        NavigationStack {
-            VStack {
-                HStack {
-                    Text("카테고리")
-
-                    Spacer()
-
-                    Picker("Category", selection: $categoryFilter) {
-                        ForEach(Categories.allCases) { category in
-                            Text(category.rawValue)
-                                .monospaced()
-                        }
-                    }
-                }
-
-                HStack {
-                    Text("지역")
-
-                    Spacer()
-
-                    Picker("Region", selection: $regionFilter) {
-                        ForEach(Regions.allCases) { region in
-                            Text(region.rawValue)
-                                .monospaced()
-                        }
-                    }
-                }
-
+        VStack {
+            HStack {
                 Spacer()
 
                 Button(action: {
-                    categoryFilter = .allCategory
-                    regionFilter = .allRegion
+                    dismiss()
                 }, label: {
-                    Text("필터 초기화")
-                        .foregroundStyle(.red)
+                    Image(systemName: "xmark")
                 })
+                .padding()
+                .foregroundStyle(.black)
             }
-            .padding(20)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: {
-                        dismiss()
-                    }, label: {
-                        Image(systemName: "xmark")
-                    })
-                    .padding()
-                    .foregroundStyle(.black)
+
+            HStack {
+                Text("카테고리")
+
+                Spacer()
+
+                Picker("Category", selection: $categoryFilter) {
+                    ForEach(Categories.allCases) { category in
+                        Text(category.rawValue)
+                            .monospaced()
+                    }
                 }
             }
+
+            HStack {
+                Text("지역")
+
+                Spacer()
+
+                Picker("Region", selection: $regionFilter) {
+                    ForEach(Regions.allCases) { region in
+                        Text(region.rawValue)
+                            .monospaced()
+                    }
+                }
+            }
+
+            Spacer()
+
+            Button(action: {
+                categoryFilter = .allCategory
+                regionFilter = .allRegion
+            }, label: {
+                Text("필터 초기화")
+                    .foregroundStyle(.red)
+            })
         }
+        .padding(20)
     }
 }
 
