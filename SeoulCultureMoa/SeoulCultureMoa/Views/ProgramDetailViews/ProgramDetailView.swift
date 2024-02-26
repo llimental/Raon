@@ -63,7 +63,7 @@ struct ProgramDetailView: View {
 
                     ZStack(alignment: .bottom) {
                         ProgramDescriptionView(themeColor: $themeColor, content: content)
-                            .frame(width: geometry.size.width, height: geometry.size.height * 0.6)
+                            .frame(width: geometry.size.width, height: geometry.size.height * 0.7)
 
                         NavigationLink {
                             WebView(urlToConnect: content.url)
@@ -77,6 +77,7 @@ struct ProgramDetailView: View {
 
                     }
                 }
+                .ignoresSafeArea()
                 .background(.black)
             }
         }
