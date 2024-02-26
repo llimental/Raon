@@ -20,48 +20,63 @@ struct ProgramDetailView: View {
 
     // MARK: - Body
     var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                ZStack(alignment: .bottom) {
-                    AsyncImage(url: URL(string: content.imageURL)) { phase in
-                        if let image = phase.image {
-                            image.resizable()
-                        } else if phase.error != nil {
-                            Color.gray
+        NavigationStack {
+            GeometryReader { geometry in
+                VStack {
+                    ZStack(alignment: .bottom) {
+                        AsyncImage(url: URL(string: content.imageURL)) { phase in
+                            if let image = phase.image {
+                                image.resizable()
+                            } else if phase.error != nil {
+                                Color.gray
+                            }
                         }
+                        .scaledToFit()
+                        .opacity(0.5)
+
+                        HStack {
+                            Text(content.title)
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.white)
+                                .shadow(radius: 10)
+
+                            Spacer()
+
+                            Button(action: {
+                                isFavorite.toggle()
+                            }, label: {
+                                isFavorite ? Image(systemName: "heart.fill") : Image(systemName: "heart")
+                            })
+
+                            Button(action: {
+                                isWillNotify.toggle()
+                            }, label: {
+                                isWillNotify ? Image(systemName: "bell.fill") : Image(systemName: "bell")
+                            })
+                        }
+                        .foregroundStyle(Color(themeColor.rawValue))
+                        .padding(.horizontal, 20)
                     }
-                    .scaledToFit()
-                    .opacity(0.5)
 
-                    HStack {
-                        Text(content.title)
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundStyle(.white)
-                            .shadow(radius: 10)
+                    ZStack(alignment: .bottom) {
+                        ProgramDescriptionView(themeColor: $themeColor, content: content)
+                            .frame(width: geometry.size.width, height: geometry.size.height * 0.6)
 
-                        Spacer()
+                        NavigationLink {
+                            WebView(urlToConnect: content.url)
+                        } label: {
+                            ColoredText(
+                                text: "예매하기",
+                                textColor: themeColor,
+                                textWidth: geometry.size.width * 0.9)
+                        }
+                        .padding()
 
-                        Button(action: {
-                            isFavorite.toggle()
-                        }, label: {
-                            isFavorite ? Image(systemName: "heart.fill") : Image(systemName: "heart")
-                        })
-
-                        Button(action: {
-                            isWillNotify.toggle()
-                        }, label: {
-                            isWillNotify ? Image(systemName: "bell.fill") : Image(systemName: "bell")
-                        })
                     }
-                    .foregroundStyle(Color(themeColor.rawValue))
-                    .padding(.horizontal, 20)
                 }
-
-                ProgramDescriptionView(themeColor: $themeColor, content: content)
-                    .frame(width: geometry.size.width, height: geometry.size.height * 0.6)
+                .background(.black)
             }
-            .background(.black)
         }
     }
 }
