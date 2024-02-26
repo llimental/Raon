@@ -23,16 +23,16 @@ struct ProgramView: View {
             ZStack(alignment: .bottom) {
                 TabView(selection: $selectedTab) {
                     ForEach(networkManager.contents, id: \.title) { content in
-                        NavigationLink(destination: {
+                        NavigationLink {
                             ProgramDetailView(
                                 themeColor: $themeColor,
                                 content: content)
-                        }, label: {
+                        } label: {
                             ProgramCardView(
                                 programTitle: content.title,
                                 programImageURL: content.imageURL
                             )
-                        })
+                        }
                         .tag(content.title)
                         .padding()
                     }
