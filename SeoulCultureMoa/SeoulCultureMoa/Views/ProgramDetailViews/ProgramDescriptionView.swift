@@ -45,20 +45,20 @@ struct ProgramDescriptionView: View {
 
                 DescriptionTextView(
                     firstText: "비용",
-                    secondText: content.fees,
+                    secondText: content.fees != String() ? content.fees : "무료",
                     tintColor: themeColor.rawValue)
 
                 DescriptionTextView(
                     firstText: "시작일",
-                    secondText: content.startDate,
+                    secondText: content.startDate.replacingOccurrences(of: " 00:00:00.0", with: ""),
                     tintColor: themeColor.rawValue)
 
                 DescriptionTextView(
                     firstText: "종료일",
-                    secondText: content.endDate,
+                    secondText: content.endDate.replacingOccurrences(of: " 00:00:00.0", with: ""),
                     tintColor: themeColor.rawValue)
             }
-            .padding(.top, 20)
+            .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 0))
         }
         .background()
         .cornerRadius(30, corners: [.topLeft, .topRight])
