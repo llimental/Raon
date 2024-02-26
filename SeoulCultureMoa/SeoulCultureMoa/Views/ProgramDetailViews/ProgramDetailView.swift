@@ -75,7 +75,7 @@ struct ProgramDetailView: View {
                     .padding()
                 }
             }
-            .ignoresSafeArea()
+            .ignoresSafeArea(edges: .top)
             .background(.black)
             .toolbarTitleDisplayMode(.inline)
         }
