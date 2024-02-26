@@ -20,67 +20,64 @@ struct ProgramDetailView: View {
 
     // MARK: - Body
     var body: some View {
-        NavigationStack {
-            GeometryReader { geometry in
-                VStack {
-                    ZStack(alignment: .bottom) {
-                        AsyncImage(url: URL(string: content.imageURL)) { phase in
-                            if let image = phase.image {
-                                image.resizable()
-                            } else if phase.error != nil {
-                                Color.gray
-                            }
+        GeometryReader { geometry in
+            VStack {
+                ZStack(alignment: .bottom) {
+                    AsyncImage(url: URL(string: content.imageURL)) { phase in
+                        if let image = phase.image {
+                            image.resizable()
+                        } else if phase.error != nil {
+                            Color.gray
                         }
-                        .scaledToFit()
-                        .opacity(0.5)
-
-                        HStack(alignment: .bottom) {
-                            Text(content.title)
-                                .fontWeight(.bold)
-                                .foregroundStyle(.white)
-                                .shadow(color: .black, radius: 2)
-
-                            Spacer()
-
-                            Button(action: {
-                                isFavorite.toggle()
-                            }, label: {
-                                isFavorite ? Image(systemName: "heart.fill") : Image(systemName: "heart")
-                            })
-                            .frame(height: 20)
-
-                            Button(action: {
-                                isWillNotify.toggle()
-                            }, label: {
-                                isWillNotify ? Image(systemName: "bell.fill") : Image(systemName: "bell")
-                            })
-                            .frame(height: 20)
-                        }
-                        .font(.title2)
-                        .foregroundStyle(Color(themeColor.rawValue))
-                        .padding(.horizontal, 20)
                     }
+                    .scaledToFit()
+                    .opacity(0.5)
 
-                    ZStack(alignment: .bottom) {
-                        ProgramDescriptionView(themeColor: $themeColor, content: content)
-                            .frame(width: geometry.size.width, height: geometry.size.height * 0.7)
+                    HStack(alignment: .bottom) {
+                        Text(content.title)
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
+                            .shadow(color: .black, radius: 2)
 
-                        NavigationLink {
-                            WebView(urlToConnect: content.url)
-                        } label: {
-                            ColoredText(
-                                text: "예매하기",
-                                textColor: themeColor,
-                                textWidth: geometry.size.width * 0.9)
-                        }
-                        .padding()
+                        Spacer()
 
+                        Button(action: {
+                            isFavorite.toggle()
+                        }, label: {
+                            isFavorite ? Image(systemName: "heart.fill") : Image(systemName: "heart")
+                        })
+                        .frame(height: 20)
+
+                        Button(action: {
+                            isWillNotify.toggle()
+                        }, label: {
+                            isWillNotify ? Image(systemName: "bell.fill") : Image(systemName: "bell")
+                        })
+                        .frame(height: 20)
                     }
+                    .font(.title2)
+                    .foregroundStyle(Color(themeColor.rawValue))
+                    .padding(.horizontal, 20)
                 }
-                .ignoresSafeArea()
-                .background(.black)
-                .toolbarTitleDisplayMode(.inline)
+
+                ZStack(alignment: .bottom) {
+                    ProgramDescriptionView(themeColor: $themeColor, content: content)
+                        .frame(width: geometry.size.width, height: geometry.size.height * 0.7)
+
+                    NavigationLink {
+                        WebView(urlToConnect: content.url)
+                    } label: {
+                        ColoredText(
+                            text: "예매하기",
+                            textColor: themeColor,
+                            textWidth: geometry.size.width * 0.9)
+                    }
+                    .padding()
+                }
             }
+            .ignoresSafeArea()
+            .background(.black)
+            .toolbarTitleDisplayMode(.inline)
         }
     }
 }
