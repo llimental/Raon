@@ -13,6 +13,10 @@ struct ContentView: View {
     @AppStorage("ThemeColor") var themeColor: ThemeColors = .pink
     @AppStorage("SelectedRegion") var selectedRegion: Regions = .allRegion
 
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor.systemBackground
+    }
+
     // MARK: - Body
     var body: some View {
         TabView {
