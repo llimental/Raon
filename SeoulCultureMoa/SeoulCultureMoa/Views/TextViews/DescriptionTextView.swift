@@ -25,7 +25,7 @@ struct DescriptionTextView: View {
 
             Spacer()
         }
-        .font(.footnote)
+        .font(.subheadline)
     }
 }
 
