@@ -68,7 +68,7 @@ struct ProgramDetailView: View {
                         WebView(urlToConnect: content.url)
                     } label: {
                         ColoredText(
-                            text: "예매하기",
+                            text: "홈페이지 이동",
                             textColor: themeColor,
                             textWidth: geometry.size.width * 0.9)
                     }
