@@ -21,18 +21,22 @@ struct ProgramDetailView: View {
     // MARK: - Body
     var body: some View {
         GeometryReader { geometry in
-            VStack {
-                ZStack(alignment: .bottom) {
-                    AsyncImage(url: URL(string: content.imageURL)) { phase in
-                        if let image = phase.image {
-                            image.resizable()
-                        } else if phase.error != nil {
-                            Color.gray
-                        }
+            ZStack(alignment: .bottom) {
+                AsyncImage(url: URL(string: content.imageURL)) { phase in
+                    if let image = phase.image {
+                        image.resizable()
+                    } else if phase.error != nil {
+                        Color.gray
                     }
-                    .scaledToFit()
+                }
+                .frame(width: geometry.size.width, height: geometry.size.height)
+                .scaledToFit()
+                .blur(radius: 5)
+
+                Color.black
                     .opacity(0.5)
 
+                VStack {
                     HStack(alignment: .bottom) {
                         Text(content.title)
                             .fontWeight(.bold)
@@ -58,25 +62,24 @@ struct ProgramDetailView: View {
                     .font(.title2)
                     .foregroundStyle(Color(themeColor.rawValue))
                     .padding(.horizontal, 20)
-                }
 
-                ZStack(alignment: .bottom) {
-                    ProgramDescriptionView(themeColor: $themeColor, content: content)
-                        .frame(width: geometry.size.width, height: geometry.size.height * 0.7)
+                    ZStack(alignment: .bottom) {
+                        ProgramDescriptionView(themeColor: $themeColor, content: content)
+                            .frame(width: geometry.size.width, height: geometry.size.height * 0.7)
 
-                    NavigationLink {
-                        WebView(urlToConnect: content.url)
-                    } label: {
-                        ColoredText(
-                            text: "홈페이지 이동",
-                            textColor: themeColor,
-                            textWidth: geometry.size.width * 0.9)
+                        NavigationLink {
+                            WebView(urlToConnect: content.url)
+                        } label: {
+                            ColoredText(
+                                text: "홈페이지 이동",
+                                textColor: themeColor,
+                                textWidth: geometry.size.width * 0.9)
+                        }
+                        .padding()
                     }
-                    .padding()
                 }
             }
             .ignoresSafeArea(edges: .top)
-            .background(.black)
             .toolbarTitleDisplayMode(.inline)
         }
     }
