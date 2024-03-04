@@ -45,7 +45,8 @@ struct MapButton: View {
         }
     }
 
-    func LinkToNaverMap(latitude: Double, longitude: Double) {
+    // MARK: - Private Functions
+    private func LinkToNaverMap(latitude: Double, longitude: Double) {
         // 네이버 지도 앱 연동 URL Scheme: https://guide.ncloud-docs.com/docs/maps-url-scheme
 
         // 네이버 지도를 실행하고 도착지 좌표(dlat, dlng)까지 대중교통(/route/public) 길찾기
@@ -63,7 +64,7 @@ struct MapButton: View {
         }
     }
 
-    func LinkToKakaoMap(latitude: Double, longitude: Double) {
+    private func LinkToKakaoMap(latitude: Double, longitude: Double) {
         // Kakao 지도 iOS API 가이드: https://apis.map.kakao.com/ios/guide/#urlscheme_open_mapapp
 
         // 카카오맵을 실행하고 도착지 좌표(WGS84, ep)까지 대중교통(PUBLICTRANSIT) 길찾기
