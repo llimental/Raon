@@ -58,6 +58,11 @@ struct ProgramDetailView: View {
                             isWillNotify ? Image(systemName: "bell.fill") : Image(systemName: "bell")
                         })
                         .frame(height: 20)
+
+                        ShareLink(item: URL(string: content.url)!) {
+                            Image(systemName: "square.and.arrow.up")
+                        }
+                        .frame(height: 25)
                     }
                     .font(.title2)
                     .foregroundStyle(Color(themeColor.rawValue))
