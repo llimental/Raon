@@ -64,6 +64,7 @@ struct ProgramDescriptionView: View {
                     firstText: "종료일",
                     secondText: content.endDate.replacingOccurrences(of: " 00:00:00.0", with: ""),
                     tintColor: themeColor.rawValue)
+                .padding(.bottom, 80)
             }
             .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 0))
         }

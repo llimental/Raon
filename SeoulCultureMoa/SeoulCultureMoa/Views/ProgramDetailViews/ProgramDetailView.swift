@@ -80,6 +80,7 @@ struct ProgramDetailView: View {
                                 textColor: themeColor,
                                 textWidth: geometry.size.width * 0.9)
                         }
+                        .padding()
                     }
                 }
             }
