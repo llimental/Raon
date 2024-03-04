@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BB02084B2B73440300B81CFE /* DividedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB02084A2B73440300B81CFE /* DividedTextView.swift */; };
+		BB0398302B95AD14008C0322 /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03982F2B95AD14008C0322 /* MapButton.swift */; };
 		BB116B742B89BFF100EBBBB8 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB116B732B89BFF100EBBBB8 /* RoundedCorner.swift */; };
 		BB116B762B89C1FC00EBBBB8 /* ProgramDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB116B752B89C1FC00EBBBB8 /* ProgramDescriptionView.swift */; };
 		BB116B782B8C265900EBBBB8 /* DescriptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB116B772B8C265900EBBBB8 /* DescriptionTextView.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		BB02084A2B73440300B81CFE /* DividedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividedTextView.swift; sourceTree = "<group>"; };
+		BB03982F2B95AD14008C0322 /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
 		BB116B732B89BFF100EBBBB8 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		BB116B752B89C1FC00EBBBB8 /* ProgramDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramDescriptionView.swift; sourceTree = "<group>"; };
 		BB116B772B8C265900EBBBB8 /* DescriptionTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTextView.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				BBBFD6512B63F7180052BD38 /* InvertedButton.swift */,
 				BBBFD64F2B63F2D80052BD38 /* ColoredButton.swift */,
+				BB03982F2B95AD14008C0322 /* MapButton.swift */,
 			);
 			path = ButtonViews;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB0398302B95AD14008C0322 /* MapButton.swift in Sources */,
 				BB67049B2B5FB4CB0008A76F /* OnboardingTabView.swift in Sources */,
 				BB116B7D2B8C4B6100EBBBB8 /* ColoredText.swift in Sources */,
 				BBBFD6522B63F7180052BD38 /* InvertedButton.swift in Sources */,
