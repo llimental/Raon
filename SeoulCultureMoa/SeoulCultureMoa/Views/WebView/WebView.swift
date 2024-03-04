@@ -9,10 +9,21 @@ import SwiftUI
 import WebKit
 
 struct WebView: UIViewRepresentable {
+    // MARK: - Public Properties
     let urlToConnect: String
 
+    // MARK: - Private Properties
+    private var webView: WKWebView
+
+    // MARK: - Initializer
+    init(urlToConnect: String) {
+        self.urlToConnect = urlToConnect
+        self.webView = WKWebView()
+    }
+
+    // MARK: - UIViewRepresentable
     func makeUIView(context: Context) -> WKWebView {
-        return WKWebView()
+        return webView
     }
 
     func updateUIView(_ webView: WKWebView, context: Context) {
@@ -21,6 +32,19 @@ struct WebView: UIViewRepresentable {
         let urlRequest = URLRequest(url: url)
 
         webView.load(urlRequest)
+    }
+
+    // MARK: - Public Functions
+    func goBack() {
+        webView.goBack()
+    }
+
+    func goForward() {
+        webView.goForward()
+    }
+
+    func reload() {
+        webView.reload()
     }
 }
 
