@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BB02084B2B73440300B81CFE /* DividedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB02084A2B73440300B81CFE /* DividedTextView.swift */; };
 		BB0398302B95AD14008C0322 /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03982F2B95AD14008C0322 /* MapButton.swift */; };
+		BB0398322B95C2B1008C0322 /* LinkToPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0398312B95C2B1008C0322 /* LinkToPlaceView.swift */; };
 		BB116B742B89BFF100EBBBB8 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB116B732B89BFF100EBBBB8 /* RoundedCorner.swift */; };
 		BB116B762B89C1FC00EBBBB8 /* ProgramDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB116B752B89C1FC00EBBBB8 /* ProgramDescriptionView.swift */; };
 		BB116B782B8C265900EBBBB8 /* DescriptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB116B772B8C265900EBBBB8 /* DescriptionTextView.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		BB02084A2B73440300B81CFE /* DividedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividedTextView.swift; sourceTree = "<group>"; };
 		BB03982F2B95AD14008C0322 /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
+		BB0398312B95C2B1008C0322 /* LinkToPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkToPlaceView.swift; sourceTree = "<group>"; };
 		BB116B732B89BFF100EBBBB8 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		BB116B752B89C1FC00EBBBB8 /* ProgramDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramDescriptionView.swift; sourceTree = "<group>"; };
 		BB116B772B8C265900EBBBB8 /* DescriptionTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTextView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				BB67FC072B87152F00EFA5AC /* ProgramDetailView.swift */,
 				BB116B752B89C1FC00EBBBB8 /* ProgramDescriptionView.swift */,
 				BB116B732B89BFF100EBBBB8 /* RoundedCorner.swift */,
+				BB0398312B95C2B1008C0322 /* LinkToPlaceView.swift */,
 			);
 			path = ProgramDetailViews;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				BB02084B2B73440300B81CFE /* DividedTextView.swift in Sources */,
 				BB67049D2B5FC53E0008A76F /* OnboardingThirdView.swift in Sources */,
 				BB44752B2B7B7251008736FB /* Categories.swift in Sources */,
+				BB0398322B95C2B1008C0322 /* LinkToPlaceView.swift in Sources */,
 				BBE6A71A2B691AEB00067FC0 /* NetworkManager.swift in Sources */,
 				BB74BB082B713DB200BA2A61 /* SearchCardView.swift in Sources */,
 				BBA6D62E2B6679B300AF8600 /* View+Extension.swift in Sources */,
