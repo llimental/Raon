@@ -28,30 +28,7 @@ struct LinkToPlaceView: View {
                 longitude: longitude)
 
             NavigationLink {
-                let webView = WebView(urlToConnect: "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=\(place)")
-
-                webView
-                    .toolbar {
-                        ToolbarItemGroup(placement: .topBarTrailing) {
-                            Button(action: {
-                                webView.goBack()
-                            }, label: {
-                                Image(systemName: "arrowshape.backward")
-                            })
-
-                            Button(action: {
-                                webView.goForward()
-                            }, label: {
-                                Image(systemName: "arrowshape.forward")
-                            })
-                            
-                            Button(action: {
-                                webView.reload()
-                            }, label: {
-                                Image(systemName: "arrow.clockwise")
-                            })
-                        }
-                    }
+                CustomWebView(webView: WebView(urlToConnect: "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=\(place)"))
             } label: {
                 Image("Safari_Icon")
                     .resizable()

@@ -73,7 +73,7 @@ struct ProgramDetailView: View {
                             .frame(width: geometry.size.width, height: geometry.size.height * 0.7)
 
                         NavigationLink {
-                            WebView(urlToConnect: content.url)
+                            CustomWebView(webView: WebView(urlToConnect: content.url))
                         } label: {
                             ColoredText(
                                 text: "홈페이지 이동",
