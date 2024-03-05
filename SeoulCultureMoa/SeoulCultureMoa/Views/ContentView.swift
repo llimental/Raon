@@ -19,18 +19,19 @@ struct ContentView: View {
 
     // MARK: - Body
     var body: some View {
-        TabView {
-            ProgramView(themeColor: $themeColor)
-                .tabItem {
-                    Label("프로그램", systemImage: "house")
-                }
-        }
-        .fullScreenCover(isPresented: $isFirstLaunching) {
+        if isFirstLaunching {
             OnboardingTabView(isFirstLaunching: $isFirstLaunching,
                               themeColor: $themeColor,
                               selectedRegion: $selectedRegion)
+        } else {
+            TabView {
+                ProgramView(themeColor: $themeColor)
+                    .tabItem {
+                        Label("프로그램", systemImage: "house")
+                    }
+            }
+            .tint(Color(themeColor.rawValue))
         }
-        .tint(Color(themeColor.rawValue))
     }
 }
 
