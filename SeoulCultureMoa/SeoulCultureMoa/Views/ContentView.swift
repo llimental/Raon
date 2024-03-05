@@ -8,14 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    // MARK: - @AppStorage Properties
-    @AppStorage("isFirstLaunching") private var isFirstLaunching: Bool = true
-    @AppStorage("ThemeColor") var themeColor: ThemeColors = .pink
-    @AppStorage("SelectedRegion") var selectedRegion: Regions = .allRegion
-
-    init() {
-        UITabBar.appearance().backgroundColor = UIColor.systemBackground
-    }
+    // MARK: - @Binding Properties
+    @Binding var isFirstLaunching: Bool
+    @Binding var themeColor: ThemeColors
+    @Binding var selectedRegion: Regions
 
     // MARK: - Body
     var body: some View {
@@ -30,11 +26,13 @@ struct ContentView: View {
                         Label("프로그램", systemImage: "house")
                     }
             }
-            .tint(Color(themeColor.rawValue))
         }
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(
+        isFirstLaunching: .constant(true),
+        themeColor: .constant(.pink),
+        selectedRegion: .constant(.allRegion))
 }
