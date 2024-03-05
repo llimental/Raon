@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ProgramCardView: View {
     // MARK: - Public Properties
-    let programTitle: String
     let programImageURL: String
 
     // MARK: - Body
@@ -35,7 +34,6 @@ struct ProgramCardView: View {
 
 #Preview {
     ProgramCardView(
-        programTitle: "오페라 갈라",
         programImageURL: "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=a6cb4e5a9b5b404e83454b084d88a399&thumb=Y"
     )
 }

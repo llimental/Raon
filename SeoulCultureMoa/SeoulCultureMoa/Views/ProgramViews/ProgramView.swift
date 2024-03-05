@@ -28,10 +28,7 @@ struct ProgramView: View {
                                 themeColor: $themeColor,
                                 content: content)
                         } label: {
-                            ProgramCardView(
-                                programTitle: content.title,
-                                programImageURL: content.imageURL
-                            )
+                            ProgramCardView(programImageURL: content.imageURL)
                         }
                         .tag(content.title)
                         .padding()
