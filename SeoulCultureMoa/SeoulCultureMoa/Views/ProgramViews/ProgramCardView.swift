@@ -27,7 +27,7 @@ struct ProgramCardView: View {
         .clipShape(.rect(cornerRadius: 15))
         .background(
             RoundedRectangle(cornerRadius: 15)
-                .shadow(color: .primary, radius: 3, x: 10, y: 10)
+                .shadow(color: .primary, radius: 5)
                 .opacity(0.5)
         )
     }
@@ -35,7 +35,7 @@ struct ProgramCardView: View {
 
 #Preview {
     ProgramCardView(
-        programTitle: "프로그램 제목",
-        programImageURL: ""
+        programTitle: "오페라 갈라",
+        programImageURL: "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=a6cb4e5a9b5b404e83454b084d88a399&thumb=Y"
     )
 }
