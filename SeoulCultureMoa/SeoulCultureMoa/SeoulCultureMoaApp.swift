@@ -14,6 +14,9 @@ struct SeoulCultureMoaApp: App {
     @AppStorage("ThemeColor") var themeColor: ThemeColors = .pink
     @AppStorage("SelectedRegion") var selectedRegion: Regions = .allRegion
 
+    // MARK: - @StateObject Properties
+    @StateObject private var networkManager = NetworkManager()
+
     // MARK: - Initializer
     init() {
         UITabBar.appearance().backgroundColor = UIColor.systemBackground
@@ -27,6 +30,7 @@ struct SeoulCultureMoaApp: App {
                 themeColor: $themeColor,
                 selectedRegion: $selectedRegion)
             .tint(Color(themeColor.rawValue))
+            .environmentObject(networkManager)
         }
     }
 }

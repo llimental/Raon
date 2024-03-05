@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ProgramView: View {
-    // MARK: - @StateObject Properties
-    @StateObject private var networkManager = NetworkManager()
+    // MARK: - @EnvironmentObject
+    @EnvironmentObject var networkManager: NetworkManager
 
     // MARK: - @State Properties
     @State private var selectedTab = String()
@@ -82,4 +82,5 @@ struct ProgramView: View {
 
 #Preview {
     ProgramView(themeColor: .constant(.pink))
+        .environmentObject(NetworkManager())
 }
