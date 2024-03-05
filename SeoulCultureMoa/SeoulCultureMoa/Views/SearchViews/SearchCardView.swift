@@ -9,17 +9,12 @@ import SwiftUI
 
 struct SearchCardView: View {
     // MARK: - Public Properties
-    let title: String
-    let imageURL: String
-    let category: String
-    let region: String
-    let startDate: String
-    let isFree: String
+    var content: ProgramContent
 
     // MARK: - Body
     var body: some View {
         HStack(alignment: .center, spacing: 20) {
-            AsyncImage(url: URL(string: imageURL)) { phase in
+            AsyncImage(url: URL(string: content.imageURL)) { phase in
                 if let image = phase.image {
                     image.resizable()
                 } else if phase.error != nil {
@@ -33,7 +28,7 @@ struct SearchCardView: View {
             .clipShape(.rect(cornerRadius: 15))
 
             VStack(alignment: .leading) {
-                Text(title)
+                Text(content.title)
                     .fontWeight(.bold)
                     .frame(maxWidth: 150, alignment: .leading)
 
@@ -41,16 +36,16 @@ struct SearchCardView: View {
 
                 DividedTextView(
                     firstText: "카테고리",
-                    secondText: category)
+                    secondText: content.category)
                 DividedTextView(
                     firstText: "지역",
-                    secondText: region)
+                    secondText: content.region)
                 DividedTextView(
                     firstText: "시작일",
-                    secondText: startDate.replacingOccurrences(of: " 00:00:00.0", with: ""))
+                    secondText: content.startDate.replacingOccurrences(of: " 00:00:00.0", with: ""))
                 DividedTextView(
                     firstText: "유/무료",
-                    secondText: isFree)
+                    secondText: content.isFree)
             }
         }
         .frame(width: 400, height: 200)
@@ -60,10 +55,19 @@ struct SearchCardView: View {
 
 #Preview {
     SearchCardView(
-        title: "윤수빈 플루트 독주회",
-        imageURL: "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=a9d45f908f42420ba719f6f811c1b243&thumb=Y",
-        category: "교육/문화",
-        region: "광진구",
-        startDate: "2024-02-10 00:00:00.0",
-        isFree: "무료")
+        content: ProgramContent(
+            category: "뮤지컬/오페라",
+            region: "종로구",
+            title: "오페라 갈라",
+            place: "세종대극장",
+            organization: "세종문화회관",
+            target: "7세 이상 관람 가능(2017년생부터 관람 가능)",
+            fees: "SUITE석 140,000원 / VIP석 120,000원 / R석 100,000원 / S석 80,000원 / A석 50,000원 / B석 30,000원",
+            url: "https://www.sejongpac.or.kr/portal/performance/performance/view.do?menuNo=200004&performIdx=34877",
+            imageURL: "https://culture.seoul.go.kr/cmmn/file/getImage.do?atchFileId=a6cb4e5a9b5b404e83454b084d88a399&thumb=Y",
+            startDate: "2024-12-07",
+            endDate: "2024-12-07",
+            longitude: "37.5726241",
+            latitude: "126.9760053",
+            isFree: "유료"))
 }

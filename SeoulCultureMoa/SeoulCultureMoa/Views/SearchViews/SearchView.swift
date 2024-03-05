@@ -31,13 +31,7 @@ struct SearchView: View {
                                 themeColor: $themeColor,
                                 content: content)
                         } label: {
-                            SearchCardView(
-                                title: content.title,
-                                imageURL: content.imageURL,
-                                category: content.category,
-                                region: content.region,
-                                startDate: content.startDate,
-                                isFree: content.isFree)
+                            SearchCardView(content: content)
                         }
                     }
                 } else {
@@ -47,13 +41,7 @@ struct SearchView: View {
                                 themeColor: $themeColor,
                                 content: content)
                         } label: {
-                            SearchCardView(
-                                title: content.title,
-                                imageURL: content.imageURL,
-                                category: content.category,
-                                region: content.region,
-                                startDate: content.startDate,
-                                isFree: content.isFree)
+                            SearchCardView(content: content)
                         }
                     }
                 }
