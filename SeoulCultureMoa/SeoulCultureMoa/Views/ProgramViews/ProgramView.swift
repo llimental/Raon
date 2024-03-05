@@ -73,7 +73,6 @@ struct ProgramView: View {
                 }
             }
         }
-        .tint(Color(themeColor.rawValue))
     }
 }
 
