@@ -51,3 +51,32 @@ struct WebView: UIViewRepresentable {
 #Preview {
     WebView(urlToConnect: "https://www.naver.com")
 }
+
+struct CustomWebView: View {
+    let webView: WebView
+
+    var body: some View {
+        webView
+            .toolbar {
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    Button(action: {
+                        webView.goBack()
+                    }, label: {
+                        Image(systemName: "arrowshape.backward")
+                    })
+
+                    Button(action: {
+                        webView.goForward()
+                    }, label: {
+                        Image(systemName: "arrowshape.forward")
+                    })
+
+                    Button(action: {
+                        webView.reload()
+                    }, label: {
+                        Image(systemName: "arrow.clockwise")
+                    })
+                }
+            }
+    }
+}
