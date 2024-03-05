@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    // MARK: - @EnvironmentObject
+    @EnvironmentObject var networkManager: NetworkManager
+
     // MARK: - @Binding Properties
     @Binding var isFirstLaunching: Bool
     @Binding var themeColor: ThemeColors
@@ -25,7 +28,13 @@ struct ContentView: View {
                     .tabItem {
                         Label("프로그램", systemImage: "house")
                     }
+
+                SearchView(contents: $networkManager.contents, themeColor: $themeColor)
+                    .tabItem {
+                        Label("검색", systemImage: "magnifyingglass")
+                    }
             }
+            .navigationBarTitleTextColor(Color(themeColor.rawValue))
         }
     }
 }

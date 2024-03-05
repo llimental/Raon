@@ -36,7 +36,6 @@ struct ProgramView: View {
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 .navigationTitle("프로그램")
-                .navigationBarTitleTextColor(Color(themeColor.rawValue))
                 .toolbar {
                     ToolbarItemGroup(placement: .topBarTrailing) {
                         Button("", systemImage: "arrow.clockwise") {
@@ -51,11 +50,9 @@ struct ProgramView: View {
                         }
 
                         NavigationLink {
-                            SearchView(
-                                contents: $networkManager.contents,
-                                themeColor: $themeColor)
+
                         } label: {
-                            Image(systemName: "magnifyingglass")
+                            Image(systemName: "gear")
                         }
                     }
                 }
