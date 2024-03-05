@@ -20,59 +20,60 @@ struct SearchView: View {
 
     // MARK: - Body
     var body: some View {
-        ScrollViewReader { proxy in
-            List {
-                if searchText.isEmpty {
-                    EmptyView()
-                        .id("firstView")
-                    ForEach(getFilteredContents(), id: \.title) { content in
-                        NavigationLink {
-                            ProgramDetailView(
-                                themeColor: $themeColor,
-                                content: content)
-                        } label: {
-                            SearchCardView(content: content)
+        NavigationStack {
+            ScrollViewReader { proxy in
+                List {
+                    if searchText.isEmpty {
+                        EmptyView()
+                            .id("firstView")
+                        ForEach(getFilteredContents(), id: \.title) { content in
+                            NavigationLink {
+                                ProgramDetailView(
+                                    themeColor: $themeColor,
+                                    content: content)
+                            } label: {
+                                SearchCardView(content: content)
+                            }
                         }
-                    }
-                } else {
-                    ForEach(contents.filter { $0.title.localizedStandardContains(searchText) }, id: \.title) { content in
-                        NavigationLink {
-                            ProgramDetailView(
-                                themeColor: $themeColor,
-                                content: content)
-                        } label: {
-                            SearchCardView(content: content)
+                    } else {
+                        ForEach(contents.filter { $0.title.localizedStandardContains(searchText) }, id: \.title) { content in
+                            NavigationLink {
+                                ProgramDetailView(
+                                    themeColor: $themeColor,
+                                    content: content)
+                            } label: {
+                                SearchCardView(content: content)
+                            }
                         }
                     }
                 }
-            }
-            .listStyle(.plain)
-            .navigationTitle("검색")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("SearchFilter", systemImage: "slider.horizontal.3") {
-                        isPresented.toggle()
-                    }
-                    .sheet(isPresented: $isPresented) {
-                        FilterView(
-                            categoryFilter: $categoryFilter,
-                            regionFilter: $regionFilter)
-                        .presentationDetents([.height(250)])
-                        .presentationDragIndicator(.visible)
-                        .presentationCornerRadius(30)
+                .listStyle(.plain)
+                .navigationTitle("검색")
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("SearchFilter", systemImage: "slider.horizontal.3") {
+                            isPresented.toggle()
+                        }
+                        .sheet(isPresented: $isPresented) {
+                            FilterView(
+                                categoryFilter: $categoryFilter,
+                                regionFilter: $regionFilter)
+                            .presentationDetents([.height(250)])
+                            .presentationDragIndicator(.visible)
+                            .presentationCornerRadius(30)
+                        }
                     }
                 }
-            }
-            .searchable(
-                text: $searchText,
-                placement: .navigationBarDrawer(displayMode: .always),
-                prompt: "프로그램명을 입력해주세요")
-            .onChange(of: categoryFilter) {
-                proxy.scrollTo("firstView", anchor: .bottom)
-            }
-            .onChange(of: regionFilter) {
-                proxy.scrollTo("firstView", anchor: .bottom)
+                .searchable(
+                    text: $searchText,
+                    placement: .navigationBarDrawer(displayMode: .always),
+                    prompt: "프로그램명을 입력해주세요")
+                .onChange(of: categoryFilter) {
+                    proxy.scrollTo("firstView", anchor: .bottom)
+                }
+                .onChange(of: regionFilter) {
+                    proxy.scrollTo("firstView", anchor: .bottom)
+                }
             }
         }
     }
