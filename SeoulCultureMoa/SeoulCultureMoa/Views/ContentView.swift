@@ -32,7 +32,8 @@ struct ContentView: View {
 
 #Preview {
     ContentView(
-        isFirstLaunching: .constant(true),
+        isFirstLaunching: .constant(false),
         themeColor: .constant(.pink),
         selectedRegion: .constant(.allRegion))
+    .environmentObject(NetworkManager())
 }
