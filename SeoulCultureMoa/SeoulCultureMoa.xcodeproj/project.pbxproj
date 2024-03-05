@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		BB02084B2B73440300B81CFE /* DividedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB02084A2B73440300B81CFE /* DividedTextView.swift */; };
+		BB0398302B95AD14008C0322 /* MapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03982F2B95AD14008C0322 /* MapButton.swift */; };
+		BB0398322B95C2B1008C0322 /* LinkToPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0398312B95C2B1008C0322 /* LinkToPlaceView.swift */; };
+		BB116B742B89BFF100EBBBB8 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB116B732B89BFF100EBBBB8 /* RoundedCorner.swift */; };
+		BB116B762B89C1FC00EBBBB8 /* ProgramDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB116B752B89C1FC00EBBBB8 /* ProgramDescriptionView.swift */; };
+		BB116B782B8C265900EBBBB8 /* DescriptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB116B772B8C265900EBBBB8 /* DescriptionTextView.swift */; };
+		BB116B7B2B8C2C2700EBBBB8 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB116B7A2B8C2C2700EBBBB8 /* WebView.swift */; };
+		BB116B7D2B8C4B6100EBBBB8 /* ColoredText.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB116B7C2B8C4B6100EBBBB8 /* ColoredText.swift */; };
 		BB3B97292B6BEC9B0059A697 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3B97282B6BEC9B0059A697 /* Date+Extension.swift */; };
 		BB4475292B7B70A5008736FB /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4475282B7B70A5008736FB /* FilterView.swift */; };
 		BB44752B2B7B7251008736FB /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB44752A2B7B7251008736FB /* Categories.swift */; };
@@ -15,6 +22,7 @@
 		BB6704992B5FB4AB0008A76F /* OnboardingSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6704982B5FB4AB0008A76F /* OnboardingSecondView.swift */; };
 		BB67049B2B5FB4CB0008A76F /* OnboardingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67049A2B5FB4CB0008A76F /* OnboardingTabView.swift */; };
 		BB67049D2B5FC53E0008A76F /* OnboardingThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67049C2B5FC53E0008A76F /* OnboardingThirdView.swift */; };
+		BB67FC082B87152F00EFA5AC /* ProgramDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67FC072B87152F00EFA5AC /* ProgramDetailView.swift */; };
 		BB74BB082B713DB200BA2A61 /* SearchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB74BB072B713DB200BA2A61 /* SearchCardView.swift */; };
 		BBA6D6272B663CFC00AF8600 /* ProgramCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA6D6262B663CFC00AF8600 /* ProgramCardView.swift */; };
 		BBA6D6292B66473300AF8600 /* ProgramData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA6D6282B66473300AF8600 /* ProgramData.swift */; };
@@ -34,6 +42,13 @@
 
 /* Begin PBXFileReference section */
 		BB02084A2B73440300B81CFE /* DividedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividedTextView.swift; sourceTree = "<group>"; };
+		BB03982F2B95AD14008C0322 /* MapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButton.swift; sourceTree = "<group>"; };
+		BB0398312B95C2B1008C0322 /* LinkToPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkToPlaceView.swift; sourceTree = "<group>"; };
+		BB116B732B89BFF100EBBBB8 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		BB116B752B89C1FC00EBBBB8 /* ProgramDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramDescriptionView.swift; sourceTree = "<group>"; };
+		BB116B772B8C265900EBBBB8 /* DescriptionTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTextView.swift; sourceTree = "<group>"; };
+		BB116B7A2B8C2C2700EBBBB8 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		BB116B7C2B8C4B6100EBBBB8 /* ColoredText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredText.swift; sourceTree = "<group>"; };
 		BB3B97282B6BEC9B0059A697 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		BB4475282B7B70A5008736FB /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		BB44752A2B7B7251008736FB /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
@@ -41,6 +56,7 @@
 		BB6704982B5FB4AB0008A76F /* OnboardingSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondView.swift; sourceTree = "<group>"; };
 		BB67049A2B5FB4CB0008A76F /* OnboardingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTabView.swift; sourceTree = "<group>"; };
 		BB67049C2B5FC53E0008A76F /* OnboardingThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThirdView.swift; sourceTree = "<group>"; };
+		BB67FC072B87152F00EFA5AC /* ProgramDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramDetailView.swift; sourceTree = "<group>"; };
 		BB74BB072B713DB200BA2A61 /* SearchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardView.swift; sourceTree = "<group>"; };
 		BBA6D6262B663CFC00AF8600 /* ProgramCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCardView.swift; sourceTree = "<group>"; };
 		BBA6D6282B66473300AF8600 /* ProgramData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramData.swift; sourceTree = "<group>"; };
@@ -75,8 +91,18 @@
 			isa = PBXGroup;
 			children = (
 				BB02084A2B73440300B81CFE /* DividedTextView.swift */,
+				BB116B772B8C265900EBBBB8 /* DescriptionTextView.swift */,
+				BB116B7C2B8C4B6100EBBBB8 /* ColoredText.swift */,
 			);
 			path = TextViews;
+			sourceTree = "<group>";
+		};
+		BB116B792B8C2C1500EBBBB8 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				BB116B7A2B8C2C2700EBBBB8 /* WebView.swift */,
+			);
+			path = WebView;
 			sourceTree = "<group>";
 		};
 		BB63C1BF2B64EFF300EA3ABB /* ProgramViews */ = {
@@ -86,6 +112,17 @@
 				BBA6D6262B663CFC00AF8600 /* ProgramCardView.swift */,
 			);
 			path = ProgramViews;
+			sourceTree = "<group>";
+		};
+		BB67FC062B8714F800EFA5AC /* ProgramDetailViews */ = {
+			isa = PBXGroup;
+			children = (
+				BB67FC072B87152F00EFA5AC /* ProgramDetailView.swift */,
+				BB116B752B89C1FC00EBBBB8 /* ProgramDescriptionView.swift */,
+				BB116B732B89BFF100EBBBB8 /* RoundedCorner.swift */,
+				BB0398312B95C2B1008C0322 /* LinkToPlaceView.swift */,
+			);
+			path = ProgramDetailViews;
 			sourceTree = "<group>";
 		};
 		BBA6D62C2B6678AE00AF8600 /* Extensions */ = {
@@ -112,6 +149,7 @@
 			children = (
 				BBBFD6512B63F7180052BD38 /* InvertedButton.swift */,
 				BBBFD64F2B63F2D80052BD38 /* ColoredButton.swift */,
+				BB03982F2B95AD14008C0322 /* MapButton.swift */,
 			);
 			path = ButtonViews;
 			sourceTree = "<group>";
@@ -123,6 +161,8 @@
 				BBCA719F2B5A80F1001CC023 /* OnboardingViews */,
 				BB63C1BF2B64EFF300EA3ABB /* ProgramViews */,
 				BBBE87F12B71117100189E08 /* SearchViews */,
+				BB67FC062B8714F800EFA5AC /* ProgramDetailViews */,
+				BB116B792B8C2C1500EBBBB8 /* WebView */,
 				BBBFD64E2B63F2B20052BD38 /* ButtonViews */,
 				BB0208492B7343F100B81CFE /* TextViews */,
 			);
@@ -260,23 +300,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB0398302B95AD14008C0322 /* MapButton.swift in Sources */,
 				BB67049B2B5FB4CB0008A76F /* OnboardingTabView.swift in Sources */,
+				BB116B7D2B8C4B6100EBBBB8 /* ColoredText.swift in Sources */,
 				BBBFD6522B63F7180052BD38 /* InvertedButton.swift in Sources */,
 				BBCECA632B56815D00D664A1 /* ContentView.swift in Sources */,
 				BB63C1C12B64F07F00EA3ABB /* ProgramView.swift in Sources */,
 				BBBFD6502B63F2D80052BD38 /* ColoredButton.swift in Sources */,
 				BBBFD64C2B63E2670052BD38 /* Regions.swift in Sources */,
 				BB4475292B7B70A5008736FB /* FilterView.swift in Sources */,
+				BB116B742B89BFF100EBBBB8 /* RoundedCorner.swift in Sources */,
 				BBBFD6562B640BF20052BD38 /* ThemeColors.swift in Sources */,
 				BBCA71A12B5A811E001CC023 /* OnboardingFirstView.swift in Sources */,
 				BB3B97292B6BEC9B0059A697 /* Date+Extension.swift in Sources */,
 				BBBE87F32B71118500189E08 /* SearchView.swift in Sources */,
 				BBCECA612B56815D00D664A1 /* SeoulCultureMoaApp.swift in Sources */,
+				BB67FC082B87152F00EFA5AC /* ProgramDetailView.swift in Sources */,
+				BB116B762B89C1FC00EBBBB8 /* ProgramDescriptionView.swift in Sources */,
+				BB116B7B2B8C2C2700EBBBB8 /* WebView.swift in Sources */,
 				BBA6D6272B663CFC00AF8600 /* ProgramCardView.swift in Sources */,
 				BB6704992B5FB4AB0008A76F /* OnboardingSecondView.swift in Sources */,
+				BB116B782B8C265900EBBBB8 /* DescriptionTextView.swift in Sources */,
 				BB02084B2B73440300B81CFE /* DividedTextView.swift in Sources */,
 				BB67049D2B5FC53E0008A76F /* OnboardingThirdView.swift in Sources */,
 				BB44752B2B7B7251008736FB /* Categories.swift in Sources */,
+				BB0398322B95C2B1008C0322 /* LinkToPlaceView.swift in Sources */,
 				BBE6A71A2B691AEB00067FC0 /* NetworkManager.swift in Sources */,
 				BB74BB082B713DB200BA2A61 /* SearchCardView.swift in Sources */,
 				BBA6D62E2B6679B300AF8600 /* View+Extension.swift in Sources */,
@@ -339,7 +387,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -396,7 +444,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

@@ -13,6 +13,10 @@ struct ContentView: View {
     @AppStorage("ThemeColor") var themeColor: ThemeColors = .pink
     @AppStorage("SelectedRegion") var selectedRegion: Regions = .allRegion
 
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor.systemBackground
+    }
+
     // MARK: - Body
     var body: some View {
         TabView {
@@ -21,12 +25,12 @@ struct ContentView: View {
                     Label("프로그램", systemImage: "house")
                 }
         }
-        .tint(Color(themeColor.rawValue))
         .fullScreenCover(isPresented: $isFirstLaunching) {
             OnboardingTabView(isFirstLaunching: $isFirstLaunching,
                               themeColor: $themeColor,
                               selectedRegion: $selectedRegion)
         }
+        .tint(Color(themeColor.rawValue))
     }
 }
 

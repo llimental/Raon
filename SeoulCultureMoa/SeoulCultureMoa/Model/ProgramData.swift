@@ -55,8 +55,8 @@ struct ProgramContent: Decodable {
         case imageURL = "MAIN_IMG"
         case startDate = "STRTDATE"
         case endDate = "END_DATE"
-        case longitude = "LOT"
-        case latitude = "LAT"
+        case longitude = "LAT"
+        case latitude = "LOT"
         case isFree = "IS_FREE"
     }
 }

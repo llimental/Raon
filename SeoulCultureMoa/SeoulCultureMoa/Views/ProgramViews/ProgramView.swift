@@ -12,7 +12,7 @@ struct ProgramView: View {
     @StateObject private var networkManager = NetworkManager()
 
     // MARK: - @State Properties
-    @State private var selectedTab = 0
+    @State private var selectedTab = String()
 
     // MARK: - @Binding Properties
     @Binding var themeColor: ThemeColors
@@ -23,10 +23,17 @@ struct ProgramView: View {
             ZStack(alignment: .bottom) {
                 TabView(selection: $selectedTab) {
                     ForEach(networkManager.contents, id: \.title) { content in
-                        ProgramCardView(
-                            programTitle: content.title,
-                            programImageURL: content.imageURL
-                        )
+                        NavigationLink {
+                            ProgramDetailView(
+                                themeColor: $themeColor,
+                                content: content)
+                        } label: {
+                            ProgramCardView(
+                                programTitle: content.title,
+                                programImageURL: content.imageURL
+                            )
+                        }
+                        .tag(content.title)
                         .padding()
                     }
                 }
@@ -37,7 +44,7 @@ struct ProgramView: View {
                     ToolbarItemGroup(placement: .topBarTrailing) {
                         Button("", systemImage: "arrow.clockwise") {
                             networkManager.requestProgramContents()
-                            selectedTab = 0
+                            selectedTab = String()
                         }
 
                         NavigationLink {
@@ -47,13 +54,14 @@ struct ProgramView: View {
                         }
 
                         NavigationLink {
-                            SearchView(contents: $networkManager.contents)
+                            SearchView(
+                                contents: $networkManager.contents,
+                                themeColor: $themeColor)
                         } label: {
                             Image(systemName: "magnifyingglass")
                         }
                     }
                 }
-                .tint(Color(themeColor.rawValue))
                 .padding()
 
                 if !networkManager.currentNetworkStatus {
@@ -68,6 +76,7 @@ struct ProgramView: View {
                 }
             }
         }
+        .tint(Color(themeColor.rawValue))
     }
 }
 
