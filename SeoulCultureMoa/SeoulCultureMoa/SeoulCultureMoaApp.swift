@@ -11,7 +11,7 @@ import SwiftUI
 struct SeoulCultureMoaApp: App {
     // MARK: - @AppStorage Properties
     @AppStorage("isFirstLaunching") private var isFirstLaunching: Bool = true
-    @AppStorage("ThemeColor") var themeColor: ThemeColors = .blue
+    @AppStorage("ThemeColor") var themeColor: ThemeColors = .pink
     @AppStorage("SelectedRegion") var selectedRegion: Regions = .allRegion
 
     // MARK: - Initializer
