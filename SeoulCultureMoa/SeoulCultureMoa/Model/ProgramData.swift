@@ -33,7 +33,6 @@ struct ProgramContent: Decodable {
     let organization: String
     let target: String
     let fees: String
-    let player: String
     let url: String
     let imageURL: String
     let startDate: String
@@ -50,7 +49,6 @@ struct ProgramContent: Decodable {
         case organization = "ORG_NAME"
         case target = "USE_TRGT"
         case fees = "USE_FEE"
-        case player = "PLAYER"
         case url = "ORG_LINK"
         case imageURL = "MAIN_IMG"
         case startDate = "STRTDATE"
