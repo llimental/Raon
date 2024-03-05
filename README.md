@@ -23,7 +23,8 @@
     - **[Step 2]** `24. 01. 27.` ~ `24. 02. 02.`
     - **[Step 3]** `24. 02. 03.` ~ `24. 02. 16.`
     - **[Step 4]** `24. 02. 22.` ~ `24. 03. 04.`
-    - **[Step 5]** `24. 03. 05.` ~ 
+    - **[Step 5]** `24. 03. 05.` ~ `24. 03. 05.`
+    - **[Step 6]** `24. 03.` ~
 
 <br>
 
@@ -136,6 +137,36 @@
     - 즐겨찾기 버튼 체크 여부에 따른 fill 상태 변경
     - 알림 받기 버튼 체크 여부에 따른 fill 상태 변경
     - 공유시트 기능 구현
+
+### Step 5: Project Maintenance
+- **DTO**
+    - 사용하지 않는 항목 제거
+
+- **ContentView**
+    - fullScreenCover 대신 isFirstLaunching 기준으로 분기 처리
+    - @AppStorage 등의 프로퍼티 위치 고려
+
+- **ProgramView**
+    - 설정, 검색 위치 고려
+    - networkManager 위치 고려
+
+- **ProgramCardView**
+    - shadow, opacity 값 조정
+    - 사용하지 않는 프로퍼티 제거
+
+- **SearchView**
+    - List 보일러 플레이트 코드 제거하여 로직 간결화
+
+- **SearchCardView**
+    - 이미지와 텍스트 위치 조정
+    - content를 전달해서 내부에서 동작하는 것 고려
+        - 내부 동작에 대한 캡슐화 목적 + 메모리 Allocations상 10MiB 차이 나는 것 확인
+
+- **ProgramDetailView**
+    - 홈페이지 이동 시 ToolBar 제공
+        - .toolbar 관련 코드가 중복되어 WebView 내에 CustomWebView를 구현
+        - 보일러 플레이트 코드 제거 및 사용하는 View 코드 간결화
+        - 필요한 WebView는 외부에서 주입
 
 <br>
 
