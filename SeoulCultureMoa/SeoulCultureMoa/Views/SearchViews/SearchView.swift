@@ -23,27 +23,15 @@ struct SearchView: View {
         NavigationStack {
             ScrollViewReader { proxy in
                 List {
-                    if searchText.isEmpty {
-                        EmptyView()
-                            .id("firstView")
-                        ForEach(getFilteredContents(), id: \.title) { content in
-                            NavigationLink {
-                                ProgramDetailView(
-                                    themeColor: $themeColor,
-                                    content: content)
-                            } label: {
-                                SearchCardView(content: content)
-                            }
-                        }
-                    } else {
-                        ForEach(contents.filter { $0.title.localizedStandardContains(searchText) }, id: \.title) { content in
-                            NavigationLink {
-                                ProgramDetailView(
-                                    themeColor: $themeColor,
-                                    content: content)
-                            } label: {
-                                SearchCardView(content: content)
-                            }
+                    EmptyView()
+                        .id("firstView")
+                    ForEach(getFilteredContents(), id: \.title) { content in
+                        NavigationLink {
+                            ProgramDetailView(
+                                themeColor: $themeColor,
+                                content: content)
+                        } label: {
+                            SearchCardView(content: content)
                         }
                     }
                 }
@@ -80,16 +68,20 @@ struct SearchView: View {
 
     // MARK: - Private Functions
     private func getFilteredContents() -> [ProgramContent] {
-        contents.filter {
-            if categoryFilter != .allCategory && regionFilter != .allRegion {
-                return $0.category == categoryFilter.rawValue && $0.region == regionFilter.rawValue
-            } else if categoryFilter != .allCategory {
-                return $0.category == categoryFilter.rawValue
-            } else if regionFilter != .allRegion {
-                return $0.region == regionFilter.rawValue
-            } else {
-                return true
+        if searchText.isEmpty {
+            contents.filter {
+                if categoryFilter != .allCategory && regionFilter != .allRegion {
+                    return $0.category == categoryFilter.rawValue && $0.region == regionFilter.rawValue
+                } else if categoryFilter != .allCategory {
+                    return $0.category == categoryFilter.rawValue
+                } else if regionFilter != .allRegion {
+                    return $0.region == regionFilter.rawValue
+                } else {
+                    return true
+                }
             }
+        } else {
+            contents.filter { $0.title.localizedStandardContains(searchText) }
         }
     }
 }
