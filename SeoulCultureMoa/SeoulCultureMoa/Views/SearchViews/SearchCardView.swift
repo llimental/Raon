@@ -35,7 +35,7 @@ struct SearchCardView: View {
             VStack(alignment: .leading) {
                 Text(title)
                     .fontWeight(.bold)
-                    .frame(width: 200, alignment: .leading)
+                    .frame(maxWidth: 150, alignment: .leading)
 
                 Spacer()
 
