@@ -19,10 +19,11 @@
 ## 프로젝트 소개
 - 🏃🏻🏃🏻‍♂️💨 **프로젝트 구상:** `24. 01. 08.` ~ `24. 01. 15.`
 - 🏃🏻🏃🏻‍♂️💨 **프로젝트 기간:** `24. 01. 16.` ~  **(진행중)**
-    - [Step 1] `24. 01. 19.` ~ `24. 01. 26.`
-    - [Step 2] `24. 01. 27.` ~ `24. 02. 02.`
-    - [Step 3] `24. 02. 03.` ~ `24. 02. 16.`
-    - [Step 4] `24. 02. 22.` ~
+    - **[Step 1]** `24. 01. 19.` ~ `24. 01. 26.`
+    - **[Step 2]** `24. 01. 27.` ~ `24. 02. 02.`
+    - **[Step 3]** `24. 02. 03.` ~ `24. 02. 16.`
+    - **[Step 4]** `24. 02. 22.` ~ `24. 03. 04.`
+    - **[Step 5]** `24. 03. 05.` ~ 
 
 <br>
 
@@ -47,12 +48,16 @@
         - `@AppStorage`
         - `@State`
         - `@Binding`
-        - `@StateObject` with ObservableObject
+        - `@StateObject`
+        - `@ObservableObject`
         - `@Published`
         - `@Environment`
+    - `ShareLink`
     - `AnyCancellable`
     - `TabView`
+    - `WKWebView(UIViewRepresentable)`
     - `AsyncImage`
+    - `GeometryReader`
     - `Picker`
     - `Navigation`
         - `NavigationStack`
@@ -64,6 +69,9 @@
     - `searchable`
     - `onTapGesture`
     - `onChange`
+    - `External App API Use`
+        - `Naver Map`
+        - `Kakao Map`
 - **프로젝트 후기 :**
     - .
 
@@ -117,6 +125,18 @@
     - 필터 초기화, 닫기 버튼 기능 제공
     - `@State`, `@Binding`을 통한 필터 선택값 반영
 
+### Step 4: Program Detail View 구현
+- **Program Detail View 구현**
+    - 포스터를 배경으로 자세한 정보를 스크롤하며 볼 수 있도록 구현
+    - 프로그램명 우측에 즐겨찾기와 알림 버튼 추가
+    - 관련 링크로 이동하는 버튼 추가
+    - 프로그램 진행 장소를 지도로 제공
+
+- **부가 기능 구현**
+    - 즐겨찾기 버튼 체크 여부에 따른 fill 상태 변경
+    - 알림 받기 버튼 체크 여부에 따른 fill 상태 변경
+    - 공유시트 기능 구현
+
 <br>
 
 ## 트러블 슈팅
@@ -140,12 +160,12 @@
     - 앱의 메인 색상이 무엇인지 정보를 담고 있는 데이터가 필요
     - 설정에서 메인 색상을 변경할 수 있게 접근할 수 있어야 함. 나머지 View는 단순 데이터 읽기
     - App 내에서 글로벌하게 사용되고, 자주 바뀌지 않는 작은 설정 값이기에 `AppStorage`를 사용하여 저장하고 `binding`을 통해 활용
-<br>
+    <br>
     2) **Initial**
     - App을 설치한 이후 처음 실행한 것인지 정보를 담고 있는 데이터가 필요
     - ContentView에서는 OnboardingTabView를 보여주는 여부에 사용하기 위해 단순히 값을 읽는 것만 수행, OnboardingPage의 마지막인 ThirdView에서는 해당 값을 변경하기 위한 접근이 필요
     - 이 데이터는 App 최초 실행 이후에는 변경될 일이 없어 `State`나 `Observable`로 추적할 필요가 없고, 작은 Bool 데이터이기 때문에 `AppStorage`를 사용하고, `binding`을 통해 활용
-<br>
+    <br>
     3) **Region**
     - 사용자가 선택한 지역에 대한 정보를 담고 있는 데이터가 필요
     - OnboardingSecondView와 설정에서 값을 바꾸기 위한 접근이 필요, 메인 로직에서는 해당 값을 단순히 참고하여 작업 수행
@@ -215,11 +235,126 @@ Color는 각 case가 asset의 이름을 rawValue로 갖고 있고, Region도 각
 
 ### 9. List에서 맨 위로 이동하기
 **고민한 점 :**
-- `SearchView`에서 스크롤을 내린 상태로 필터를 적용하면 그 위치에서 항목이 변경되기 때문에 맨 위로 다시 올려야 하는 불편함이 있어 이를 해결하고자 함
+- `SearchView`에서 스크롤을 내린 상태로 필터를 적용하면 그 위치에서 항목이 변경되기 때문에 맨 위로 다시 올려야 하는 불편함이 있어 이를 해결하고자 했다.
 
 **과정 및 해결 :**
 - `TabView`때처럼 첫 항목을 지정할 수 없기에 `ScrollViewReader`로 `View`를 `embed`하고, `proxy`를 사용하여 `scrollTo` 메서드를 사용하였다.
 - 다만 변경되는 항목 속에서 어떻게 맨 위의 값을 얻느냐가 관건이었는데, 필터 결과에 상관없이 고정적으로 상단에 존재하는 `EmptyView`를 만들고 해당 `View`에 `id`를 부여하는 방식으로 해결할 수 있었다.
+
+### 10. WebView 사용하기
+**고민한 점 :**
+- UIKit에서는 WebView 혹은 SFSafariViewController를 그냥 사용하면 되었지만 SwiftUI에서 웹뷰 기능을 네이티브로 제공하지 않아 UIKit의 방식을 써야 했다.
+
+**과정 및 해결 :**
+- UIKit의 기능을 사용할 수 있게 해주는 UIViewRepresentable 프로토콜을 사용하여 해결할 수 있었다.
+- makeUIView, updateUIView 두 개의 필수 메서드를 구현해야 하는데, 전자는 View를 만들고 초기 설정을 진행하는 메서드이고 후자는 새로운 정보로 View를 업데이트 해주는 메서드이다.
+- makeUIView에서 어떤 View 타입을 반환할 것인지 명시해주고, updateUIView에서의 파라미터 타입도 이에 맞춰서 변경해줘야 한다.
+- makeUIView에서 빈 WKWebView를 반환하고, updateUIView에서 주어진 url을 Request로 만들어 WKWebView에서 불러오도록 했다.
+
+```swift=
+import SwiftUI
+import WebKit
+
+struct WebView: UIViewRepresentable {
+    // MARK: - Public Properties
+    let urlToConnect: String
+
+    // MARK: - Private Properties
+    private var webView: WKWebView
+
+    // MARK: - Initializer
+    init(urlToConnect: String) {
+        self.urlToConnect = urlToConnect
+        self.webView = WKWebView()
+    }
+
+    // MARK: - UIViewRepresentable
+    func makeUIView(context: Context) -> WKWebView {
+        return webView
+    }
+
+    func updateUIView(_ webView: WKWebView, context: Context) {
+        guard let url = URL(string: urlToConnect) else { return }
+
+        let urlRequest = URLRequest(url: url)
+
+        webView.load(urlRequest)
+    }
+
+    // MARK: - Public Functions
+    func goBack() {
+        webView.goBack()
+    }
+
+    func goForward() {
+        webView.goForward()
+    }
+
+    func reload() {
+        webView.reload()
+    }
+}
+```
+
+### 11. TabBar 배경색 변경하기
+**고민한 점 :**
+- 상세 페이지에 들어갔을 때 TabBar의 색상이 페이지 배경 색상과 일치했으면 좋겠으나 색상 변경 코드가 적용되지 않았다.
+
+**과정 및 해결 :**
+- init()에서 UITabBar.appearance().backgroundColor 속성을 통해 변경할 수 있었다.
+
+```swift=
+init() {
+    UITabBar.appearance().backgroundColor = UIColor.systemBackground
+}
+```
+
+### 12. 위치 정보를 지도로 보여주기
+**고민한 점 :**
+- 프로그램이 진행되는 장소를 지도를 통해 보여주고 싶으나 MapKit을 사용하면 앱의 UI가 깨지는 현상이 발생했다(내비게이션 바, 탭바 색상 변경 및 내비게이션 타이틀 색 초기화).
+
+**과정 및 해결 :**
+- ProgramDetailView에서 DescriptionView에 Map을 담아보는 방법, MapView를 따로 구현하고 인스턴스로 불러와 사용하는 방법, 내비게이션 바와 탭바 색상을 강제하는 방법 등 다방면으로 시도하였으나 원하는대로 이뤄지지 않았다.
+- 애플 기본 지도 앱으로 연결시키고자 했으나 기본 지도 앱에서 요구하는 정보와 데이터에서 제공하는 정보가 맞지 않아 위치 정보를 표시할 수 없는 데이터가 있었다.
+- 사람들이 보통 많이 사용하는 외부 지도 앱(네이버, 카카오)을 사용하여 위치 정보를 제공하고자 했다.
+- 그러나 앱 내에서 조작을 하기보다 실제 앱에서 경로를 보여주는 것이 더 효율적이라 판단하여 각 앱의 API를 사용하여 프로그램이 진행되는 장소의 위, 경도를 전달하고 현재 위치에서 가는 경로를 대중교통으로 보여주었다.
+- 앱이 설치되어 있으면 실행하여 경로를 보여주고, 없다면 앱스토어에 연결했지만 외부 앱을 사용하고 싶지 않은 이용자도 있을 것이기에 WebView를 통해 포털사이트 쿼리에 해당 장소명을 집어넣어 앱 내에서도 장소 정보를 확인할 수 있게 했다.
+
+```swift=
+struct MapButton: View {
+    // MARK: - Public Properties
+    var mapType: MapType
+    var latitude: String
+    var longitude: String
+
+    // MARK: - Body
+    var body: some View {
+        switch mapType {
+            case .naver:
+                Button(action: {
+                    LinkToNaverMap(
+                        latitude: Double(latitude) ?? 0,
+                        longitude: Double(longitude) ?? 0)
+                }, label: {
+                    Image("Naver_map_Icon")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                })
+
+            case .kakao:
+                Button(action: {
+                    LinkToKakaoMap(
+                        latitude: Double(latitude) ?? 0,
+                        longitude: Double(longitude) ?? 0)
+                }, label: {
+                    Image("Kakao_map_Icon")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                })
+        }
+    }
+}
+```
 
 <br>
 
