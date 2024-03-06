@@ -39,6 +39,7 @@
 		BBCECA652B56815E00D664A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBCECA642B56815E00D664A1 /* Assets.xcassets */; };
 		BBCECA682B56815E00D664A1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBCECA672B56815E00D664A1 /* Preview Assets.xcassets */; };
 		BBE6A71A2B691AEB00067FC0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6A7192B691AEB00067FC0 /* NetworkManager.swift */; };
+		BBF9E9122B9869DB00496CE5 /* CachedAsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF9E9112B9869DB00496CE5 /* CachedAsyncImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		BBCECA672B56815E00D664A1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BBE6A7182B67DFC300067FC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BBE6A7192B691AEB00067FC0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		BBF9E9112B9869DB00496CE5 /* CachedAsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				BBBE87F12B71117100189E08 /* SearchViews */,
 				BB67FC062B8714F800EFA5AC /* ProgramDetailViews */,
 				BB116B792B8C2C1500EBBBB8 /* WebView */,
+				BBF9E9102B98699B00496CE5 /* CachedAsyncImageView */,
 				BBBFD64E2B63F2B20052BD38 /* ButtonViews */,
 				BB0208492B7343F100B81CFE /* TextViews */,
 			);
@@ -231,6 +234,14 @@
 				BBCECA672B56815E00D664A1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BBF9E9102B98699B00496CE5 /* CachedAsyncImageView */ = {
+			isa = PBXGroup;
+			children = (
+				BBF9E9112B9869DB00496CE5 /* CachedAsyncImageView.swift */,
+			);
+			path = CachedAsyncImageView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +340,7 @@
 				BB67049D2B5FC53E0008A76F /* OnboardingThirdView.swift in Sources */,
 				BB44752B2B7B7251008736FB /* Categories.swift in Sources */,
 				BB0398322B95C2B1008C0322 /* LinkToPlaceView.swift in Sources */,
+				BBF9E9122B9869DB00496CE5 /* CachedAsyncImageView.swift in Sources */,
 				BBE6A71A2B691AEB00067FC0 /* NetworkManager.swift in Sources */,
 				BB74BB082B713DB200BA2A61 /* SearchCardView.swift in Sources */,
 				BBA6D62E2B6679B300AF8600 /* View+Extension.swift in Sources */,
