@@ -22,13 +22,7 @@ struct ProgramDetailView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .bottom) {
-                AsyncImage(url: URL(string: content.imageURL)) { phase in
-                    if let image = phase.image {
-                        image.resizable()
-                    } else if phase.error != nil {
-                        Color.gray
-                    }
-                }
+                CachedAsyncImageView(url: content.imageURL)
                 .frame(width: geometry.size.width, height: geometry.size.height)
                 .scaledToFit()
                 .blur(radius: 5)

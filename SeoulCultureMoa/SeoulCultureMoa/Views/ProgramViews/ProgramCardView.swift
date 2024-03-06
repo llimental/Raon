@@ -13,15 +13,7 @@ struct ProgramCardView: View {
 
     // MARK: - Body
     var body: some View {
-        AsyncImage(url: URL(string: programImageURL)) { phase in
-            if let image = phase.image {
-                image.resizable()
-            } else if phase.error != nil {
-                Color.gray
-            } else {
-                ProgressView()
-            }
-        }
+        CachedAsyncImageView(url: programImageURL)
         .scaledToFit()
         .clipShape(.rect(cornerRadius: 15))
         .background(

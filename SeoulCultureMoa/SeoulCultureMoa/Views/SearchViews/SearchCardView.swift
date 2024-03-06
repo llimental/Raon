@@ -14,15 +14,7 @@ struct SearchCardView: View {
     // MARK: - Body
     var body: some View {
         HStack(alignment: .center, spacing: 20) {
-            AsyncImage(url: URL(string: content.imageURL)) { phase in
-                if let image = phase.image {
-                    image.resizable()
-                } else if phase.error != nil {
-                    Color.gray
-                } else {
-                    ProgressView()
-                }
-            }
+            CachedAsyncImageView(url: content.imageURL)
             .frame(width: 150, height: 200)
             .scaledToFit()
             .clipShape(.rect(cornerRadius: 15))
