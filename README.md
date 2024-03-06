@@ -24,7 +24,7 @@
     - **[Step 3]** `24. 02. 03.` ~ `24. 02. 16.`
     - **[Step 4]** `24. 02. 22.` ~ `24. 03. 04.`
     - **[Step 5]** `24. 03. 05.` ~ `24. 03. 05.`
-    - **[Step 6]** `24. 03.` ~
+    - **[Step 6]** `24. 03. 06.` ~ `24. 03. 06.`
 
 <br>
 
@@ -45,6 +45,10 @@
     - `Model-View Architecture`
     - `Observer Design Pattern(Swift Combine)`
     - `Combine`
+        - `Concurrency`
+        - `AnyCancellable`
+        - `dataTaskPublisher`
+        - `sink`
     - `PropertyWrapper`
         - `@AppStorage`
         - `@State`
@@ -53,11 +57,14 @@
         - `@ObservableObject`
         - `@Published`
         - `@Environment`
+    - `GCD`
+        - `DispatchQueue`
     - `ShareLink`
-    - `AnyCancellable`
     - `TabView`
     - `WKWebView(UIViewRepresentable)`
     - `AsyncImage`
+    - `NSCache`
+        - `NSCache<NSString, UIImage>`
     - `GeometryReader`
     - `Picker`
     - `Navigation`
@@ -168,6 +175,11 @@
         - 보일러 플레이트 코드 제거 및 사용하는 View 코드 간결화
         - 필요한 WebView는 외부에서 주입
 
+### Step 6: Image Caching
+- **이미지 캐싱**
+    - CacheManager 구현
+    - CacheManager를 활용하여 이미지 표현
+
 <br>
 
 ## 트러블 슈팅
@@ -192,11 +204,13 @@
     - 설정에서 메인 색상을 변경할 수 있게 접근할 수 있어야 함. 나머지 View는 단순 데이터 읽기
     - App 내에서 글로벌하게 사용되고, 자주 바뀌지 않는 작은 설정 값이기에 `AppStorage`를 사용하여 저장하고 `binding`을 통해 활용
     <br>
+    
     2) **Initial**
     - App을 설치한 이후 처음 실행한 것인지 정보를 담고 있는 데이터가 필요
     - ContentView에서는 OnboardingTabView를 보여주는 여부에 사용하기 위해 단순히 값을 읽는 것만 수행, OnboardingPage의 마지막인 ThirdView에서는 해당 값을 변경하기 위한 접근이 필요
     - 이 데이터는 App 최초 실행 이후에는 변경될 일이 없어 `State`나 `Observable`로 추적할 필요가 없고, 작은 Bool 데이터이기 때문에 `AppStorage`를 사용하고, `binding`을 통해 활용
     <br>
+    
     3) **Region**
     - 사용자가 선택한 지역에 대한 정보를 담고 있는 데이터가 필요
     - OnboardingSecondView와 설정에서 값을 바꾸기 위한 접근이 필요, 메인 로직에서는 해당 값을 단순히 참고하여 작업 수행
@@ -282,7 +296,7 @@ Color는 각 case가 asset의 이름을 rawValue로 갖고 있고, Region도 각
 - makeUIView에서 어떤 View 타입을 반환할 것인지 명시해주고, updateUIView에서의 파라미터 타입도 이에 맞춰서 변경해줘야 한다.
 - makeUIView에서 빈 WKWebView를 반환하고, updateUIView에서 주어진 url을 Request로 만들어 WKWebView에서 불러오도록 했다.
 
-```swift=
+```swift
 import SwiftUI
 import WebKit
 
@@ -334,7 +348,7 @@ struct WebView: UIViewRepresentable {
 **과정 및 해결 :**
 - init()에서 UITabBar.appearance().backgroundColor 속성을 통해 변경할 수 있었다.
 
-```swift=
+```swift
 init() {
     UITabBar.appearance().backgroundColor = UIColor.systemBackground
 }
@@ -351,7 +365,7 @@ init() {
 - 그러나 앱 내에서 조작을 하기보다 실제 앱에서 경로를 보여주는 것이 더 효율적이라 판단하여 각 앱의 API를 사용하여 프로그램이 진행되는 장소의 위, 경도를 전달하고 현재 위치에서 가는 경로를 대중교통으로 보여주었다.
 - 앱이 설치되어 있으면 실행하여 경로를 보여주고, 없다면 앱스토어에 연결했지만 외부 앱을 사용하고 싶지 않은 이용자도 있을 것이기에 WebView를 통해 포털사이트 쿼리에 해당 장소명을 집어넣어 앱 내에서도 장소 정보를 확인할 수 있게 했다.
 
-```swift=
+```swift
 struct MapButton: View {
     // MARK: - Public Properties
     var mapType: MapType
@@ -386,6 +400,61 @@ struct MapButton: View {
     }
 }
 ```
+
+### 13. 이미지 캐싱
+**고민한 점 :**
+- 매번 AsyncImage로 불러오면 데이터 낭비가 일어나고, List 또는 TabView에서 lazy loading을 하면서 종종 오류가 발생했다. Caching을 통해 저장된 이미지가 없다면 불러오고, 있다면 그것을 사용하는 방법을 찾고자 했다.
+
+**과정 및 해결 :**
+- 기존에 사용한 AsyncImage를 최대한 활용해보려 했으나 Image 타입을 UIImage로는 변환할 수 없어(반대는 가능하지만) 새롭게 이미지를 표현할 필요가 있었다.
+- 우선 CacheManager를 싱글톤 패턴으로 구현하고, 그 안에 있는 private cache를 활용하기로 했다.
+- CacheManager의 fetchImage(urlString: completion:)메서드에 content의 imageURL을 보내 호출하면, cache에 해당 string을 NSString으로 변환한 값에 이미지가 있는지 확인을 하고, 있다면 이미지를 completion으로 반환, 없다면 URLSession을 통해 받은 후 캐시에 저장하고 반환하는 방식을 사용
+- 이러한 일련의 비동기 방식을 사용하기 위해 @escaping closure를 활용
+- 이후 커스텀한 View인 CachedAsyncImageView에서 CacheManager의 fetchImage를 활용, 이미지를 보여주는 방식으로 해결하였다.
+
+```swift
+final class CacheManager {
+    // MARK: - Singleton Pattern
+    static let shared = CacheManager()
+
+    // MARK: - Initializer
+    private init() { }
+
+    // MARK: - Private Properties
+    private var cache = NSCache<NSString, UIImage>()
+
+    // MARK: - Public Functions
+    func fetchImage(urlString: String, completion: @escaping (UIImage?) -> Void) {
+        if let cachedImage = cache.object(forKey: urlString as NSString) {
+            completion(cachedImage)
+        } else {
+            guard let url = URL(string: urlString) else {
+                completion(nil)
+
+                return
+            }
+
+            URLSession.shared.dataTask(with: url) { data, _, _ in
+                guard let data = data, let image = UIImage(data: data) else {
+                    completion(nil)
+
+                    return
+                }
+
+                self.cache.setObject(image, forKey: urlString as NSString)
+
+                completion(image)
+            }.resume()
+        }
+    }
+}
+```
+
+|<img src="https://github.com/llimental/What-is-In-Seoul/assets/45708630/819ac640-9b16-4afb-be44-1013770606e6" width=200 height=300>|<img src="https://github.com/llimental/What-is-In-Seoul/assets/45708630/20522311-973e-469e-9404-d2ed79a76a8f" width=200 height=300>|
+|:---:|:---:|
+|캐싱 전|캐싱 후|
+
+- 그래프와 같이 캐싱 전에는 매 페이징(스크롤) 때마다 새롭게 이미지를 불러오기 때문에 메모리 사용량이 들쭉날쭉하지만, 캐싱 후에는 메모리 자체 사용량은 높으나 페이징(스크롤)시에 이미 불러온 이미지를 사용하기 때문에 이후 메모리 사용량은 새롭게 불러오지 않는 이상 고정됨을 볼 수 있다.
 
 <br>
 
