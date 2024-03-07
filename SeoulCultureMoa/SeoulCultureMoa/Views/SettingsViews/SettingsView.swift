@@ -11,7 +11,12 @@ struct SettingsView: View {
     var body: some View {
         List {
             Section {
-                Text("저작권")
+                NavigationLink {
+                    CopyRightView()
+                } label: {
+                    Text("저작권")
+                }
+
                 Text("문의하기")
             } header: {
                 Text("정보")
