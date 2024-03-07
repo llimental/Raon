@@ -25,6 +25,7 @@
 		BB67049D2B5FC53E0008A76F /* OnboardingThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67049C2B5FC53E0008A76F /* OnboardingThirdView.swift */; };
 		BB67FC082B87152F00EFA5AC /* ProgramDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67FC072B87152F00EFA5AC /* ProgramDetailView.swift */; };
 		BB74BB082B713DB200BA2A61 /* SearchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB74BB072B713DB200BA2A61 /* SearchCardView.swift */; };
+		BBA41E072B9A15BC00884BD9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA41E062B9A15BC00884BD9 /* SettingsView.swift */; };
 		BBA6D6272B663CFC00AF8600 /* ProgramCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA6D6262B663CFC00AF8600 /* ProgramCardView.swift */; };
 		BBA6D6292B66473300AF8600 /* ProgramData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA6D6282B66473300AF8600 /* ProgramData.swift */; };
 		BBA6D62E2B6679B300AF8600 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA6D62D2B6679B300AF8600 /* View+Extension.swift */; };
@@ -61,6 +62,7 @@
 		BB67049C2B5FC53E0008A76F /* OnboardingThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThirdView.swift; sourceTree = "<group>"; };
 		BB67FC072B87152F00EFA5AC /* ProgramDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramDetailView.swift; sourceTree = "<group>"; };
 		BB74BB072B713DB200BA2A61 /* SearchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardView.swift; sourceTree = "<group>"; };
+		BBA41E062B9A15BC00884BD9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BBA6D6262B663CFC00AF8600 /* ProgramCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCardView.swift; sourceTree = "<group>"; };
 		BBA6D6282B66473300AF8600 /* ProgramData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramData.swift; sourceTree = "<group>"; };
 		BBA6D62D2B6679B300AF8600 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
@@ -129,6 +131,14 @@
 			path = ProgramDetailViews;
 			sourceTree = "<group>";
 		};
+		BBA41E052B9A159C00884BD9 /* SettingsViews */ = {
+			isa = PBXGroup;
+			children = (
+				BBA41E062B9A15BC00884BD9 /* SettingsView.swift */,
+			);
+			path = SettingsViews;
+			sourceTree = "<group>";
+		};
 		BBA6D62C2B6678AE00AF8600 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +176,7 @@
 				BB63C1BF2B64EFF300EA3ABB /* ProgramViews */,
 				BBBE87F12B71117100189E08 /* SearchViews */,
 				BB67FC062B8714F800EFA5AC /* ProgramDetailViews */,
+				BBA41E052B9A159C00884BD9 /* SettingsViews */,
 				BB116B792B8C2C1500EBBBB8 /* WebView */,
 				BBF9E9102B98699B00496CE5 /* CachedAsyncImageView */,
 				BBBFD64E2B63F2B20052BD38 /* ButtonViews */,
@@ -339,6 +350,7 @@
 				BB02084B2B73440300B81CFE /* DividedTextView.swift in Sources */,
 				BB67049D2B5FC53E0008A76F /* OnboardingThirdView.swift in Sources */,
 				BB44752B2B7B7251008736FB /* Categories.swift in Sources */,
+				BBA41E072B9A15BC00884BD9 /* SettingsView.swift in Sources */,
 				BB0398322B95C2B1008C0322 /* LinkToPlaceView.swift in Sources */,
 				BBF9E9122B9869DB00496CE5 /* CachedAsyncImageView.swift in Sources */,
 				BBE6A71A2B691AEB00067FC0 /* NetworkManager.swift in Sources */,
