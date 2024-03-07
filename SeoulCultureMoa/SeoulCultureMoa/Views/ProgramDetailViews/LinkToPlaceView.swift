@@ -28,7 +28,7 @@ struct LinkToPlaceView: View {
                 longitude: longitude)
 
             NavigationLink {
-                CustomWebView(webView: WebView(urlToConnect: "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=\(place)"))
+                CustomWebView(url: "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=\(place)")
             } label: {
                 Image("Safari_Icon")
                     .resizable()
