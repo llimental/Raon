@@ -50,7 +50,7 @@ struct ProgramView: View {
                         }
 
                         NavigationLink {
-
+                            SettingsView()
                         } label: {
                             Image(systemName: "gear")
                         }
