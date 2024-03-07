@@ -25,6 +25,7 @@
     - **[Step 4]** `24. 02. 22.` ~ `24. 03. 04.`
     - **[Step 5]** `24. 03. 05.` ~ `24. 03. 05.`
     - **[Step 6]** `24. 03. 06.` ~ `24. 03. 06.`
+    - **[Step 7]** `24. 03. 06.` ~ `24. 03. 07.`
 
 <br>
 
@@ -80,6 +81,10 @@
     - `External App API Use`
         - `Naver Map`
         - `Kakao Map`
+    - `Debug`
+        - `Instruments`
+        - `Allocation, Leak, VM Tracker`
+        - `Xcode Memory Graph`
 - **프로젝트 후기 :**
     - .
 
@@ -179,6 +184,10 @@
 - **이미지 캐싱**
     - CacheManager 구현
     - CacheManager를 활용하여 이미지 표현
+
+### Step 7: WebView Memory Optimization
+- **WebView**
+    - WebView 사용 시 메모리가 급증하여 줄지 않는 이슈를 해결하여 메모리 최적화
 
 <br>
 
@@ -288,13 +297,13 @@ Color는 각 case가 asset의 이름을 rawValue로 갖고 있고, Region도 각
 
 ### 10. WebView 사용하기
 **고민한 점 :**
-- UIKit에서는 WebView 혹은 SFSafariViewController를 그냥 사용하면 되었지만 SwiftUI에서 웹뷰 기능을 네이티브로 제공하지 않아 UIKit의 방식을 써야 했다.
+- `UIKit`에서는 `WebView` 혹은 `SFSafariViewController`를 그냥 사용하면 되었지만 `SwiftUI`에서 웹뷰 기능을 네이티브로 제공하지 않아 `UIKit`의 방식을 써야 했다.
 
 **과정 및 해결 :**
-- UIKit의 기능을 사용할 수 있게 해주는 UIViewRepresentable 프로토콜을 사용하여 해결할 수 있었다.
-- makeUIView, updateUIView 두 개의 필수 메서드를 구현해야 하는데, 전자는 View를 만들고 초기 설정을 진행하는 메서드이고 후자는 새로운 정보로 View를 업데이트 해주는 메서드이다.
-- makeUIView에서 어떤 View 타입을 반환할 것인지 명시해주고, updateUIView에서의 파라미터 타입도 이에 맞춰서 변경해줘야 한다.
-- makeUIView에서 빈 WKWebView를 반환하고, updateUIView에서 주어진 url을 Request로 만들어 WKWebView에서 불러오도록 했다.
+- `UIKit`의 기능을 사용할 수 있게 해주는 `UIViewRepresentable` 프로토콜을 사용하여 해결할 수 있었다.
+- `makeUIView`, `updateUIView` 두 개의 필수 메서드를 구현해야 하는데, 전자는 View를 만들고 초기 설정을 진행하는 메서드이고 후자는 새로운 정보로 View를 업데이트 해주는 메서드이다.
+- `makeUIView`에서 어떤 View 타입을 반환할 것인지 명시해주고, `updateUIView`에서의 파라미터 타입도 이에 맞춰서 변경해줘야 한다.
+- `makeUIView`에서 빈 `WKWebView`를 반환하고, `updateUIView`에서 주어진 url을 Request로 만들어 `WKWebView`에서 불러오도록 했다.
 
 ```swift
 import SwiftUI
@@ -343,10 +352,10 @@ struct WebView: UIViewRepresentable {
 
 ### 11. TabBar 배경색 변경하기
 **고민한 점 :**
-- 상세 페이지에 들어갔을 때 TabBar의 색상이 페이지 배경 색상과 일치했으면 좋겠으나 색상 변경 코드가 적용되지 않았다.
+- 상세 페이지에 들어갔을 때 `TabBar`의 색상이 페이지 배경 색상과 일치했으면 좋겠으나 색상 변경 코드가 적용되지 않았다.
 
 **과정 및 해결 :**
-- init()에서 UITabBar.appearance().backgroundColor 속성을 통해 변경할 수 있었다.
+- `init()`에서 `UITabBar.appearance().backgroundColor` 속성을 통해 변경할 수 있었다.
 
 ```swift
 init() {
@@ -356,14 +365,14 @@ init() {
 
 ### 12. 위치 정보를 지도로 보여주기
 **고민한 점 :**
-- 프로그램이 진행되는 장소를 지도를 통해 보여주고 싶으나 MapKit을 사용하면 앱의 UI가 깨지는 현상이 발생했다(내비게이션 바, 탭바 색상 변경 및 내비게이션 타이틀 색 초기화).
+- 프로그램이 진행되는 장소를 지도를 통해 보여주고 싶으나 `MapKit`을 사용하면 앱의 UI가 깨지는 현상이 발생했다(내비게이션 바, 탭바 색상 변경 및 내비게이션 타이틀 색 초기화).
 
 **과정 및 해결 :**
-- ProgramDetailView에서 DescriptionView에 Map을 담아보는 방법, MapView를 따로 구현하고 인스턴스로 불러와 사용하는 방법, 내비게이션 바와 탭바 색상을 강제하는 방법 등 다방면으로 시도하였으나 원하는대로 이뤄지지 않았다.
+- `ProgramDetailView`에서 `DescriptionView`에 `Map`을 담아보는 방법, MapView를 따로 구현하고 인스턴스로 불러와 사용하는 방법, 내비게이션 바와 탭바 색상을 강제하는 방법 등 다방면으로 시도하였으나 원하는대로 이뤄지지 않았다.
 - 애플 기본 지도 앱으로 연결시키고자 했으나 기본 지도 앱에서 요구하는 정보와 데이터에서 제공하는 정보가 맞지 않아 위치 정보를 표시할 수 없는 데이터가 있었다.
 - 사람들이 보통 많이 사용하는 외부 지도 앱(네이버, 카카오)을 사용하여 위치 정보를 제공하고자 했다.
 - 그러나 앱 내에서 조작을 하기보다 실제 앱에서 경로를 보여주는 것이 더 효율적이라 판단하여 각 앱의 API를 사용하여 프로그램이 진행되는 장소의 위, 경도를 전달하고 현재 위치에서 가는 경로를 대중교통으로 보여주었다.
-- 앱이 설치되어 있으면 실행하여 경로를 보여주고, 없다면 앱스토어에 연결했지만 외부 앱을 사용하고 싶지 않은 이용자도 있을 것이기에 WebView를 통해 포털사이트 쿼리에 해당 장소명을 집어넣어 앱 내에서도 장소 정보를 확인할 수 있게 했다.
+- 앱이 설치되어 있으면 실행하여 경로를 보여주고, 없다면 앱스토어에 연결했지만 외부 앱을 사용하고 싶지 않은 이용자도 있을 것이기에 `WebView`를 통해 포털사이트 쿼리에 해당 장소명을 집어넣어 앱 내에서도 장소 정보를 확인할 수 있게 했다.
 
 ```swift
 struct MapButton: View {
@@ -403,14 +412,14 @@ struct MapButton: View {
 
 ### 13. 이미지 캐싱
 **고민한 점 :**
-- 매번 AsyncImage로 불러오면 데이터 낭비가 일어나고, List 또는 TabView에서 lazy loading을 하면서 종종 오류가 발생했다. Caching을 통해 저장된 이미지가 없다면 불러오고, 있다면 그것을 사용하는 방법을 찾고자 했다.
+- 매번 `AsyncImage`로 불러오면 데이터 낭비가 일어나고, `List` 또는 `TabView`에서 `lazy loading`을 하면서 종종 오류가 발생했다. `Caching`을 통해 저장된 이미지가 없다면 불러오고, 있다면 그것을 사용하는 방법을 찾고자 했다.
 
 **과정 및 해결 :**
-- 기존에 사용한 AsyncImage를 최대한 활용해보려 했으나 Image 타입을 UIImage로는 변환할 수 없어(반대는 가능하지만) 새롭게 이미지를 표현할 필요가 있었다.
-- 우선 CacheManager를 싱글톤 패턴으로 구현하고, 그 안에 있는 private cache를 활용하기로 했다.
-- CacheManager의 fetchImage(urlString: completion:)메서드에 content의 imageURL을 보내 호출하면, cache에 해당 string을 NSString으로 변환한 값에 이미지가 있는지 확인을 하고, 있다면 이미지를 completion으로 반환, 없다면 URLSession을 통해 받은 후 캐시에 저장하고 반환하는 방식을 사용
-- 이러한 일련의 비동기 방식을 사용하기 위해 @escaping closure를 활용
-- 이후 커스텀한 View인 CachedAsyncImageView에서 CacheManager의 fetchImage를 활용, 이미지를 보여주는 방식으로 해결하였다.
+- 기존에 사용한 `AsyncImage`를 최대한 활용해보려 했으나 `Image` 타입을 `UIImage`로는 변환할 수 없어(반대는 가능하지만) 새롭게 이미지를 표현할 필요가 있었다.
+- 우선 `CacheManager`를 `싱글톤 패턴`으로 구현하고, 그 안에 있는 `private cache`를 활용하기로 했다.
+- `CacheManager`의 `fetchImage(urlString: completion:)`메서드에 `content`의 `imageURL`을 보내 호출하면, `cache`에 해당 `string`을 `NSString`으로 변환한 값에 이미지가 있는지 확인을 하고, 있다면 이미지를 `completion`으로 반환, 없다면 `URLSession`을 통해 받은 후 캐시에 저장하고 반환하는 방식을 사용
+- 이러한 일련의 비동기 방식을 사용하기 위해 `@escaping closure`를 활용
+- 이후 커스텀한 View인 `CachedAsyncImageView`에서 `CacheManager`의 `fetchImage`를 활용, 이미지를 보여주는 방식으로 해결하였다.
 
 ```swift
 final class CacheManager {
@@ -450,11 +459,52 @@ final class CacheManager {
 }
 ```
 
-|<img src="https://github.com/llimental/What-is-In-Seoul/assets/45708630/819ac640-9b16-4afb-be44-1013770606e6" width=200 height=300>|<img src="https://github.com/llimental/What-is-In-Seoul/assets/45708630/20522311-973e-469e-9404-d2ed79a76a8f" width=200 height=300>|
+|<img src="https://github.com/llimental/What-is-In-Seoul/assets/45708630/fdfab9e0-c81d-448b-8434-1c434bc7cdf4">|<img src="https://github.com/llimental/What-is-In-Seoul/assets/45708630/b917d4c4-f56f-4d10-b2fa-c4ac774cd33f">|
 |:---:|:---:|
-|캐싱 전|캐싱 후|
+|캐싱 전 메모리|캐싱 전 네트워크|
+
+|<img src="https://github.com/llimental/What-is-In-Seoul/assets/45708630/fffc878b-c1a4-4724-866e-55214dd1d8d5">|<img src="https://github.com/llimental/What-is-In-Seoul/assets/45708630/73164564-d7bb-4ba7-ae9d-48f1db915a81">|
+|:---:|:---:|
+|캐싱 후 메모리|캐싱 후 네트워크|
 
 - 그래프와 같이 캐싱 전에는 매 페이징(스크롤) 때마다 새롭게 이미지를 불러오기 때문에 메모리 사용량이 들쭉날쭉하지만, 캐싱 후에는 메모리 자체 사용량은 높으나 페이징(스크롤)시에 이미 불러온 이미지를 사용하기 때문에 이후 메모리 사용량은 새롭게 불러오지 않는 이상 고정됨을 볼 수 있다.
+
+### 14. WebView 메모리 최적화
+**고민한 점 :**
+- `WKWebView`를 `UIViewRepresentable`을 사용하여 `SwiftUI View`로 사용했는데, `Instruments`의 `Leak`을 체크하며 메모리가 비정상적으로 높아지는 현상을 발견하였고, 이를 해결하고자 했다.
+- `Instruments` 측정 데이터상 `Leak`은 발생하지 않지만 `Allocation`에서 `WebView`를 실행하는 순간 메모리가 4~50MiB에서 550MiB로 급증, 약 500MiB의 메모리 할당은 단일 `VM Allocation`임을 확인했다.
+- `VM Allocation` 정보에 따르면 `WKWebView`에서 발생한 할당이며, `Responsible Library`는 `JavaScriptCore`였다.
+
+**과정 및 해결 :**
+1) `WKWebView`의 사용상 문제인가?
+- `UIViewRepresentable` 구현상 문제는 없었고, 보통 `WKWebView`를 사용하면서 흔히 발생하는 메모리 이슈는 커스텀 코디네이터를 만들면서 `self`를 넘겨주는 과정에서 발생하는 강한 참조였기에 이 케이스에 반영할 수 없었다.
+
+2) 직접 할당 해제를 해줘야 하는가?
+- `UIViewRepresentable`로 구현한 `WebView`는 값타입 `struct`이기 때문에 클래스나 클래스 바운드 프로토콜에 해당하지 않아 `deinit`을 사용할 수 없고, 바운드를 벗어나면 메모리가 할당될 것이라 생각했다.
+
+3) 어떤 점이 문제인가?
+- 위의 2가지 관점으로 다양한 정보를 찾고, 시도를 해본 끝에 원점으로 돌아와 이게 어떤 문제인지 다시금 생각을 했다.
+- `Instruments`에서는 메모리가 급증한 후 유지되는 양상을 보이는 반면, `Xcode Memory Report`상 `Memory Usage`는 정상적인 메모리 사용률을 보였다.
+- 만약 메모리상 계속 `WebKit`을 사용함에 있어 증가 추세를 보였거나, `Leak`이 발생했거나, `Xcode Memory Report`에서도 급증하는 현상을 보였다면 사용상의 문제로 메모리 최적화가 반드시 필요하지만, 전반적으로 정상인데 반해 `Instruments`에서만 메모리가 증가하는 점에서 다른 방향으로 접근해야 함을 알았다.
+
+4) `VM Tracker`
+- 왜 `Instruments`에서만 일어날까? 일단 메모리 할당이 `VM Allocation`이기 때문에 `VM Tracker`로 측정을 했다.
+- `VM Tracker`로 측정했을 때, `Dirty Size/Swapped Size/Resident Size` 세 파트로 정보를 얻을 수 있다.
+- `Resident Size 409 MiB / Dirty Size 67 MiB / Swapped 59 MiB`
+- 그러나 `Type`에서 절반을 차지하는 `__Text`, `*Dirty*`를 보면 각각은 220/0/0, 83/67/43의 메모리 분포를 볼 수 있다.
+
+5) 결론
+- `VM Tracker`상에서도 앱에서 사용한 `Dirty Memory`의 크기가 작고, `__Text`의 `Resident Size`도 `WebCore`만 있는 것이 아니라 `SwiftUI`, `UIKitCore`, `JavaScriptCore`가 각각 조금씩 갖고 있는 것으로 보아 `WebView`만의 문제라고 보기가 어려웠다.
+- `Instruments`에서 시뮬레이터 웹 환경을 측정하기 위해 필요한 자원이거나, `__Text` 타입에서 봤듯이 `UIKit`의 `WebView`를 `SwiftUI`의 View로 전환하는 과정에서 자원이 필요했을 수도 있다고 보았다.
+- `Instruments`에서의 메모리 증가를 줄이거나 원인을 찾지는 못했지만, 그 과정에서 `Xcode의 메모리 관리 기법`을 다양하게 사용해봤다는 점, `WebView`를 더 효율적으로 사용할 수 있는 방향을 다방면으로 시도해볼 수 있었기에 얻어간 것이 많다고 생각한다.
+
+|<img src="https://github.com/llimental/What-is-In-Seoul/assets/45708630/a8ef03b7-b448-455a-bb00-f92f7e0ffbde">|
+|:---:|
+|Instruments|
+
+|<img src="https://github.com/llimental/What-is-In-Seoul/assets/45708630/bf8f8415-0353-4cc8-ad6e-e362a06d49b5">|<img src="https://github.com/llimental/What-is-In-Seoul/assets/45708630/4dcece06-10ba-44dc-8834-1201edbd65bc">|
+|:---:|:---:|
+|툴바 없을 때 메모리|툴바 있을 때 메모리|
 
 <br>
 
