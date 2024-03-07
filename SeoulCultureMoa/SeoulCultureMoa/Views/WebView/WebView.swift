@@ -53,26 +53,30 @@ struct WebView: UIViewRepresentable {
 }
 
 struct CustomWebView: View {
-    let webView: WebView
+    let webView: WebView?
+
+    init(url: String) {
+        self.webView = WebView(urlToConnect: url)
+    }
 
     var body: some View {
         webView
             .toolbar {
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     Button(action: {
-                        webView.goBack()
+                        webView?.goBack()
                     }, label: {
                         Image(systemName: "arrowshape.backward")
                     })
 
                     Button(action: {
-                        webView.goForward()
+                        webView?.goForward()
                     }, label: {
                         Image(systemName: "arrowshape.forward")
                     })
 
                     Button(action: {
-                        webView.reload()
+                        webView?.reload()
                     }, label: {
                         Image(systemName: "arrow.clockwise")
                     })
