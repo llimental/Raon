@@ -37,6 +37,12 @@ struct SearchView: View {
                 }
                 .listStyle(.plain)
                 .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        NavigationBarSmallTitleView(
+                            titleText: "검색",
+                            themeColor: themeColor)
+                    }
+
                     ToolbarItem(placement: .topBarTrailing) {
                         Button("SearchFilter", systemImage: "slider.horizontal.3") {
                             isPresented.toggle()
