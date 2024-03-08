@@ -21,57 +21,63 @@ struct ProgramView: View {
     // MARK: - Body
     var body: some View {
         NavigationStack {
-            ZStack(alignment: .bottom) {
-                TabView(selection: $selectedTab) {
-                    ForEach(getFilteredContents(), id: \.title) { content in
-                        NavigationLink {
-                            ProgramDetailView(
-                                themeColor: $themeColor,
-                                content: content)
-                        } label: {
-                            ProgramCardView(programImageURL: content.imageURL)
-                        }
-                        .tag(content.title)
-                        .padding()
-                    }
-                }
-                .padding()
-                .tabViewStyle(.page(indexDisplayMode: .never))
-                .toolbar {
-                    ToolbarItemGroup(placement: .topBarTrailing) {
-                        Button("", systemImage: "arrow.clockwise") {
-                            networkManager.requestProgramContents()
-                            selectedTab = String()
-                        }
+            VStack(alignment: .leading) {
+                NavigationBarLargeTitleView(
+                    titleText: "프로그램",
+                    themeColor: themeColor)
 
-                        NavigationLink {
-
-                        } label: {
-                            Image(systemName: "calendar")
-                        }
-
-                        NavigationLink {
-                            SettingsView(
-                                themeColor: $themeColor,
-                                selectedRegion: $selectedRegion)
-                        } label: {
-                            Image(systemName: "gear")
+                ZStack(alignment: .bottom) {
+                    TabView(selection: $selectedTab) {
+                        ForEach(getFilteredContents(), id: \.title) { content in
+                            NavigationLink {
+                                ProgramDetailView(
+                                    themeColor: $themeColor,
+                                    content: content)
+                            } label: {
+                                ProgramCardView(programImageURL: content.imageURL)
+                            }
+                            .tag(content.title)
+                            .padding()
                         }
                     }
-                }
-                .onChange(of: selectedRegion) { _, _ in
-                    selectedTab = String()
-                }
+                    .padding()
+                    .tabViewStyle(.page(indexDisplayMode: .never))
+                    .toolbar {
+                        ToolbarItemGroup(placement: .topBarTrailing) {
+                            Button("", systemImage: "arrow.clockwise") {
+                                networkManager.requestProgramContents()
+                                selectedTab = String()
+                            }
 
-                if !networkManager.currentNetworkStatus {
-                    Text("인터넷 연결 상태가 좋지 않습니다")
-                        .padding()
-                        .foregroundStyle(.white)
-                        .background(
-                            Capsule()
-                                .foregroundStyle(.gray)
-                        )
-                        .padding(.bottom, 5)
+                            NavigationLink {
+
+                            } label: {
+                                Image(systemName: "calendar")
+                            }
+
+                            NavigationLink {
+                                SettingsView(
+                                    themeColor: $themeColor,
+                                    selectedRegion: $selectedRegion)
+                            } label: {
+                                Image(systemName: "gear")
+                            }
+                        }
+                    }
+                    .onChange(of: selectedRegion) { _, _ in
+                        selectedTab = String()
+                    }
+
+                    if !networkManager.currentNetworkStatus {
+                        Text("인터넷 연결 상태가 좋지 않습니다")
+                            .padding()
+                            .foregroundStyle(.white)
+                            .background(
+                                Capsule()
+                                    .foregroundStyle(.gray)
+                            )
+                            .padding(.bottom, 5)
+                    }
                 }
             }
         }
@@ -91,5 +97,5 @@ struct ProgramView: View {
     ProgramView(
         themeColor: .constant(.pink),
         selectedRegion: .constant(.allRegion))
-        .environmentObject(NetworkManager())
+    .environmentObject(NetworkManager())
 }

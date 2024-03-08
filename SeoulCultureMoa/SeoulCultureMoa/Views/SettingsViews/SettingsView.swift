@@ -11,54 +11,60 @@ struct SettingsView: View {
     // MARK: - @Binding Properties
     @Binding var themeColor: ThemeColors
     @Binding var selectedRegion: Regions
-
+    
     // MARK: - Body
     var body: some View {
-        List {
-            Section {
-                NavigationLink {
-                    CopyRightView()
-                } label: {
-                    Label("저작권", systemImage: "doc")
+        VStack(alignment: .leading) {
+            NavigationBarLargeTitleView(
+                titleText: "설정",
+                themeColor: themeColor)
+            
+            List {
+                Section {
+                    NavigationLink {
+                        CopyRightView()
+                    } label: {
+                        Label("저작권", systemImage: "doc")
+                    }
+                    
+                    Label("문의하기", systemImage: "bubble.left.and.text.bubble.right")
+                } header: {
+                    Text("정보")
                 }
-
-                Label("문의하기", systemImage: "bubble.left.and.text.bubble.right")
-            } header: {
-                Text("정보")
-            }
-            .listRowSeparator(.hidden)
-
-            Section {
-                DisclosureGroup(
-                    content: {
-                        ForEach(ThemeColors.allCases, id: \.self) { color in
-                            Button(action: {
-                                themeColor = color
-                            }, label: {
-                                Label(color.rawValue, systemImage: "circle.fill")
-                                    .foregroundStyle(color.color)
-                            })
+                .listRowSeparator(.hidden)
+                
+                Section {
+                    DisclosureGroup(
+                        content: {
+                            ForEach(ThemeColors.allCases, id: \.self) { color in
+                                Button(action: {
+                                    themeColor = color
+                                }, label: {
+                                    Label(color.rawValue, systemImage: "circle.fill")
+                                        .foregroundStyle(color.color)
+                                })
+                            }
+                        },
+                        label: {
+                            Label("앱 색상", systemImage: "paintbrush")
                         }
-                    },
-                    label: {
-                        Label("앱 색상", systemImage: "paintbrush")
+                    )
+                    
+                    Picker(selection: $selectedRegion) {
+                        ForEach(Regions.allCases) { region in
+                            Text(region.rawValue)
+                        }
+                    } label: {
+                        Label("관심지역", systemImage: "map")
                     }
-                )
-
-                Picker(selection: $selectedRegion) {
-                    ForEach(Regions.allCases) { region in
-                        Text(region.rawValue)
-                    }
-                } label: {
-                    Label("관심지역", systemImage: "map")
+                } header: {
+                    Text("개인화")
                 }
-            } header: {
-                Text("개인화")
+                .listRowSeparator(.hidden)
+                
             }
-            .listRowSeparator(.hidden)
-
+            .listStyle(.plain)
         }
-        .listStyle(.plain)
     }
 }
 
