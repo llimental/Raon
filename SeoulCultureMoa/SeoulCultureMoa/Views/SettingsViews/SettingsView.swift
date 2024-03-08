@@ -28,7 +28,21 @@ struct SettingsView: View {
             }
 
             Section {
-                Label("앱 색상", systemImage: "paintbrush")
+                DisclosureGroup(
+                    content: {
+                        ForEach(ThemeColors.allCases, id: \.self) { color in
+                            Button(action: {
+                                themeColor = color
+                            }, label: {
+                                Label(color.rawValue, systemImage: "circle.fill")
+                                    .foregroundStyle(color.color)
+                            })
+                        }
+                    },
+                    label: {
+                        Label("앱 색상", systemImage: "paintbrush")
+                    }
+                )
 
                 Picker(selection: $selectedRegion) {
                     ForEach(Regions.allCases) { region in
