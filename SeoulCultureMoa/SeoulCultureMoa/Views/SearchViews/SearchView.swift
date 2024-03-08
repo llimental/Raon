@@ -36,7 +36,6 @@ struct SearchView: View {
                     }
                 }
                 .listStyle(.plain)
-                .navigationTitle("검색")
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button("SearchFilter", systemImage: "slider.horizontal.3") {

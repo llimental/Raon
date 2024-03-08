@@ -59,7 +59,6 @@ struct SettingsView: View {
 
         }
         .listStyle(.plain)
-        .navigationTitle("설정")
     }
 }
 

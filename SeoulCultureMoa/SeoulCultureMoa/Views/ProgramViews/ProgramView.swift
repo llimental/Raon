@@ -37,7 +37,6 @@ struct ProgramView: View {
                 }
                 .padding()
                 .tabViewStyle(.page(indexDisplayMode: .never))
-                .navigationTitle("프로그램")
                 .toolbar {
                     ToolbarItemGroup(placement: .topBarTrailing) {
                         Button("", systemImage: "arrow.clockwise") {
