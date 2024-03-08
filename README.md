@@ -26,6 +26,7 @@
     - **[Step 5]** `24. 03. 05.` ~ `24. 03. 05.`
     - **[Step 6]** `24. 03. 06.` ~ `24. 03. 06.`
     - **[Step 7]** `24. 03. 06.` ~ `24. 03. 07.`
+    - **[Step 8]** `24. 03. 07.` ~ `24. 03. 08.`
 
 <br>
 
@@ -85,6 +86,8 @@
         - `Instruments`
         - `Allocation, Leak, VM Tracker`
         - `Xcode Memory Graph`
+    - `List`
+        - `DisclosureGroup`
 - **프로젝트 후기 :**
     - .
 
@@ -188,6 +191,12 @@
 ### Step 7: WebView Memory Optimization
 - **WebView**
     - WebView 사용 시 메모리가 급증하여 줄지 않는 이슈를 해결하여 메모리 최적화
+
+### Step 8: Settings View
+- **Settings View**
+    - 저작권 표시
+    - 앱 테마 설정
+    - 관심 지역 설정
 
 <br>
 
@@ -505,6 +514,87 @@ final class CacheManager {
 |<img src="https://github.com/llimental/What-is-In-Seoul/assets/45708630/bf8f8415-0353-4cc8-ad6e-e362a06d49b5">|<img src="https://github.com/llimental/What-is-In-Seoul/assets/45708630/4dcece06-10ba-44dc-8834-1201edbd65bc">|
 |:---:|:---:|
 |툴바 없을 때 메모리|툴바 있을 때 메모리|
+
+### 15. App Theme 관리
+**고민한 점 :**
+- 기존에는 App Theme을 설정하기 위해 `Assets`에 `Color Set`을 만들고, `ThemeColors`에 `case`를 추가해줬다. 그러나 새로운 색상을 추가하려고 보니, 이미 구현한 색상이나 새로 추가하려는 색상 모두 Apple에서 제공하는 `SystemColor`이기에 이렇게 복잡하게 진행할 필요가 있을까 싶은 생각이 들었다.
+
+**과정 및 해결 :**
+- `AccentColor`를 제거하고 `Color` 값을 갖기로 결정을 하고 작업을 진행했다.
+- 그렇다면 필요한 점이 무엇일까? 이미 등록한 `AccentColor`이름을 갖고 있는 `Assets`의 `Color Set`을 다 지우고, `ThemeColors`에서 `Color`값을 가지도록 코드를 구성한 결과 다음의 문제가 발생했다.
+- `Color`를 사용하기 위해서는 `SwiftUI`의 `import`가 필요했고, `SettingsView`에서 `ForEach`로 `Button`을 생성하기 위해서는 `CaseIterable`이, `background()`의 요소로 사용하기 위해서는 `ShapeStyle`이 필요했다.
+- `ThemeColors` 파일에 `Foundation` 대신 `SwiftUI`를 `import`하고, `color` 프로퍼티를 추가하여 각 `case`에 맞는 `Color`를 지정해주었다. 또한 `CaseIterable`을 채택하여 `ForEach`에서 사용할 수 있도록 했고, `ShapeStyle`을 채택하여 `background modifier`에서 사용할 수 있게 했다.
+- `themeColor.rawValue`로 색상을 지정했던 부분을 `themeColor.color`로 바꾸는 작업 등 많은 코드를 수정해야 했지만, 이렇게 대규모로 조정한 결과 `OCP원칙`을 더 잘 준수하게 되었다고 생각한다.
+- 기존에는 새로운 색상을 추가하려면 `Color Set`을 만들고, `ThemeColors`에 새로운 `case`를 추가해줘야 하는 반면 이제는 새로운 색상을 추가하는 경우 `ThemeColors`에서 `case`와 `switch`만 관리해주면 된다.
+
+```swift
+import SwiftUI
+
+enum ThemeColors: String, ShapeStyle, CaseIterable {
+    case pink = "Pink"
+    case blue = "Blue"
+    case purple = "Purple"
+    case indigo = "Indigo"
+
+    var color: Color {
+        switch self {
+            case .pink:
+                return .pink
+            case .blue:
+                return .blue
+            case .purple:
+                return .purple
+            case .indigo:
+                return .indigo
+        }
+    }
+}
+
+```
+
+### 16. NavigationBarTitle Color 관리
+**고민한 점 :**
+- 앱 설정을 통해 색상을 변경하지 않는 상태에서는 `NavigationBarTitleColor`의 지정이 `View+Extension`에 정의한 메서드를 통해 잘 이뤄졌다.
+- 그러나 `SettingsView`에서 `ThemeColor`를 조정하고 보니 `NavigationBarTitleColor`는 `View`가 아예 새로 그려지기 전까지 다른 `Binding`값을 통해 그려지는 아이템과는 달리 색이 변하지 않았다.
+- `ThemeColor`에 따라 `NavigationBarTitle`도 색이 변하길 원했다.
+
+**과정 및 해결 :**
+- 기존 `NavigationBarTitle`의 색상은 `UIKit`의 `apperance` 항목을 이용했기에 좀 더 유동적으로, `SwiftUI`답게 사용하고자 아예 방향을 다르게 진행했다.
+- `View`에 `NavigationBarTitle`과 동일한 외양의 `Text`를 병행 배치하여 이를 해결했고, `foregroundStyle()`에 `ThemeColor`를 전달하여 앱 설정에 맞게 유동적으로 변하게 구현했다.
+- `ProgramView`, `SettingsView`에서는 `LargeTitle`에 맞는 디자인의 `View`를 사용, `SearchView`에서는 `.searchable modifier`가 있기 때문에 `Toolbar`를 활용하여 `topBarLeading`에 `title2 font`로 지정한 `Text`를 배치했다.
+
+```swift
+struct NavigationBarLargeTitleView: View {
+    // MARK: - Public Properties
+    var titleText: String
+    var themeColor: ThemeColors
+
+    // MARK: - Body
+    var body: some View {
+        Text(titleText)
+            .font(.largeTitle)
+            .bold()
+            .foregroundStyle(themeColor.color)
+            .padding(.leading)
+    }
+}
+```
+
+```swift
+struct NavigationBarSmallTitleView: View {
+    // MARK: - Public Properties
+    var titleText: String
+    var themeColor: ThemeColors
+
+    // MARK: - Body
+    var body: some View {
+        Text(titleText)
+            .font(.title2)
+            .bold()
+            .foregroundStyle(themeColor.color)
+    }
+}
+```
 
 <br>
 
