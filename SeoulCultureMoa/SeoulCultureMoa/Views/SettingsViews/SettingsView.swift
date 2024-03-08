@@ -29,7 +29,14 @@ struct SettingsView: View {
 
             Section {
                 Label("앱 색상", systemImage: "paintbrush")
-                Label("관심지역", systemImage: "map")
+
+                Picker(selection: $selectedRegion) {
+                    ForEach(Regions.allCases) { region in
+                        Text(region.rawValue)
+                    }
+                } label: {
+                    Label("관심지역", systemImage: "map")
+                }
             } header: {
                 Text("개인화")
             }
