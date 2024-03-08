@@ -16,6 +16,7 @@ struct ProgramView: View {
 
     // MARK: - @Binding Properties
     @Binding var themeColor: ThemeColors
+    @Binding var selectedRegion: Regions
 
     // MARK: - Body
     var body: some View {
@@ -50,7 +51,9 @@ struct ProgramView: View {
                         }
 
                         NavigationLink {
-                            SettingsView()
+                            SettingsView(
+                                themeColor: $themeColor,
+                                selectedRegion: $selectedRegion)
                         } label: {
                             Image(systemName: "gear")
                         }
@@ -74,6 +77,8 @@ struct ProgramView: View {
 }
 
 #Preview {
-    ProgramView(themeColor: .constant(.pink))
+    ProgramView(
+        themeColor: .constant(.pink),
+        selectedRegion: .constant(.allRegion))
         .environmentObject(NetworkManager())
 }

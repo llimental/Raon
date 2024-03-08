@@ -24,10 +24,12 @@ struct ContentView: View {
                               selectedRegion: $selectedRegion)
         } else {
             TabView {
-                ProgramView(themeColor: $themeColor)
-                    .tabItem {
-                        Label("프로그램", systemImage: "house")
-                    }
+                ProgramView(
+                    themeColor: $themeColor,
+                    selectedRegion: $selectedRegion)
+                .tabItem {
+                    Label("프로그램", systemImage: "house")
+                }
 
                 SearchView(contents: $networkManager.contents, themeColor: $themeColor)
                     .tabItem {

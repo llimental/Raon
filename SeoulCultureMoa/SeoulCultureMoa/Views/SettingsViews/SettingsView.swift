@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct SettingsView: View {
+    // MARK: - @Binding Properties
+    @Binding var themeColor: ThemeColors
+    @Binding var selectedRegion: Regions
+
     // MARK: - Body
     var body: some View {
         List {
@@ -37,5 +41,7 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(
+        themeColor: .constant(.pink),
+        selectedRegion: .constant(.allRegion))
 }
