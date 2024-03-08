@@ -20,7 +20,7 @@ struct OnboardingThirdView: View {
 
                 Text("반갑습니다!")
                     .font(.title)
-                    .foregroundStyle(Color(themeColor.rawValue))
+                    .foregroundStyle(themeColor.color)
                     .fontWeight(.bold)
                     .padding(.bottom, 20)
 

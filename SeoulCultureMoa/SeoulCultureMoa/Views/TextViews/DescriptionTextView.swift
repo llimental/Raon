@@ -11,14 +11,14 @@ struct DescriptionTextView: View {
     // MARK: - Public Properties
     var firstText: String
     var secondText: String
-    var tintColor: String
+    var textColor: ThemeColors
 
     // MARK: - Body
     var body: some View {
         HStack(alignment: .top) {
             Text(firstText + ":")
                 .bold()
-                .foregroundStyle(Color(tintColor))
+                .foregroundStyle(textColor.color)
                 .frame(width: 70, alignment: .trailing)
 
             Text(secondText)
@@ -33,5 +33,5 @@ struct DescriptionTextView: View {
     DescriptionTextView(
         firstText: "카테고리",
         secondText: "카테고리 내용",
-        tintColor: "AccentColor_Pink")
+        textColor: .pink)
 }

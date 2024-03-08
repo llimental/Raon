@@ -23,7 +23,7 @@ struct InvertedButton: View {
         }, label: {
             Text(buttonText)
                 .fontWeight(.bold)
-                .foregroundStyle(Color(buttonColor.rawValue))
+                .foregroundStyle(buttonColor.color)
                 .padding()
                 .frame(
                     width: buttonWidth,

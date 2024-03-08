@@ -24,7 +24,7 @@ struct ColoredText: View {
             .frame(
                 width: textWidth,
                 height: textHeight)
-            .background(Color(textColor.rawValue))
+            .background(textColor.color)
             .clipShape(.rect(cornerRadius: 15))
     }
 }

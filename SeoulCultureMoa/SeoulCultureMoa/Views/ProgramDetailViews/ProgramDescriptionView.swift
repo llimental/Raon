@@ -21,18 +21,18 @@ struct ProgramDescriptionView: View {
                 DescriptionTextView(
                     firstText: "카테고리",
                     secondText: content.category,
-                    tintColor: themeColor.rawValue)
+                    textColor: themeColor)
 
                 DescriptionTextView(
                     firstText: "지역",
                     secondText: content.region,
-                    tintColor: themeColor.rawValue)
+                    textColor: themeColor)
 
                 VStack {
                     DescriptionTextView(
                         firstText: "장소",
                         secondText: content.place,
-                        tintColor: themeColor.rawValue)
+                        textColor: themeColor)
 
                     LinkToPlaceView(
                         latitude: content.latitude,
@@ -43,27 +43,27 @@ struct ProgramDescriptionView: View {
                 DescriptionTextView(
                     firstText: "기관",
                     secondText: content.organization,
-                    tintColor: themeColor.rawValue)
+                    textColor: themeColor)
 
                 DescriptionTextView(
                     firstText: "대상",
                     secondText: content.target,
-                    tintColor: themeColor.rawValue)
+                    textColor: themeColor)
 
                 DescriptionTextView(
                     firstText: "비용",
                     secondText: content.fees != String() ? content.fees : "무료",
-                    tintColor: themeColor.rawValue)
+                    textColor: themeColor)
 
                 DescriptionTextView(
                     firstText: "시작일",
                     secondText: content.startDate.replacingOccurrences(of: " 00:00:00.0", with: ""),
-                    tintColor: themeColor.rawValue)
+                    textColor: themeColor)
 
                 DescriptionTextView(
                     firstText: "종료일",
                     secondText: content.endDate.replacingOccurrences(of: " 00:00:00.0", with: ""),
-                    tintColor: themeColor.rawValue)
+                    textColor: themeColor)
                 .padding(.bottom, 80)
             }
             .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 0))

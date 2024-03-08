@@ -28,7 +28,7 @@ struct ColoredButton: View {
                 .frame(
                     width: buttonWidth,
                     height: buttonHeight)
-                .background(Color(buttonColor.rawValue))
+                .background(buttonColor.color)
                 .clipShape(.rect(cornerRadius: 15))
         })
     }

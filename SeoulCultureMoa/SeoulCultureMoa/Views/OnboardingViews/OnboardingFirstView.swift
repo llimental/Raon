@@ -40,7 +40,7 @@ struct OnboardingFirstView: View {
             .frame(width: geometry.size.width)
         }
         .padding(.vertical)
-        .background(Color(themeColor.rawValue))
+        .background(themeColor.color)
     }
 }
 

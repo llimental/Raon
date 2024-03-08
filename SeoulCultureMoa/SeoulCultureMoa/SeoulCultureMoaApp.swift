@@ -29,7 +29,7 @@ struct SeoulCultureMoaApp: App {
                 isFirstLaunching: $isFirstLaunching,
                 themeColor: $themeColor,
                 selectedRegion: $selectedRegion)
-            .tint(Color(themeColor.rawValue))
+            .tint(themeColor.color)
             .environmentObject(networkManager)
         }
     }

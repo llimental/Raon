@@ -19,7 +19,7 @@ struct OnboardingSecondView: View {
             VStack(alignment: .leading) {
                 Text("주로 정보를 얻고 싶은\n지역을 선택해주세요")
                     .font(.title)
-                    .foregroundStyle(Color(themeColor.rawValue))
+                    .foregroundStyle(themeColor.color)
                     .fontWeight(.bold)
                     .padding(.bottom, 20)
 

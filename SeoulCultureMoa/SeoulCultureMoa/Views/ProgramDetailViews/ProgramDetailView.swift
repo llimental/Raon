@@ -59,7 +59,7 @@ struct ProgramDetailView: View {
                         .frame(height: 25)
                     }
                     .font(.title2)
-                    .foregroundStyle(Color(themeColor.rawValue))
+                    .foregroundStyle(themeColor.color)
                     .padding(.horizontal, 20)
 
                     ZStack(alignment: .bottom) {
