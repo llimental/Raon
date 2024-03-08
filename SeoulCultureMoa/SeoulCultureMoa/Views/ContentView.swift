@@ -36,7 +36,6 @@ struct ContentView: View {
                         Label("검색", systemImage: "magnifyingglass")
                     }
             }
-            .navigationBarTitleTextColor(themeColor.color)
         }
     }
 }
