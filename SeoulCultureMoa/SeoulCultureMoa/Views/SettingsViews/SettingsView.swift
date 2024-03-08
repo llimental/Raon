@@ -14,17 +14,17 @@ struct SettingsView: View {
                 NavigationLink {
                     CopyRightView()
                 } label: {
-                    Text("저작권")
+                    Label("저작권", systemImage: "doc")
                 }
 
-                Text("문의하기")
+                Label("문의하기", systemImage: "bubble.left.and.text.bubble.right")
             } header: {
                 Text("정보")
             }
 
             Section {
-                Text("테마")
-                Text("관심지역")
+                Label("앱 색상", systemImage: "paintbrush")
+                Label("관심지역", systemImage: "map")
             } header: {
                 Text("개인화")
             }
