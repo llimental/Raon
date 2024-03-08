@@ -26,6 +26,7 @@ struct SettingsView: View {
             } header: {
                 Text("정보")
             }
+            .listRowSeparator(.hidden)
 
             Section {
                 DisclosureGroup(
@@ -54,6 +55,7 @@ struct SettingsView: View {
             } header: {
                 Text("개인화")
             }
+            .listRowSeparator(.hidden)
 
         }
         .listStyle(.plain)
