@@ -35,6 +35,7 @@ struct ProgramView: View {
                         .padding()
                     }
                 }
+                .padding()
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 .navigationTitle("프로그램")
                 .toolbar {
@@ -59,7 +60,9 @@ struct ProgramView: View {
                         }
                     }
                 }
-                .padding()
+                .onChange(of: selectedRegion) { _, _ in
+                    selectedTab = String()
+                }
 
                 if !networkManager.currentNetworkStatus {
                     Text("인터넷 연결 상태가 좋지 않습니다")
