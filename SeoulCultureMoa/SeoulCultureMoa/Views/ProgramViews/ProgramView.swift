@@ -23,7 +23,7 @@ struct ProgramView: View {
         NavigationStack {
             ZStack(alignment: .bottom) {
                 TabView(selection: $selectedTab) {
-                    ForEach(networkManager.contents, id: \.title) { content in
+                    ForEach(getFilteredContents(), id: \.title) { content in
                         NavigationLink {
                             ProgramDetailView(
                                 themeColor: $themeColor,
@@ -72,6 +72,15 @@ struct ProgramView: View {
                         .padding(.bottom, 5)
                 }
             }
+        }
+    }
+
+    // MARK: - Private Functions
+    private func getFilteredContents() -> [ProgramContent] {
+        if selectedRegion == .allRegion {
+            return networkManager.contents
+        } else {
+            return networkManager.contents.filter { $0.region == selectedRegion.rawValue }
         }
     }
 }
