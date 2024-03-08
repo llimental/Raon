@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    // MARK: - Body
     var body: some View {
         List {
             Section {

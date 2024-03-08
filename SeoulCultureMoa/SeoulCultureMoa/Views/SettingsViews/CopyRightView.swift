@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CopyRightView: View {
+    // MARK: - Body
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 20) {
