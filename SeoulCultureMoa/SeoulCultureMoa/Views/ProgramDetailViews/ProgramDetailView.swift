@@ -10,7 +10,6 @@ import SwiftUI
 struct ProgramDetailView: View {
     // MARK: - @State Properties
     @State private var isFavorite: Bool = false
-    @State private var isWillNotify: Bool = false
 
     // MARK: - @Binding Properties
     @Binding var themeColor: ThemeColors
@@ -43,13 +42,6 @@ struct ProgramDetailView: View {
                             isFavorite.toggle()
                         }, label: {
                             isFavorite ? Image(systemName: "heart.fill") : Image(systemName: "heart")
-                        })
-                        .frame(height: 20)
-
-                        Button(action: {
-                            isWillNotify.toggle()
-                        }, label: {
-                            isWillNotify ? Image(systemName: "bell.fill") : Image(systemName: "bell")
                         })
                         .frame(height: 20)
 
