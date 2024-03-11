@@ -12,7 +12,7 @@ struct ProgramDescriptionView: View {
     @Binding var themeColor: ThemeColors
 
     // MARK: - Public Properties
-    var content: ProgramContent
+    var content: ProgramContentModel
 
     // MARK: - Body
     var body: some View {
@@ -78,7 +78,7 @@ struct ProgramDescriptionView: View {
 #Preview {
     ProgramDescriptionView(
         themeColor: .constant(.pink),
-        content: ProgramContent(
+        content: ProgramContentModel(
             category: "뮤지컬/오페라",
             region: "종로구",
             title: "오페라 갈라",

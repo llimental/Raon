@@ -15,7 +15,7 @@ struct SearchView: View {
     @State private var regionFilter: Regions = .allRegion
 
     // MARK: - @Binding Properties
-    @Binding var contents: [ProgramContent]
+    @Binding var contents: [ProgramContentModel]
     @Binding var themeColor: ThemeColors
 
     // MARK: - Body
@@ -72,7 +72,7 @@ struct SearchView: View {
     }
 
     // MARK: - Private Functions
-    private func getFilteredContents() -> [ProgramContent] {
+    private func getFilteredContents() -> [ProgramContentModel] {
         if searchText.isEmpty {
             contents.filter {
                 if categoryFilter != .allCategory && regionFilter != .allRegion {

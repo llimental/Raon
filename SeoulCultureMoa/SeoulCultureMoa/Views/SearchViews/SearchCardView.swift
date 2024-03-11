@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchCardView: View {
     // MARK: - Public Properties
-    var content: ProgramContent
+    var content: ProgramContentModel
 
     // MARK: - Body
     var body: some View {
@@ -47,7 +47,7 @@ struct SearchCardView: View {
 
 #Preview {
     SearchCardView(
-        content: ProgramContent(
+        content: ProgramContentModel(
             category: "뮤지컬/오페라",
             region: "종로구",
             title: "오페라 갈라",

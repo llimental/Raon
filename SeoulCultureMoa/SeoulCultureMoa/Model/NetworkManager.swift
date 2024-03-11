@@ -11,7 +11,7 @@ import Network
 
 final class NetworkManager: ObservableObject {
     // MARK: - @Published Properties
-    @Published var contents = [ProgramContent]()
+    @Published var contents = [ProgramContentModel]()
     @Published var currentNetworkStatus = true
 
     // MARK: - LifeCycle
@@ -35,8 +35,6 @@ final class NetworkManager: ObservableObject {
             programCancellable?.cancel()
             contents.removeAll()
 
-            let today = Date().getStringOfTodayDate()
-
             guard let url = makeURL(startIndex: 1, endIndex: 1000) else { return }
 
             programCancellable = URLSession.shared
@@ -48,7 +46,7 @@ final class NetworkManager: ObservableObject {
                 .sink { completion in
                     print(completion)
                 } receiveValue: { [weak self] value in
-                    self?.contents = value.programInfo.programContents.filter { $0.endDate > today }.sorted { $0.startDate < $1.startDate }
+                    self?.transformDTO(from: value.programInfo.programContents)
                 }
         }
     }

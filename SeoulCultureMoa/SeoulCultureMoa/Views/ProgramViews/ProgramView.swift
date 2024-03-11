@@ -84,7 +84,7 @@ struct ProgramView: View {
     }
 
     // MARK: - Private Functions
-    private func getFilteredContents() -> [ProgramContent] {
+    private func getFilteredContents() -> [ProgramContentModel] {
         if selectedRegion == .allRegion {
             return networkManager.contents
         } else {
