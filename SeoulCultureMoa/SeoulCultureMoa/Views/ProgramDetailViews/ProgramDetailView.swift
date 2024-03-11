@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ProgramDetailView: View {
+    // MARK: - SwiftData Properties
+    @Environment(\.modelContext) private var modelContext
+    @Query private var favoritePrograms: [FavoriteProgram]
+
     // MARK: - @State Properties
     @State private var isFavorite: Bool = false
 
@@ -94,4 +99,5 @@ struct ProgramDetailView: View {
             longitude: "37.5726241",
             latitude: "126.9760053",
             isFree: "유료"))
+    .modelContainer(for: FavoriteProgram.self)
 }
