@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct SeoulCultureMoaApp: App {
@@ -32,5 +33,6 @@ struct SeoulCultureMoaApp: App {
             .tint(themeColor.color)
             .environmentObject(networkManager)
         }
+        .modelContainer(for: FavoriteProgram.self)
     }
 }
