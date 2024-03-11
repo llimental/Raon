@@ -77,6 +77,14 @@ struct ProgramDetailView: View {
             }
             .ignoresSafeArea(edges: .top)
             .toolbarTitleDisplayMode(.inline)
+            .onAppear {
+                isFavorite = getFavoriteState()
+            }
+
+    // MARK: - Private Functions
+    private func getFavoriteState() -> Bool {
+        return favoritePrograms.contains(where: { $0.title == content.title }) ? true : false
+    }
         }
     }
 }
