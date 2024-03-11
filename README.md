@@ -27,6 +27,7 @@
     - **[Step 6]** `24. 03. 06.` ~ `24. 03. 06.`
     - **[Step 7]** `24. 03. 06.` ~ `24. 03. 07.`
     - **[Step 8]** `24. 03. 07.` ~ `24. 03. 08.`
+    - **[Step 9]** `24. 03. 09.` ~ `24. 03. 11.`
 
 <br>
 
@@ -59,6 +60,13 @@
         - `@ObservableObject`
         - `@Published`
         - `@Environment`
+    - `SwiftData`
+        - `@Model`
+        - `Attribute`
+        - `modelContainer`
+        - `modelContext`
+        - `Query`
+        - `Create(insert) / Read(query)/ Update(save) / Delete(delete)`
     - `GCD`
         - `DispatchQueue`
     - `ShareLink`
@@ -198,6 +206,11 @@
     - 앱 테마 설정
     - 관심 지역 설정
 
+### Step 9: SwiftData
+- **SwiftData**
+    - SwiftData의 Model 구상
+    - SwiftData를 활용하여 Favorites 항목 관리
+
 <br>
 
 ## 트러블 슈팅
@@ -304,7 +317,7 @@ Color는 각 case가 asset의 이름을 rawValue로 갖고 있고, Region도 각
 - `TabView`때처럼 첫 항목을 지정할 수 없기에 `ScrollViewReader`로 `View`를 `embed`하고, `proxy`를 사용하여 `scrollTo` 메서드를 사용하였다.
 - 다만 변경되는 항목 속에서 어떻게 맨 위의 값을 얻느냐가 관건이었는데, 필터 결과에 상관없이 고정적으로 상단에 존재하는 `EmptyView`를 만들고 해당 `View`에 `id`를 부여하는 방식으로 해결할 수 있었다.
 
-### 10. WebView 사용하기
+### 10. [WebKit] WebView 사용하기
 **고민한 점 :**
 - `UIKit`에서는 `WebView` 혹은 `SFSafariViewController`를 그냥 사용하면 되었지만 `SwiftUI`에서 웹뷰 기능을 네이티브로 제공하지 않아 `UIKit`의 방식을 써야 했다.
 
@@ -478,7 +491,7 @@ final class CacheManager {
 
 - 그래프와 같이 캐싱 전에는 매 페이징(스크롤) 때마다 새롭게 이미지를 불러오기 때문에 메모리 사용량이 들쭉날쭉하지만, 캐싱 후에는 메모리 자체 사용량은 높으나 페이징(스크롤)시에 이미 불러온 이미지를 사용하기 때문에 이후 메모리 사용량은 새롭게 불러오지 않는 이상 고정됨을 볼 수 있다.
 
-### 14. WebView 메모리 최적화
+### 14. [WebKit] WebView 메모리 최적화
 **고민한 점 :**
 - `WKWebView`를 `UIViewRepresentable`을 사용하여 `SwiftUI View`로 사용했는데, `Instruments`의 `Leak`을 체크하며 메모리가 비정상적으로 높아지는 현상을 발견하였고, 이를 해결하고자 했다.
 - `Instruments` 측정 데이터상 `Leak`은 발생하지 않지만 `Allocation`에서 `WebView`를 실행하는 순간 메모리가 4~50MiB에서 550MiB로 급증, 약 500MiB의 메모리 할당은 단일 `VM Allocation`임을 확인했다.
@@ -595,6 +608,161 @@ struct NavigationBarSmallTitleView: View {
     }
 }
 ```
+
+### 17. [SwiftData] No exact matches in call to instance method 'setValue' 오류
+**고민한 점 :**
+- `SwiftData`의 `Model` class를 구현 후 빌드를 수행하니 위와 같은 오류가 발생했다.
+
+**과정 및 해결 :**
+- https://developer.apple.com/documentation/swiftdata/preserving-your-apps-model-data-across-launches
+- `SwiftData`는 호환 가능한 유형을 사용하는 한 클래스의 모든 계산 프로퍼티가 아닌 프로퍼티를 포함한다.
+- `Bool`, `Int`, `String과` 같은 기본 유형은 물론 `structure`, `enum` 및 `Codable` 프로토콜을 준수하는 기타 값 유형과 같은 복잡한 값 유형도 지원한다.
+- 즉, 저 오류가 나는 것은 해당 프로퍼티가 `Codable`을 준수하지 않아 발생하는 것임을 알 수 있었다.
+- `ProgramData`는 이전까지 인코딩을 하지 않아 `Decodable`만 준수했기 때문에 `Codable`로 변경해서 해결할 수 있었다.
+
+```swift
+struct ProgramContentModel: Codable {
+    let category: String
+    let region: String
+    let title: String
+    let place: String
+    let organization: String
+    let target: String
+    let fees: String
+    let url: String
+    let imageURL: String
+    let startDate: String
+    let endDate: String
+    let longitude: String
+    let latitude: String
+    let isFree: String
+}
+```
+
+### 18. [SwiftData] error: Row (pk = ) for entity 'Model' is missing mandatory text data for property 'property name' 오류
+**고민한 점 :**
+- `setValue` 오류를 해결하고 실제 데이터를 사용하여 `SwiftData`에서 CRUD 테스트를 하는데 위와 같은 오류가 발생하며 데이터가 제대로 작업이 되지 않는 현상이 발생했다.
+- 실제 `Model`에 모든 항목을 필수적으로 넣어줬고, 오류 상황에서도 데이터가 들어갔을 때 모든 값이 있음을 확인했다.
+
+**과정 및 해결 :**
+- 처음에는 오류에 property name이 명시되어 있어 해당 프로퍼티의 종류를 지정한 `enum`의 문제라고 판단했다.
+- 그래서 `enum`에 `Codable`도 적용해보고 검색도 해본 결과 아래와 같은 정보를 얻을 수 있었다.
+-  https://developer.apple.com/documentation/ios-ipados-release-notes/ios-ipados-17-release-notes
+-  `iOS & iPadOS 17 Release Notes`의 `SwiftData Resolved Issues`를 보면 다음의 내역이 있다.
+-  `Fixed: Case value is not stored properly for a string rawvalue enumeration. (108634193)`
+-  `string`을 `rawvalue`로 갖는 `enum`에서 `Case` 값이 적절히 저장되지 않는 문제를 해결했다는데 이것 때문에 이 오류가 발생하는 것이라 생각했다.
+-  그러나 iOS 17.0에서 해결된 문제이고, 현재 빌드 상황은 Xcode 15.3, 시뮬레이터 iOS 17.4, 프로젝트 요구사항 17.0로 모두 해당 조건을 만족했기에 오류가 발생하기엔 무리가 있었다.
+-  이외의 다른 검색 결과를 얻지 못해 진전이 없던 도중, 프로젝트의 문제인가 싶어 Xcode에서 새로운 프로젝트를 만들어보았다.
+-  프로젝트 설정에서 `SwiftData`를 포함할 수 있는 옵션이 있어 체크하였고 기본 구조를 면밀히 살펴본 뒤, 기존 프로젝트처럼 모델을 구성해서 테스트 해봤다.
+-  새로운 stub 프로젝트에서는 정상적으로 `SwiftData`가 작동하기에 어떤 차이점이 있는가 다시 살펴보니 `enum`의 문제가 아니었다. 애초에 `SwiftData`에 들어가는 데이터는 특정 `enum`이 아니라 `DTO` 구조체였는데 단순히 그 프로퍼티 이름에 집중하는 바람에 그것을 정의한 `enum`이 문제일 것이라 생각한 것이다.
+-  `DTO` 구조체 내부에 `JSON` 데이터를 디코딩할 때 연결해주기 위해 `CodingKey`를 사용했는데 이것이 문제가 된 것이다.
+-  따라서 `API` 데이터를 받을 때, 데이터를 받고 나서 디코딩된 `DTO` 모델을 `CodingKey`가 없는 별도의 구조체에 매핑시켜 저장함으로써 해결할 수 있었다.
+
+```swift
+struct ProgramContent: Decodable {
+    let category: String
+    let region: String
+    let title: String
+    let place: String
+    let organization: String
+    let target: String
+    let fees: String
+    let url: String
+    let imageURL: String
+    let startDate: String
+    let endDate: String
+    let longitude: String
+    let latitude: String
+    let isFree: String
+
+    enum CodingKeys: String, CodingKey {
+        case category = "CODENAME"
+        case region = "GUNAME"
+        case title = "TITLE"
+        case place = "PLACE"
+        case organization = "ORG_NAME"
+        case target = "USE_TRGT"
+        case fees = "USE_FEE"
+        case url = "ORG_LINK"
+        case imageURL = "MAIN_IMG"
+        case startDate = "STRTDATE"
+        case endDate = "END_DATE"
+        case longitude = "LAT"
+        case latitude = "LOT"
+        case isFree = "IS_FREE"
+    }
+}
+
+/// SwiftData 모델에서는 CodingKey 요소가 오류를 유발하여 별도의 매칭 구조체 사용
+struct ProgramContentModel: Codable {
+    let category: String
+    let region: String
+    let title: String
+    let place: String
+    let organization: String
+    let target: String
+    let fees: String
+    let url: String
+    let imageURL: String
+    let startDate: String
+    let endDate: String
+    let longitude: String
+    let latitude: String
+    let isFree: String
+}
+```
+
+```swift
+programCancellable = URLSession.shared
+    .dataTaskPublisher(for: url)
+    .subscribe(on: DispatchQueue.global())
+    .map(\.data)
+    .decode(type: ProgramData.self, decoder: JSONDecoder())
+    .receive(on: DispatchQueue.main)
+    .sink { completion in
+        print(completion)
+    } receiveValue: { [weak self] value in
+        self?.transformDTO(from: value.programInfo.programContents)
+    }
+```
+
+```swift
+private func transformDTO(from contents: [ProgramContent]) {
+    let today = Date().getStringOfTodayDate()
+
+    self.contents = contents
+        .filter { $0.endDate > today }
+        .sorted { $0.startDate < $1.startDate }
+        .map { content in
+            ProgramContentModel(
+                category: content.category,
+                region: content.region,
+                title: content.title,
+                place: content.place,
+                organization: content.organization,
+                target: content.target,
+                fees: content.fees,
+                url: content.url,
+                imageURL: content.imageURL,
+                startDate: content.startDate,
+                endDate: content.endDate,
+                longitude: content.longitude,
+                latitude: content.latitude,
+                isFree: content.isFree
+            )
+        }
+}
+```
+
+### 19. [WebKit] target is not running or doesn't have entitlement com.apple.runningboard.assertions.webkit / acquireSync Failed to acquire RBS assertion 'XPCConnectionTerminationWatchdog' for process with PID= 오류
+**고민한 점 :**
+- 프로젝트를 시뮬레이터에서 테스트할 때 로그창에 위와 같은 메시지가 지속적으로 출력되었다. 어떤 문제인지 알고 해결하고자 했다.
+
+**과정 및 해결 :**
+- 관련한 정보가 많이 있지 않았지만 Apple 포럼에서 답을 얻을 수 있었다.
+- https://developer.apple.com/forums/thread/742739
+- 2주 전(`24. 03. 11. 기준`)에 올라온 해당 답변에 따르면 Apple에 피드백을 올린 결과 에러가 아닌 단순 로그 메시지이고, 이후 업데이트에서 제거된다고 응답을 받았다고 한다.
+- 빌드 환경(Xcode 15.3) 기준 아직 해당 메세지는 출력되고 있다.
 
 <br>
 
