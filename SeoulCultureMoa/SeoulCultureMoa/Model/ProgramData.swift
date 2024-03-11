@@ -58,3 +58,21 @@ struct ProgramContent: Decodable {
         case isFree = "IS_FREE"
     }
 }
+
+/// SwiftData 모델에서는 CodingKey 요소가 오류를 유발하여 별도의 매칭 구조체 사용
+struct ProgramContentModel: Codable {
+    let category: String
+    let region: String
+    let title: String
+    let place: String
+    let organization: String
+    let target: String
+    let fees: String
+    let url: String
+    let imageURL: String
+    let startDate: String
+    let endDate: String
+    let longitude: String
+    let latitude: String
+    let isFree: String
+}
