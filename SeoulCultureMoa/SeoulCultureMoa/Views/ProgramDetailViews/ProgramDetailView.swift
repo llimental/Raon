@@ -80,11 +80,39 @@ struct ProgramDetailView: View {
             .onAppear {
                 isFavorite = getFavoriteState()
             }
+            .onChange(of: isFavorite) { oldValue, newValue in
+                if oldValue != newValue {
+                    newValue == true ? insertFavoriteProgram() : deleteFavoriteProgram()
+                }
+            }
+        }
+    }
 
     // MARK: - Private Functions
     private func getFavoriteState() -> Bool {
         return favoritePrograms.contains(where: { $0.title == content.title }) ? true : false
     }
+
+    // MARK: - SwiftData Functions
+    private func insertFavoriteProgram() {
+        if !favoritePrograms.contains(where: { $0.title == content.title }) {
+            let favoriteProgram = FavoriteProgram(
+                title: content.title,
+                content: content)
+
+            modelContext.insert(favoriteProgram)
+
+            modelContext.hasChanges ? try? modelContext.save() : ()
+        }
+    }
+
+    private func deleteFavoriteProgram() {
+        if favoritePrograms.contains(where: { $0.title == content.title }) {
+            let programPredicate = #Predicate<FavoriteProgram> { $0.title == content.title }
+
+            try? modelContext.delete(model: FavoriteProgram.self, where: programPredicate)
+
+            modelContext.hasChanges ? try? modelContext.save() : ()
         }
     }
 }
