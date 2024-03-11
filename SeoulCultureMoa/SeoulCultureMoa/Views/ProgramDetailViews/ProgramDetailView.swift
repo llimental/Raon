@@ -27,9 +27,9 @@ struct ProgramDetailView: View {
         GeometryReader { geometry in
             ZStack(alignment: .bottom) {
                 CachedAsyncImageView(url: content.imageURL)
-                .frame(width: geometry.size.width, height: geometry.size.height)
-                .scaledToFit()
-                .blur(radius: 5)
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .scaledToFit()
+                    .blur(radius: 5)
 
                 Color.black
                     .opacity(0.5)
