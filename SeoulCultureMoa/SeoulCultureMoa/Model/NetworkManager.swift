@@ -78,4 +78,30 @@ final class NetworkManager: ObservableObject {
             }
         }
     }
+
+    private func transformDTO(from contents: [ProgramContent]) {
+        let today = Date().getStringOfTodayDate()
+
+        self.contents = contents
+            .filter { $0.endDate > today }
+            .sorted { $0.startDate < $1.startDate }
+            .map { content in
+                ProgramContentModel(
+                    category: content.category,
+                    region: content.region,
+                    title: content.title,
+                    place: content.place,
+                    organization: content.organization,
+                    target: content.target,
+                    fees: content.fees,
+                    url: content.url,
+                    imageURL: content.imageURL,
+                    startDate: content.startDate,
+                    endDate: content.endDate,
+                    longitude: content.longitude,
+                    latitude: content.latitude,
+                    isFree: content.isFree
+                )
+            }
+    }
 }
