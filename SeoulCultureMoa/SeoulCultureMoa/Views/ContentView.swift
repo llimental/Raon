@@ -31,11 +31,12 @@ struct ContentView: View {
                     Label("프로그램", systemImage: "house")
                 }
 
-                FavoritesView()
-                    .tabItem {
-                        Label("즐겨찾기", systemImage: "heart")
-                    }
-
+                FavoritesView(
+                    themeColor: $themeColor)
+                .tabItem {
+                    Label("즐겨찾기", systemImage: "heart")
+                }
+                
                 SearchView(
                     contents: $networkManager.contents,
                     themeColor: $themeColor)
