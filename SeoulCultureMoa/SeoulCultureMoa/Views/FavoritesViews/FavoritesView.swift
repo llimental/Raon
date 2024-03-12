@@ -34,6 +34,7 @@ struct FavoritesView: View {
                             ProgramCardView(programImageURL: favoriteProgram.content.imageURL)
                         }
                     }
+                    .onDelete(perform: deleteFavoriteProgram)
                 }
             }
             .toolbar {
@@ -43,6 +44,12 @@ struct FavoritesView: View {
             }
         }
     }
+
+    // MARK: - SwiftData Functions
+    private func deleteFavoriteProgram(offsets: IndexSet) {
+        withAnimation {
+            for index in offsets {
+                modelContext.delete(favoritePrograms[index])
             }
         }
     }
