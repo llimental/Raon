@@ -37,7 +37,12 @@ struct FavoritesView: View {
                 }
             }
             .toolbar {
-                EditButton()
+                ToolbarItem(placement: .topBarTrailing) {
+                    EditButton()
+                }
+            }
+        }
+    }
             }
         }
     }
