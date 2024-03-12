@@ -31,10 +31,17 @@ struct ContentView: View {
                     Label("프로그램", systemImage: "house")
                 }
 
-                SearchView(contents: $networkManager.contents, themeColor: $themeColor)
+                FavoritesView()
                     .tabItem {
-                        Label("검색", systemImage: "magnifyingglass")
+                        Label("즐겨찾기", systemImage: "heart")
                     }
+
+                SearchView(
+                    contents: $networkManager.contents,
+                    themeColor: $themeColor)
+                .tabItem {
+                    Label("검색", systemImage: "magnifyingglass")
+                }
             }
         }
     }
