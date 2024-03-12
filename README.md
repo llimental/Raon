@@ -28,6 +28,7 @@
     - **[Step 7]** `24. 03. 06.` ~ `24. 03. 07.`
     - **[Step 8]** `24. 03. 07.` ~ `24. 03. 08.`
     - **[Step 9]** `24. 03. 09.` ~ `24. 03. 11.`
+    - **[Step 10]** `24. 03. 12.` ~ `24. 03. 12.`
 
 <br>
 
@@ -70,7 +71,6 @@
     - `GCD`
         - `DispatchQueue`
     - `ShareLink`
-    - `TabView`
     - `WKWebView(UIViewRepresentable)`
     - `AsyncImage`
     - `NSCache`
@@ -84,9 +84,10 @@
     - `NWPathMonitor`
     - `ScrollViewReader`
     - `custom sheet`
-    - `searchable`
-    - `onTapGesture`
-    - `onChange`
+    - `View Modifier`
+        - `searchable`
+        - `onTapGesture`
+        - `onChange`
     - `External App API Use`
         - `Naver Map`
         - `Kakao Map`
@@ -201,15 +202,20 @@
     - WebView 사용 시 메모리가 급증하여 줄지 않는 이슈를 해결하여 메모리 최적화
 
 ### Step 8: Settings View
-- **Settings View**
+- **Settings View 구현**
     - 저작권 표시
     - 앱 테마 설정
     - 관심 지역 설정
 
 ### Step 9: SwiftData
-- **SwiftData**
+- **SwiftData 사용**
     - SwiftData의 Model 구상
     - SwiftData를 활용하여 Favorites 항목 관리
+
+### Step 10: Favorites View
+- **Favorites View 구현**
+    - SwiftData의 FavoritePrograms 데이터를 사용하여 View 구성
+    - toolbar 버튼을 활용한 제거 기능 구현
 
 <br>
 
