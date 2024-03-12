@@ -24,23 +24,21 @@ struct FavoritesView: View {
                     titleText: "즐겨찾기",
                     themeColor: themeColor)
 
-                List {
-                    ForEach(favoritePrograms) { favoriteProgram in
-                        NavigationLink {
-                            ProgramDetailView(
-                                themeColor: $themeColor,
-                                content: favoriteProgram.content)
-                        } label: {
-                            ProgramCardView(programImageURL: favoriteProgram.content.imageURL)
+                ScrollView {
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
+                        ForEach(favoritePrograms) { favoriteProgram in
+                            NavigationLink {
+                                ProgramDetailView(
+                                    themeColor: $themeColor,
+                                    content: favoriteProgram.content)
+                            } label: {
+                                ProgramCardView(programImageURL: favoriteProgram.content.imageURL)
+                            }
+                            .padding()
                         }
                     }
-                    .onDelete(perform: deleteFavoriteProgram)
                 }
-            }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    EditButton()
-                }
+                .scrollIndicators(.hidden)
             }
         }
     }
