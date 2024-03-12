@@ -38,6 +38,18 @@ struct FavoritesView: View {
                                 ProgramCardView(programImageURL: favoriteProgram.content.imageURL)
                             }
                             .padding()
+                            .overlay(alignment: .topTrailing) {
+                                if isEditing {
+                                    Button(action: {
+                                        deleteFavoriteProgram(is: favoriteProgram.title)
+                                    }, label: {
+                                        Image(systemName: "minus.circle.fill")
+                                            .foregroundStyle(.red)
+                                            .font(.title2)
+                                    })
+                                    .offset(x: -5, y: 5)
+                                }
+                            }
                         }
                     }
                 }
