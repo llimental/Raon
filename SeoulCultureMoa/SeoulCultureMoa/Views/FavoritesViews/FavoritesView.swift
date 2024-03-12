@@ -56,11 +56,13 @@ struct FavoritesView: View {
     }
 
     // MARK: - SwiftData Functions
-    private func deleteFavoriteProgram(offsets: IndexSet) {
+    private func deleteFavoriteProgram(is title: String) {
         withAnimation {
-            for index in offsets {
-                modelContext.delete(favoritePrograms[index])
-            }
+            let programPredicate = #Predicate<FavoriteProgram> { $0.title == title }
+
+            try? modelContext.delete(model: FavoriteProgram.self, where: programPredicate)
+
+            modelContext.hasChanges ? try? modelContext.save() : ()
         }
     }
 }
