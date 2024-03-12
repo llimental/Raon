@@ -28,6 +28,7 @@
 		BB6AE2D62B9B639900D4FB25 /* NavigationBarLargeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6AE2D52B9B639900D4FB25 /* NavigationBarLargeTitleView.swift */; };
 		BB6AE2D82B9B64B200D4FB25 /* NavigationBarSmallTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6AE2D72B9B64B200D4FB25 /* NavigationBarSmallTitleView.swift */; };
 		BB74BB082B713DB200BA2A61 /* SearchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB74BB072B713DB200BA2A61 /* SearchCardView.swift */; };
+		BB9127F42BA0407000ABC84D /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9127F32BA0407000ABC84D /* FavoritesView.swift */; };
 		BBA41E072B9A15BC00884BD9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA41E062B9A15BC00884BD9 /* SettingsView.swift */; };
 		BBA41E092B9A187A00884BD9 /* CopyRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA41E082B9A187A00884BD9 /* CopyRightView.swift */; };
 		BBA6D6272B663CFC00AF8600 /* ProgramCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA6D6262B663CFC00AF8600 /* ProgramCardView.swift */; };
@@ -69,6 +70,7 @@
 		BB6AE2D52B9B639900D4FB25 /* NavigationBarLargeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarLargeTitleView.swift; sourceTree = "<group>"; };
 		BB6AE2D72B9B64B200D4FB25 /* NavigationBarSmallTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarSmallTitleView.swift; sourceTree = "<group>"; };
 		BB74BB072B713DB200BA2A61 /* SearchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardView.swift; sourceTree = "<group>"; };
+		BB9127F32BA0407000ABC84D /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		BBA41E062B9A15BC00884BD9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BBA41E082B9A187A00884BD9 /* CopyRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyRightView.swift; sourceTree = "<group>"; };
 		BBA6D6262B663CFC00AF8600 /* ProgramCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCardView.swift; sourceTree = "<group>"; };
@@ -141,6 +143,14 @@
 			path = ProgramDetailViews;
 			sourceTree = "<group>";
 		};
+		BB9127F22BA0405700ABC84D /* FavoritesViews */ = {
+			isa = PBXGroup;
+			children = (
+				BB9127F32BA0407000ABC84D /* FavoritesView.swift */,
+			);
+			path = FavoritesViews;
+			sourceTree = "<group>";
+		};
 		BBA41E052B9A159C00884BD9 /* SettingsViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +195,7 @@
 				BBCECA622B56815D00D664A1 /* ContentView.swift */,
 				BBCA719F2B5A80F1001CC023 /* OnboardingViews */,
 				BB63C1BF2B64EFF300EA3ABB /* ProgramViews */,
+				BB9127F22BA0405700ABC84D /* FavoritesViews */,
 				BBBE87F12B71117100189E08 /* SearchViews */,
 				BB67FC062B8714F800EFA5AC /* ProgramDetailViews */,
 				BBA41E052B9A159C00884BD9 /* SettingsViews */,
@@ -367,6 +378,7 @@
 				BB44752B2B7B7251008736FB /* Categories.swift in Sources */,
 				BB1502932B9F541E00340090 /* FavoriteProgram.swift in Sources */,
 				BBA41E072B9A15BC00884BD9 /* SettingsView.swift in Sources */,
+				BB9127F42BA0407000ABC84D /* FavoritesView.swift in Sources */,
 				BB0398322B95C2B1008C0322 /* LinkToPlaceView.swift in Sources */,
 				BBF9E9122B9869DB00496CE5 /* CachedAsyncImageView.swift in Sources */,
 				BBE6A71A2B691AEB00067FC0 /* NetworkManager.swift in Sources */,
