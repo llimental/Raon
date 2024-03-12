@@ -36,6 +36,9 @@ struct FavoritesView: View {
                     }
                 }
             }
+            .toolbar {
+                EditButton()
+            }
         }
     }
 }
