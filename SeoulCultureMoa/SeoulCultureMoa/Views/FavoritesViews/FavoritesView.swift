@@ -13,6 +13,9 @@ struct FavoritesView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \FavoriteProgram.content.startDate) private var favoritePrograms: [FavoriteProgram]
 
+    // MARK: - @State Properties
+    @State private var isEditing: Bool = false
+
     // MARK: - @Binding Properties
     @Binding var themeColor: ThemeColors
 
@@ -39,6 +42,15 @@ struct FavoritesView: View {
                     }
                 }
                 .scrollIndicators(.hidden)
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {
+                        isEditing.toggle()
+                    }, label: {
+                        isEditing ? Text("완료") : Text("편집")
+                    })
+                }
             }
         }
     }
