@@ -9,6 +9,9 @@ import SwiftUI
 import UserNotifications
 
 final class NotificationManager: ObservableObject {
+    // MARK: - @Published Properties
+    @Published var notificationStatus: Bool = false
+
     // MARK: - Private Properties
     private let center = UNUserNotificationCenter.current()
     private var dateFormatter: DateFormatter {
@@ -54,5 +57,13 @@ final class NotificationManager: ObservableObject {
 
     func removeNotificationRequest(with title: String) {
         center.removePendingNotificationRequests(withIdentifiers: [title])
+    }
+
+    func setNotificationStatus() {
+        center.getNotificationSettings { [weak self] settings in
+            DispatchQueue.main.async {
+                self?.notificationStatus = settings.authorizationStatus == .authorized
+            }
+        }
     }
 }
