@@ -17,6 +17,7 @@ struct SeoulCultureMoaApp: App {
 
     // MARK: - @StateObject Properties
     @StateObject private var networkManager = NetworkManager()
+    @StateObject private var notificationManager = NotificationManager()
 
     // MARK: - Initializer
     init() {
@@ -32,6 +33,7 @@ struct SeoulCultureMoaApp: App {
                 selectedRegion: $selectedRegion)
             .tint(themeColor.color)
             .environmentObject(networkManager)
+            .environmentObject(notificationManager)
         }
         .modelContainer(for: FavoriteProgram.self)
     }
