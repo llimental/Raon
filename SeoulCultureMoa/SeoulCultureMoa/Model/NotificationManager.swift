@@ -18,7 +18,7 @@ final class NotificationManager: ObservableObject {
         return dateFormatter
     }
 
-    // MARK: - Private Functions
+    // MARK: - Public Functions
     func addNotificationRequest(with title: String, when dateString: String) {
         center.getNotificationSettings { [weak self] settings in
             if settings.authorizationStatus != .authorized {
@@ -50,5 +50,9 @@ final class NotificationManager: ObservableObject {
                 print("Notification add Failed(\(error.localizedDescription))")
             }
         }
+    }
+
+    func removeNotificationRequest(with title: String) {
+        center.removePendingNotificationRequests(withIdentifiers: [title])
     }
 }
