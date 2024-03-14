@@ -13,8 +13,17 @@ struct ProgramDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var favoritePrograms: [FavoriteProgram]
 
+    // MARK: - @EnvironmentObject Properties
+    @EnvironmentObject var notificationManager: NotificationManager
+
     // MARK: - @State Properties
-    @State private var isFavorite: Bool = false
+    @State private var isFavorite: Bool = false {
+        didSet {
+            isFavorite == true ? 
+            notificationManager.addNotificationRequest(with: content.title, when: content.startDate) :
+            notificationManager.removeNotificationRequest(with: content.title)
+        }
+    }
 
     // MARK: - @Binding Properties
     @Binding var themeColor: ThemeColors
@@ -136,4 +145,5 @@ struct ProgramDetailView: View {
             latitude: "126.9760053",
             isFree: "유료"))
     .modelContainer(for: FavoriteProgram.self)
+    .environmentObject(NotificationManager())
 }
