@@ -33,24 +33,28 @@ final class NotificationManager: ObservableObject {
             }
         }
 
-        let notificationContent = UNMutableNotificationContent()
-        notificationContent.body = "\(title)이 일주일 뒤에 열려요"
+        center.getPendingNotificationRequests { [weak self] requests in
+            if !requests.contains(where: { $0.identifier == title }) {
+                let notificationContent = UNMutableNotificationContent()
+                notificationContent.body = "즐겨찾기 하신 \(title)이 일주일 뒤에 열려요"
 
-        guard let date = dateFormatter.date(from: dateString.replacingOccurrences(of: " 00:00:00.0", with: "")) else { return }
+                guard let date = self?.dateFormatter.date(from: dateString.replacingOccurrences(of: " 00:00:00.0", with: "")) else { return }
 
-        guard let adjustDate = Calendar.current.date(byAdding: .day, value: -7, to: date) else { return }
+                guard let adjustDate = Calendar.current.date(byAdding: .day, value: -7, to: date) else { return }
 
-        var dateComponent = Calendar.current.dateComponents([.year, .month, .day], from: adjustDate)
-        dateComponent.hour = 9
-        dateComponent.minute = 0
+                var dateComponent = Calendar.current.dateComponents([.year, .month, .day], from: adjustDate)
+                dateComponent.hour = 9
+                dateComponent.minute = 0
 
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
 
-        let request = UNNotificationRequest(identifier: title, content: notificationContent, trigger: trigger)
+                let request = UNNotificationRequest(identifier: title, content: notificationContent, trigger: trigger)
 
-        center.add(request) { error in
-            if let error = error {
-                print("Notification add Failed(\(error.localizedDescription))")
+                self?.center.add(request) { error in
+                    if let error = error {
+                        print("Notification add Failed(\(error.localizedDescription))")
+                    }
+                }
             }
         }
     }
