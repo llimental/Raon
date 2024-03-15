@@ -29,6 +29,7 @@
     - **[Step 8]** `24. 03. 07.` ~ `24. 03. 08.`
     - **[Step 9]** `24. 03. 09.` ~ `24. 03. 11.`
     - **[Step 10]** `24. 03. 12.` ~ `24. 03. 12.`
+    - **[Step 11]** `24. 03. 13.` ~ `24. 03. 15.`
 
 <br>
 
@@ -70,6 +71,8 @@
         - `Create(insert) / Read(query)/ Update(save) / Delete(delete)`
     - `GCD`
         - `DispatchQueue`
+    - `UserNotifications`
+        - `Local Push Notification`
     - `ShareLink`
     - `WKWebView(UIViewRepresentable)`
     - `AsyncImage`
@@ -216,6 +219,18 @@
 - **Favorites View 구현**
     - SwiftData의 FavoritePrograms 데이터를 사용하여 View 구성
     - toolbar 버튼을 활용한 제거 기능 구현
+
+### Step 11: User Notifications
+- **User Notifications 구현**
+    - Notification 관리 역할을 맡을 객체 구현
+    - Notification 사용 권한 요청
+    - User Notification을 활용하여 즐겨찾기 프로그램 시작일 알림 구현
+    - Date의 한국시각 설정
+    - Notification 중복 등록 방지
+        - 시작일 기준 알림 등록 분기처리(이미 시작한 프로그램은 알림 등록 안함)
+        - 이미 identifier가 등록되어 있는지 확인
+    - 즐겨찾기 해제 시 Notification 제거 기능 구현
+    - SettingsView에서 알림 토글 구현 및 설정 앱 알림 상태와 연결
 
 <br>
 
@@ -534,6 +549,13 @@ final class CacheManager {
 |:---:|:---:|
 |툴바 없을 때 메모리|툴바 있을 때 메모리|
 
+++ 6) 추가 의견
+- Xcode의 Instruments가 측정할 때마다 약간은 다른 양상을 보이는 듯하다. `24. 03. 15.` 기준 WebKit을 사용할 때 할당되었던 메모리가 사용이 끝난 뒤 할당이 해제되는 모습을 볼 수 있다.
+
+|<img src="https://github.com/llimental/What-is-In-Seoul/assets/45708630/6c0f13cf-2f10-4c4f-8337-2b8a67b3ebd3">|
+|:---:|
+|WebKit 메모리가 할당되었다가 해제되는 모습|
+
 ### 15. App Theme 관리
 **고민한 점 :**
 - 기존에는 App Theme을 설정하기 위해 `Assets`에 `Color Set`을 만들고, `ThemeColors`에 `case`를 추가해줬다. 그러나 새로운 색상을 추가하려고 보니, 이미 구현한 색상이나 새로 추가하려는 색상 모두 Apple에서 제공하는 `SystemColor`이기에 이렇게 복잡하게 진행할 필요가 있을까 싶은 생각이 들었다.
@@ -768,7 +790,63 @@ private func transformDTO(from contents: [ProgramContent]) {
 - 관련한 정보가 많이 있지 않았지만 Apple 포럼에서 답을 얻을 수 있었다.
 - https://developer.apple.com/forums/thread/742739
 - 2주 전(`24. 03. 11. 기준`)에 올라온 해당 답변에 따르면 Apple에 피드백을 올린 결과 에러가 아닌 단순 로그 메시지이고, 이후 업데이트에서 제거된다고 응답을 받았다고 한다.
-- 빌드 환경(Xcode 15.3) 기준 아직 해당 메세지는 출력되고 있다.
+- 빌드 환경(Xcode 15.3) 기준 아직 해당 메세지는 출력되고 있다
+
+### 20. Toggle의 isOn 값과 기본 설정 앱 상태의 바인딩
+**고민한 점 :**
+- 알림 토글의 값을 앱 내에서 변경하는 것이 아니라 기존 서비스(스타벅스, 이디야 등)처럼 디바이스 알림 설정을 반영하고자 했다.
+- 그러나 설정 앱으로 갔다가 돌아왔을 때 상태가 실시간 반영이 되지 않음을 확인했다.
+
+**과정 및 해결 :**
+- `UNUserNotificationCenter`에서 `getNotificationSettings` 메서드를 호출하여 값을 가져오는 것은 실시간으로 처리할 수 없었다.
+- 기존에는 `NotificationManager`의 `Publish` 값을 토글에 `Binding`을 했으나 토글로 `Manager`의 값을 변경하면 안됐기에 `Binding` 대신 별도의 `State` 프로퍼티로 만들고, `Manager`의 값을 대입하는 식으로 진행을 했었다.
+- 이후 작업에 따라 `Manager`에서 현재 권한 상태를 확인하는 메서드를 호출하여 `Manager`의 `status` 값을 바꾸고, 그 값을 다시 토글 상태 값으로 넘겨주는 방식을 사용한 것이다.
+- 그러나 `onReceive`와 `Combine`을 사용해서 앱이 백그라운드에서 포그라운드로 넘어오는 것을 확인하고 메서드를 호출했음에도 당장 바뀌지 않는 문제가 발생했다(지연 변경).
+- 같은 문제를 계속 보다보니 문제점을 쉽게 발견할 수 없었고, 잠시 휴식을 가지며 생각을 정리하고 다시 보니 로직의 문제를 발견할 수 있었다.
+- 애초에 바인딩하지 않을 것이라면 `Manager`에서 `Publish` 하는 이유도 없을 뿐더러 `Binding` 해서 값을 변경시키더라도 돌려놓으면 되는 것이다.
+- 이후 토글 값을 `Publish` 프로퍼티에 바인딩한 후, `Alert`에서 닫기를 누르면 토글 값을 다시 원위치로 돌려놓고, 설정 창으로 이동한다면 `.onReceive`를 활용하여 다시 앱이 `Foreground`로 돌아올 때 `notificationManager`의 상태 확인 메서드를 호출하는 방식을 사용했다. 메서드가 상태를 확인하고 `Publish` 프로퍼티에 반영하면, 그것을 `Binding`한 토글의 값도 자동으로 업데이트가 되는 것이다. 이렇게 변경한 이후 설정 앱에서 변경한 값에 맞게 실시간으로 반영이 되었다.
+
+```swift
+.onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+    DispatchQueue.main.async {
+        notificationManager.setNotificationStatus()
+    }
+}
+.onTapGesture {
+    isAlertPresented.toggle()
+}
+.alert(isPresented: $isAlertPresented) {
+    Alert(
+        title: Text("알림 설정 변경 안내"),
+        message: Text("알림 설정 변경은 설정 앱에서 할 수 있어요."),
+        primaryButton: .default(Text("설정"), action: {
+            guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+
+            UIApplication.shared.open(settingsURL)
+        }),
+        secondaryButton: .cancel(Text("닫기"), action: {
+            DispatchQueue.main.async {
+                isToggleOn.toggle()
+            }
+        }))
+}
+```
+
+### 21. 한국 시각 구하기
+**고민한 점 :**
+- 프로그램의 시작일과 오늘 날짜를 비교하고자 하는데, 기준 시점(UTC vs KST)이 달라 맞춰주고자 했다.
+
+**과정 및 해결 :**
+- `DateFormatter`에 `Locale`, `TimeZone`을 다양한 값으로 변경해도, String으로는 정상적으로 한국 시각이 나오는 반면 Date 값으로는 `UTC`만 나오는 문제가 발생했다.
+- 어떠한 값을 반영해도 원하는 값이 나오지 않아 `addingTimeInterval`을 통해 9시간을 더해 해결했다.
+
+```swift
+extension Date {
+    func getKSTDate() -> Date {
+        return self.addingTimeInterval(60 * 60 * 9)
+    }
+}
+```
 
 <br>
 
