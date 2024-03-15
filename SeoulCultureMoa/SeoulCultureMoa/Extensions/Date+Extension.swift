@@ -14,4 +14,8 @@ extension Date {
 
         return dateFormatter.string(from: self)
     }
+
+    func getKSTDate() -> Date {
+        return self.addingTimeInterval(60 * 60 * 9)
+    }
 }
