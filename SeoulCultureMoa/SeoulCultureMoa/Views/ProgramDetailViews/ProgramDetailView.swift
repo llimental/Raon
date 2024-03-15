@@ -17,13 +17,7 @@ struct ProgramDetailView: View {
     @EnvironmentObject var notificationManager: NotificationManager
 
     // MARK: - @State Properties
-    @State private var isFavorite: Bool = false {
-        didSet {
-            isFavorite == true ? 
-            notificationManager.addNotificationRequest(with: content.title, when: content.startDate) :
-            notificationManager.removeNotificationRequest(with: content.title)
-        }
-    }
+    @State private var isFavorite: Bool = false
 
     // MARK: - @Binding Properties
     @Binding var themeColor: ThemeColors
@@ -54,6 +48,12 @@ struct ProgramDetailView: View {
 
                         Button(action: {
                             isFavorite.toggle()
+
+                            if isFavorite == true {
+                                notificationManager.addNotificationRequest(with: content.title, when: content.startDate)
+                            } else {
+                                notificationManager.removeNotificationRequest(with: content.title)
+                            }
                         }, label: {
                             isFavorite ? Image(systemName: "heart.fill") : Image(systemName: "heart")
                         })
