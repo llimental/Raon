@@ -17,7 +17,6 @@ final class NotificationManager: ObservableObject {
     private var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
 
         return dateFormatter
     }
@@ -39,11 +38,11 @@ final class NotificationManager: ObservableObject {
                 let notificationContent = UNMutableNotificationContent()
                 notificationContent.body = "즐겨찾기 하신 \(title)이 내일부터 시작해요"
 
-                guard let date = self?.dateFormatter.date(from: dateString.replacingOccurrences(of: " 00:00:00.0", with: "")) else { return }
+                guard let date = self?.dateFormatter.date(from: dateString.replacingOccurrences(of: " 00:00:00.0", with: ""))?.getKSTDate() else { return }
 
-                guard let todayString = self?.dateFormatter.string(from: Date()), let today = self?.dateFormatter.date(from: todayString) else { return }
+                guard let todayString = self?.dateFormatter.string(from: Date()), let today = self?.dateFormatter.date(from: todayString)?.getKSTDate() else { return }
 
-                guard let adjustDate = Calendar.current.date(byAdding: .day, value: -1, to: date), adjustDate >= today else { return }
+                guard let adjustDate = Calendar.current.date(byAdding: .day, value: -1, to: date), adjustDate > today else { return }
 
                 var dateComponent = Calendar.current.dateComponents([.year, .month, .day], from: adjustDate)
                 dateComponent.hour = 9
