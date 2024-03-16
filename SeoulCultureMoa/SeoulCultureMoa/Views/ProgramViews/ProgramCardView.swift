@@ -14,13 +14,13 @@ struct ProgramCardView: View {
     // MARK: - Body
     var body: some View {
         CachedAsyncImageView(url: programImageURL)
-        .scaledToFit()
-        .clipShape(.rect(cornerRadius: 15))
-        .background(
-            RoundedRectangle(cornerRadius: 15)
-                .shadow(color: .primary, radius: 5)
-                .opacity(0.5)
-        )
+            .scaledToFit()
+            .clipShape(.rect(cornerRadius: 15))
+            .background(
+                RoundedRectangle(cornerRadius: 15)
+                    .shadow(color: .primary, radius: 5)
+                    .opacity(0.5)
+            )
     }
 }
 
