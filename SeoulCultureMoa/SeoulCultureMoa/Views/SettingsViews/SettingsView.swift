@@ -39,28 +39,7 @@ struct SettingsView: View {
                 Section {
                     NotificationToggleView(isToggleOn: $notificationManager.notificationStatus)
 
-                    DisclosureGroup(
-                        content: {
-                            ForEach(ThemeColors.allCases, id: \.self) { color in
-                                Button(action: {
-                                    themeColor = color
-                                }, label: {
-                                    Label(color.rawValue, systemImage: "circle.fill")
-                                        .foregroundStyle(color.color)
-                                })
-                            }
-                        },
-                        label: {
-                            HStack {
-                                Label("앱 색상", systemImage: "paintbrush")
-
-                                Spacer()
-
-                                Text(themeColor.rawValue)
-                                    .foregroundStyle(themeColor.color)
-                            }
-                        }
-                    )
+                    ThemeSettingView(themeColor: $themeColor)
 
                     Picker(selection: $selectedRegion) {
                         ForEach(Regions.allCases) { region in
@@ -73,7 +52,6 @@ struct SettingsView: View {
                     Text("개인화")
                 }
                 .listRowSeparator(.hidden)
-
             }
             .listStyle(.plain)
         }
