@@ -51,7 +51,14 @@ struct SettingsView: View {
                             }
                         },
                         label: {
-                            Label("앱 색상", systemImage: "paintbrush")
+                            HStack {
+                                Label("앱 색상", systemImage: "paintbrush")
+
+                                Spacer()
+
+                                Text(themeColor.rawValue)
+                                    .foregroundStyle(themeColor.color)
+                            }
                         }
                     )
 
