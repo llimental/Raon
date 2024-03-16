@@ -28,60 +28,50 @@ struct ProgramDetailView: View {
     // MARK: - Body
     var body: some View {
         GeometryReader { geometry in
-            ZStack(alignment: .bottom) {
-                CachedAsyncImageView(url: content.imageURL)
-                    .frame(width: geometry.size.width, height: geometry.size.height)
-                    .scaledToFit()
-                    .blur(radius: 5)
+            VStack {
+                HStack(alignment: .bottom) {
+                    Text(content.title)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
+                        .shadow(color: .black, radius: 2)
 
-                Color.black
-                    .opacity(0.5)
+                    Spacer()
 
-                VStack {
-                    HStack(alignment: .bottom) {
-                        Text(content.title)
-                            .fontWeight(.bold)
-                            .foregroundStyle(.white)
-                            .shadow(color: .black, radius: 2)
+                    Button(action: {
+                        isFavorite.toggle()
 
-                        Spacer()
-
-                        Button(action: {
-                            isFavorite.toggle()
-
-                            if isFavorite == true {
-                                notificationManager.addNotificationRequest(with: content.title, when: content.startDate)
-                            } else {
-                                notificationManager.removeNotificationRequest(with: content.title)
-                            }
-                        }, label: {
-                            isFavorite ? Image(systemName: "heart.fill") : Image(systemName: "heart")
-                        })
-                        .frame(height: 20)
-
-                        ShareLink(item: URL(string: content.url)!) {
-                            Image(systemName: "square.and.arrow.up")
+                        if isFavorite == true {
+                            notificationManager.addNotificationRequest(with: content.title, when: content.startDate)
+                        } else {
+                            notificationManager.removeNotificationRequest(with: content.title)
                         }
-                        .frame(height: 25)
-                    }
-                    .font(.title2)
-                    .foregroundStyle(themeColor.color)
-                    .padding(.horizontal, 20)
+                    }, label: {
+                        isFavorite ? Image(systemName: "heart.fill") : Image(systemName: "heart")
+                    })
+                    .frame(height: 20)
 
-                    ZStack(alignment: .bottom) {
-                        ProgramDescriptionView(themeColor: $themeColor, content: content)
-                            .frame(width: geometry.size.width, height: geometry.size.height * 0.7)
-
-                        NavigationLink {
-                            CustomWebView(url: content.url)
-                        } label: {
-                            ColoredText(
-                                text: "홈페이지 이동",
-                                textColor: themeColor,
-                                textWidth: geometry.size.width * 0.9)
-                        }
-                        .padding()
+                    ShareLink(item: URL(string: content.url)!) {
+                        Image(systemName: "square.and.arrow.up")
                     }
+                    .frame(height: 25)
+                }
+                .font(.title2)
+                .foregroundStyle(themeColor.color)
+                .padding(.horizontal, 20)
+
+                ZStack(alignment: .bottom) {
+                    ProgramDescriptionView(themeColor: $themeColor, content: content)
+                        .frame(width: geometry.size.width, height: geometry.size.height * 0.7)
+
+                    NavigationLink {
+                        CustomWebView(url: content.url)
+                    } label: {
+                        ColoredText(
+                            text: "홈페이지 이동",
+                            textColor: themeColor,
+                            textWidth: geometry.size.width * 0.9)
+                    }
+                    .padding()
                 }
             }
             .ignoresSafeArea(edges: .top)
