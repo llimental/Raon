@@ -163,9 +163,9 @@
 			isa = PBXGroup;
 			children = (
 				BBA41E062B9A15BC00884BD9 /* SettingsView.swift */,
-				BBDD9A5D2BA5DF5F009DEBE7 /* ThemeSettingView.swift */,
 				BBA41E082B9A187A00884BD9 /* CopyRightView.swift */,
 				BB9127F72BA3531300ABC84D /* NotificationToggleView.swift */,
+				BBDD9A5D2BA5DF5F009DEBE7 /* ThemeSettingView.swift */,
 			);
 			path = SettingsViews;
 			sourceTree = "<group>";
