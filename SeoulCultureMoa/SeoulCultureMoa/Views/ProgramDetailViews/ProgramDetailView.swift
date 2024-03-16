@@ -41,12 +41,7 @@ struct ProgramDetailView: View {
 
                     Button(action: {
                         isFavorite.toggle()
-
-                        if isFavorite == true {
-                            notificationManager.addNotificationRequest(with: content.title, when: content.startDate)
-                        } else {
-                            notificationManager.removeNotificationRequest(with: content.title)
-                        }
+                        favoriteButtonAction()
                     }, label: {
                         isFavorite ? Image(systemName: "heart.fill") : Image(systemName: "heart")
                     })
@@ -92,17 +87,22 @@ struct ProgramDetailView: View {
             .onAppear {
                 isFavorite = getFavoriteState()
             }
-            .onChange(of: isFavorite) { oldValue, newValue in
-                if oldValue != newValue {
-                    newValue == true ? insertFavoriteProgram() : deleteFavoriteProgram()
-                }
-            }
         }
     }
 
     // MARK: - Private Functions
     private func getFavoriteState() -> Bool {
         return favoritePrograms.contains(where: { $0.title == content.title }) ? true : false
+    }
+
+    private func favoriteButtonAction() {
+        if isFavorite == true {
+            insertFavoriteProgram()
+            notificationManager.addNotificationRequest(with: content.title, when: content.startDate)
+        } else {
+            deleteFavoriteProgram()
+            notificationManager.removeNotificationRequest(with: content.title)
+        }
     }
 
     // MARK: - SwiftData Functions
