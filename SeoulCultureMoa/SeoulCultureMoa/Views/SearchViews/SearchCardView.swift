@@ -15,8 +15,8 @@ struct SearchCardView: View {
     var body: some View {
         HStack(alignment: .center, spacing: 20) {
             CachedAsyncImageView(url: content.imageURL)
-            .frame(width: 150, height: 200)
             .scaledToFit()
+            .frame(width: 150, height: 200)
             .clipShape(.rect(cornerRadius: 15))
 
             VStack(alignment: .leading) {
@@ -39,9 +39,9 @@ struct SearchCardView: View {
                     firstText: "유/무료",
                     secondText: content.isFree)
             }
+            .frame(height: 200)
         }
-        .frame(width: 400, height: 200)
-        .padding()
+        .padding(.vertical)
     }
 }
 
