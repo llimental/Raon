@@ -215,11 +215,10 @@
 		BBCA719E2B5A7E6A001CC023 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BBBFD64B2B63E2670052BD38 /* Regions.swift */,
-				BB44752A2B7B7251008736FB /* Categories.swift */,
-				BBBFD6552B640BF20052BD38 /* ThemeColors.swift */,
-				BBA6D6282B66473300AF8600 /* ProgramData.swift */,
-				BB1502922B9F541E00340090 /* FavoriteProgram.swift */,
+				BBDD9A582BA578DE009DEBE7 /* Theme */,
+				BBDD9A572BA578C6009DEBE7 /* Filters */,
+				BBDD9A592BA578E5009DEBE7 /* DTO */,
+				BBDD9A5A2BA578EB009DEBE7 /* SwiftData */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -282,6 +281,39 @@
 				BB9127F52BA1947000ABC84D /* NotificationManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		BBDD9A572BA578C6009DEBE7 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				BBBFD64B2B63E2670052BD38 /* Regions.swift */,
+				BB44752A2B7B7251008736FB /* Categories.swift */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		BBDD9A582BA578DE009DEBE7 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				BBBFD6552B640BF20052BD38 /* ThemeColors.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		BBDD9A592BA578E5009DEBE7 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				BBA6D6282B66473300AF8600 /* ProgramData.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		BBDD9A5A2BA578EB009DEBE7 /* SwiftData */ = {
+			isa = PBXGroup;
+			children = (
+				BB1502922B9F541E00340090 /* FavoriteProgram.swift */,
+			);
+			path = SwiftData;
 			sourceTree = "<group>";
 		};
 		BBF9E9102B98699B00496CE5 /* CachedAsyncImageView */ = {
