@@ -10,7 +10,7 @@ import Foundation
 extension Date {
     func getStringOfTodayDate() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
 
         return dateFormatter.string(from: self)
     }
