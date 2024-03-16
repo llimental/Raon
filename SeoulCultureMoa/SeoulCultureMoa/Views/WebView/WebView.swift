@@ -53,12 +53,15 @@ struct WebView: UIViewRepresentable {
 }
 
 struct CustomWebView: View {
+    // MARK: - Public Properties
     let webView: WebView?
 
+    // MARK: - Initializer
     init(url: String) {
         self.webView = WebView(urlToConnect: url)
     }
 
+    // MARK: - Body
     var body: some View {
         webView
             .toolbar {
