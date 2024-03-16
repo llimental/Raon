@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProgramView: View {
-    // MARK: - @EnvironmentObject
+    // MARK: - @EnvironmentObject Properties
     @EnvironmentObject var networkManager: NetworkManager
 
     // MARK: - @State Properties
