@@ -29,6 +29,8 @@ struct ProgramDetailView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
+                Spacer()
+
                 HStack(alignment: .bottom) {
                     Text(content.title)
                         .fontWeight(.bold)
@@ -74,7 +76,18 @@ struct ProgramDetailView: View {
                     .padding()
                 }
             }
-            .ignoresSafeArea(edges: .top)
+            .background {
+                ZStack(alignment: .top) {
+                    CachedAsyncImageView(url: content.imageURL)
+                        .scaledToFit()
+                        .frame(width: geometry.size.width)
+                        .blur(radius: 5)
+
+                    Color.black
+                        .opacity(0.5)
+                }
+                .ignoresSafeArea(edges: .top)
+            }
             .toolbarTitleDisplayMode(.inline)
             .onAppear {
                 isFavorite = getFavoriteState()
