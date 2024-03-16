@@ -34,7 +34,7 @@ struct SearchCardView: View {
                     secondText: content.region)
                 DividedTextView(
                     firstText: "시작일",
-                    secondText: content.startDate.replacingOccurrences(of: " 00:00:00.0", with: ""))
+                    secondText: content.startDate)
                 DividedTextView(
                     firstText: "유/무료",
                     secondText: content.isFree)

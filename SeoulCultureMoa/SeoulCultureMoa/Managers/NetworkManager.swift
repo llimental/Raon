@@ -94,8 +94,8 @@ final class NetworkManager: ObservableObject {
                     fees: content.fees,
                     url: content.url,
                     imageURL: content.imageURL,
-                    startDate: content.startDate,
-                    endDate: content.endDate,
+                    startDate: content.startDate.removeTimeStamp(),
+                    endDate: content.endDate.removeTimeStamp(),
                     longitude: content.longitude,
                     latitude: content.latitude,
                     isFree: content.isFree

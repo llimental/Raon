@@ -57,12 +57,12 @@ struct ProgramDescriptionView: View {
 
                 DescriptionTextView(
                     firstText: "시작일",
-                    secondText: content.startDate.replacingOccurrences(of: " 00:00:00.0", with: ""),
+                    secondText: content.startDate,
                     textColor: themeColor)
 
                 DescriptionTextView(
                     firstText: "종료일",
-                    secondText: content.endDate.replacingOccurrences(of: " 00:00:00.0", with: ""),
+                    secondText: content.endDate,
                     textColor: themeColor)
                 .padding(.bottom, 80)
             }
