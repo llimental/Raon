@@ -48,6 +48,8 @@ struct SettingsView: View {
                     } label: {
                         Label("관심지역", systemImage: "map")
                     }
+                    .tint(.white)
+                    .colorMultiply(themeColor.color)
                 } header: {
                     Text("개인화")
                 }
