@@ -220,9 +220,6 @@
 				BBBFD6552B640BF20052BD38 /* ThemeColors.swift */,
 				BBA6D6282B66473300AF8600 /* ProgramData.swift */,
 				BB1502922B9F541E00340090 /* FavoriteProgram.swift */,
-				BBE6A7192B691AEB00067FC0 /* NetworkManager.swift */,
-				BB2302482B97769D001E4147 /* CacheManager.swift */,
-				BB9127F52BA1947000ABC84D /* NotificationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -260,8 +257,9 @@
 				BBE6A7182B67DFC300067FC0 /* Info.plist */,
 				BBCECA602B56815D00D664A1 /* SeoulCultureMoaApp.swift */,
 				BBCA719E2B5A7E6A001CC023 /* Model */,
-				BBA6D62C2B6678AE00AF8600 /* Extensions */,
+				BBDD9A512BA577CA009DEBE7 /* Managers */,
 				BBCA719D2B5A7E62001CC023 /* Views */,
+				BBA6D62C2B6678AE00AF8600 /* Extensions */,
 				BBCECA642B56815E00D664A1 /* Assets.xcassets */,
 				BBCECA662B56815E00D664A1 /* Preview Content */,
 			);
@@ -274,6 +272,16 @@
 				BBCECA672B56815E00D664A1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BBDD9A512BA577CA009DEBE7 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				BBE6A7192B691AEB00067FC0 /* NetworkManager.swift */,
+				BB2302482B97769D001E4147 /* CacheManager.swift */,
+				BB9127F52BA1947000ABC84D /* NotificationManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		BBF9E9102B98699B00496CE5 /* CachedAsyncImageView */ = {
