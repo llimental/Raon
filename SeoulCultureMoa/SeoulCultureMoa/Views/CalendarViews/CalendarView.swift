@@ -38,7 +38,7 @@ struct CalendarView: View {
                 }
             }
             .listStyle(.plain)
-            .listRowSeparator(.hidden)
+            .scrollIndicators(.hidden)
         }
         .padding()
     }
