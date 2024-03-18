@@ -50,7 +50,7 @@ struct ProgramView: View {
                             }
 
                             NavigationLink {
-
+                                CalendarView()
                             } label: {
                                 Image(systemName: "calendar")
                             }
