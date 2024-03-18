@@ -52,17 +52,6 @@ final class NetworkManager: ObservableObject {
     }
 
     // MARK: - Private Functions
-    private func makeURL(startIndex: Int, endIndex: Int) -> URL? {
-        var components = URLComponents()
-
-        components.scheme = "http"
-        components.host = "openapi.seoul.go.kr"
-        components.port = 8088
-        components.path = "/json/culturalEventInfo/\(startIndex)/\(endIndex)/"
-
-        return components.url
-    }
-
     private func startNetworkMonitoring() {
         networkMonitor.start(queue: .global())
 
@@ -75,6 +64,17 @@ final class NetworkManager: ObservableObject {
                 self?.currentNetworkStatus = path.status == .satisfied
             }
         }
+    }
+
+    private func makeURL(startIndex: Int, endIndex: Int) -> URL? {
+        var components = URLComponents()
+
+        components.scheme = "http"
+        components.host = "openapi.seoul.go.kr"
+        components.port = 8088
+        components.path = "/json/culturalEventInfo/\(startIndex)/\(endIndex)/"
+
+        return components.url
     }
 
     private func transformDTO(from contents: [ProgramContent]) {
