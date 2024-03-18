@@ -11,6 +11,7 @@ struct ProgramOfTheDayView: View {
     // MARK: - @Binding Properties
     @Binding var selectedDate: Date
     @Binding var contents: [ProgramContentModel]
+    @Binding var themeColor: ThemeColors
 
     // MARK: - Body
     var body: some View {
@@ -21,7 +22,9 @@ struct ProgramOfTheDayView: View {
             Section {
                 ForEach(selectedDateContents, id: \.title) { content in
                     NavigationLink {
-
+                        ProgramDetailView(
+                            themeColor: $themeColor,
+                            content: content)
                     } label: {
                         Text(content.title)
                     }
@@ -54,5 +57,6 @@ struct ProgramOfTheDayView: View {
                 longitude: "37.5726241",
                 latitude: "126.9760053",
                 isFree: "유료")
-        ]))
+        ]),
+        themeColor: .constant(.pink))
 }
