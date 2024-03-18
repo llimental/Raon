@@ -29,13 +29,15 @@ final class NetworkManager: ObservableObject {
     private var programCancellable: AnyCancellable?
     private let networkMonitor = NWPathMonitor()
 
+    /// API에서 받아와야 하는 전체 데이터 수
+    private var totalCount = 0
     // MARK: - Public Functions
     func requestProgramContents() {
         if currentNetworkStatus {
             programCancellable?.cancel()
             contents.removeAll()
 
-            guard let url = makeURL(startIndex: 1, endIndex: 1000) else { return }
+            guard let url = makeURL(startIndex: 1, endIndex: 1) else { return }
 
             programCancellable = URLSession.shared
                 .dataTaskPublisher(for: url)
@@ -46,7 +48,7 @@ final class NetworkManager: ObservableObject {
                 .sink { completion in
                     print(completion)
                 } receiveValue: { [weak self] value in
-                    self?.transformDTO(from: value.programInfo.programContents)
+                    self?.totalCount = value.programInfo.totalCount
                 }
         }
     }
