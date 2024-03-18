@@ -30,6 +30,7 @@
     - **[Step 9]** `24. 03. 09.` ~ `24. 03. 11.`
     - **[Step 10]** `24. 03. 12.` ~ `24. 03. 12.`
     - **[Step 11]** `24. 03. 13.` ~ `24. 03. 15.`
+    - **[Step 12]** `24. 03. 16.` ~ `24. 03. 18.`
 
 <br>
 
@@ -54,6 +55,7 @@
         - `AnyCancellable`
         - `dataTaskPublisher`
         - `sink`
+        - `MergeMany`
     - `PropertyWrapper`
         - `@AppStorage`
         - `@State`
@@ -111,11 +113,6 @@
 <br>
 
 ## 프로젝트 구조
-
-
-<br>
-
-## 프로젝트 디자인
 
 
 <br>
@@ -231,6 +228,34 @@
         - 이미 identifier가 등록되어 있는지 확인
     - 즐겨찾기 해제 시 Notification 제거 기능 구현
     - SettingsView에서 알림 토글 구현 및 설정 앱 알림 상태와 연결
+
+### Step 12: Project Maintenance
+- **WebView**
+    - 코드 컨벤션 준수
+
+- **SearchView**
+    - 레이아웃 재조정
+
+- **ProgramDetailView**
+    - 배경 이미지 늘어나는 문제 해결
+    - isFavorite 로직 개선
+
+- **SettingsView**
+    - 테마에 현재 색상 표시
+    - 지역 Picker 색상 바인딩
+
+- **DTO**
+    - NetworkManager에서 데이터 매핑 시 타임스탬프 제거
+    - SearchCardView, DescriptionView, NotificationManager에서 해당 작업 코드 제거
+
+- **프로젝트 폴더링**
+    - Model 폴더 내 파일 구분
+
+- **프로젝트 관리**
+    - 전체 파일 코드 컨벤션 준수
+
+- **NetworkManager**
+    - API 데이터 제공측 정렬 이슈로 인한 호출 로직 수정(기존 1000개 -> 전체 데이터)
 
 <br>
 
@@ -845,6 +870,76 @@ extension Date {
     func getKSTDate() -> Date {
         return self.addingTimeInterval(60 * 60 * 9)
     }
+}
+```
+
+### 22. API 호출 로직 동시 사용 문제
+**고민한 점 :**
+- 기존에는 최대 호출 개수인 1000개만큼 불러와서 최근 데이터 순으로 정렬하여 사용했었다.
+- 그러나 데이터를 제공하는 곳에서 데이터가 업데이트 될 때마다 최근 데이터가 뒤로 넘어가는 등의 이슈가 발생하여 종료가 되지 않았음에도 앱에 표시되지 않는 문제를 확인했다.
+- 사용 질의응답에도 제대로 데이터를 제공하기 위해서는 전체 데이터 개수를 기준으로 전체 호출 횟수를 결정해야 한다는 답변이 있었다.
+- `Combine` 프레임워크를 사용하여 `URLSession`의 `dataTaskPublisher`로 `API`를 단일 호출하였으나 여러 번 호출하고, 그 데이터를 같은 시점에 핸들링하는 방법을 모색하였다.
+
+**과정 및 해결 :**
+- `dataTaskPublisher`를 여러 번 사용하는 것은 불필요한 작업이라고 여겨져서 `Combine`에서 제공하는 메서드를 찾아보게 되었다.
+- `CombineLatest`, `Merge`가 이런 작업에 적합했지만, 각각 개수가 정해져 있다면 사용할 수 있겠으나 이 프로젝트에서 API 호출 횟수는 처음 테스트 인덱스를 전송해 받은 전체 데이터 개수에 비례하기 때문에 적용하기 어려웠다.
+- 다음으로 찾은 메서드는 `MergeMany`였다. 이것은 `publisher`의 배열을 받아 병합해주는 것으로 위 두 메서드와 다르게 개수를 몰라도 사용할 수 있었다.
+- [Publishers.MergeMany](https://developer.apple.com/documentation/combine/publishers/mergemany)
+- 그러나 공식문서의 정보는 한계가 있었고, 실사용 예제를 봐도 다 사용하는 케이스가 달라 그것들을 관통하는 정보를 얻기 어려웠다.
+- 그래서 우선 필요한 것을 하나하나 정리했다. `MergeMany`에 전달할 `publisher` 배열을 만들었고, 그것에 들어갈 타입을 결정해야했다.
+- 이전에 호출할 때는 `AnyCancellable` 타입의 변수에 저장해 필요시 `cancel`하는 식으로 했지만 `AnyCancellable`은 이 상황에서 맞지 않는 타입이라고 여겼고(`MergeMany`에서 데이터 핸들링이 불가, 고민 끝에 `URLSession.DataTaskPublisher` 타입을 넣게 되었다.
+- 이후 생성해야 하는 횟수를 구한 뒤, `for`문을 사용하여 호출하는 횟수에 비례한 인덱스 URL을 지닌 `DataTaskPublisher`를 생성하고 배열에 추가했다.
+- 그 뒤, `Publishers.MergeMany`에 배열을 전달하고, 기존에 `dataTaskPublisher`에서 했던 것처럼 스레드 설정과 디코딩 타입 설정, `sink/receiveValue` 관련 코드를 작성하였다.
+- 이 과정으로 넘어오기까지 오랜 고민과 많은 테스트를 했었는데, 브레이크 포인트를 찍어 하나하나 살펴본 결과, `MergeMany`에서 하단의 작업을 반복하는 것을 알게 되었고 그렇다면 기존 `dataTaskPublisher`를 추상화 하는 것과 같이 사용하면 되겠다는 판단을 할 수 있었다. URL을 설정하는 부분까지를 분리하여 `publishers` 배열에 추가했고, `MergeMany`에서의 공통 작업에 각 `dataTaskPublisher`에 적용할 각종 작업들을 넣는 것이 그것이다.
+- 그리하여 각 `publisher`는 `MergeMany`에서 정해진 스레드와 디코딩, 데이터 핸들링 방식에 따라 데이터를 처리하게 된다. 모든 `publisher`에 대해서 이 과정이 끝나면, 가공되지 않은 데이터를 저장한 `rawContents` 프로퍼티에서는 `totalCount`와 비교하여 수가 동일할 시 기존의 `transformDTO`에 데이터를 넘겨 기존처럼 데이터를 후가공할 수 있게 된다.
+- 다행이었던 것은 기존 메서드가 잘 분리가 되어 있어서 1000개 단일 호출에서 n개 n번 호출로 로직이 변경되었음에도 불구하고 하나의 메서드만 추가할 뿐 기존 프로퍼티나 로직은 변경할 필요가 없었다는 점이다.
+
+```swift
+/// API에서 받아와야 하는 전체 데이터 수
+private var totalCount = 0
+/// API에서 받아온 전체 데이터. totalCount와 수가 맞을 때 transformDTO(from:)에 데이터 전달
+private var rawContents = [ProgramContent]() {
+    didSet {
+        if rawContents.count == totalCount {
+            transformDTO(from: rawContents)
+        }
+    }
+}
+
+/// Publishers.MergeMany를 사용하여 유동적인 횟수만큼 API를 호출하는 메서드. 전달받은 수에 비례한 Publisher를 생성하고 MergeMany로 결합하여 전체 데이터 핸들링
+private func getTotalContents(of amount: Int) {
+    let count = (amount + 999) / 1000
+
+    var publishers = [URLSession.DataTaskPublisher]()
+
+    /*
+     API 호출 시 인덱스 변화 로직
+     1회(0): 1...1000 = 0 * 1000 + 1...0 * 1000 + 1000
+     2회(1): 1001...2000 = 1 * 1000 + 1...1 * 1000 + 1000
+     3회(2): 2001...3000 = 2 * 1000 + 1...2 * 1000 + 1000
+
+     => n회(n): (n * 1000) + 1 ~ (n * 1000) + 1000
+     */
+
+    for index in 0..<count {
+        guard let url = makeURL(startIndex: (index * 1000) + 1, endIndex: (index * 1000) + 1000) else { return }
+
+        let publisher = URLSession.shared
+            .dataTaskPublisher(for: url)
+
+        publishers.append(publisher)
+    }
+
+    programCancellable = Publishers.MergeMany(publishers)
+        .subscribe(on: DispatchQueue.global())
+        .map(\.data)
+        .decode(type: ProgramData.self, decoder: JSONDecoder())
+        .receive(on: DispatchQueue.main)
+        .sink { completion in
+            print(completion)
+        } receiveValue: { value in
+            self.rawContents.append(contentsOf: value.programInfo.programContents)
+        }
 }
 ```
 
