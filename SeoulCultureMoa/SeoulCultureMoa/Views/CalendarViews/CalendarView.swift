@@ -11,6 +11,9 @@ struct CalendarView: View {
     // MARK: - @State Properties
     @State private var selectedDate = Date()
 
+    // MARK: - @Binding Properties
+    @Binding var contents: [ProgramContentModel]
+
     // MARK: - Body
     var body: some View {
         VStack {
@@ -21,20 +24,19 @@ struct CalendarView: View {
             .datePickerStyle(.graphical)
 
             List {
-                HStack {
-                    Text("아이유 콘서트")
+                let selectedDateString = selectedDate.getStringOfTodayDate()
+                let selectedDateContents = contents.filter { $0.startDate == selectedDateString }
 
-                    Spacer()
+                Section {
+                    ForEach(selectedDateContents, id: \.title) { content in
+                        NavigationLink {
 
-                    Image(systemName: "heart")
-                }
-
-                HStack {
-                    Text("임영웅 콘서트")
-
-                    Spacer()
-
-                    Image(systemName: "heart")
+                        } label: {
+                            Text(content.title)
+                        }
+                    }
+                } header: {
+                    Text("\(selectedDateString) 시작하는 프로그램 수: \(selectedDateContents.count)")
                 }
             }
             .listStyle(.plain)
@@ -45,5 +47,5 @@ struct CalendarView: View {
 }
 
 #Preview {
-    CalendarView()
+    CalendarView(contents: .constant(NetworkManager().contents))
 }

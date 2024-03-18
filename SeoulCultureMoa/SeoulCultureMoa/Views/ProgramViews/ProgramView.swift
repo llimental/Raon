@@ -50,7 +50,7 @@ struct ProgramView: View {
                             }
 
                             NavigationLink {
-                                CalendarView()
+                                CalendarView(contents: $networkManager.contents)
                             } label: {
                                 Image(systemName: "calendar")
                             }
