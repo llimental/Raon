@@ -9,14 +9,14 @@ import SwiftUI
 
 struct CalendarView: View {
     // MARK: - @State Properties
-    @State private var selectionDate = Date()
+    @State private var selectedDate = Date()
 
     // MARK: - Body
     var body: some View {
         VStack {
             DatePicker(
                 "DatePicker",
-                selection: $selectionDate,
+                selection: $selectedDate,
                 displayedComponents: [.date])
             .datePickerStyle(.graphical)
 
