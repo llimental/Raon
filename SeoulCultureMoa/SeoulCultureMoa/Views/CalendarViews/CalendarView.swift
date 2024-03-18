@@ -23,24 +23,9 @@ struct CalendarView: View {
                 displayedComponents: [.date])
             .datePickerStyle(.graphical)
 
-            List {
-                let selectedDateString = selectedDate.getStringOfTodayDate()
-                let selectedDateContents = contents.filter { $0.startDate == selectedDateString }
-
-                Section {
-                    ForEach(selectedDateContents, id: \.title) { content in
-                        NavigationLink {
-
-                        } label: {
-                            Text(content.title)
-                        }
-                    }
-                } header: {
-                    Text("\(selectedDateString) 시작하는 프로그램 수: \(selectedDateContents.count)")
-                }
-            }
-            .listStyle(.plain)
-            .scrollIndicators(.hidden)
+            ProgramOfTheDayView(
+                selectedDate: $selectedDate,
+                contents: $contents)
         }
         .padding(.horizontal)
     }

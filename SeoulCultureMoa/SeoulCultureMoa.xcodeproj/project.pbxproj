@@ -29,6 +29,7 @@
 		BB6AE2D62B9B639900D4FB25 /* NavigationBarLargeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6AE2D52B9B639900D4FB25 /* NavigationBarLargeTitleView.swift */; };
 		BB6AE2D82B9B64B200D4FB25 /* NavigationBarSmallTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6AE2D72B9B64B200D4FB25 /* NavigationBarSmallTitleView.swift */; };
 		BB74BB082B713DB200BA2A61 /* SearchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB74BB072B713DB200BA2A61 /* SearchCardView.swift */; };
+		BB89BC622BA8ADDB00DFF59B /* ProgramOfTheDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB89BC612BA8ADDB00DFF59B /* ProgramOfTheDayView.swift */; };
 		BB9127F42BA0407000ABC84D /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9127F32BA0407000ABC84D /* FavoritesView.swift */; };
 		BB9127F62BA1947000ABC84D /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9127F52BA1947000ABC84D /* NotificationManager.swift */; };
 		BB9127F82BA3531300ABC84D /* NotificationToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9127F72BA3531300ABC84D /* NotificationToggleView.swift */; };
@@ -76,6 +77,7 @@
 		BB6AE2D52B9B639900D4FB25 /* NavigationBarLargeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarLargeTitleView.swift; sourceTree = "<group>"; };
 		BB6AE2D72B9B64B200D4FB25 /* NavigationBarSmallTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarSmallTitleView.swift; sourceTree = "<group>"; };
 		BB74BB072B713DB200BA2A61 /* SearchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardView.swift; sourceTree = "<group>"; };
+		BB89BC612BA8ADDB00DFF59B /* ProgramOfTheDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramOfTheDayView.swift; sourceTree = "<group>"; };
 		BB9127F32BA0407000ABC84D /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		BB9127F52BA1947000ABC84D /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		BB9127F72BA3531300ABC84D /* NotificationToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToggleView.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				BB4A3DF62BA88F4B0091B166 /* CalendarView.swift */,
+				BB89BC612BA8ADDB00DFF59B /* ProgramOfTheDayView.swift */,
 			);
 			path = CalendarViews;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				BB4A3DF72BA88F4B0091B166 /* CalendarView.swift in Sources */,
 				BBDD9A5C2BA5DBC9009DEBE7 /* String+Extension.swift in Sources */,
 				BBBFD6502B63F2D80052BD38 /* ColoredButton.swift in Sources */,
+				BB89BC622BA8ADDB00DFF59B /* ProgramOfTheDayView.swift in Sources */,
 				BBA41E092B9A187A00884BD9 /* CopyRightView.swift in Sources */,
 				BBBFD64C2B63E2670052BD38 /* Regions.swift in Sources */,
 				BB4475292B7B70A5008736FB /* FilterView.swift in Sources */,
