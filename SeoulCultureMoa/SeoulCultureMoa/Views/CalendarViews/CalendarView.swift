@@ -13,11 +13,34 @@ struct CalendarView: View {
 
     // MARK: - Body
     var body: some View {
-        DatePicker(
-            "DatePicker",
-            selection: $selectionDate,
-            displayedComponents: [.date])
-        .datePickerStyle(.graphical)
+        VStack(spacing: 20) {
+            DatePicker(
+                "DatePicker",
+                selection: $selectionDate,
+                displayedComponents: [.date])
+            .datePickerStyle(.graphical)
+
+            List {
+                HStack {
+                    Text("아이유 콘서트")
+
+                    Spacer()
+
+                    Image(systemName: "heart")
+                }
+
+                HStack {
+                    Text("임영웅 콘서트")
+
+                    Spacer()
+
+                    Image(systemName: "heart")
+                }
+            }
+            .listStyle(.plain)
+            .listRowSeparator(.hidden)
+        }
+        .padding()
     }
 }
 
