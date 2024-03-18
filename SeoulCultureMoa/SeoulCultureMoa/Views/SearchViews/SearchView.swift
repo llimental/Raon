@@ -36,6 +36,7 @@ struct SearchView: View {
                     }
                 }
                 .listStyle(.plain)
+                .scrollIndicators(.hidden)
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         NavigationBarSmallTitleView(
