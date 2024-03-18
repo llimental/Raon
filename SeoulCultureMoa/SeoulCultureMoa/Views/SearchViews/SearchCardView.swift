@@ -16,8 +16,8 @@ struct SearchCardView: View {
         HStack(alignment: .center, spacing: 20) {
             CachedAsyncImageView(url: content.imageURL)
             .scaledToFit()
-            .frame(width: 150, height: 200)
             .clipShape(.rect(cornerRadius: 15))
+            .frame(width: 150, height: 200)
 
             VStack(alignment: .leading) {
                 Text(content.title)
