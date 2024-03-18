@@ -13,7 +13,7 @@ struct CalendarView: View {
 
     // MARK: - Body
     var body: some View {
-        VStack(spacing: 20) {
+        VStack {
             DatePicker(
                 "DatePicker",
                 selection: $selectionDate,
@@ -40,7 +40,7 @@ struct CalendarView: View {
             .listStyle(.plain)
             .scrollIndicators(.hidden)
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 
