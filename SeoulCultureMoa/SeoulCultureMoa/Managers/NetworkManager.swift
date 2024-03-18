@@ -31,6 +31,15 @@ final class NetworkManager: ObservableObject {
 
     /// API에서 받아와야 하는 전체 데이터 수
     private var totalCount = 0
+    /// API에서 받아온 전체 데이터. totalCount와 수가 맞을 때 transformDTO(from:)에 데이터 전달
+    private var rawContents = [ProgramContent]() {
+        didSet {
+            if rawContents.count == totalCount {
+                transformDTO(from: rawContents)
+            }
+        }
+    }
+
     // MARK: - Public Functions
     func requestProgramContents() {
         if currentNetworkStatus {
@@ -49,6 +58,7 @@ final class NetworkManager: ObservableObject {
                     print(completion)
                 } receiveValue: { [weak self] value in
                     self?.totalCount = value.programInfo.totalCount
+                    self?.getTotalContents(of: value.programInfo.totalCount)
                 }
         }
     }
@@ -77,6 +87,42 @@ final class NetworkManager: ObservableObject {
         components.path = "/json/culturalEventInfo/\(startIndex)/\(endIndex)/"
 
         return components.url
+    }
+
+    /// Publishers.MergeMany를 사용하여 유동적인 횟수만큼 API를 호출하는 메서드. 전달받은 수에 비례한 Publisher를 생성하고 MergeMany로 결합하여 전체 데이터 핸들링
+    private func getTotalContents(of amount: Int) {
+        let count = (amount + 999) / 1000
+
+        var publishers = [URLSession.DataTaskPublisher]()
+
+        /*
+         API 호출 시 인덱스 변화 로직
+         1회(0): 1...1000 = 0 * 1000 + 1...0 * 1000 + 1000
+         2회(1): 1001...2000 = 1 * 1000 + 1...1 * 1000 + 1000
+         3회(2): 2001...3000 = 2 * 1000 + 1...2 * 1000 + 1000
+
+         => n회(n): (n * 1000) + 1 ~ (n * 1000) + 1000
+         */
+
+        for index in 0..<count {
+            guard let url = makeURL(startIndex: (index * 1000) + 1, endIndex: (index * 1000) + 1000) else { return }
+
+            let publisher = URLSession.shared
+                .dataTaskPublisher(for: url)
+
+            publishers.append(publisher)
+        }
+
+        programCancellable = Publishers.MergeMany(publishers)
+            .subscribe(on: DispatchQueue.global())
+            .map(\.data)
+            .decode(type: ProgramData.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                print(completion)
+            } receiveValue: { value in
+                self.rawContents.append(contentsOf: value.programInfo.programContents)
+            }
     }
 
     private func transformDTO(from contents: [ProgramContent]) {
