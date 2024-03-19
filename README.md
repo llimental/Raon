@@ -31,6 +31,7 @@
     - **[Step 10]** `24. 03. 12.` ~ `24. 03. 12.`
     - **[Step 11]** `24. 03. 13.` ~ `24. 03. 15.`
     - **[Step 12]** `24. 03. 16.` ~ `24. 03. 18.`
+    - **[Step 13]** `24. 03. 19.` ~ `24. 03. 19.`
 
 <br>
 
@@ -40,12 +41,16 @@
 |:---:|
 |[Lust3r](https://github.com/llimental)|
 
-- **서비스 :** 서울시 문화 프로그램에 대한 정보 제공
-    - 어떤 프로그램이 있는가?
-    - 프로그램 정보는 무엇인가?
-    - 프로그램 예약은 어떻게 하는가?
-    - 날짜별 어떤 프로그램이 있는가?
-    - 프로그램 미리 알림 푸시
+- **서비스 :** 서울시 문화 프로그램에 대한 다양한 정보 및 편의 기능 제공
+    - 현재 운영중인, 운영 예정인 프로그램 정보 제공
+    - 프로그램 상세 정보 제공
+    - 프로그램 검색 및 필터링 기능 제공
+    - 캘린더를 사용하여 날짜별 프로그램 목록 제공
+    - 프로그램 즐겨찾기 기능 및 푸시 알림 기능 제공
+    - 외부 앱을 활용한 프로그램 위치 길찾기 기능 제공
+    - 웹뷰를 활용한 프로그램 안내 페이지 연결 기능 제공
+    - 캘린더에 일정 저장 기능 제공
+
 - **기술 스택 :** **Swift**
     - `SwiftUI`
     - `Model-View Architecture`
@@ -71,6 +76,12 @@
         - `modelContext`
         - `Query`
         - `Create(insert) / Read(query)/ Update(save) / Delete(delete)`
+    - `EventKit / EventKitUI`
+        - `UIViewControllerRepresentable`
+        - `(iOS 17) without prompting the user access`
+        - `EventEditViewController`
+        - `EKEvent`
+        - `EKEventStore`
     - `GCD`
         - `DispatchQueue`
     - `UserNotifications`
@@ -81,13 +92,11 @@
     - `NSCache`
         - `NSCache<NSString, UIImage>`
     - `GeometryReader`
-    - `Picker`
     - `Navigation`
         - `NavigationStack`
         - `NavigationLink`
         - `ToolBarItem`
     - `NWPathMonitor`
-    - `ScrollViewReader`
     - `custom sheet`
     - `View Modifier`
         - `searchable`
@@ -100,8 +109,6 @@
         - `Instruments`
         - `Allocation, Leak, VM Tracker`
         - `Xcode Memory Graph`
-    - `List`
-        - `DisclosureGroup`
 - **프로젝트 후기 :**
     - .
 
@@ -256,6 +263,15 @@
 
 - **NetworkManager**
     - API 데이터 제공측 정렬 이슈로 인한 호출 로직 수정(기존 1000개 -> 전체 데이터)
+
+### Step 13: Calendar View
+- **Calendar View 구현**
+    - CalendarView에 Calendar 구현
+    - Calendar에서 날짜 선택 시 하단에 목록을 보여주도록 구현
+    - '오늘(Today)' 버튼을 통해 다른 날짜일 때 오늘 날짜로 바로 돌아가는 기능 구현
+    - 항목을 터치하면 상세 페이지로 넘어가도록 구현
+    - 항목 좌측에 즐겨찾기 여부 표기
+    - EventKit을 활용하여 ProgramDetailView의 시작일, 종료일 옆에 캘린더에 등록하기 기능 구현 
 
 <br>
 
@@ -942,6 +958,16 @@ private func getTotalContents(of amount: Int) {
         }
 }
 ```
+
+### 23. UIResponsiveness Issue
+**고민한 점 :**
+- CalendarView에서 날짜별 프로그램 목록과 함께 즐겨찾기 여부를 보여주기 위해 SwiftData에 저장한 항목을 사용했는데, 그 화면에서 ProgramDetailView로 진입하면 CPU, 메모리 리소스를 과도하게 사용하는 이슈 발생
+![troubleshooting](https://github.com/llimental/What-is-In-Seoul/assets/45708630/4b0c3deb-5dce-4154-b9a2-fd3e865cfa8e)
+
+**과정 및 해결 :**
+- 여러 번 시도한 결과, SwiftData를 상위 View인 CalendarView에서 사용하고, 하위 View인 ProgramOfTheDayView에서는 전달한 쿼리 값으로 작업을 수행하니 문제를 해결할 수 있었다.
+- 이슈를 보여준 구문은 WebView였고, 원인은 SwiftData 코드였으나 이마저도 시도할 때마다 오류 발생 여부가 고정적이지 않았고, Instruments, Xcode Debugger도 전부 프로세스가 뻗어 원인을 정확히 찾지 못한 것이 아쉬웠다.
+- 다만 SwiftData의 Query를 조금 다르게 사용했더니 해결된 것으로 보아 subview와 함께 쓸 때 어떤 작용을 하는지 좀 더 알아볼 필요성을 느꼈다.
 
 <br>
 
