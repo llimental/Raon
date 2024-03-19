@@ -20,6 +20,9 @@ struct CalendarView: View {
     @Binding var contents: [ProgramContentModel]
     @Binding var themeColor: ThemeColors
 
+    // MARK: - Private Properties
+    private let today = Date()
+
     // MARK: - Body
     var body: some View {
         VStack {
@@ -36,6 +39,15 @@ struct CalendarView: View {
                 favoritePrograms: favoritePrograms)
         }
         .padding(.horizontal)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {
+                    selectedDate = today
+                }, label: {
+                    Text("오늘")
+                })
+            }
+        }
     }
 }
 
