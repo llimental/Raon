@@ -30,6 +30,7 @@
 		BB6AE2D82B9B64B200D4FB25 /* NavigationBarSmallTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6AE2D72B9B64B200D4FB25 /* NavigationBarSmallTitleView.swift */; };
 		BB74BB082B713DB200BA2A61 /* SearchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB74BB072B713DB200BA2A61 /* SearchCardView.swift */; };
 		BB82ED582BA9D94700EFEAD5 /* EventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB82ED572BA9D94700EFEAD5 /* EventEditViewController.swift */; };
+		BB82ED5A2BA9F4C900EFEAD5 /* EKEvent+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB82ED592BA9F4C900EFEAD5 /* EKEvent+Extension.swift */; };
 		BB89BC622BA8ADDB00DFF59B /* ProgramOfTheDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB89BC612BA8ADDB00DFF59B /* ProgramOfTheDayView.swift */; };
 		BB9127F42BA0407000ABC84D /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9127F32BA0407000ABC84D /* FavoritesView.swift */; };
 		BB9127F62BA1947000ABC84D /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9127F52BA1947000ABC84D /* NotificationManager.swift */; };
@@ -79,6 +80,7 @@
 		BB6AE2D72B9B64B200D4FB25 /* NavigationBarSmallTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarSmallTitleView.swift; sourceTree = "<group>"; };
 		BB74BB072B713DB200BA2A61 /* SearchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardView.swift; sourceTree = "<group>"; };
 		BB82ED572BA9D94700EFEAD5 /* EventEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditViewController.swift; sourceTree = "<group>"; };
+		BB82ED592BA9F4C900EFEAD5 /* EKEvent+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKEvent+Extension.swift"; sourceTree = "<group>"; };
 		BB89BC612BA8ADDB00DFF59B /* ProgramOfTheDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramOfTheDayView.swift; sourceTree = "<group>"; };
 		BB9127F32BA0407000ABC84D /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		BB9127F52BA1947000ABC84D /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				BBA6D62D2B6679B300AF8600 /* View+Extension.swift */,
 				BB3B97282B6BEC9B0059A697 /* Date+Extension.swift */,
 				BBDD9A5B2BA5DBC9009DEBE7 /* String+Extension.swift */,
+				BB82ED592BA9F4C900EFEAD5 /* EKEvent+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				BB116B762B89C1FC00EBBBB8 /* ProgramDescriptionView.swift in Sources */,
 				BB116B7B2B8C2C2700EBBBB8 /* WebView.swift in Sources */,
 				BBA6D6272B663CFC00AF8600 /* ProgramCardView.swift in Sources */,
+				BB82ED5A2BA9F4C900EFEAD5 /* EKEvent+Extension.swift in Sources */,
 				BB6704992B5FB4AB0008A76F /* OnboardingSecondView.swift in Sources */,
 				BB116B782B8C265900EBBBB8 /* DescriptionTextView.swift in Sources */,
 				BB02084B2B73440300B81CFE /* DividedTextView.swift in Sources */,
