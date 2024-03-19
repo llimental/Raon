@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CalendarView: View {
+    // MARK: - SwiftData Properties
+    @Query private var favoritePrograms: [FavoriteProgram]
+    @Environment(\.modelContext) private var modelContext
+
     // MARK: - @State Properties
     @State private var selectedDate = Date()
 
@@ -27,7 +32,8 @@ struct CalendarView: View {
             ProgramOfTheDayView(
                 selectedDate: $selectedDate,
                 contents: $contents,
-                themeColor: $themeColor)
+                themeColor: $themeColor,
+                favoritePrograms: favoritePrograms)
         }
         .padding(.horizontal)
     }
@@ -52,4 +58,5 @@ struct CalendarView: View {
             isFree: "유료")
     ]),
                  themeColor: .constant(.pink))
+    .modelContainer(for: FavoriteProgram.self)
 }
