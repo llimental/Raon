@@ -29,6 +29,7 @@
 		BB6AE2D62B9B639900D4FB25 /* NavigationBarLargeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6AE2D52B9B639900D4FB25 /* NavigationBarLargeTitleView.swift */; };
 		BB6AE2D82B9B64B200D4FB25 /* NavigationBarSmallTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6AE2D72B9B64B200D4FB25 /* NavigationBarSmallTitleView.swift */; };
 		BB74BB082B713DB200BA2A61 /* SearchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB74BB072B713DB200BA2A61 /* SearchCardView.swift */; };
+		BB82ED582BA9D94700EFEAD5 /* EventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB82ED572BA9D94700EFEAD5 /* EventEditViewController.swift */; };
 		BB89BC622BA8ADDB00DFF59B /* ProgramOfTheDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB89BC612BA8ADDB00DFF59B /* ProgramOfTheDayView.swift */; };
 		BB9127F42BA0407000ABC84D /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9127F32BA0407000ABC84D /* FavoritesView.swift */; };
 		BB9127F62BA1947000ABC84D /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9127F52BA1947000ABC84D /* NotificationManager.swift */; };
@@ -77,6 +78,7 @@
 		BB6AE2D52B9B639900D4FB25 /* NavigationBarLargeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarLargeTitleView.swift; sourceTree = "<group>"; };
 		BB6AE2D72B9B64B200D4FB25 /* NavigationBarSmallTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarSmallTitleView.swift; sourceTree = "<group>"; };
 		BB74BB072B713DB200BA2A61 /* SearchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardView.swift; sourceTree = "<group>"; };
+		BB82ED572BA9D94700EFEAD5 /* EventEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditViewController.swift; sourceTree = "<group>"; };
 		BB89BC612BA8ADDB00DFF59B /* ProgramOfTheDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramOfTheDayView.swift; sourceTree = "<group>"; };
 		BB9127F32BA0407000ABC84D /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		BB9127F52BA1947000ABC84D /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				BB116B752B89C1FC00EBBBB8 /* ProgramDescriptionView.swift */,
 				BB116B732B89BFF100EBBBB8 /* RoundedCorner.swift */,
 				BB0398312B95C2B1008C0322 /* LinkToPlaceView.swift */,
+				BB82ED572BA9D94700EFEAD5 /* EventEditViewController.swift */,
 			);
 			path = ProgramDetailViews;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				BBBFD6562B640BF20052BD38 /* ThemeColors.swift in Sources */,
 				BBCA71A12B5A811E001CC023 /* OnboardingFirstView.swift in Sources */,
 				BB3B97292B6BEC9B0059A697 /* Date+Extension.swift in Sources */,
+				BB82ED582BA9D94700EFEAD5 /* EventEditViewController.swift in Sources */,
 				BBBE87F32B71118500189E08 /* SearchView.swift in Sources */,
 				BBCECA612B56815D00D664A1 /* SeoulCultureMoaApp.swift in Sources */,
 				BB67FC082B87152F00EFA5AC /* ProgramDetailView.swift in Sources */,
