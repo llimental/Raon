@@ -13,6 +13,9 @@ struct ProgramOfTheDayView: View {
     @Binding var contents: [ProgramContentModel]
     @Binding var themeColor: ThemeColors
 
+    // MARK: - Public Properties
+    var favoritePrograms: [FavoriteProgram]
+
     // MARK: - Body
     var body: some View {
         List {
@@ -21,12 +24,17 @@ struct ProgramOfTheDayView: View {
 
             Section {
                 ForEach(selectedDateContents, id: \.title) { content in
-                    NavigationLink {
-                        ProgramDetailView(
-                            themeColor: $themeColor,
-                            content: content)
-                    } label: {
-                        Text(content.title)
+                    HStack {
+                        Image(systemName: favoritePrograms.contains{ $0.title == content.title } ? "heart.fill" : "heart")
+                            .foregroundStyle(themeColor.color)
+
+                        NavigationLink {
+                            ProgramDetailView(
+                                themeColor: $themeColor,
+                                content: content)
+                        } label: {
+                            Text(content.title)
+                        }
                     }
                 }
             } header: {
@@ -58,5 +66,6 @@ struct ProgramOfTheDayView: View {
                 latitude: "126.9760053",
                 isFree: "유료")
         ]),
-        themeColor: .constant(.pink))
+        themeColor: .constant(.pink),
+        favoritePrograms: [FavoriteProgram]())
 }
