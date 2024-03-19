@@ -77,6 +77,7 @@ struct ProgramDescriptionView: View {
                 }, label: {
                     Label("캘린더에 추가하기", systemImage: "calendar.badge.plus")
                         .font(.subheadline)
+                        .foregroundStyle(themeColor.color)
                 })
                 .sheet(isPresented: $showEventEditViewController, content: {
                     EventEditViewController(event: $selectedEvent, eventStore: store)
