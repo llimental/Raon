@@ -5,9 +5,15 @@
 //  Created by Lust3r on 2/24/24.
 //
 
+import EventKit
 import SwiftUI
 
 struct ProgramDescriptionView: View {
+    // MARK: - @State Properties
+    @State private var selectedEvent: EKEvent?
+    @State private var showEventEditViewController = false
+    @State private var store = EKEventStore()
+
     // MARK: - @Binding Properties
     @Binding var themeColor: ThemeColors
 
@@ -64,6 +70,17 @@ struct ProgramDescriptionView: View {
                     firstText: "종료일",
                     secondText: content.endDate,
                     textColor: themeColor)
+
+                Button(action: {
+                    makeNewEvent()
+                    showEventEditViewController.toggle()
+                }, label: {
+                    Label("캘린더에 추가하기", systemImage: "calendar.badge.plus")
+                        .font(.subheadline)
+                })
+                .sheet(isPresented: $showEventEditViewController, content: {
+                    EventEditViewController(event: $selectedEvent, eventStore: store)
+                })
                 .padding(.bottom, 80)
             }
             .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 0))
@@ -72,6 +89,11 @@ struct ProgramDescriptionView: View {
         .cornerRadius(30, corners: [.topLeft, .topRight])
         .shadow(color: .primary, radius: 3)
         .scrollIndicators(.hidden)
+    }
+
+    // MARK: - Private Functions
+    private func makeNewEvent() {
+        self.selectedEvent = EKEvent(eventStore: store, content: content)
     }
 }
 
