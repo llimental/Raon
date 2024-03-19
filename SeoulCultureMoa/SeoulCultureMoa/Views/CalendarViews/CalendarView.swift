@@ -31,7 +31,7 @@ struct CalendarView: View {
                 selection: $selectedDate,
                 displayedComponents: [.date])
             .datePickerStyle(.graphical)
-            .environment(\.locale, Locale(identifier: String(Locale.preferredLanguages[0].prefix(2))))
+            .environment(\.locale, Locale(identifier: String(Locale.preferredLanguages[0])))
 
             ProgramOfTheDayView(
                 selectedDate: $selectedDate,
