@@ -83,7 +83,7 @@ struct ProgramDescriptionView: View {
                 })
                 .padding(.bottom, 80)
             }
-            .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 0))
+            .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 10))
         }
         .background()
         .cornerRadius(30, corners: [.topLeft, .topRight])
