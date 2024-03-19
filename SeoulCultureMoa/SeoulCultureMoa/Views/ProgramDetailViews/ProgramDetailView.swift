@@ -68,6 +68,10 @@ struct ProgramDetailView: View {
                             textColor: themeColor,
                             textWidth: geometry.size.width * 0.9)
                     }
+                    .background(
+                        Rectangle()
+                            .frame(width: geometry.size.width, height: geometry.size.height * 0.13)
+                            .foregroundStyle(.background))
                     .padding()
                 }
             }
