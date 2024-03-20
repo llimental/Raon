@@ -99,7 +99,7 @@ struct ProgramDetailView: View {
                 DetailImageView(
                     isDetailImageShow: $isDetailImageShow,
                     url: content.imageURL)
-                .presentationBackground(.ultraThinMaterial)
+                .presentationBackground(.thinMaterial)
             })
         }
     }
