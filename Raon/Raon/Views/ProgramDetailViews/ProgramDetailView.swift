@@ -18,6 +18,7 @@ struct ProgramDetailView: View {
 
     // MARK: - @State Properties
     @State private var isFavorite: Bool = false
+    @State private var isDetailImageShow: Bool = false
 
     // MARK: - @Binding Properties
     @Binding var themeColor: ThemeColors
@@ -86,11 +87,20 @@ struct ProgramDetailView: View {
                         .opacity(0.5)
                 }
                 .ignoresSafeArea(edges: .top)
+                .onTapGesture {
+                    isDetailImageShow.toggle()
+                }
             }
             .toolbarTitleDisplayMode(.inline)
             .onAppear {
                 isFavorite = getFavoriteState()
             }
+            .fullScreenCover(isPresented: $isDetailImageShow, content: {
+                DetailImageView(
+                    isDetailImageShow: $isDetailImageShow,
+                    url: content.imageURL)
+                .presentationBackground(.ultraThinMaterial)
+            })
         }
     }
 
