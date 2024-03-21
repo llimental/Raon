@@ -50,15 +50,20 @@ struct SettingsView: View {
 
                     ThemeSettingView(themeColor: $themeColor)
 
-                    Picker(selection: $selectedRegion) {
-                        ForEach(Regions.allCases) { region in
-                            Text(region.rawValue)
-                        }
-                    } label: {
+                    HStack {
                         Label("관심지역", systemImage: "map")
+
+                        Spacer()
+
+                        Picker("Region Picker", selection: $selectedRegion) {
+                            ForEach(Regions.allCases) { region in
+                                Text(region.rawValue)
+                            }
+                        }
+                        .tint(.white)
+                        .colorMultiply(themeColor.color)
+                        .labelsHidden()
                     }
-                    .tint(.white)
-                    .colorMultiply(themeColor.color)
                 } header: {
                     Text("개인화")
                 }
