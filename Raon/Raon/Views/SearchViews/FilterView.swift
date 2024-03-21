@@ -27,7 +27,7 @@ struct FilterView: View {
                     Image(systemName: "xmark")
                 })
                 .padding()
-                .foregroundStyle(.black)
+                .foregroundStyle(.primary)
             }
 
             HStack {
