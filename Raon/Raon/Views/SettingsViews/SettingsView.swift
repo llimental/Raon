@@ -31,6 +31,15 @@ struct SettingsView: View {
                     }
 
                     buildKakaoChatButton()
+
+                    HStack {
+                        Label("버전", systemImage: "apple.terminal")
+
+                        Spacer()
+
+                        Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0")
+                            .foregroundStyle(.gray)
+                    }
                 } header: {
                     Text("정보")
                 }
