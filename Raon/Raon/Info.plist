@@ -6,6 +6,7 @@
 	<array>
 		<string>nmap</string>
 		<string>kakaomap</string>
+		<string>kakaoplus</string>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>

@@ -30,7 +30,7 @@ struct SettingsView: View {
                         Label("저작권", systemImage: "doc")
                     }
 
-                    Label("문의하기", systemImage: "bubble.left.and.text.bubble.right")
+                    buildKakaoChatButton()
                 } header: {
                     Text("정보")
                 }
@@ -57,6 +57,19 @@ struct SettingsView: View {
             }
             .listStyle(.plain)
         }
+    }
+
+    // MARK: - Private Functions
+    private func buildKakaoChatButton() -> some View {
+        return Button(action: {
+            guard let url = URL(string: "kakaoplus://plusfriend/chat/_MFlWG") else { return }
+
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }, label: {
+            Label("문의하기(카카오톡)", systemImage: "bubble.left.and.text.bubble.right")
+        })
     }
 }
 
