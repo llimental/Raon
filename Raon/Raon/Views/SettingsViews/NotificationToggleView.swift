@@ -47,7 +47,7 @@ struct NotificationToggleView: View {
                 }),
                 secondaryButton: .cancel(Text("닫기"), action: {
                     DispatchQueue.main.async {
-                        isToggleOn.toggle()
+                        notificationManager.setNotificationStatus()
                     }
                 }))
         }
