@@ -18,7 +18,7 @@
 
 ## 프로젝트 소개
 - 🏃🏻🏃🏻‍♂️💨 **프로젝트 구상:** `24. 01. 08.` ~ `24. 01. 15.`
-- 🏃🏻🏃🏻‍♂️💨 **프로젝트 기간:** `24. 01. 16.` ~  **(진행중)**
+- 🏃🏻🏃🏻‍♂️💨 **프로젝트 기간:** `24. 01. 16.` ~  `24. 03. 21.` **(1.0.0 버전 개발 완료)**
     - **[Step 1]** `24. 01. 19.` ~ `24. 01. 26.`
     - **[Step 2]** `24. 01. 27.` ~ `24. 02. 02.`
     - **[Step 3]** `24. 02. 03.` ~ `24. 02. 16.`
@@ -32,6 +32,7 @@
     - **[Step 11]** `24. 03. 13.` ~ `24. 03. 15.`
     - **[Step 12]** `24. 03. 16.` ~ `24. 03. 18.`
     - **[Step 13]** `24. 03. 19.` ~ `24. 03. 19.`
+    - **[Step 14]** `24. 03. 21.` ~ `24. 03. 21.`
 
 <br>
 
@@ -52,75 +53,104 @@
     - 캘린더에 일정 저장 기능 제공
 
 - **기술 스택 :** **Swift**
-    - `SwiftUI`
-    - `Model-View Architecture`
-    - `Observer Design Pattern(Swift Combine)`
-    - `Combine`
+    - **`SwiftUI`**
+        - `@AppStorage`
+        - `@State`, `@Binding`
+        - `@StateObject`, `@ObservableObject`
+        - `@Published`
+        - `@Environment`
+    - **`Architecture`**
+        - `Model-View Architecture`
+    - **`Design Pattern`**
+        - `Observer(Swift Combine)`
+        - `Singleton(CacheManager)`
+    - **`Combine(Framework)`**
         - `Concurrency`
         - `AnyCancellable`
         - `dataTaskPublisher`
         - `sink`
         - `MergeMany`
-    - `PropertyWrapper`
-        - `@AppStorage`
-        - `@State`
-        - `@Binding`
-        - `@StateObject`
-        - `@ObservableObject`
-        - `@Published`
-        - `@Environment`
-    - `SwiftData`
+    - **`SwiftData(Framework)`**
         - `@Model`
         - `Attribute`
         - `modelContainer`
         - `modelContext`
         - `Query`
         - `Create(insert) / Read(query)/ Update(save) / Delete(delete)`
-    - `EventKit / EventKitUI`
+    - **`EventKit / EventKitUI(Framework)`**
         - `UIViewControllerRepresentable`
         - `(iOS 17) without prompting the user access`
         - `EventEditViewController`
         - `EKEvent`
         - `EKEventStore`
-    - `GCD`
-        - `DispatchQueue`
-    - `UserNotifications`
+    - **`UserNotifications(Framework)`**
         - `Local Push Notification`
     - `ShareLink`
     - `WKWebView(UIViewRepresentable)`
     - `AsyncImage`
-    - `NSCache`
+    - **`NSCache`**
         - `NSCache<NSString, UIImage>`
     - `GeometryReader`
-    - `Navigation`
+    - **`Navigation`**
         - `NavigationStack`
         - `NavigationLink`
-        - `ToolBarItem`
     - `NWPathMonitor`
     - `custom sheet`
     - `View Modifier`
         - `searchable`
         - `onTapGesture`
         - `onChange`
-    - `External App API Use`
+    - **`DeepLink: External App API Use`**
         - `Naver Map`
         - `Kakao Map`
-    - `Debug`
+        - `KakaoTalk`
+    - **`Debug`**
         - `Instruments`
         - `Allocation, Leak, VM Tracker`
         - `Xcode Memory Graph`
 - **프로젝트 후기 :**
-    - .
+    - 공공기관 재직 경험을 바탕으로 필요성을 느꼈던 서비스를 이렇게 원하는대로 만들 수 있어 만족스러웠다.
+    - 가볍게 가져가려 했던 프로젝트였으나 이왕 하고 싶은 프로젝트 하는 김에 개발 역량과 경험을 모두 챙기자는 목표를 세웠고, 진짜로 이것저것 안해본 것들로만 다 채워넣다보니 약 두 달이라는 시간이 흘렀다.
+    - 그 덕분에 이전 프로젝트 때 '나'에 비해서 지금의 '나'는 아는 것도, 할 수 있는 것도 늘었기에 이 '발전'이라는 측면에서 너무 만족스러운 기간이었다.
+    - 처음 디자인했던 피그마 파일은 수시로 바뀌었고, 이정도면 상세히 적었겠지 했던 기술명세서도 수시로 바뀌었기에(긍정적인 방향으로) 이래서 애자일 방법론이 나왔나 싶었다. 개발하고 테스트하다 보면 더 좋은 디자인이 보이고, 편의성이나 기능적인 면에서 더 제공하고 싶은 것이 계속적으로 나온다.
+    - 또 하나 만족스러운 경험은, 그동안은 어차피 뭔가를 만든다는 것은 그동안 자주 해왔던 기초적인 것이 아니라면 처음인 것이기 때문에 그것을 학습하고 적용하는 과정이 있었다. 그리고 그 과정이 곧 트러블 슈팅이었고, 기능을 구현하면서 얼마나 많은 지식을 얻었느냐가 중점이었다고 생각한다. 하지만 이번 프로젝트는 그런 측면에 더해서 앱 서비스의 근본적인 측면을 좀 더 보고자 했던 것 같다. 가령 네트워크 작업, 웹 서비스 작업, 이미지 작업, 전체 서비스 과정에서 가지는 문제점, 리소스 점유율, 아키텍처 등. 이제 한 단계 더 넓게 보려 했다는 점에서 놀랍고 기뻤으며 그 과정에서 얻은 디버깅 경험은 너무나 값지다고 생각한다.
+    - 이 프로젝트에 대한 애정도 높고, 그 과정이 너무 행복했기 때문에 서비스가 널리 사용되었으면 좋겠고 사용자 경험이 만족스러웠으면 한다.(프로젝트명이 **'라온'** 인 이유)
 
 <br>
 
 ## 구현 화면
+|<img src="https://github.com/llimental/Raon/assets/45708630/0f44f898-5052-4690-8fd4-3102cad74bcd">|<img src="https://github.com/llimental/Raon/assets/45708630/6ff13085-2a32-4f2d-90e6-f0b68e368be0">|<img src="https://github.com/llimental/Raon/assets/45708630/c89cd9f9-0051-40aa-8362-320617747b9b">|
+|:---:|:---:|:---:|
+|Onboarding_1|Onboarding_2|Onboarding_3|
 
+|<img src="https://github.com/llimental/Raon/assets/45708630/3eff7215-8316-488c-b77d-cde9f5bce9fc">|<img src="https://github.com/llimental/Raon/assets/45708630/2bb0f2bd-221e-4464-bcab-30ba11d8274f">|<img src="https://github.com/llimental/Raon/assets/45708630/4c5d6c67-f23f-40a0-8e14-0dff55f427d2">|
+|:---:|:---:|:---:|
+|ProgramView(MainView)|ProgramDetailView|ProgramDetailView(Notification request)|
+
+|<img src="https://github.com/llimental/Raon/assets/45708630/6a0d8579-19a4-4b77-bbba-0e09fcc81bee">|<img src="https://github.com/llimental/Raon/assets/45708630/ce448ba4-8b63-4dfd-a610-9af3c13f8f9b">|<img src="https://github.com/llimental/Raon/assets/45708630/56089942-c4ef-4c07-9a31-65c3d68c7d4e">|
+|:---:|:---:|:---:|
+|ProgramDetailView(ShareLink)|ProgramDetailView(Image Detail)|ProgramDetailView(Webview-homepage)|
+
+|<img src="https://github.com/llimental/Raon/assets/45708630/1d8a28d0-b4cb-49df-8635-4e4e8e07d8c6">|<img src="https://github.com/llimental/Raon/assets/45708630/a5d6c6a3-7271-4542-a79f-58610422361d">|<img src="https://github.com/llimental/Raon/assets/45708630/73f14ced-eaa5-4d51-975c-a2e5b0b585f2">|
+|:---:|:---:|:---:|
+|ProgramDetailView(DeepLink-Map_1)|ProgramDetailView(DeepLink-Map_2)|ProgramDetailView(WebView-Map)|
+
+|<img src="https://github.com/llimental/Raon/assets/45708630/df01b913-7eb1-45a7-bb76-66996a7b3164">|<img src="https://github.com/llimental/Raon/assets/45708630/c681cdae-7860-4188-83b6-fa284f5a8dc5">|<img src="https://github.com/llimental/Raon/assets/45708630/83046bfd-dc43-478f-b5d2-f63ddfe10bec">|
+|:---:|:---:|:---:|
+|ProgramDetailView(add to Calendar)|CalendarView|SettingsView|
+
+|<img src="https://github.com/llimental/Raon/assets/45708630/52658858-17d8-4dcd-b861-572be63f1c2c" width=310>|<img src="https://github.com/llimental/Raon/assets/45708630/4e1524c7-48a2-4a68-a18e-f0825058e83a" width=310>|
+|:---:|:---:|
+|FavoritesView_1|FavoritesView_2|
+
+|<img src="https://github.com/llimental/Raon/assets/45708630/32620523-535c-4d7e-b352-d9f0e9de635f">|<img src="https://github.com/llimental/Raon/assets/45708630/f54ffafa-34d8-45d0-bc8a-e0d85d51e847">|<img src="https://github.com/llimental/Raon/assets/45708630/449fe055-face-431d-a52c-788a2f3a8893">|
+|:---:|:---:|:---:|
+|SearchView|SearchView_Search|SearchView_Filter|
 
 <br>
 
 ## 프로젝트 구조
-
+<img src="https://github.com/llimental/Raon/assets/45708630/1972d6ba-bf2a-44a0-9ded-12479a934a9b" width=300>
 
 <br>
 
@@ -271,7 +301,24 @@
     - '오늘(Today)' 버튼을 통해 다른 날짜일 때 오늘 날짜로 바로 돌아가는 기능 구현
     - 항목을 터치하면 상세 페이지로 넘어가도록 구현
     - 항목 좌측에 즐겨찾기 여부 표기
-    - EventKit을 활용하여 ProgramDetailView의 시작일, 종료일 옆에 캘린더에 등록하기 기능 구현 
+    - EventKit을 활용하여 ProgramDetailView의 시작일, 종료일 옆에 캘린더에 등록하기 기능 구현
+
+### Step 14: Additional Feature
+- **부가 기능**
+    - 카카오톡 플러스친구 연결로 문의 창구 개설
+    - 앱 버전 확인 기능 구현
+    - 앱 아이콘 적용
+    - 앱 설치 이름, 타겟 변경
+    - **(ProgramDetailView)** 배경 이미지 클릭하면 원본 이미지 표현 기능 제공
+
+- **프로젝트 개선**
+    - **(SettingsView)** 선호지역 텍스트 색상이 다크모드에서 변경되는 현상 해결
+    - **(SettingsView)** 알림 토글 Alert 닫기 로직 개선
+    - **(CopyRightView)** 이용약관 링크를 올리는 것이 아니라 웹뷰로 연결
+    - **(FilterView)** 닫기 버튼의 다크모드 시인성 개선
+    - **(ProgramDetailView)** 즐겨찾기, 공유하기 버튼 색상 시인성 개선
+    - **(OnboardingView)** 프로그램 이름 변경
+    - **(ProgramView)** 새로고침 시 데이터가 나오지 않는 문제 해결
 
 <br>
 
@@ -973,4 +1020,4 @@ private func getTotalContents(of amount: Int) {
 
 ## 추후 계획
 
-- 
+- SubView 분리 등 모듈화에 신경을 썼지만 아직 전체적으로 개선할 점이 있어서 코드 개선을 최우선 과제로 삼고 있다.
