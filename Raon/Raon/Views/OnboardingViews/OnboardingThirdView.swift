@@ -24,9 +24,10 @@ struct OnboardingThirdView: View {
                     .fontWeight(.bold)
                     .padding(.bottom, 20)
 
-                Text("다양한 문화행사 정보를 둘러보세요")
+                Text("다양한 문화행사 정보를 둘러보세요\n우연한 발견이 여러분의 즐거움이 되길 바랍니다")
                     .font(.callout)
                     .padding(.bottom, 40)
+                    .multilineTextAlignment(.center)
 
                 Spacer()
 

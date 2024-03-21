@@ -15,14 +15,17 @@ struct OnboardingFirstView: View {
     // MARK: - Body
     var body: some View {
         GeometryReader { geometry in
-            VStack(alignment: .leading) {
-                VStack(alignment: .leading) {
-                    Text("What's\nin\nSeoul")
-                        .font(.system(size: 60))
-                        .padding(.vertical, 30)
+            VStack {
+                Spacer()
 
-                    Text("서울시 문화프로그램 정보를 한눈에")
-                        .font(.system(size: 15))
+                VStack(spacing: 20) {
+                    Image("Raon")
+
+                    Text("라온")
+                        .font(.largeTitle)
+                        .bold()
+
+                    Text("서울시 문화행사 정보 안내 서비스")
                 }
                 .foregroundStyle(.white)
 
