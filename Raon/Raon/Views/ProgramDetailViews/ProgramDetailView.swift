@@ -35,8 +35,6 @@ struct ProgramDetailView: View {
                 HStack(alignment: .bottom) {
                     Text(content.title)
                         .fontWeight(.bold)
-                        .foregroundStyle(.white)
-                        .shadow(color: .black, radius: 2)
 
                     Spacer()
 
@@ -54,6 +52,8 @@ struct ProgramDetailView: View {
                     .frame(height: 25)
                 }
                 .font(.title2)
+                .foregroundStyle(.white)
+                .shadow(color: .black, radius: 2)
                 .foregroundStyle(themeColor.color)
                 .padding(.horizontal, 20)
 
