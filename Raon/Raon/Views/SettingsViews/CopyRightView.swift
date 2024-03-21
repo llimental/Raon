@@ -19,18 +19,24 @@ struct CopyRightView: View {
                 Image("CC_BY")
 
                 Text("""
-                         ⓒ 2012-2024. Seoul Metropolitan Government Some Rights Reserved.
+                         **ⓒ 2012-2024. Seoul Metropolitan Government Some Rights Reserved.**
 
-                         저작권자: 서울특별시
-                         제공기관: 서울특별시
-                         제공부서: 문화본부 문화정책과
+                         **저작권자:** 서울특별시
+                         **제공기관:** 서울특별시
+                         **제공부서:** 문화본부 문화정책과
 
                          본 앱은 서울특별시 열린데이터 광장의 공공 API를 활용하여 제작되었습니다.
-                         자세한 이용약관은 아래 주소에서 확인 가능합니다.
-
-                         https://data.seoul.go.kr/etc/accessTerms.do#agreement-idx-11
+                         자세한 이용약관은 아래 바로가기 버튼을 통해 확인 가능합니다.
                          """)
                 .font(.subheadline)
+
+                NavigationLink {
+                    CustomWebView(url: "https://data.seoul.go.kr/etc/accessTerms.do#agreement-idx-11")
+                } label: {
+                    Text("이용약관 바로가기")
+                        .foregroundStyle(.blue)
+                        .font(.subheadline)
+                }
 
                 Spacer()
             }
