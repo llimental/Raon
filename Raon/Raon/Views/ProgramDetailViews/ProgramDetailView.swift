@@ -71,7 +71,7 @@ struct ProgramDetailView: View {
                     }
                     .background(
                         Rectangle()
-                            .frame(width: geometry.size.width, height: geometry.size.height * 0.13)
+                            .frame(width: geometry.size.width, height: geometry.size.height * 0.15)
                             .foregroundStyle(.background))
                     .padding()
                 }
