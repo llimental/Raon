@@ -45,6 +45,7 @@ final class NetworkManager: ObservableObject {
         if currentNetworkStatus {
             programCancellable?.cancel()
             contents.removeAll()
+            rawContents.removeAll()
 
             guard let url = makeURL(startIndex: 1, endIndex: 1) else { return }
 
