@@ -90,6 +90,7 @@
 		BB9127F72BA3531300ABC84D /* NotificationToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToggleView.swift; sourceTree = "<group>"; };
 		BB9680F92BAD65F300F80230 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		BB9680FB2BAD667300F80230 /* RaonAPI.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RaonAPI.plist; sourceTree = "<group>"; };
+		BB9680FE2BAD68B500F80230 /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
 		BBA41E062B9A15BC00884BD9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BBA41E082B9A187A00884BD9 /* CopyRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyRightView.swift; sourceTree = "<group>"; };
 		BBA6D6262B663CFC00AF8600 /* ProgramCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCardView.swift; sourceTree = "<group>"; };
@@ -184,6 +185,14 @@
 			path = FavoritesViews;
 			sourceTree = "<group>";
 		};
+		BB9680FD2BAD671A00F80230 /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				BB9680FE2BAD68B500F80230 /* ci_pre_xcodebuild.sh */,
+			);
+			path = ci_scripts;
+			sourceTree = "<group>";
+		};
 		BBA41E052B9A159C00884BD9 /* SettingsViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +280,7 @@
 		BBCECA542B56815D00D664A1 = {
 			isa = PBXGroup;
 			children = (
+				BB9680FD2BAD671A00F80230 /* ci_scripts */,
 				BBCECA5F2B56815D00D664A1 /* Raon */,
 				BBCECA5E2B56815D00D664A1 /* Products */,
 			);
