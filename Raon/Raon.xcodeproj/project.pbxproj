@@ -35,6 +35,8 @@
 		BB9127F42BA0407000ABC84D /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9127F32BA0407000ABC84D /* FavoritesView.swift */; };
 		BB9127F62BA1947000ABC84D /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9127F52BA1947000ABC84D /* NotificationManager.swift */; };
 		BB9127F82BA3531300ABC84D /* NotificationToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9127F72BA3531300ABC84D /* NotificationToggleView.swift */; };
+		BB9680FA2BAD65F300F80230 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9680F92BAD65F300F80230 /* Bundle+Extension.swift */; };
+		BB9680FC2BAD667300F80230 /* RaonAPI.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB9680FB2BAD667300F80230 /* RaonAPI.plist */; };
 		BBA41E072B9A15BC00884BD9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA41E062B9A15BC00884BD9 /* SettingsView.swift */; };
 		BBA41E092B9A187A00884BD9 /* CopyRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA41E082B9A187A00884BD9 /* CopyRightView.swift */; };
 		BBA6D6272B663CFC00AF8600 /* ProgramCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA6D6262B663CFC00AF8600 /* ProgramCardView.swift */; };
@@ -86,6 +88,8 @@
 		BB9127F32BA0407000ABC84D /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		BB9127F52BA1947000ABC84D /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		BB9127F72BA3531300ABC84D /* NotificationToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToggleView.swift; sourceTree = "<group>"; };
+		BB9680F92BAD65F300F80230 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		BB9680FB2BAD667300F80230 /* RaonAPI.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RaonAPI.plist; sourceTree = "<group>"; };
 		BBA41E062B9A15BC00884BD9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BBA41E082B9A187A00884BD9 /* CopyRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyRightView.swift; sourceTree = "<group>"; };
 		BBA6D6262B663CFC00AF8600 /* ProgramCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCardView.swift; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 				BB3B97282B6BEC9B0059A697 /* Date+Extension.swift */,
 				BBDD9A5B2BA5DBC9009DEBE7 /* String+Extension.swift */,
 				BB82ED592BA9F4C900EFEAD5 /* EKEvent+Extension.swift */,
+				BB9680F92BAD65F300F80230 /* Bundle+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -282,8 +287,9 @@
 		BBCECA5F2B56815D00D664A1 /* Raon */ = {
 			isa = PBXGroup;
 			children = (
-				BBE6A7182B67DFC300067FC0 /* Info.plist */,
 				BBCECA602B56815D00D664A1 /* RaonApp.swift */,
+				BBE6A7182B67DFC300067FC0 /* Info.plist */,
+				BB9680FB2BAD667300F80230 /* RaonAPI.plist */,
 				BBCA719E2B5A7E6A001CC023 /* Model */,
 				BBDD9A512BA577CA009DEBE7 /* Managers */,
 				BBCA719D2B5A7E62001CC023 /* Views */,
@@ -412,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBCECA682B56815E00D664A1 /* Preview Assets.xcassets in Resources */,
+				BB9680FC2BAD667300F80230 /* RaonAPI.plist in Resources */,
 				BBCECA652B56815E00D664A1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,6 +437,7 @@
 				BB116B7D2B8C4B6100EBBBB8 /* ColoredText.swift in Sources */,
 				BBBFD6522B63F7180052BD38 /* InvertedButton.swift in Sources */,
 				BBCECA632B56815D00D664A1 /* ContentView.swift in Sources */,
+				BB9680FA2BAD65F300F80230 /* Bundle+Extension.swift in Sources */,
 				BB63C1C12B64F07F00EA3ABB /* ProgramView.swift in Sources */,
 				BB4A3DF72BA88F4B0091B166 /* CalendarView.swift in Sources */,
 				BBDD9A5C2BA5DBC9009DEBE7 /* String+Extension.swift in Sources */,

@@ -85,7 +85,7 @@ final class NetworkManager: ObservableObject {
         components.scheme = "http"
         components.host = "openapi.seoul.go.kr"
         components.port = 8088
-        components.path = "/json/culturalEventInfo/\(startIndex)/\(endIndex)/"
+        components.path = "\(Bundle.main.apiKey)/json/culturalEventInfo/\(startIndex)/\(endIndex)/"
 
         return components.url
     }
