@@ -12,6 +12,8 @@ extension Bundle {
         guard let url = Bundle.main.url(forResource: "RaonAPI", withExtension: "plist"),
               let plistDictionary = try? NSDictionary(contentsOf: url, error: ()) else { return String() }
 
-        return plistDictionary["API_KEY"] as? String ?? String()
+        guard let key = plistDictionary["API_KEY"] as? String else { return String() }
+
+        return key
     }
 }
