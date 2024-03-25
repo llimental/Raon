@@ -1020,4 +1020,9 @@ private func getTotalContents(of amount: Int) {
 
 ## 추후 계획
 
-- SubView 분리 등 모듈화에 신경을 썼지만 아직 전체적으로 개선할 점이 있어서 코드 개선을 최우선 과제로 삼고 있다.
+- OnboardingView에서 프로그램 상세 사용법 안내(푸시 알림, 지도 앱 사용법 등)
+- CalendarView에서 즐겨찾기한 항목은 리스트 상단으로 정렬
+- TabBar 터치로 뒤로 가기 기능 구현(iOS 기본 앱처럼)
+- ProgramView에서 여러 개를 한 눈에 보이도록 하는 설정 구현
+- SubView 일관된 분리 및 전체 코드 개선
+
