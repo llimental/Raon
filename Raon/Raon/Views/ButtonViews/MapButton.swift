@@ -27,9 +27,7 @@ struct MapButton: View {
                         latitude: Double(latitude) ?? 0,
                         longitude: Double(longitude) ?? 0)
                 }, label: {
-                    Image("Naver_map_Icon")
-                        .resizable()
-                        .frame(width: 30, height: 30)
+                    Text("네이버 지도")
                 })
 
             case .kakao:
@@ -38,9 +36,7 @@ struct MapButton: View {
                         latitude: Double(latitude) ?? 0,
                         longitude: Double(longitude) ?? 0)
                 }, label: {
-                    Image("Kakao_map_Icon")
-                        .resizable()
-                        .frame(width: 30, height: 30)
+                    Text("카카오맵")
                 })
         }
     }
