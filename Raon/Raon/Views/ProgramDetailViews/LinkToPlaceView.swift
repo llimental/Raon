@@ -42,6 +42,12 @@ struct LinkToPlaceView: View {
                     latitude: latitude,
                     longitude: longitude,
                     place: place)
+
+                MapButton(
+                    mapType: .apple,
+                    latitude: latitude,
+                    longitude: longitude,
+                    place: place)
             } message: {
                 Text("장소 정보를 확인할 방법을 선택해주세요")
             }
