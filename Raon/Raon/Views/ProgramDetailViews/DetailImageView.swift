@@ -27,7 +27,6 @@ struct DetailImageView: View {
             .padding(.horizontal)
 
             CachedAsyncImageView(url: url)
-                .scaledToFit()
         }
     }
 }

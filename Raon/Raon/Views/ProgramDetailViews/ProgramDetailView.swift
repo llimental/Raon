@@ -79,7 +79,6 @@ struct ProgramDetailView: View {
             .background {
                 ZStack(alignment: .top) {
                     CachedAsyncImageView(url: content.imageURL)
-                        .scaledToFit()
                         .frame(width: geometry.size.width)
                         .blur(radius: 5)
 

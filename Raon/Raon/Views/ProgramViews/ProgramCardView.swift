@@ -14,7 +14,6 @@ struct ProgramCardView: View {
     // MARK: - Body
     var body: some View {
         CachedAsyncImageView(url: programImageURL)
-            .scaledToFit()
             .clipShape(.rect(cornerRadius: 15))
             .background(
                 RoundedRectangle(cornerRadius: 15)
