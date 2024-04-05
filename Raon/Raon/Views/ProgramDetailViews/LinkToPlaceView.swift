@@ -19,7 +19,7 @@ struct LinkToPlaceView: View {
 
     // MARK: - Body
     var body: some View {
-        HStack {
+        HStack(alignment: .top) {
             Text("장소:")
                 .bold()
                 .foregroundStyle(textColor.color)
@@ -29,6 +29,7 @@ struct LinkToPlaceView: View {
                 isShowDialog.toggle()
             }, label: {
                 Text(place)
+                    .multilineTextAlignment(.leading)
             })
             .confirmationDialog("mapDialog", isPresented: $isShowDialog) {
                 MapButton(

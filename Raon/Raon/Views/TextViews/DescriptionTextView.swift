@@ -22,6 +22,7 @@ struct DescriptionTextView: View {
                 .frame(width: 70, alignment: .trailing)
 
             Text(secondText)
+                .multilineTextAlignment(.leading)
 
             Spacer()
         }
