@@ -140,14 +140,14 @@ final class NetworkManager: ObservableObject {
             }
     }
 
-    private func transformDTO(from contents: [ProgramContent]) {
+    private func transformDTO(from rawContents: [ProgramContent]) {
         let today = Date().getStringOfTodayDate()
 
         defer {
             isContentsUpdating.toggle()
         }
 
-        self.contents = contents
+        self.contents = rawContents
             .filter { $0.endDate > today }
             .sorted { $0.startDate < $1.startDate }
             .map { content in
