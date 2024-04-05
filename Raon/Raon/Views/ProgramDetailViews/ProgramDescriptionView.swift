@@ -34,17 +34,11 @@ struct ProgramDescriptionView: View {
                     secondText: content.region,
                     textColor: themeColor)
 
-                VStack {
-                    DescriptionTextView(
-                        firstText: "장소",
-                        secondText: content.place,
-                        textColor: themeColor)
-
-                    LinkToPlaceView(
-                        latitude: content.latitude,
-                        longitude: content.longitude,
-                        place: content.place)
-                }
+                LinkToPlaceView(
+                    latitude: content.latitude,
+                    longitude: content.longitude,
+                    place: content.place,
+                    textColor: themeColor)
 
                 DescriptionTextView(
                     firstText: "기관",
