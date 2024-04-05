@@ -28,11 +28,14 @@ struct OnboardingTabView: View {
                 themeColor: $themeColor,
                 selectedRegion: $selectedRegion)
             .tag(1)
+            .background(.white)
             OnboardingThirdView(
                 isFirstLaunching: $isFirstLaunching,
                 themeColor: $themeColor)
             .tag(2)
+            .background(.white)
         }
+        .background(themeColor.color)
         .tabViewStyle(
             .page(indexDisplayMode: .never))
         .ignoresSafeArea()
