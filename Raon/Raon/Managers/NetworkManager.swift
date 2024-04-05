@@ -13,6 +13,7 @@ final class NetworkManager: ObservableObject {
     // MARK: - @Published Properties
     @Published var contents = [ProgramContentModel]()
     @Published var currentNetworkStatus = true
+    @Published var isContentsUpdating = false
 
     // MARK: - LifeCycle
     init() {
@@ -43,6 +44,7 @@ final class NetworkManager: ObservableObject {
     // MARK: - Public Functions
     func requestProgramContents() {
         if currentNetworkStatus {
+            isContentsUpdating.toggle()
             programCancellable?.cancel()
             contents.removeAll()
             rawContents.removeAll()
@@ -56,7 +58,13 @@ final class NetworkManager: ObservableObject {
                 .decode(type: ProgramData.self, decoder: JSONDecoder())
                 .receive(on: DispatchQueue.main)
                 .sink { completion in
-                    print(completion)
+                    switch completion {
+                        case .finished:
+                            print("First DataTaskPublisher Result:", completion)
+                        default:
+                            print("First DataTaskPublisher Result:", completion)
+                            self.isContentsUpdating.toggle()
+                    }
                 } receiveValue: { [weak self] value in
                     self?.totalCount = value.programInfo.totalCount
                     self?.getTotalContents(of: value.programInfo.totalCount)
@@ -120,7 +128,13 @@ final class NetworkManager: ObservableObject {
             .decode(type: ProgramData.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .sink { completion in
-                print(completion)
+                switch completion {
+                    case .finished:
+                        print("Second DataTaskPublisher Result:", completion)
+                    default:
+                        print("Second DataTaskPublisher Result:", completion)
+                        self.isContentsUpdating.toggle()
+                }
             } receiveValue: { value in
                 self.rawContents.append(contentsOf: value.programInfo.programContents)
             }
@@ -128,6 +142,10 @@ final class NetworkManager: ObservableObject {
 
     private func transformDTO(from contents: [ProgramContent]) {
         let today = Date().getStringOfTodayDate()
+
+        defer {
+            isContentsUpdating.toggle()
+        }
 
         self.contents = contents
             .filter { $0.endDate > today }
