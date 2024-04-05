@@ -82,6 +82,13 @@ struct ProgramView: View {
                     }
                 }
             }
+            .fullScreenCover(isPresented: $networkManager.isContentsUpdating, content: {
+                ProgressView {
+                    Text("데이터를 불러오는 중입니다\n잠시만 기다려주세요")
+                        .multilineTextAlignment(.center)
+                }
+                .presentationBackground(.ultraThinMaterial)
+            })
         }
     }
 
