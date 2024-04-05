@@ -30,7 +30,7 @@ final class NetworkManager: ObservableObject {
     private let networkMonitor = NWPathMonitor()
 
     /// API에서 받아와야 하는 전체 데이터 수
-    private var totalCount = 0
+    private var totalCount = -1
     /// API에서 받아온 전체 데이터. totalCount와 수가 맞을 때 transformDTO(from:)에 데이터 전달
     private var rawContents = [ProgramContent]() {
         didSet {
