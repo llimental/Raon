@@ -34,12 +34,14 @@ struct LinkToPlaceView: View {
                 MapButton(
                     mapType: .naver,
                     latitude: latitude,
-                    longitude: longitude)
+                    longitude: longitude,
+                    place: place)
 
                 MapButton(
                     mapType: .kakao,
                     latitude: latitude,
-                    longitude: longitude)
+                    longitude: longitude,
+                    place: place)
             } message: {
                 Text("장소 정보를 확인할 방법을 선택해주세요")
             }

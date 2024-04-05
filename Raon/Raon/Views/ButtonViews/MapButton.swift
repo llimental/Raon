@@ -17,6 +17,7 @@ struct MapButton: View {
     var mapType: MapType
     var latitude: String
     var longitude: String
+    var place: String
 
     // MARK: - Body
     var body: some View {
@@ -25,7 +26,8 @@ struct MapButton: View {
                 Button(action: {
                     LinkToNaverMap(
                         latitude: Double(latitude) ?? 0,
-                        longitude: Double(longitude) ?? 0)
+                        longitude: Double(longitude) ?? 0,
+                        place: place)
                 }, label: {
                     Text("네이버 지도")
                 })
@@ -42,11 +44,11 @@ struct MapButton: View {
     }
 
     // MARK: - Private Functions
-    private func LinkToNaverMap(latitude: Double, longitude: Double) {
+    private func LinkToNaverMap(latitude: Double, longitude: Double, place: String) {
         // 네이버 지도 앱 연동 URL Scheme: https://guide.ncloud-docs.com/docs/maps-url-scheme
 
         // 네이버 지도를 실행하고 도착지 좌표(dlat, dlng)까지 대중교통(/route/public) 길찾기
-        guard let url = URL(string: "nmap://route/public?dlat=\(latitude)&dlng=\(longitude)&appname=com.lust3r.SeoulCultureMoa") else { return }
+        guard let url = URL(string: "nmap://place?lat=\(latitude)&lng=\(longitude)&name=\(place)&appname=com.lust3r.raon") else { return }
 
         // nmap:// 스킴을 인식하지 못하는 경우 앱스토어 페이지로 연결해 앱 설치를 유도
         guard let appStoreURL = URL(string: "https://itunes.apple.com/app/id311867728?mt=8") else { return }
@@ -64,7 +66,7 @@ struct MapButton: View {
         // Kakao 지도 iOS API 가이드: https://apis.map.kakao.com/ios/guide/#urlscheme_open_mapapp
 
         // 카카오맵을 실행하고 도착지 좌표(WGS84, ep)까지 대중교통(PUBLICTRANSIT) 길찾기
-        guard let url = URL(string: "kakaomap://route?ep=\(latitude),\(longitude)&by=PUBLICTRANSIT") else { return }
+        guard let url = URL(string: "kakaomap://look?p=\(latitude),\(longitude)") else { return }
 
         // kakaomap:// 스킴을 인식하지 못하는 경우 앱스토어 페이지로 연결해 앱 설치를 유도
         guard let appStoreURL = URL(string: "https://itunes.apple.com/app/id304608425?mt=8") else { return }
@@ -84,11 +86,13 @@ struct MapButton: View {
         MapButton(
             mapType: .naver,
             latitude: "37.5726241",
-            longitude: "126.9760053")
+            longitude: "126.9760053",
+            place: "세종대극장")
 
         MapButton(
             mapType: .kakao,
             latitude: "37.5726241",
-            longitude: "126.9760053")
+            longitude: "126.9760053",
+            place: "세종대극장")
     }
 }
