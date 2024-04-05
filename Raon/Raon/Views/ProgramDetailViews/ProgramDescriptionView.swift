@@ -82,10 +82,9 @@ struct ProgramDescriptionView: View {
                 .sheet(isPresented: $showEventEditViewController, content: {
                     EventEditViewController(event: $selectedEvent, eventStore: store)
                 })
-                .padding(.bottom, 100)
             }
-            .padding(EdgeInsets(top: 20, leading: 10, bottom: 0, trailing: 10))
         }
+        .padding(EdgeInsets(top: 20, leading: 10, bottom: 100, trailing: 10))
         .background()
         .cornerRadius(30, corners: [.topLeft, .topRight])
         .shadow(color: .primary, radius: 3)
