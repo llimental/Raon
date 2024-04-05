@@ -13,9 +13,6 @@ struct FavoritesView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \FavoriteProgram.content.startDate) private var favoritePrograms: [FavoriteProgram]
 
-    // MARK: - @State Properties
-    @State private var isEditing: Bool = false
-
     // MARK: - @Binding Properties
     @Binding var themeColor: ThemeColors
 
@@ -27,54 +24,39 @@ struct FavoritesView: View {
                     titleText: "즐겨찾기",
                     themeColor: themeColor)
 
-                ScrollView {
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
-                        ForEach(favoritePrograms) { favoriteProgram in
-                            NavigationLink {
-                                ProgramDetailView(
-                                    themeColor: $themeColor,
-                                    content: favoriteProgram.content)
-                            } label: {
-                                ProgramCardView(programImageURL: favoriteProgram.content.imageURL)
-                            }
-                            .padding()
-                            .overlay(alignment: .topTrailing) {
-                                if isEditing {
-                                    Button(action: {
-                                        deleteFavoriteProgram(is: favoriteProgram.title)
-                                    }, label: {
-                                        Image(systemName: "minus.circle.fill")
-                                            .foregroundStyle(.red)
-                                            .font(.title2)
-                                    })
-                                    .offset(x: -5, y: 5)
-                                }
-                            }
+                List {
+                    ForEach(favoritePrograms) { favoriteProgram in
+                        NavigationLink {
+                            ProgramDetailView(
+                                themeColor: $themeColor,
+                                content: favoriteProgram.content)
+                        } label: {
+                            SearchCardView(content: favoriteProgram.content)
                         }
                     }
+                    .onDelete(perform: deleteFavoriteProgram)
                 }
+                .listStyle(.plain)
                 .scrollIndicators(.hidden)
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: {
-                        isEditing.toggle()
-                    }, label: {
-                        isEditing ? Text("완료") : Text("편집")
-                    })
+                    EditButton()
                 }
             }
         }
     }
 
     // MARK: - SwiftData Functions
-    private func deleteFavoriteProgram(is title: String) {
-        withAnimation {
-            let programPredicate = #Predicate<FavoriteProgram> { $0.title == title }
+    private func deleteFavoriteProgram(at offsets: IndexSet) {
+        for offset in offsets {
+            let favoriteProgram = favoritePrograms[offset]
 
-            try? modelContext.delete(model: FavoriteProgram.self, where: programPredicate)
+            withAnimation {
+                modelContext.delete(favoriteProgram)
 
-            modelContext.hasChanges ? try? modelContext.save() : ()
+                modelContext.hasChanges ? try? modelContext.save() : ()
+            }
         }
     }
 }
