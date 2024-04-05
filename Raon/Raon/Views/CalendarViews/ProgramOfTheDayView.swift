@@ -20,7 +20,17 @@ struct ProgramOfTheDayView: View {
     var body: some View {
         List {
             let selectedDateString = selectedDate.getStringOfTodayDate()
-            let selectedDateContents = contents.filter { $0.startDate == selectedDateString }
+            let selectedDateContents = contents
+                .filter { $0.startDate == selectedDateString }
+                .sorted { first, second in
+                    if favoritePrograms.contains(where: { $0.title == first.title }) && !favoritePrograms.contains(where: { $0.title == second.title}) {
+                        return true
+                    } else if !favoritePrograms.contains(where: { $0.title == first.title }) && favoritePrograms.contains(where: { $0.title == second.title}) {
+                        return false
+                    } else {
+                        return first.title < second.title
+                    }
+                }
 
             Section {
                 ForEach(selectedDateContents, id: \.title) { content in
