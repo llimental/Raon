@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    // MARK: - @EnvironmentObject
+    // MARK: - @EnvironmentObject Properties
     @EnvironmentObject var networkManager: NetworkManager
 
     // MARK: - @Binding Properties
