@@ -8,35 +8,45 @@
 import SwiftUI
 
 struct LinkToPlaceView: View {
+    // MARK: - @State Properties
+    @State private var isShowDialog = false
+
     // MARK: - Public Properties
     var latitude: String
     var longitude: String
     var place: String
+    var textColor: ThemeColors
 
     // MARK: - Body
     var body: some View {
-        HStack(spacing: 20) {
-            MapButton(
-                mapType: .naver,
-                latitude: latitude,
-                longitude: longitude)
-            .padding(.leading, 78)
+        HStack {
+            Text("장소:")
+                .bold()
+                .foregroundStyle(textColor.color)
+                .frame(width: 70, alignment: .trailing)
 
-            MapButton(
-                mapType: .kakao,
-                latitude: latitude,
-                longitude: longitude)
+            Button(action: {
+                isShowDialog.toggle()
+            }, label: {
+                Text(place)
+            })
+            .confirmationDialog("mapDialog", isPresented: $isShowDialog) {
+                MapButton(
+                    mapType: .naver,
+                    latitude: latitude,
+                    longitude: longitude)
 
-            NavigationLink {
-                CustomWebView(url: "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=\(place)")
-            } label: {
-                Image("Safari_Icon")
-                    .resizable()
-                    .frame(width: 35, height: 35)
+                MapButton(
+                    mapType: .kakao,
+                    latitude: latitude,
+                    longitude: longitude)
+            } message: {
+                Text("장소 정보를 확인할 방법을 선택해주세요")
             }
 
             Spacer()
         }
+        .font(.subheadline)
     }
 }
 
@@ -44,5 +54,6 @@ struct LinkToPlaceView: View {
     LinkToPlaceView(
         latitude: "126.9760053",
         longitude: "37.5726241",
-        place: "세종대극장")
+        place: "세종대극장",
+        textColor: .pink)
 }
