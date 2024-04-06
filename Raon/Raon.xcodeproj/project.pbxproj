@@ -56,6 +56,7 @@
 		BBDD9A5C2BA5DBC9009DEBE7 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD9A5B2BA5DBC9009DEBE7 /* String+Extension.swift */; };
 		BBDD9A5E2BA5DF5F009DEBE7 /* ThemeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD9A5D2BA5DF5F009DEBE7 /* ThemeSettingView.swift */; };
 		BBDDA74E2BC11AD100AD3EEA /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA74D2BC11AD100AD3EEA /* Tab.swift */; };
+		BBDDA7512BC11B1F00AD3EEA /* DestinationPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7502BC11B1F00AD3EEA /* DestinationPath.swift */; };
 		BBE6A71A2B691AEB00067FC0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6A7192B691AEB00067FC0 /* NetworkManager.swift */; };
 		BBF9E9122B9869DB00496CE5 /* CachedAsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF9E9112B9869DB00496CE5 /* CachedAsyncImageView.swift */; };
 /* End PBXBuildFile section */
@@ -112,6 +113,7 @@
 		BBDD9A5B2BA5DBC9009DEBE7 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		BBDD9A5D2BA5DF5F009DEBE7 /* ThemeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingView.swift; sourceTree = "<group>"; };
 		BBDDA74D2BC11AD100AD3EEA /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		BBDDA7502BC11B1F00AD3EEA /* DestinationPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationPath.swift; sourceTree = "<group>"; };
 		BBE6A7182B67DFC300067FC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BBE6A7192B691AEB00067FC0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BBF9E9112B9869DB00496CE5 /* CachedAsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImageView.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				BBDD9A592BA578E5009DEBE7 /* DTO */,
 				BBDD9A5A2BA578EB009DEBE7 /* SwiftData */,
 				BBDDA74C2BC11AC600AD3EEA /* Tab */,
+				BBDDA74F2BC11AFF00AD3EEA /* TapToRoot */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -372,6 +375,14 @@
 			path = Tab;
 			sourceTree = "<group>";
 		};
+		BBDDA74F2BC11AFF00AD3EEA /* TapToRoot */ = {
+			isa = PBXGroup;
+			children = (
+				BBDDA7502BC11B1F00AD3EEA /* DestinationPath.swift */,
+			);
+			path = TapToRoot;
+			sourceTree = "<group>";
+		};
 		BBF9E9102B98699B00496CE5 /* CachedAsyncImageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +469,7 @@
 				BB116B7D2B8C4B6100EBBBB8 /* ColoredText.swift in Sources */,
 				BBBFD6522B63F7180052BD38 /* InvertedButton.swift in Sources */,
 				BBCECA632B56815D00D664A1 /* ContentView.swift in Sources */,
+				BBDDA7512BC11B1F00AD3EEA /* DestinationPath.swift in Sources */,
 				BB9680FA2BAD65F300F80230 /* Bundle+Extension.swift in Sources */,
 				BB63C1C12B64F07F00EA3ABB /* ProgramView.swift in Sources */,
 				BB4A3DF72BA88F4B0091B166 /* CalendarView.swift in Sources */,
