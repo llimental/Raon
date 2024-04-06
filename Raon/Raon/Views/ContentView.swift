@@ -29,7 +29,7 @@ struct ContentView: View {
                               themeColor: $themeColor,
                               selectedRegion: $selectedRegion)
         } else {
-            TabView {
+            TabView(selection: tabSelection()) {
                 ProgramView(
                     themeColor: $themeColor,
                     selectedRegion: $selectedRegion)
