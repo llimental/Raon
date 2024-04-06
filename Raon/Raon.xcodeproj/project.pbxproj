@@ -55,6 +55,7 @@
 		BBCECA682B56815E00D664A1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBCECA672B56815E00D664A1 /* Preview Assets.xcassets */; };
 		BBDD9A5C2BA5DBC9009DEBE7 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD9A5B2BA5DBC9009DEBE7 /* String+Extension.swift */; };
 		BBDD9A5E2BA5DF5F009DEBE7 /* ThemeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD9A5D2BA5DF5F009DEBE7 /* ThemeSettingView.swift */; };
+		BBDDA74E2BC11AD100AD3EEA /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA74D2BC11AD100AD3EEA /* Tab.swift */; };
 		BBE6A71A2B691AEB00067FC0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6A7192B691AEB00067FC0 /* NetworkManager.swift */; };
 		BBF9E9122B9869DB00496CE5 /* CachedAsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF9E9112B9869DB00496CE5 /* CachedAsyncImageView.swift */; };
 /* End PBXBuildFile section */
@@ -110,6 +111,7 @@
 		BBCECA672B56815E00D664A1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BBDD9A5B2BA5DBC9009DEBE7 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		BBDD9A5D2BA5DF5F009DEBE7 /* ThemeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingView.swift; sourceTree = "<group>"; };
+		BBDDA74D2BC11AD100AD3EEA /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		BBE6A7182B67DFC300067FC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BBE6A7192B691AEB00067FC0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BBF9E9112B9869DB00496CE5 /* CachedAsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImageView.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				BBDD9A572BA578C6009DEBE7 /* Filters */,
 				BBDD9A592BA578E5009DEBE7 /* DTO */,
 				BBDD9A5A2BA578EB009DEBE7 /* SwiftData */,
+				BBDDA74C2BC11AC600AD3EEA /* Tab */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -359,6 +362,14 @@
 				BB1502922B9F541E00340090 /* FavoriteProgram.swift */,
 			);
 			path = SwiftData;
+			sourceTree = "<group>";
+		};
+		BBDDA74C2BC11AC600AD3EEA /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				BBDDA74D2BC11AD100AD3EEA /* Tab.swift */,
+			);
+			path = Tab;
 			sourceTree = "<group>";
 		};
 		BBF9E9102B98699B00496CE5 /* CachedAsyncImageView */ = {
@@ -467,6 +478,7 @@
 				BB2302492B97769D001E4147 /* CacheManager.swift in Sources */,
 				BB6AE2D82B9B64B200D4FB25 /* NavigationBarSmallTitleView.swift in Sources */,
 				BB116B762B89C1FC00EBBBB8 /* ProgramDescriptionView.swift in Sources */,
+				BBDDA74E2BC11AD100AD3EEA /* Tab.swift in Sources */,
 				BB116B7B2B8C2C2700EBBBB8 /* WebView.swift in Sources */,
 				BBB874B12BAB46E700A38C54 /* DetailImageView.swift in Sources */,
 				BBA6D6272B663CFC00AF8600 /* ProgramCardView.swift in Sources */,
