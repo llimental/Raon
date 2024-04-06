@@ -57,6 +57,7 @@
 		BBDD9A5E2BA5DF5F009DEBE7 /* ThemeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD9A5D2BA5DF5F009DEBE7 /* ThemeSettingView.swift */; };
 		BBDDA74E2BC11AD100AD3EEA /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA74D2BC11AD100AD3EEA /* Tab.swift */; };
 		BBDDA7512BC11B1F00AD3EEA /* DestinationPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7502BC11B1F00AD3EEA /* DestinationPath.swift */; };
+		BBDDA7532BC1372500AD3EEA /* OnboardingFourthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA7522BC1372500AD3EEA /* OnboardingFourthView.swift */; };
 		BBE6A71A2B691AEB00067FC0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6A7192B691AEB00067FC0 /* NetworkManager.swift */; };
 		BBF9E9122B9869DB00496CE5 /* CachedAsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF9E9112B9869DB00496CE5 /* CachedAsyncImageView.swift */; };
 /* End PBXBuildFile section */
@@ -114,6 +115,7 @@
 		BBDD9A5D2BA5DF5F009DEBE7 /* ThemeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingView.swift; sourceTree = "<group>"; };
 		BBDDA74D2BC11AD100AD3EEA /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		BBDDA7502BC11B1F00AD3EEA /* DestinationPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationPath.swift; sourceTree = "<group>"; };
+		BBDDA7522BC1372500AD3EEA /* OnboardingFourthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFourthView.swift; sourceTree = "<group>"; };
 		BBE6A7182B67DFC300067FC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BBE6A7192B691AEB00067FC0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BBF9E9112B9869DB00496CE5 /* CachedAsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImageView.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				BBCA71A02B5A811E001CC023 /* OnboardingFirstView.swift */,
 				BB6704982B5FB4AB0008A76F /* OnboardingSecondView.swift */,
 				BB67049C2B5FC53E0008A76F /* OnboardingThirdView.swift */,
+				BBDDA7522BC1372500AD3EEA /* OnboardingFourthView.swift */,
 			);
 			path = OnboardingViews;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				BB4A3DF72BA88F4B0091B166 /* CalendarView.swift in Sources */,
 				BBDD9A5C2BA5DBC9009DEBE7 /* String+Extension.swift in Sources */,
 				BBBFD6502B63F2D80052BD38 /* ColoredButton.swift in Sources */,
+				BBDDA7532BC1372500AD3EEA /* OnboardingFourthView.swift in Sources */,
 				BB89BC622BA8ADDB00DFF59B /* ProgramOfTheDayView.swift in Sources */,
 				BBA41E092B9A187A00884BD9 /* CopyRightView.swift in Sources */,
 				BBBFD64C2B63E2670052BD38 /* Regions.swift in Sources */,

@@ -23,16 +23,24 @@ struct OnboardingTabView: View {
                 selectedTab: $selectedTab,
                 themeColor: $themeColor)
             .tag(0)
+
             OnboardingSecondView(
                 selectedTab: $selectedTab,
                 themeColor: $themeColor,
                 selectedRegion: $selectedRegion)
             .tag(1)
             .background(.white)
+
             OnboardingThirdView(
-                isFirstLaunching: $isFirstLaunching,
+                selectedTab: $selectedTab,
                 themeColor: $themeColor)
             .tag(2)
+            .background(.white)
+
+            OnboardingFourthView(
+                isFirstLaunching: $isFirstLaunching,
+                themeColor: $themeColor)
+            .tag(3)
             .background(.white)
         }
         .background(themeColor.color)
