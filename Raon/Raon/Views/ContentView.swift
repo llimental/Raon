@@ -55,6 +55,26 @@ struct ContentView: View {
             }
         }
     }
+
+    // MARK: - Private Functions
+    private func tabSelection() -> Binding<Tab> {
+        Binding {
+            self.selectedTab
+        } set: { touchedTap in
+            if touchedTap == self.selectedTab {
+                switch touchedTap {
+                    case .program:
+                        if !programPath.isEmpty { programPath.removeAll() }
+                    case .favorites:
+                        if !favoritesPath.isEmpty { favoritesPath.removeAll() }
+                    case .search:
+                        if !searchPath.isEmpty { searchPath.removeAll() }
+                }
+            }
+
+            self.selectedTab = touchedTap
+        }
+    }
 }
 
 #Preview {
