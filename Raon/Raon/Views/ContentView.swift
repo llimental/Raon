@@ -32,7 +32,8 @@ struct ContentView: View {
             TabView(selection: tabSelection()) {
                 ProgramView(
                     themeColor: $themeColor,
-                    selectedRegion: $selectedRegion)
+                    selectedRegion: $selectedRegion,
+                    programPath: $programPath)
                 .tabItem {
                     Label("프로그램", systemImage: "house")
                 }

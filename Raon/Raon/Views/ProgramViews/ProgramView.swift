@@ -17,10 +17,11 @@ struct ProgramView: View {
     // MARK: - @Binding Properties
     @Binding var themeColor: ThemeColors
     @Binding var selectedRegion: Regions
+    @Binding var programPath: [DestinationPath]
 
     // MARK: - Body
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $programPath) {
             VStack(alignment: .leading) {
                 NavigationBarLargeTitleView(
                     titleText: "프로그램",
@@ -29,11 +30,7 @@ struct ProgramView: View {
                 ZStack(alignment: .bottom) {
                     TabView(selection: $selectedTab) {
                         ForEach(getFilteredContents(), id: \.title) { content in
-                            NavigationLink {
-                                ProgramDetailView(
-                                    themeColor: $themeColor,
-                                    content: content)
-                            } label: {
+                            NavigationLink(value: DestinationPath.detail(content)) {
                                 ProgramCardView(programImageURL: content.imageURL)
                             }
                             .tag(content.title)
@@ -49,19 +46,11 @@ struct ProgramView: View {
                                 selectedTab = String()
                             }
 
-                            NavigationLink {
-                                CalendarView(
-                                    contents: $networkManager.contents,
-                                    themeColor: $themeColor)
-                            } label: {
+                            NavigationLink(value: DestinationPath.calendar) {
                                 Image(systemName: "calendar")
                             }
 
-                            NavigationLink {
-                                SettingsView(
-                                    themeColor: $themeColor,
-                                    selectedRegion: $selectedRegion)
-                            } label: {
+                            NavigationLink(value: DestinationPath.settings) {
                                 Image(systemName: "gear")
                             }
                         }
@@ -80,6 +69,13 @@ struct ProgramView: View {
                             )
                             .padding(.bottom, 5)
                     }
+                }
+            }
+            .navigationDestination(for: DestinationPath.self) { destination in
+                switch destination {
+                    case .detail(let content): ProgramDetailView(themeColor: $themeColor, content: content)
+                    case .calendar: CalendarView(contents: $networkManager.contents, themeColor: $themeColor)
+                    case .settings: SettingsView(themeColor: $themeColor, selectedRegion: $selectedRegion)
                 }
             }
             .fullScreenCover(isPresented: $networkManager.isContentsUpdating, content: {
@@ -105,6 +101,7 @@ struct ProgramView: View {
 #Preview {
     ProgramView(
         themeColor: .constant(.pink),
-        selectedRegion: .constant(.allRegion))
+        selectedRegion: .constant(.allRegion),
+        programPath: .constant([]))
     .environmentObject(NetworkManager())
 }
