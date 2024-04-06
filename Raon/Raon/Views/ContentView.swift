@@ -40,7 +40,8 @@ struct ContentView: View {
                 .tag(Tab.program)
 
                 FavoritesView(
-                    themeColor: $themeColor)
+                    themeColor: $themeColor,
+                    favoritesPath: $favoritesPath)
                 .tabItem {
                     Label("즐겨찾기", systemImage: "heart")
                 }

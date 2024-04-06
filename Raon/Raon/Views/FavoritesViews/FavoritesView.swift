@@ -15,10 +15,11 @@ struct FavoritesView: View {
 
     // MARK: - @Binding Properties
     @Binding var themeColor: ThemeColors
+    @Binding var favoritesPath: [DestinationPath]
 
     // MARK: - Body
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $favoritesPath) {
             VStack(alignment: .leading) {
                 NavigationBarLargeTitleView(
                     titleText: "즐겨찾기",
@@ -26,11 +27,7 @@ struct FavoritesView: View {
 
                 List {
                     ForEach(favoritePrograms) { favoriteProgram in
-                        NavigationLink {
-                            ProgramDetailView(
-                                themeColor: $themeColor,
-                                content: favoriteProgram.content)
-                        } label: {
+                        NavigationLink(value: DestinationPath.detail(favoriteProgram.content)) {
                             SearchCardView(content: favoriteProgram.content)
                         }
                     }
@@ -44,6 +41,11 @@ struct FavoritesView: View {
                     EditButton()
                 }
             }
+            .navigationDestination(for: DestinationPath.self, destination: { destination in
+                if case .detail(let content) = destination {
+                    ProgramDetailView(themeColor: $themeColor, content: content)
+                }
+            })
         }
     }
 
@@ -62,6 +64,8 @@ struct FavoritesView: View {
 }
 
 #Preview {
-    FavoritesView(themeColor: .constant(.purple))
+    FavoritesView(
+        themeColor: .constant(.purple),
+        favoritesPath: .constant([]))
         .modelContainer(for: FavoriteProgram.self)
 }
