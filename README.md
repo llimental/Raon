@@ -18,7 +18,7 @@
 
 ## 프로젝트 소개
 - 🏃🏻🏃🏻‍♂️💨 **프로젝트 구상:** `24. 01. 08.` ~ `24. 01. 15.`
-- 🏃🏻🏃🏻‍♂️💨 **프로젝트 기간:** `24. 01. 16.` ~  `24. 03. 21.` **(1.0.0 버전 개발 완료)**
+- 🏃🏻🏃🏻‍♂️💨 **프로젝트 기간(1차):** `24. 01. 16.` ~  `24. 03. 21.`**(1.0.0 버전 개발 완료)**
     - **[Step 1]** `24. 01. 19.` ~ `24. 01. 26.`
     - **[Step 2]** `24. 01. 27.` ~ `24. 02. 02.`
     - **[Step 3]** `24. 02. 03.` ~ `24. 02. 16.`
@@ -33,6 +33,9 @@
     - **[Step 12]** `24. 03. 16.` ~ `24. 03. 18.`
     - **[Step 13]** `24. 03. 19.` ~ `24. 03. 19.`
     - **[Step 14]** `24. 03. 21.` ~ `24. 03. 21.`
+
+- 🏃🏻🏃🏻‍♂️💨 **프로젝트 기간(2차):** `24. 04. 05.` ~  `24. 04. 06.`
+    - **[Step 15]** `24. 04. 05.` ~ `24. 04. 06.`
 
 <br>
 
@@ -101,6 +104,7 @@
         - `onTapGesture`
         - `onChange`
     - **`DeepLink: External App API Use`**
+        - `Apple Map`
         - `Naver Map`
         - `Kakao Map`
         - `KakaoTalk`
@@ -319,6 +323,30 @@
     - **(ProgramDetailView)** 즐겨찾기, 공유하기 버튼 색상 시인성 개선
     - **(OnboardingView)** 프로그램 이름 변경
     - **(ProgramView)** 새로고침 시 데이터가 나오지 않는 문제 해결
+
+### Step 15: Reflect 1st feedback
+**- TestFlight 통한 이용자 피드백 및 App Store 심사 내용 보완**
+- **Onboarding View**
+    - 사용법 추가 안내
+    - 온보딩 화면에서 우측으로 pan gesture시 좌측에 흰 화면이 나오는 현상 해결
+
+- **Calendar View**
+    - 즐겨찾기한 항목을 리스트 상단으로 올라가도록 구현
+
+- **Program View**
+    - 새로고침 시 인디케이터 표시되도록 구현
+
+- **Favorites View**
+    - 편집 모드 시 ProgramDetailView 이동이 안되도록 구현
+
+- **ProgramDetail View**
+    - 위치 텍스트를 버튼으로 변경하여 누르면 액션시트로 항목을 선택할 수 있도록 변경
+    - 애플 지도 연결
+    - 딥링크 연결 시 길찾기가 아니라 위치 정보를 제공
+    - DescriptionView 상단 여백 추가
+
+- **Feature**
+    - 탭바를 터치하여 처음 화면으로 가도록 기능 구현(Tap to Root)
 
 <br>
 
@@ -1016,13 +1044,60 @@ private func getTotalContents(of amount: Int) {
 - 이슈를 보여준 구문은 WebView였고, 원인은 SwiftData 코드였으나 이마저도 시도할 때마다 오류 발생 여부가 고정적이지 않았고, Instruments, Xcode Debugger도 전부 프로세스가 뻗어 원인을 정확히 찾지 못한 것이 아쉬웠다.
 - 다만 SwiftData의 Query를 조금 다르게 사용했더니 해결된 것으로 보아 subview와 함께 쓸 때 어떤 작용을 하는지 좀 더 알아볼 필요성을 느꼈다.
 
+### 24. Tap to Root
+**고민한 점 :**
+- 애플 기본 앱처럼 탭바를 터치하여 이전 화면으로 돌아가고 싶으나 기본으로 제공하는 기능이 없고, 기존에 사용되던 방식도 복잡하거나 적용되지 않아 이용시 불편함이 따름
+- NavigationStack과 함께 나온 NavigationPath를 사용해보고자 했으나 중복 타입 설정의 문제 등 제대로 사용하기가 어려웠음
+
+**과정 및 해결 :**
+- 메서드나 기구현 요소보다는 원리를 따라가고자 했다. 결국 스택이 쌓이는 배열이 필요하고, 탭바를 누르면 그 배열을 초기화 해야 한다.
+- enum으로 이동할 View의 타입을 case화 했고, NavigationPath 대신 해당 enum을 요소로 갖는 배열을 활용했다.
+- 각 NavigationStack을 갖는 3개의 메인 화면에서 각 path 배열을 path로 사용했고, 기존의 Destination을 포함한 NavigationLink 대신 어디로 갈 것인지 DestinationPath value만을 가지는 NavigationLink를 사용했다.
+- 이후 해당 Link를 적절히 이용하기 위해 navigationDestination에서 Path에 따라 View를 연결시켜줬다.
+- 최상단 TabView에서는 활성화 되어 있는 탭에서 다시 한 번 탭을 하면 path 배열이 비어있는지 확인하고, 그렇지 않다면 비우는 방식으로 해결할 수 있었다.
+
+```swift
+enum DestinationPath: Hashable {
+    case detail(ProgramContentModel), calendar, settings
+}
+
+// MARK: - @State Properties
+@State private var selectedTab: Tab = .program
+@State private var programPath: [DestinationPath] = []
+@State private var favoritesPath: [DestinationPath] = []
+@State private var searchPath: [DestinationPath] = []
+
+// MARK: - Private Functions
+private func tabSelection() -> Binding<Tab> {
+    Binding {
+        self.selectedTab
+    } set: { touchedTap in
+        if touchedTap == self.selectedTab {
+            switch touchedTap {
+                case .program:
+                    if !programPath.isEmpty { programPath.removeAll() }
+                case .favorites:
+                    if !favoritesPath.isEmpty { favoritesPath.removeAll() }
+                case .search:
+                    if !searchPath.isEmpty { searchPath.removeAll() }
+            }
+        }
+
+        self.selectedTab = touchedTap
+    }
+}
+
+.navigationDestination(for: DestinationPath.self) { destination in
+    switch destination {
+        case .detail(let content): ProgramDetailView(themeColor: $themeColor, content: content)
+        case .calendar: CalendarView(contents: $networkManager.contents, themeColor: $themeColor)
+        case .settings: SettingsView(themeColor: $themeColor, selectedRegion: $selectedRegion)
+    }
+}
+```
+
 <br>
 
 ## 추후 계획
 
-- OnboardingView에서 프로그램 상세 사용법 안내(푸시 알림, 지도 앱 사용법 등)
-- CalendarView에서 즐겨찾기한 항목은 리스트 상단으로 정렬
-- TabBar 터치로 뒤로 가기 기능 구현(iOS 기본 앱처럼)
-- ProgramView에서 여러 개를 한 눈에 보이도록 하는 설정 구현
-- SubView 일관된 분리 및 전체 코드 개선
-
+- SubView 분리 등 모듈화에 신경을 썼지만 아직 전체적으로 개선할 점이 있어서 코드 개선을 최우선 과제로 삼고 있다.
