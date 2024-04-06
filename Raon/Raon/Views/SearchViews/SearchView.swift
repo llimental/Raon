@@ -17,20 +17,17 @@ struct SearchView: View {
     // MARK: - @Binding Properties
     @Binding var contents: [ProgramContentModel]
     @Binding var themeColor: ThemeColors
+    @Binding var searchPath: [DestinationPath]
 
     // MARK: - Body
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $searchPath) {
             ScrollViewReader { proxy in
                 List {
                     EmptyView()
                         .id("firstView")
                     ForEach(getFilteredContents(), id: \.title) { content in
-                        NavigationLink {
-                            ProgramDetailView(
-                                themeColor: $themeColor,
-                                content: content)
-                        } label: {
+                        NavigationLink(value: DestinationPath.detail(content)) {
                             SearchCardView(content: content)
                         }
                     }
@@ -58,6 +55,11 @@ struct SearchView: View {
                         }
                     }
                 }
+                .navigationDestination(for: DestinationPath.self, destination: { destination in
+                    if case .detail(let content) = destination {
+                        ProgramDetailView(themeColor: $themeColor, content: content)
+                    }
+                })
                 .searchable(
                     text: $searchText,
                     placement: .navigationBarDrawer(displayMode: .always),
@@ -95,5 +97,6 @@ struct SearchView: View {
 #Preview {
     SearchView(
         contents: .constant(NetworkManager().contents),
-        themeColor: .constant(.pink))
+        themeColor: .constant(.pink),
+        searchPath: .constant([]))
 }

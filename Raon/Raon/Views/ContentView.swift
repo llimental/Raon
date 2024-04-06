@@ -49,7 +49,8 @@ struct ContentView: View {
 
                 SearchView(
                     contents: $networkManager.contents,
-                    themeColor: $themeColor)
+                    themeColor: $themeColor,
+                    searchPath: $searchPath)
                 .tabItem {
                     Label("검색", systemImage: "magnifyingglass")
                 }
