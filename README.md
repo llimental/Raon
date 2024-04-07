@@ -10,32 +10,35 @@
 
 [5. STEP별 구현 내용](#STEP별-구현-내용)
 
-[6. 트러블 슈팅](#트러블-슈팅)
+[6. 업데이트 내역](#업데이트-내역)
 
-[7. 추후 계획](#추후-계획)
+[7. 트러블 슈팅](#트러블-슈팅)
+
+[8. 추후 계획](#추후-계획)
 
 <br>
 
 ## 프로젝트 소개
 - 🏃🏻🏃🏻‍♂️💨 **프로젝트 구상:** `24. 01. 08.` ~ `24. 01. 15.`
 - 🏃🏻🏃🏻‍♂️💨 **프로젝트 기간(1차):** `24. 01. 16.` ~  `24. 03. 21.`**(1.0.0 버전 개발 완료)**
-    - **[Step 1]** `24. 01. 19.` ~ `24. 01. 26.`
-    - **[Step 2]** `24. 01. 27.` ~ `24. 02. 02.`
-    - **[Step 3]** `24. 02. 03.` ~ `24. 02. 16.`
-    - **[Step 4]** `24. 02. 22.` ~ `24. 03. 04.`
-    - **[Step 5]** `24. 03. 05.` ~ `24. 03. 05.`
-    - **[Step 6]** `24. 03. 06.` ~ `24. 03. 06.`
-    - **[Step 7]** `24. 03. 06.` ~ `24. 03. 07.`
-    - **[Step 8]** `24. 03. 07.` ~ `24. 03. 08.`
-    - **[Step 9]** `24. 03. 09.` ~ `24. 03. 11.`
-    - **[Step 10]** `24. 03. 12.` ~ `24. 03. 12.`
-    - **[Step 11]** `24. 03. 13.` ~ `24. 03. 15.`
-    - **[Step 12]** `24. 03. 16.` ~ `24. 03. 18.`
-    - **[Step 13]** `24. 03. 19.` ~ `24. 03. 19.`
-    - **[Step 14]** `24. 03. 21.` ~ `24. 03. 21.`
+    - **[Step-1]** `24. 01. 19.` ~ `24. 01. 26.`
+    - **[Step-2]** `24. 01. 27.` ~ `24. 02. 02.`
+    - **[Step-3]** `24. 02. 03.` ~ `24. 02. 16.`
+    - **[Step-4]** `24. 02. 22.` ~ `24. 03. 04.`
+    - **[Step-5]** `24. 03. 05.` ~ `24. 03. 05.`
+    - **[Step-6]** `24. 03. 06.` ~ `24. 03. 06.`
+    - **[Step-7]** `24. 03. 06.` ~ `24. 03. 07.`
+    - **[Step-8]** `24. 03. 07.` ~ `24. 03. 08.`
+    - **[Step-9]** `24. 03. 09.` ~ `24. 03. 11.`
+    - **[Step-10]** `24. 03. 12.` ~ `24. 03. 12.`
+    - **[Step-11]** `24. 03. 13.` ~ `24. 03. 15.`
+    - **[Step-12]** `24. 03. 16.` ~ `24. 03. 18.`
+    - **[Step-13]** `24. 03. 19.` ~ `24. 03. 19.`
+    - **[Step-14]** `24. 03. 21.` ~ `24. 03. 21.`
 
 - 🏃🏻🏃🏻‍♂️💨 **프로젝트 기간(2차):** `24. 04. 05.` ~  `24. 04. 06.`
-    - **[Step 15]** `24. 04. 05.` ~ `24. 04. 06.`
+    - **[Step-15]** `24. 04. 05.` ~ `24. 04. 06.`
+    - **[Issue-1]** `24. 04. 08.` ~ `24. 04. 08.` **(1.0.1 - 버그 픽스)**
 
 <br>
 
@@ -160,7 +163,7 @@
 
 ## STEP별 구현 내용
 
-### Step 1: Onboarding View 구현
+### Step-1: Onboarding View 구현
 - **Onboarding View 구현**
     - `상태를 가진 color 변수`를 만들어 App 전체에서 사용
     - `상태를 가진 initial 변수`를 만들어 App 첫 실행 때만 `Onboarding Page`를 보여주기
@@ -168,7 +171,7 @@
     - `Picker`를 활용하여 지역을 선택할 수 있도록 구현
     - `TabView`를 통해 `Onboarding` 각 페이지를 이동
 
-### Step 2: Program View 구현
+### Step-2: Program View 구현
 - **Program View 구현**
     - 가운데 보이는 컨텐츠 강조(-> `TabView`로 변경되어 자동 강조)
     - 양쪽 컨텐츠 투명도 조절(-> `TabView`로 변경되어 조절 필요 없음)
@@ -179,7 +182,7 @@
     - 오프라인 환경 감지 및 안내
     - 목업, 실 데이터 테스트
 
-### Step 3: Search View 구현
+### Step-3: Search View 구현
 - **Search View 구현**
     - `ProgramView`에서 `Search Icon`을 터치하면 `SearchView`로 이동(`NavigationLink` 활용)
     - 프로그램 제목은 검색하여 필터링
@@ -191,7 +194,7 @@
     - 필터 초기화, 닫기 버튼 기능 제공
     - `@State`, `@Binding`을 통한 필터 선택값 반영
 
-### Step 4: Program Detail View 구현
+### Step-4: Program Detail View 구현
 - **Program Detail View 구현**
     - 포스터를 배경으로 자세한 정보를 스크롤하며 볼 수 있도록 구현
     - 프로그램명 우측에 즐겨찾기와 알림 버튼 추가
@@ -203,7 +206,7 @@
     - 알림 받기 버튼 체크 여부에 따른 fill 상태 변경
     - 공유시트 기능 구현
 
-### Step 5: Project Maintenance
+### Step-5: Project Maintenance
 - **DTO**
     - 사용하지 않는 항목 제거
 
@@ -233,32 +236,32 @@
         - 보일러 플레이트 코드 제거 및 사용하는 View 코드 간결화
         - 필요한 WebView는 외부에서 주입
 
-### Step 6: Image Caching
+### Step-6: Image Caching
 - **이미지 캐싱**
     - CacheManager 구현
     - CacheManager를 활용하여 이미지 표현
 
-### Step 7: WebView Memory Optimization
+### Step-7: WebView Memory Optimization
 - **WebView**
     - WebView 사용 시 메모리가 급증하여 줄지 않는 이슈를 해결하여 메모리 최적화
 
-### Step 8: Settings View
+### Step-8: Settings View
 - **Settings View 구현**
     - 저작권 표시
     - 앱 테마 설정
     - 관심 지역 설정
 
-### Step 9: SwiftData
+### Step-9: SwiftData
 - **SwiftData 사용**
     - SwiftData의 Model 구상
     - SwiftData를 활용하여 Favorites 항목 관리
 
-### Step 10: Favorites View
+### Step-10: Favorites View
 - **Favorites View 구현**
     - SwiftData의 FavoritePrograms 데이터를 사용하여 View 구성
     - toolbar 버튼을 활용한 제거 기능 구현
 
-### Step 11: User Notifications
+### Step-11: User Notifications
 - **User Notifications 구현**
     - Notification 관리 역할을 맡을 객체 구현
     - Notification 사용 권한 요청
@@ -270,7 +273,7 @@
     - 즐겨찾기 해제 시 Notification 제거 기능 구현
     - SettingsView에서 알림 토글 구현 및 설정 앱 알림 상태와 연결
 
-### Step 12: Project Maintenance
+### Step-12: Project Maintenance
 - **WebView**
     - 코드 컨벤션 준수
 
@@ -298,7 +301,7 @@
 - **NetworkManager**
     - API 데이터 제공측 정렬 이슈로 인한 호출 로직 수정(기존 1000개 -> 전체 데이터)
 
-### Step 13: Calendar View
+### Step-13: Calendar View
 - **Calendar View 구현**
     - CalendarView에 Calendar 구현
     - Calendar에서 날짜 선택 시 하단에 목록을 보여주도록 구현
@@ -307,7 +310,7 @@
     - 항목 좌측에 즐겨찾기 여부 표기
     - EventKit을 활용하여 ProgramDetailView의 시작일, 종료일 옆에 캘린더에 등록하기 기능 구현
 
-### Step 14: Additional Feature
+### Step-14: Additional Feature
 - **부가 기능**
     - 카카오톡 플러스친구 연결로 문의 창구 개설
     - 앱 버전 확인 기능 구현
@@ -324,7 +327,7 @@
     - **(OnboardingView)** 프로그램 이름 변경
     - **(ProgramView)** 새로고침 시 데이터가 나오지 않는 문제 해결
 
-### Step 15: Reflect 1st feedback
+### Step-15: Reflect 1st feedback
 **- TestFlight 통한 이용자 피드백 및 App Store 심사 내용 보완**
 - **Onboarding View**
     - 사용법 추가 안내
@@ -347,6 +350,14 @@
 
 - **Feature**
     - 탭바를 터치하여 처음 화면으로 가도록 기능 구현(Tap to Root)
+
+<br>
+
+## 업데이트 내역
+
+### 1.0.1
+- **Issue-1: NavigationTitle's wrong position**
+    - 설정 화면에서 앱 색상 혹은 지역 선택 시 프로그램 탭 내비게이션 제목이 하단으로 내려오는 현상 해결
 
 <br>
 
@@ -1095,6 +1106,19 @@ private func tabSelection() -> Binding<Tab> {
     }
 }
 ```
+
+### 25. (1.0.1) 설정 창 진입 시 화면 상단에 여백이 생기는 문제
+**고민한 점 :**
+- 설정 화면에 진입하거나, 설정 화면에서 앱 색상 혹은 지역 Picker를 사용하여 값을 변경하면 프로그램 타이틀, 설정 타이틀 상단에 여백이 생기는 문제가 발생
+
+**과정 및 해결 :**
+- 디버깅 화면을 통해 확인해보니, 상단에 생기는 공백은 `NavigationBarLargeTitle`의 빈 `UILabel` 때문에 생기는 것이었다.
+- 본 앱에서는 `NavigationBar Title` 대신 유사하게 구사한 `View`를 사용하기 때문에 모종의 이유로 해당 `View` 위쪽에 `Title`이 생기고, 그 공간을 차지하게 된 것이다.
+- `Title`에 빈 문자열을 넣어봤지만 해결되지 않았고, `toolbar`의 `Visibility`를 `.hidden`으로 설정해 봤으나 툴바 전체가 숨겨져 사용할 수 없었다.
+- 대신, `navigationBarTitleDisplayMode` 를 `.inline` 으로 설정하여 상단으로 옮김으로써 해결할 수 있었다.
+- 똑같은 `NavigationStack`을 사용하는 즐겨찾기, 검색 탭에서도 동일한 증상이 발생하는지 확인했으나, 두 탭에서는 작업이 해당 탭에서만 이뤄지고, 이동하더라도 이미 `inline`으로 설정된 `ProgramDetailView`로 가기 때문에 문제가 없었다.
+
+<img width="300" alt="KakaoTalk_Photo_2024-04-08-01-31-57" src="https://github.com/llimental/Raon/assets/45708630/5fd18cb7-be18-4a94-ba24-9cebcb57f44c">
 
 <br>
 
