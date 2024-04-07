@@ -71,6 +71,7 @@ struct ProgramView: View {
                     }
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: DestinationPath.self) { destination in
                 switch destination {
                     case .detail(let content): ProgramDetailView(themeColor: $themeColor, content: content)
