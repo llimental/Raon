@@ -27,7 +27,9 @@ final class NotificationManager: ObservableObject {
             if settings.authorizationStatus != .authorized {
                 self?.center.requestAuthorization(options: [.alert, .sound]) { _, error in
                     if let error = error {
+                        #if DEBUG
                         print("requestAuthorization Failed(\(error.localizedDescription))")
+                        #endif
                     }
                 }
             }
@@ -54,7 +56,9 @@ final class NotificationManager: ObservableObject {
 
                 self?.center.add(request) { error in
                     if let error = error {
+                        #if DEBUG
                         print("Notification add Failed(\(error.localizedDescription))")
+                        #endif
                     }
                 }
             }

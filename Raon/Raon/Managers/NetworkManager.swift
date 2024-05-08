@@ -60,9 +60,13 @@ final class NetworkManager: ObservableObject {
                 .sink { completion in
                     switch completion {
                         case .finished:
+                            #if DEBUG
                             print("First DataTaskPublisher Result:", completion)
+                            #endif
                         default:
+                            #if DEBUG
                             print("First DataTaskPublisher Result:", completion)
+                            #endif
                             self.isContentsUpdating.toggle()
                     }
                 } receiveValue: { [weak self] value in
@@ -130,9 +134,13 @@ final class NetworkManager: ObservableObject {
             .sink { completion in
                 switch completion {
                     case .finished:
+                        #if DEBUG
                         print("Second DataTaskPublisher Result:", completion)
+                        #endif
                     default:
+                        #if DEBUG
                         print("Second DataTaskPublisher Result:", completion)
+                        #endif
                         self.isContentsUpdating.toggle()
                 }
             } receiveValue: { value in
