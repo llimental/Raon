@@ -67,5 +67,5 @@ struct FavoritesView: View {
     FavoritesView(
         themeColor: .constant(.purple),
         favoritesPath: .constant([]))
-        .modelContainer(for: FavoriteProgram.self)
+    .modelContainer(for: FavoriteProgram.self)
 }
