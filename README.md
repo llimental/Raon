@@ -39,6 +39,9 @@
 - 🏃🏻🏃🏻‍♂️💨 **프로젝트 기간(2차):** `24. 04. 05.` ~  `24. 04. 06.`
     - **[Step-15]** `24. 04. 05.` ~ `24. 04. 06.`
     - **[Issue-1]** `24. 04. 08.` ~ `24. 04. 08.` **(1.0.1 - 버그 픽스)**
+ 
+- 🏃🏻🏃🏻‍♂️💨 **프로젝트 기간(3차):** `24. 10. 16.`
+    - **[refactor/filter]** `24. 10. 16.` **(1.0.2 - 버그 픽스)**
 
 <br>
 
@@ -60,35 +63,15 @@
 
 - **기술 스택 :** **Swift**
     - **`SwiftUI`**
-        - `@AppStorage`
-        - `@State`, `@Binding`
-        - `@StateObject`, `@ObservableObject`
-        - `@Published`
-        - `@Environment`
     - **`Architecture`**
         - `Model-View Architecture`
     - **`Design Pattern`**
         - `Observer(Swift Combine)`
         - `Singleton(CacheManager)`
     - **`Combine(Framework)`**
-        - `Concurrency`
-        - `AnyCancellable`
-        - `dataTaskPublisher`
-        - `sink`
-        - `MergeMany`
     - **`SwiftData(Framework)`**
-        - `@Model`
-        - `Attribute`
-        - `modelContainer`
-        - `modelContext`
-        - `Query`
-        - `Create(insert) / Read(query)/ Update(save) / Delete(delete)`
     - **`EventKit / EventKitUI(Framework)`**
-        - `UIViewControllerRepresentable`
         - `(iOS 17) without prompting the user access`
-        - `EventEditViewController`
-        - `EKEvent`
-        - `EKEventStore`
     - **`UserNotifications(Framework)`**
         - `Local Push Notification`
     - `ShareLink`
@@ -102,10 +85,6 @@
         - `NavigationLink`
     - `NWPathMonitor`
     - `custom sheet`
-    - `View Modifier`
-        - `searchable`
-        - `onTapGesture`
-        - `onChange`
     - **`DeepLink: External App API Use`**
         - `Apple Map`
         - `Naver Map`
@@ -358,6 +337,10 @@
 ### 1.0.1
 - **Issue-1: NavigationTitle's wrong position**
     - 설정 화면에서 앱 색상 혹은 지역 선택 시 프로그램 탭 내비게이션 제목이 하단으로 내려오는 현상 해결
+ 
+### 1.0.2
+- **refactor/filter: 필터 크래시 이슈 해결**
+    - 검색 화면에서 카테고리 혹은 지역을 선택했을 때 해당하는 프로그램이 없다면 앱이 충돌나는 현상 해결
 
 <br>
 
@@ -1119,6 +1102,16 @@ private func tabSelection() -> Binding<Tab> {
 - 똑같은 `NavigationStack`을 사용하는 즐겨찾기, 검색 탭에서도 동일한 증상이 발생하는지 확인했으나, 두 탭에서는 작업이 해당 탭에서만 이뤄지고, 이동하더라도 이미 `inline`으로 설정된 `ProgramDetailView`로 가기 때문에 문제가 없었다.
 
 <img width="300" alt="KakaoTalk_Photo_2024-04-08-01-31-57" src="https://github.com/llimental/Raon/assets/45708630/5fd18cb7-be18-4a94-ba24-9cebcb57f44c">
+
+### 26. (1.0.2) 검색 창에서 필터 적용시 일부 케이스에서 충돌 발생 문제
+**고민한 점 :**
+- 검색 화면에서 카테고리나 지역을 선택했을 때 해당 조건에 맞는 프로그램이 없다면 앱이 충돌이 나 강제종료 되는 문제가 발생
+
+**과정 및 해결 :**
+- section이 없는데 스크롤하려는 시도(기존 onChange 내 메서드)가 있어 발생하는 문제로 파악(Attempted to scroll the collection view to an out-of-bounds section (0) when there are only 0 sections)
+- SearchView에서 body를 구성할 때 filteredContents에 getFilteredContents 메서드의 반환값을 할당하고, 이 값에 따라 View를 구성하도록 변경
+- filteredContents가 비어있다면(필터 조건에 맞는 프로그램이 없다면) Text로 해당 결과가 없음을 사용자에게 알림
+- filteredContents가 비어있지 않다면(필터 조건에 맞는 프로그램이 있다면) 기존과 같이 List로 표현
 
 <br>
 
