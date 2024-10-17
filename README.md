@@ -40,8 +40,9 @@
     - **[Step-15]** `24. 04. 05.` ~ `24. 04. 06.`
     - **[Issue-1]** `24. 04. 08.` ~ `24. 04. 08.` **(1.0.1 - 버그 픽스)**
  
-- 🏃🏻🏃🏻‍♂️💨 **프로젝트 기간(3차):** `24. 10. 16.`
-    - **[refactor/filter]** `24. 10. 16.` **(1.0.2 - 버그 픽스)**
+- 🏃🏻🏃🏻‍♂️💨 **유지보수:**
+    - **[refactor/filter]** `24. 10. 16.` **(1.0.2 - 버그 픽스)**
+    - **[fix/AlertToggle]** `24. 10. 17.` **(1.0.3 - 버그 픽스)**
 
 <br>
 
@@ -341,6 +342,11 @@
 ### 1.0.2
 - **refactor/filter: 필터 크래시 이슈 해결**
     - 검색 화면에서 카테고리 혹은 지역을 선택했을 때 해당하는 프로그램이 없다면 앱이 충돌나는 현상 해결
+    
+### 1.0.3
+- **fix/AlertToggle: 알림 토글 비정상적 동작 해결**
+    - 설정 화면에서 알림 토글이 앱 알림 권한과 동기화되지 않고 자체적으로 On/Off 토글되는 현상 해결
+    - 초기 의도와 같이 앱 알림 권한과 동기화 및 기본 설정 앱으로 연결되는 Alert 표현
 
 <br>
 
@@ -1112,6 +1118,18 @@ private func tabSelection() -> Binding<Tab> {
 - SearchView에서 body를 구성할 때 filteredContents에 getFilteredContents 메서드의 반환값을 할당하고, 이 값에 따라 View를 구성하도록 변경
 - filteredContents가 비어있다면(필터 조건에 맞는 프로그램이 없다면) Text로 해당 결과가 없음을 사용자에게 알림
 - filteredContents가 비어있지 않다면(필터 조건에 맞는 프로그램이 있다면) 기존과 같이 List로 표현
+
+### 27. (1.0.3) 설정 창에서 알림 토글 터치 시 자체적으로 동작하는 문제
+**고민한 점 :**
+- 설정 화면의 알림 토글은 앱 알림 권한과 동기화되어 있음
+- 이에 토글을 터치하면 아이폰 기본 설정 앱으로 넘어갈 수 있는 Alert 창이 표시되어야 함
+- 그러나 현재 토글을 터치하면 동기화되지 않고 앱 내에서 자체적으로 On/Off를 조정할 수 있음
+
+**과정 및 해결 :**
+- SettingsView에서 NotificationToggleView에 NotificationManager의 status를 바인딩 값으로 넘겨줬으나 데이터 동기화가 이루어지지 않는 것으로 추정되었다.
+- 이에 SettingsView에서 넘겨주는 대신 NotificationToggleView에서 직접 바인딩하기로 했다(SettingsView에서는 별도의 NotificationManager를 사용하지 않음).
+- 기존 코드에서 isToggleOn을 제거하고, notificationManager의 status를 직접 사용하고, bindingForToggle 프로퍼티를 생성하여 set에서 isAlertPresented를 true로 변경시켜주는 작업을 추가했다.
+- 더불어 onAppear와 onReceive 클로저는 메인 스레드에서 실행되기 때문에 GCD 코드를 제거했다.
 
 <br>
 
