@@ -10,9 +10,9 @@ echo "Stage: PRE-Xcode Build Start"
 
 cd ..
 
-plutil -replace API_KEY -string $API_KEY ./Raon/RaonAPI.plist
+plutil -replace API_KEY -string $API_KEY ./Raon/Resources/RaonAPI.plist
 
-plutil -p ./Raon/RaonAPI.plist
+plutil -p ./Raon/Resources/RaonAPI.plist
 
 echo "Stage: PRE-Xcode Build End"
 
