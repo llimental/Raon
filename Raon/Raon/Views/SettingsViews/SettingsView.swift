@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct SettingsView: View {
-    // MARK: - @EnvironmentObject Properties
-    @EnvironmentObject var notificationManager: NotificationManager
-
     // MARK: - @Binding Properties
     @Binding var themeColor: ThemeColors
     @Binding var selectedRegion: Regions
@@ -46,7 +43,7 @@ struct SettingsView: View {
                 .listRowSeparator(.hidden)
 
                 Section {
-                    NotificationToggleView(isToggleOn: $notificationManager.notificationStatus)
+                    NotificationToggleView()
 
                     ThemeSettingView(themeColor: $themeColor)
 

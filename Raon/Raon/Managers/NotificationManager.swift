@@ -67,8 +67,12 @@ final class NotificationManager: ObservableObject {
 
     func setNotificationStatus() {
         center.getNotificationSettings { [weak self] settings in
-            DispatchQueue.main.async {
-                self?.notificationStatus = settings.authorizationStatus == .authorized
+            let isAuthorized = settings.authorizationStatus == .authorized
+
+            if self?.notificationStatus != isAuthorized {
+                DispatchQueue.main.async {
+                    self?.notificationStatus = isAuthorized
+                }
             }
         }
     }

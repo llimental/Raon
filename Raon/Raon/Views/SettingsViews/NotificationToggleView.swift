@@ -15,26 +15,27 @@ struct NotificationToggleView: View {
     // MARK: - @State Properties
     @State private var isAlertPresented: Bool = false
 
-    // MARK: - @Binding Properties
-    @Binding var isToggleOn: Bool
+    // MARK: - Private Properties
+    /// 토글과 바인딩을 커스터마이징하여 값 변경을 막고 알림 표시하는 프로퍼티
+    private var bindingForToggle: Binding<Bool> {
+        Binding<Bool>(
+            get: { notificationManager.notificationStatus },
+            set: { _ in
+                isAlertPresented = true
+            }
+        )
+    }
 
     // MARK: - Body
     var body: some View {
-        Toggle(isOn: $isToggleOn, label: {
+        Toggle(isOn: bindingForToggle, label: {
             Label("알림", systemImage: "bell")
         })
         .onAppear(perform: {
-            DispatchQueue.main.async {
-                notificationManager.setNotificationStatus()
-            }
+            notificationManager.setNotificationStatus()
         })
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-            DispatchQueue.main.async {
-                notificationManager.setNotificationStatus()
-            }
-        }
-        .onTapGesture {
-            isAlertPresented.toggle()
+            notificationManager.setNotificationStatus()
         }
         .alert(isPresented: $isAlertPresented) {
             Alert(
@@ -45,17 +46,14 @@ struct NotificationToggleView: View {
 
                     UIApplication.shared.open(settingsURL)
                 }),
-                secondaryButton: .cancel(Text("닫기"), action: {
-                    DispatchQueue.main.async {
-                        notificationManager.setNotificationStatus()
-                    }
-                }))
+                secondaryButton: .cancel(Text("닫기"))
+            )
         }
     }
 }
 
 
 #Preview {
-    NotificationToggleView(isToggleOn: .constant(false))
+    NotificationToggleView()
         .environmentObject(NotificationManager())
 }
