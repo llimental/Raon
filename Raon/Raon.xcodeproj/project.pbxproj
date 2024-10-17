@@ -49,7 +49,6 @@
 		BBCA71A12B5A811E001CC023 /* OnboardingFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA71A02B5A811E001CC023 /* OnboardingFirstView.swift */; };
 		BBCECA612B56815D00D664A1 /* RaonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCECA602B56815D00D664A1 /* RaonApp.swift */; };
 		BBCECA632B56815D00D664A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCECA622B56815D00D664A1 /* ContentView.swift */; };
-		BBCECA652B56815E00D664A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBCECA642B56815E00D664A1 /* Assets.xcassets */; };
 		BBCECA682B56815E00D664A1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBCECA672B56815E00D664A1 /* Preview Assets.xcassets */; };
 		BBDD9A5C2BA5DBC9009DEBE7 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD9A5B2BA5DBC9009DEBE7 /* String+Extension.swift */; };
 		BBDD9A5E2BA5DF5F009DEBE7 /* ThemeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD9A5D2BA5DF5F009DEBE7 /* ThemeSettingView.swift */; };
@@ -104,7 +103,6 @@
 		BBCECA5D2B56815D00D664A1 /* Raon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Raon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBCECA602B56815D00D664A1 /* RaonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaonApp.swift; sourceTree = "<group>"; };
 		BBCECA622B56815D00D664A1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		BBCECA642B56815E00D664A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBCECA672B56815E00D664A1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BBDD9A5B2BA5DBC9009DEBE7 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		BBDD9A5D2BA5DF5F009DEBE7 /* ThemeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingView.swift; sourceTree = "<group>"; };
@@ -119,6 +117,7 @@
 		BB719A282CC0C20800F1936A /* Network */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Network; sourceTree = "<group>"; };
 		BB719A292CC0C20F00F1936A /* Cache */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Cache; sourceTree = "<group>"; };
 		BB719A2A2CC0C21600F1936A /* Notifications */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Notifications; sourceTree = "<group>"; };
+		BB719A312CC0C35800F1936A /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,7 +312,7 @@
 				BBDD9A512BA577CA009DEBE7 /* Services */,
 				BBCA719D2B5A7E62001CC023 /* Views */,
 				BBA6D62C2B6678AE00AF8600 /* Extensions */,
-				BBCECA642B56815E00D664A1 /* Assets.xcassets */,
+				BB719A312CC0C35800F1936A /* Resources */,
 				BBCECA662B56815E00D664A1 /* Preview Content */,
 			);
 			path = Raon;
@@ -413,6 +412,7 @@
 				BB719A282CC0C20800F1936A /* Network */,
 				BB719A292CC0C20F00F1936A /* Cache */,
 				BB719A2A2CC0C21600F1936A /* Notifications */,
+				BB719A312CC0C35800F1936A /* Resources */,
 			);
 			name = Raon;
 			productName = SeoulCultureMoa;
@@ -459,7 +459,6 @@
 			files = (
 				BBCECA682B56815E00D664A1 /* Preview Assets.xcassets in Resources */,
 				BB9680FC2BAD667300F80230 /* RaonAPI.plist in Resources */,
-				BBCECA652B56815E00D664A1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
