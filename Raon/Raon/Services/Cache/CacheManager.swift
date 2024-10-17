@@ -6,8 +6,9 @@
 //
 
 import UIKit.UIImage
+import Combine
 
-final class CacheManager {
+final class CacheManager: CacheManagerProtocol {
     // MARK: - Singleton Pattern
     static let shared = CacheManager()
 
@@ -15,30 +16,32 @@ final class CacheManager {
     private init() { }
 
     // MARK: - Private Properties
-    private var cache = NSCache<NSString, UIImage>()
+    private let cache = NSCache<NSString, UIImage>()
+    private let urlSession = URLSession.shared
 
     // MARK: - Public Functions
-    func fetchImage(urlString: String, completion: @escaping (UIImage?) -> Void) {
+    func fetchImage(from urlString: String) -> AnyPublisher<UIImage?, Never> {
         if let cachedImage = cache.object(forKey: urlString as NSString) {
-            completion(cachedImage)
+            return Just(cachedImage)
+                .eraseToAnyPublisher()
         } else {
             guard let url = URL(string: urlString) else {
-                completion(nil)
-
-                return
+                return Just(nil)
+                    .eraseToAnyPublisher()
             }
 
-            URLSession.shared.dataTask(with: url) { data, _, _ in
-                guard let data = data, let image = UIImage(data: data) else {
-                    completion(nil)
+            return urlSession.dataTaskPublisher(for: url)
+                .map { [weak self] data, _ -> UIImage? in
+                    let image = UIImage(data: data)
 
-                    return
+                    if let image = image {
+                        self?.cache.setObject(image, forKey: urlString as NSString)
+                    }
+
+                    return image
                 }
-
-                self.cache.setObject(image, forKey: urlString as NSString)
-
-                completion(image)
-            }.resume()
+                .replaceError(with: nil)
+                .eraseToAnyPublisher()
         }
     }
 }
