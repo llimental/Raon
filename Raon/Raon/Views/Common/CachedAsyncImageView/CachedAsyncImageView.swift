@@ -6,27 +6,36 @@
 //
 
 import SwiftUI
+import Combine
 
 struct CachedAsyncImageView: View {
     // MARK: - @State Properties
     @State private var image: UIImage?
+    @State private var cancellable: AnyCancellable?
 
     // MARK: - Public Properties
     let url: String
 
     // MARK: - Body
     var body: some View {
-        if let image = image {
-            Image(uiImage: image)
-                .resizable()
-                .scaledToFit()
-        } else {
-            ProgressView()
-                .onAppear {
-                    CacheManager.shared.fetchImage(urlString: url) { image in
-                        self.image = image
-                    }
+        Group {
+            if let image = image {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+            } else {
+                ProgressView()
+            }
+        }
+        .onAppear {
+            cancellable = CacheManager.shared.fetchImage(from: url)
+                .receive(on: DispatchQueue.main)
+                .sink { image in
+                    self.image = image
                 }
+        }
+        .onDisappear {
+            cancellable?.cancel()
         }
     }
 }
