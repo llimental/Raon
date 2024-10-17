@@ -156,25 +156,25 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
-		BB4A3DF52BA88F3A0091B166 /* CalendarViews */ = {
+		BB4A3DF52BA88F3A0091B166 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
 				BB4A3DF62BA88F4B0091B166 /* CalendarView.swift */,
 				BB89BC612BA8ADDB00DFF59B /* ProgramOfTheDayView.swift */,
 			);
-			path = CalendarViews;
+			path = Calendar;
 			sourceTree = "<group>";
 		};
-		BB63C1BF2B64EFF300EA3ABB /* ProgramViews */ = {
+		BB63C1BF2B64EFF300EA3ABB /* Programs */ = {
 			isa = PBXGroup;
 			children = (
 				BB63C1C02B64F07F00EA3ABB /* ProgramView.swift */,
 				BBA6D6262B663CFC00AF8600 /* ProgramCardView.swift */,
 			);
-			path = ProgramViews;
+			path = Programs;
 			sourceTree = "<group>";
 		};
-		BB67FC062B8714F800EFA5AC /* ProgramDetailViews */ = {
+		BB67FC062B8714F800EFA5AC /* ProgramDetail */ = {
 			isa = PBXGroup;
 			children = (
 				BB67FC072B87152F00EFA5AC /* ProgramDetailView.swift */,
@@ -184,15 +184,15 @@
 				BB82ED572BA9D94700EFEAD5 /* EventEditViewController.swift */,
 				BBB874B02BAB46E700A38C54 /* DetailImageView.swift */,
 			);
-			path = ProgramDetailViews;
+			path = ProgramDetail;
 			sourceTree = "<group>";
 		};
-		BB9127F22BA0405700ABC84D /* FavoritesViews */ = {
+		BB9127F22BA0405700ABC84D /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
 				BB9127F32BA0407000ABC84D /* FavoritesView.swift */,
 			);
-			path = FavoritesViews;
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 		BB9680FD2BAD671A00F80230 /* ci_scripts */ = {
@@ -203,7 +203,7 @@
 			path = ci_scripts;
 			sourceTree = "<group>";
 		};
-		BBA41E052B9A159C00884BD9 /* SettingsViews */ = {
+		BBA41E052B9A159C00884BD9 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				BBA41E062B9A15BC00884BD9 /* SettingsView.swift */,
@@ -211,7 +211,7 @@
 				BB9127F72BA3531300ABC84D /* NotificationToggleView.swift */,
 				BBDD9A5D2BA5DF5F009DEBE7 /* ThemeSettingView.swift */,
 			);
-			path = SettingsViews;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		BBA6D62C2B6678AE00AF8600 /* Extensions */ = {
@@ -226,14 +226,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		BBBE87F12B71117100189E08 /* SearchViews */ = {
+		BBBE87F12B71117100189E08 /* Search */ = {
 			isa = PBXGroup;
 			children = (
 				BBBE87F22B71118500189E08 /* SearchView.swift */,
 				BB74BB072B713DB200BA2A61 /* SearchCardView.swift */,
 				BB4475282B7B70A5008736FB /* FilterView.swift */,
 			);
-			path = SearchViews;
+			path = Search;
 			sourceTree = "<group>";
 		};
 		BBBFD64E2B63F2B20052BD38 /* ButtonViews */ = {
@@ -250,13 +250,13 @@
 			isa = PBXGroup;
 			children = (
 				BBCECA622B56815D00D664A1 /* ContentView.swift */,
-				BBCA719F2B5A80F1001CC023 /* OnboardingViews */,
-				BB63C1BF2B64EFF300EA3ABB /* ProgramViews */,
-				BB9127F22BA0405700ABC84D /* FavoritesViews */,
-				BBBE87F12B71117100189E08 /* SearchViews */,
-				BB67FC062B8714F800EFA5AC /* ProgramDetailViews */,
-				BB4A3DF52BA88F3A0091B166 /* CalendarViews */,
-				BBA41E052B9A159C00884BD9 /* SettingsViews */,
+				BBCA719F2B5A80F1001CC023 /* Onboarding */,
+				BB63C1BF2B64EFF300EA3ABB /* Programs */,
+				BB9127F22BA0405700ABC84D /* Favorites */,
+				BBBE87F12B71117100189E08 /* Search */,
+				BB67FC062B8714F800EFA5AC /* ProgramDetail */,
+				BB4A3DF52BA88F3A0091B166 /* Calendar */,
+				BBA41E052B9A159C00884BD9 /* Settings */,
 				BB116B792B8C2C1500EBBBB8 /* WebView */,
 				BBF9E9102B98699B00496CE5 /* CachedAsyncImageView */,
 				BBBFD64E2B63F2B20052BD38 /* ButtonViews */,
@@ -278,7 +278,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		BBCA719F2B5A80F1001CC023 /* OnboardingViews */ = {
+		BBCA719F2B5A80F1001CC023 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
 				BB67049A2B5FB4CB0008A76F /* OnboardingTabView.swift */,
@@ -287,7 +287,7 @@
 				BB67049C2B5FC53E0008A76F /* OnboardingThirdView.swift */,
 				BBDDA7522BC1372500AD3EEA /* OnboardingFourthView.swift */,
 			);
-			path = OnboardingViews;
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		BBCECA542B56815D00D664A1 = {
