@@ -36,6 +36,7 @@
 		BB719A7C2CC0DD1400F1936A /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB719A7A2CC0DD1400F1936A /* CacheManager.swift */; };
 		BB719A7F2CC0DD1600F1936A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB719A7D2CC0DD1600F1936A /* NetworkManager.swift */; };
 		BB719A822CC0DD1900F1936A /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB719A802CC0DD1900F1936A /* NotificationManager.swift */; };
+		BB719A862CC0EFC600F1936A /* CacheManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB719A852CC0EFC600F1936A /* CacheManagerProtocol.swift */; };
 		BB74BB082B713DB200BA2A61 /* SearchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB74BB072B713DB200BA2A61 /* SearchCardView.swift */; };
 		BB82ED582BA9D94700EFEAD5 /* EventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB82ED572BA9D94700EFEAD5 /* EventEditViewController.swift */; };
 		BB82ED5A2BA9F4C900EFEAD5 /* EKEvent+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB82ED592BA9F4C900EFEAD5 /* EKEvent+Extension.swift */; };
@@ -93,6 +94,7 @@
 		BB719A7A2CC0DD1400F1936A /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		BB719A7D2CC0DD1600F1936A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		BB719A802CC0DD1900F1936A /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		BB719A852CC0EFC600F1936A /* CacheManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManagerProtocol.swift; sourceTree = "<group>"; };
 		BB74BB072B713DB200BA2A61 /* SearchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardView.swift; sourceTree = "<group>"; };
 		BB82ED572BA9D94700EFEAD5 /* EventEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditViewController.swift; sourceTree = "<group>"; };
 		BB82ED592BA9F4C900EFEAD5 /* EKEvent+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EKEvent+Extension.swift"; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				BB719A7A2CC0DD1400F1936A /* CacheManager.swift */,
+				BB719A852CC0EFC600F1936A /* CacheManagerProtocol.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				BB719A7F2CC0DD1600F1936A /* NetworkManager.swift in Sources */,
 				BB719A822CC0DD1900F1936A /* NotificationManager.swift in Sources */,
 				BB116B762B89C1FC00EBBBB8 /* ProgramDescriptionView.swift in Sources */,
+				BB719A862CC0EFC600F1936A /* CacheManagerProtocol.swift in Sources */,
 				BBDDA74E2BC11AD100AD3EEA /* Tab.swift in Sources */,
 				BBB874B12BAB46E700A38C54 /* DetailImageView.swift in Sources */,
 				BBA6D6272B663CFC00AF8600 /* ProgramCardView.swift in Sources */,
