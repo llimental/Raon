@@ -212,11 +212,11 @@
 		BBA6D62C2B6678AE00AF8600 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				BBA6D62D2B6679B300AF8600 /* View+Extension.swift */,
-				BB3B97282B6BEC9B0059A697 /* Date+Extension.swift */,
-				BBDD9A5B2BA5DBC9009DEBE7 /* String+Extension.swift */,
-				BB82ED592BA9F4C900EFEAD5 /* EKEvent+Extension.swift */,
 				BB9680F92BAD65F300F80230 /* Bundle+Extension.swift */,
+				BB3B97282B6BEC9B0059A697 /* Date+Extension.swift */,
+				BB82ED592BA9F4C900EFEAD5 /* EKEvent+Extension.swift */,
+				BBDD9A5B2BA5DBC9009DEBE7 /* String+Extension.swift */,
+				BBA6D62D2B6679B300AF8600 /* View+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -309,8 +309,8 @@
 				BBE6A7182B67DFC300067FC0 /* Info.plist */,
 				BB9680FB2BAD667300F80230 /* RaonAPI.plist */,
 				BBCA719E2B5A7E6A001CC023 /* Model */,
-				BBDD9A512BA577CA009DEBE7 /* Services */,
 				BBCA719D2B5A7E62001CC023 /* Views */,
+				BBDD9A512BA577CA009DEBE7 /* Services */,
 				BBA6D62C2B6678AE00AF8600 /* Extensions */,
 				BB719A312CC0C35800F1936A /* Resources */,
 				BBCECA662B56815E00D664A1 /* Preview Content */,
