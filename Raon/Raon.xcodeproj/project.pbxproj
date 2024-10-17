@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -263,12 +263,12 @@
 		BBCA719E2B5A7E6A001CC023 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BBDD9A582BA578DE009DEBE7 /* Theme */,
-				BBDD9A572BA578C6009DEBE7 /* Filters */,
 				BBDD9A592BA578E5009DEBE7 /* DTO */,
-				BBDD9A5A2BA578EB009DEBE7 /* SwiftData */,
-				BBDDA74C2BC11AC600AD3EEA /* Tab */,
-				BBDDA74F2BC11AFF00AD3EEA /* TapToRoot */,
+				BBDD9A572BA578C6009DEBE7 /* Filters */,
+				BBDD9A5A2BA578EB009DEBE7 /* Entities */,
+				BBBFD6552B640BF20052BD38 /* ThemeColors.swift */,
+				BBDDA74D2BC11AD100AD3EEA /* Tab.swift */,
+				BBDDA7502BC11B1F00AD3EEA /* DestinationPath.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -345,14 +345,6 @@
 			path = Filters;
 			sourceTree = "<group>";
 		};
-		BBDD9A582BA578DE009DEBE7 /* Theme */ = {
-			isa = PBXGroup;
-			children = (
-				BBBFD6552B640BF20052BD38 /* ThemeColors.swift */,
-			);
-			path = Theme;
-			sourceTree = "<group>";
-		};
 		BBDD9A592BA578E5009DEBE7 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,28 +353,12 @@
 			path = DTO;
 			sourceTree = "<group>";
 		};
-		BBDD9A5A2BA578EB009DEBE7 /* SwiftData */ = {
+		BBDD9A5A2BA578EB009DEBE7 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				BB1502922B9F541E00340090 /* FavoriteProgram.swift */,
 			);
-			path = SwiftData;
-			sourceTree = "<group>";
-		};
-		BBDDA74C2BC11AC600AD3EEA /* Tab */ = {
-			isa = PBXGroup;
-			children = (
-				BBDDA74D2BC11AD100AD3EEA /* Tab.swift */,
-			);
-			path = Tab;
-			sourceTree = "<group>";
-		};
-		BBDDA74F2BC11AFF00AD3EEA /* TapToRoot */ = {
-			isa = PBXGroup;
-			children = (
-				BBDDA7502BC11B1F00AD3EEA /* DestinationPath.swift */,
-			);
-			path = TapToRoot;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		BBF9E9102B98699B00496CE5 /* CachedAsyncImageView */ = {
