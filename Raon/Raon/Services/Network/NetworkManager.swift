@@ -49,7 +49,10 @@ final class NetworkManager: ObservableObject {
             contents.removeAll()
             rawContents.removeAll()
 
-            guard let url = makeURL(startIndex: 1, endIndex: 1) else { return }
+            guard let url = makeURL(startIndex: 1, endIndex: 1) else {
+                isContentsUpdating.toggle()
+                return
+            }
 
             programCancellable = URLSession.shared
                 .dataTaskPublisher(for: url)
@@ -88,12 +91,16 @@ final class NetworkManager: ObservableObject {
     }
 
     private func makeURL(startIndex: Int, endIndex: Int) -> URL? {
+        let apiKey = Bundle.main.apiKey
+
+        guard apiKey != String() else { return nil }
+
         var components = URLComponents()
 
         components.scheme = "http"
         components.host = "openapi.seoul.go.kr"
         components.port = 8088
-        components.path = "\(Bundle.main.apiKey)/json/culturalEventInfo/\(startIndex)/\(endIndex)/"
+        components.path = "\(apiKey)/json/culturalEventInfo/\(startIndex)/\(endIndex)/"
 
         return components.url
     }
