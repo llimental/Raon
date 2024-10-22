@@ -23,12 +23,12 @@ final class NetworkManager: ObservableObject {
 
     deinit {
         programCancellable?.cancel()
-        networkMonitor.cancel()
+        networkMonitorCancellable?.cancel()
     }
 
     // MARK: - Private Properties
     private var programCancellable: AnyCancellable?
-    private let networkMonitor = NWPathMonitor()
+    private var networkMonitorCancellable: AnyCancellable?
 
     /// API에서 받아와야 하는 전체 데이터 수
     private var totalCount = -1
@@ -77,17 +77,15 @@ final class NetworkManager: ObservableObject {
 
     // MARK: - Private Functions
     private func startNetworkMonitoring() {
-        networkMonitor.start(queue: .global())
+        networkMonitorCancellable = NetworkMonitor.shared.$isConnected
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isConnected in
+                self?.currentNetworkStatus = isConnected
 
-        self.networkMonitor.pathUpdateHandler = { [weak self] path in
-            DispatchQueue.main.async {
-                if self?.currentNetworkStatus == false && path.status == .satisfied {
+                if isConnected {
                     self?.requestProgramContents()
                 }
-
-                self?.currentNetworkStatus = path.status == .satisfied
             }
-        }
     }
 
     private func makeURL(startIndex: Int, endIndex: Int) -> URL? {
