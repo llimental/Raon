@@ -15,6 +15,7 @@
 		BB4475292B7B70A5008736FB /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4475282B7B70A5008736FB /* FilterView.swift */; };
 		BB44752B2B7B7251008736FB /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB44752A2B7B7251008736FB /* Categories.swift */; };
 		BB4A3DF72BA88F4B0091B166 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4A3DF62BA88F4B0091B166 /* CalendarView.swift */; };
+		BB56309C2CC78446003839D5 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56309B2CC78446003839D5 /* NetworkMonitor.swift */; };
 		BB63C1C12B64F07F00EA3ABB /* ProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63C1C02B64F07F00EA3ABB /* ProgramView.swift */; };
 		BB6704992B5FB4AB0008A76F /* OnboardingSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6704982B5FB4AB0008A76F /* OnboardingSecondView.swift */; };
 		BB67049B2B5FB4CB0008A76F /* OnboardingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67049A2B5FB4CB0008A76F /* OnboardingTabView.swift */; };
@@ -72,6 +73,7 @@
 		BB4475282B7B70A5008736FB /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		BB44752A2B7B7251008736FB /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		BB4A3DF62BA88F4B0091B166 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		BB56309B2CC78446003839D5 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		BB63C1C02B64F07F00EA3ABB /* ProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramView.swift; sourceTree = "<group>"; };
 		BB6704982B5FB4AB0008A76F /* OnboardingSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondView.swift; sourceTree = "<group>"; };
 		BB67049A2B5FB4CB0008A76F /* OnboardingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTabView.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				BB719A7D2CC0DD1600F1936A /* NetworkManager.swift */,
+				BB56309B2CC78446003839D5 /* NetworkMonitor.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				BB4A3DF72BA88F4B0091B166 /* CalendarView.swift in Sources */,
 				BBDD9A5C2BA5DBC9009DEBE7 /* String+Extension.swift in Sources */,
 				BBDDA7532BC1372500AD3EEA /* OnboardingFourthView.swift in Sources */,
+				BB56309C2CC78446003839D5 /* NetworkMonitor.swift in Sources */,
 				BB89BC622BA8ADDB00DFF59B /* ProgramOfTheDayView.swift in Sources */,
 				BBA41E092B9A187A00884BD9 /* CopyRightView.swift in Sources */,
 				BBBFD64C2B63E2670052BD38 /* Regions.swift in Sources */,
