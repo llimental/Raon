@@ -44,13 +44,13 @@ final class NetworkManager: ObservableObject {
     // MARK: - Public Functions
     func requestProgramContents() {
         if currentNetworkStatus {
-            isContentsUpdating.toggle()
+            updateLoadingState(true)
             programCancellable?.cancel()
             contents.removeAll()
             rawContents.removeAll()
 
             guard let url = makeURL(startIndex: 1, endIndex: 1) else {
-                isContentsUpdating.toggle()
+                updateLoadingState(false)
                 return
             }
 
@@ -86,6 +86,12 @@ final class NetworkManager: ObservableObject {
                     self?.requestProgramContents()
                 }
             }
+    }
+
+    private func updateLoadingState(_ isLoading: Bool) {
+        DispatchQueue.main.async {
+            self.isContentsUpdating = isLoading
+        }
     }
 
     private func makeURL(startIndex: Int, endIndex: Int) -> URL? {
@@ -149,7 +155,7 @@ final class NetworkManager: ObservableObject {
         let today = Date().getStringOfTodayDate()
 
         defer {
-            isContentsUpdating.toggle()
+            updateLoadingState(false)
         }
 
         self.contents = rawContents
