@@ -79,7 +79,7 @@ struct ProgramView: View {
                     case .settings: SettingsView(themeColor: $themeColor, selectedRegion: $selectedRegion)
                 }
             }
-            .fullScreenCover(isPresented: $networkManager.isContentsUpdating, content: {
+            .fullScreenCover(isPresented: $networkManager.isLoading, content: {
                 ProgressView {
                     Text("데이터를 불러오는 중입니다\n잠시만 기다려주세요")
                         .multilineTextAlignment(.center)

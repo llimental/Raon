@@ -13,7 +13,7 @@ final class NetworkManager: ObservableObject {
     // MARK: - @Published Properties
     @Published var contents = [ProgramContentModel]()
     @Published var currentNetworkStatus = true
-    @Published var isContentsUpdating = false
+    @Published var isLoading = false
 
     // MARK: - LifeCycle
     init() {
@@ -91,7 +91,7 @@ final class NetworkManager: ObservableObject {
 
     private func updateLoadingState(_ isLoading: Bool) {
         DispatchQueue.main.async {
-            self.isContentsUpdating = isLoading
+            self.isLoading = isLoading
         }
     }
 
