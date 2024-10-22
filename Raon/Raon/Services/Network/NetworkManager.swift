@@ -29,6 +29,7 @@ final class NetworkManager: ObservableObject {
     // MARK: - Private Properties
     private var programCancellable: AnyCancellable?
     private var networkMonitorCancellable: AnyCancellable?
+    private let batchSize = 1000
 
     /// API에서 받아와야 하는 전체 데이터 수
     private var totalCount = -1
@@ -111,9 +112,7 @@ final class NetworkManager: ObservableObject {
 
     /// Publishers.MergeMany를 사용하여 유동적인 횟수만큼 API를 호출하는 메서드. 전달받은 수에 비례한 Publisher를 생성하고 MergeMany로 결합하여 전체 데이터 핸들링
     private func getTotalContents(of amount: Int) {
-        let count = (amount + 999) / 1000
-
-        var publishers = [URLSession.DataTaskPublisher]()
+        let count = (amount + batchSize - 1) / batchSize
 
         /*
          API 호출 시 인덱스 변화 로직
@@ -124,19 +123,18 @@ final class NetworkManager: ObservableObject {
          => n회(n): (n * 1000) + 1 ~ (n * 1000) + 1000
          */
 
-        for index in 0..<count {
-            guard let url = makeURL(startIndex: (index * 1000) + 1, endIndex: (index * 1000) + 1000) else { return }
-
-            let publisher = URLSession.shared
-                .dataTaskPublisher(for: url)
-
-            publishers.append(publisher)
-        }
+        let publishers = (0..<count)
+            .compactMap { index -> URL? in
+                makeURL(startIndex: (index * batchSize) + 1, endIndex: (index * batchSize) + batchSize)
+            }
+            .map { url in
+                URLSession.shared.dataTaskPublisher(for: url)
+                    .map(\.data)
+                    .decode(type: ProgramData.self, decoder: JSONDecoder())
+            }
 
         programCancellable = Publishers.MergeMany(publishers)
             .subscribe(on: DispatchQueue.global())
-            .map(\.data)
-            .decode(type: ProgramData.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
                 switch completion {
