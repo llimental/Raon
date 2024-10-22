@@ -60,13 +60,13 @@ final class NetworkManager: ObservableObject {
                 .map(\.data)
                 .decode(type: ProgramData.self, decoder: JSONDecoder())
                 .receive(on: DispatchQueue.main)
-                .sink { completion in
+                .sink { [weak self] completion in
                     switch completion {
                         case .finished:
-                            print("First DataTaskPublisher Result:", completion)
-                        default:
-                            print("First DataTaskPublisher Result:", completion)
-                            self.isContentsUpdating.toggle()
+                            print("First DataTaskPublisher Finished:", completion)
+                        case .failure(let error):
+                            print("First DataTaskPublisher Error:", error.localizedDescription)
+                            self?.updateLoadingState(false)
                     }
                 } receiveValue: { [weak self] value in
                     self?.totalCount = value.programInfo.totalCount
@@ -138,13 +138,13 @@ final class NetworkManager: ObservableObject {
             .map(\.data)
             .decode(type: ProgramData.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
-            .sink { completion in
+            .sink { [weak self] completion in
                 switch completion {
                     case .finished:
-                        print("Second DataTaskPublisher Result:", completion)
-                    default:
-                        print("Second DataTaskPublisher Result:", completion)
-                        self.isContentsUpdating.toggle()
+                        print("Second DataTaskPublisher Finished:", completion)
+                    case .failure(let error):
+                        print("Second DataTaskPublisher Failure:", error.localizedDescription)
+                        self?.updateLoadingState(false)
                 }
             } receiveValue: { value in
                 self.rawContents.append(contentsOf: value.programInfo.programContents)
